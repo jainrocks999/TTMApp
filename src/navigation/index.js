@@ -1,117 +1,123 @@
-import React from 'react'
-import {createSwitchNavigator,createAppContainer} from 'react-navigation';
+import React from 'react';
+import {createSwitchNavigator, createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createDrawerNavigator} from 'react-navigation-drawer';
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
+import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import DashboardScreen from '../screens/dashboard/index';
+import FirstScreen from '../screens/first/index';
+import enterScreen from '../screens/enter/index';
+import rateScreen from '../screens/rate/index';
+import shareScreen from '../screens/share/index';
+import SplashPage from '../screens/splash/index';
+import demo from '../screens/demo/demo';
+import RegistrationPage from '../screens/registeration/index';
+import LoginPage from '../screens/login/index';
 
-import DashboardScreen from '../screens/dashboard/index'
-import enterScreen from '../screens/enter/index'
-import rateScreen from '../screens/rate/index'
-import shareScreen from '../screens/share/index'
-import SplashPage from '../screens/splash/index'
+import Sidebar from '../component/SideBar';
 
-import Sidebar from '../component/SideBar'
-
-
-const AccountNavigator = createStackNavigator({
-    Account: {
-        screen: DashboardScreen
+const AuthNavigator = createStackNavigator(
+  {
+    Registration: {
+      screen: RegistrationPage,
     },
-});
-
-
-
-const HomeStackNavigator = createStackNavigator(
-    {
-        Account: {
-            screen: DashboardScreen
-        },
+    Login: {
+      screen: LoginPage,
     },
-    {
-        defaultNavigationOptions: ({ navigation }) => {
-            return {
-                title: '',
-                headerStyle: {
-                    backgroundColor: 'transparent',
-                },
-                headerTintColor: 'black',
-                headerLeft: () =>
-                    <Icon
-                        style={{ paddingLeft: 10, color: 'black' }}
-                        onPress={() => navigation.toggleDrawer()}
-                        name="md-menu"
-                        size={30}
-                    />
-            };
-        }
-    }
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },
 );
 
-
-
-const AppDrawerNavigator = createDrawerNavigator({
-
-    Dashboard:{
-        screen:DashboardScreen,
-        navigationOptions:{
-            title:'Home',
-            drawerIcon:({tintColor})=><Icon
-            name="home"
-            size={20}
-            color={tintColor}
-        />
-        }
+const HomeStackNavigator = createStackNavigator(
+  {
+    Account: {
+      screen: DashboardScreen,
     },
-    enter:{
-        screen:enterScreen,
-        navigationOptions:{
-            title:'Enter',
-            drawerIcon:({tintColor})=><Icon
-            name="globe-outline"
-            size={20}
-            color={tintColor}
-        />
-        }
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+        title: '',
+        headerStyle: {
+          backgroundColor: 'transparent',
+        },
+        headerTintColor: 'black',
+        headerLeft: () => (
+          <Icon
+            style={{paddingLeft: 10, color: 'black'}}
+            onPress={() => navigation.toggleDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        ),
+      };
     },
-    rate:{
-        screen:rateScreen,
-        navigationOptions:{
-            title:'Rate',
-            drawerIcon:({tintColor})=><Icon
-            name="star-outline"
-            size={20}
-            color={tintColor}
-        />
-        }
-    },
-    share:{
-        screen:shareScreen,
-        navigationOptions:{
-            title:'Share',
-            drawerIcon:({tintColor})=><Icon
-            name="share-social-outline"
-            size={20}
-            color={tintColor}
-        />
-        }
-    }
-        
-},{
-    contentComponent:props=><Sidebar {...props} />
-}
+  },
+);
 
+const AppDrawerNavigator = createDrawerNavigator(
+  {
+    Dashboard: {
+      screen: DashboardScreen,
+      navigationOptions: {
+        title: 'Home',
+        drawerIcon: ({tintColor}) => (
+          <Icon name="home" size={20} color={tintColor} />
+        ),
+      },
+    },
+    enter: {
+      screen: enterScreen,
+      navigationOptions: {
+        title: 'Enter',
+        drawerIcon: ({tintColor}) => (
+          <Icon name="globe-outline" size={20} color={tintColor} />
+        ),
+      },
+    },
+    rate: {
+      screen: rateScreen,
+      navigationOptions: {
+        title: 'Rate',
+        drawerIcon: ({tintColor}) => (
+          <Icon name="star-outline" size={20} color={tintColor} />
+        ),
+      },
+    },
+    share: {
+      screen: shareScreen,
+      navigationOptions: {
+        title: 'Share',
+        drawerIcon: ({tintColor}) => (
+          <Icon name="share-social-outline" size={20} color={tintColor} />
+        ),
+      },
+    },
+  },
+  {
+    contentComponent: props => <Sidebar {...props} />,
+  },
 );
 
 const AuthStack = createSwitchNavigator(
-    {
-        AuthLoading: SplashPage,
-        Drawer: AppDrawerNavigator,
-    },
-    {
-        initialRouteName: 'AuthLoading',
-    }
+  {
+    Demo: demo,
+    AuthLoading: {screen: SplashPage},
+    FirstPage: {screen: FirstScreen},
+    Auth: AuthNavigator,
+    Drawer: AppDrawerNavigator,
+  },
+  {
+    initialRouteName: 'AuthLoading',
+  },
 );
 
 const RootApp = createAppContainer(AuthStack);
