@@ -4,6 +4,7 @@ import {View, Text, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {TextInput} from 'react-native-gesture-handler';
 import LoginButton from '../../component/Button';
+import styles from './styles';
 
 export default class Registration extends React.Component {
   state = {
@@ -22,29 +23,16 @@ export default class Registration extends React.Component {
   }
   render() {
     return (
-      <View style={{flex: 1, paddingHorizontal: 15}}>
+      <View style={styles.container}>
         <Icon
           style={{color: 'black'}}
-          onPress={() => this.props.navigation.goBack()}
+          onPress={() => this.props.navigation.navigate('FirstPage')}
           name="arrow-back"
           size={30}
         />
 
-        <Text
-          style={{
-            fontSize: 25,
-            marginVertical: 10,
-            fontWeight: 'bold',
-            fontFamily: 'SourceSansPro',
-          }}>
-          Registration
-        </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderBottomWidth: 0.5,
-          }}>
+        <Text style={styles.headText}>Registration</Text>
+        <View style={styles.textInputContainer}>
           <Icon
             style={{color: 'black'}}
             onPress={() => this.props.navigation.toggleDrawer()}
@@ -58,12 +46,7 @@ export default class Registration extends React.Component {
             placeholderTextColor={'black'}
           />
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderBottomWidth: 0.5,
-          }}>
+        <View style={styles.textInputContainer}>
           <Icon
             style={{color: 'black'}}
             onPress={() => this.props.navigation.toggleDrawer()}
@@ -78,12 +61,7 @@ export default class Registration extends React.Component {
           />
         </View>
 
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderBottomWidth: 0.5,
-          }}>
+        <View style={styles.textInputContainer}>
           <Icon
             style={{color: 'black'}}
             onPress={() => this.props.navigation.toggleDrawer()}
@@ -97,12 +75,7 @@ export default class Registration extends React.Component {
             placeholderTextColor={'black'}
           />
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderBottomWidth: 0.5,
-          }}>
+        <View style={styles.textInputContainer}>
           <Icon
             style={{color: 'black'}}
             onPress={() => this.props.navigation.navigate('AuthNavigator')}
@@ -116,12 +89,7 @@ export default class Registration extends React.Component {
             placeholderTextColor={'black'}
           />
         </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderBottomWidth: 0.5,
-          }}>
+        <View style={styles.textInputContainer}>
           <Icon
             style={{color: 'black'}}
             onPress={() => this.props.navigation.toggleDrawer()}
@@ -136,27 +104,18 @@ export default class Registration extends React.Component {
             secureTextEntry={this.state.showPassword}
           />
         </View>
-        <Text
-          style={{marginTop: 20, fontSize: 16, fontFamily: 'SourceSansPro'}}>
-          Alternative login methods
-        </Text>
-        <View
-          style={{
-            marginTop: 10,
-            flexDirection: 'row',
-            width: 70,
-            justifyContent: 'space-between',
-          }}>
+        <Text style={styles.text}>Alternative login methods</Text>
+        <View style={styles.iconContainer}>
           <Image
-            style={{height: 20, width: 20}}
+            style={styles.icons}
             source={require('../../assets/images/twitter.png')}
           />
           <Image
-            style={{height: 20, width: 20}}
+            style={styles.icons}
             source={require('../../assets/images/fb.png')}
           />
           <Image
-            style={{height: 20, width: 20}}
+            style={styles.icons}
             source={require('../../assets/images/google.png')}
           />
         </View>

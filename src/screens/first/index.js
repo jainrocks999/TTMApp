@@ -5,7 +5,7 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  TouchableHighlight,
+  TouchableOpacity,
   Alert,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -13,7 +13,7 @@ import Statusbar from '../../common/Statusbar';
 import ImageSlider from 'react-native-image-slider';
 import Slideshow from 'react-native-image-slider-show';
 import {SliderBox} from 'react-native-image-slider-box';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import styles from './style';
 
 export default class FirstScreen extends React.Component {
   static navigationOptions = {
@@ -79,7 +79,7 @@ export default class FirstScreen extends React.Component {
     return (
       <ImageBackground
         source={require('../../assets/images/bg.png')}
-        style={{width: '100%', height: '100%', flex: 1}}>
+        style={{flex: 1}}>
         <View>
           <Statusbar />
           <Image
@@ -128,51 +128,22 @@ export default class FirstScreen extends React.Component {
             ImageComponentStyle={{borderRadius: 15, width: '90%', marginTop: 5}}
             imageLoadingColor="#2196F3"
           />
-          <View style={styles.loginContainer}>
+          <View>
             <TouchableOpacity
-              style={{
-                borderWidth: 5,
-                marginTop: 20,
-                marginHorizontal: 30,
-                borderRadius: 50,
-              }}
-              onPress={() => {
-                this.showAlert;
-              }}>
+              style={styles.buttonContainer}
+              onPress={() => this.props.navigation.navigate('Registration')}>
               <LinearGradient
                 colors={['#373b44', '#4286f4']}
                 style={styles.linearGradient}>
-                <Text
-                  style={styles.buttonText}
-                  onPress={() =>
-                    this.props.navigation.navigate('Registration')
-                  }>
-                  Sign Up
-                </Text>
+                <Text style={styles.buttonText}>Sign Up</Text>
               </LinearGradient>
             </TouchableOpacity>
           </View>
 
           <View style={{marginTop: 20}}>
+            <Text style={styles.text}>Already have an account step?</Text>
             <Text
-              style={{
-                fontSize: 18,
-                fontWeight: 'bold',
-                color: 'white',
-                textAlign: 'center',
-                fontFamily: 'SourceSansPro',
-              }}>
-              Already have an account step?
-            </Text>
-            <Text
-              style={{
-                fontSize: 18,
-                fontWeight: 'bold',
-                fontFamily: 'SourceSansPro',
-                color: 'white',
-                textAlign: 'center',
-                textDecorationLine: 'underline',
-              }}
+              style={styles.loginText}
               onPress={() => this.props.navigation.navigate('Login')}>
               Log in
             </Text>
@@ -183,37 +154,3 @@ export default class FirstScreen extends React.Component {
   }
 }
 // Later on in your styles..
-
-const styles = StyleSheet.create({
-  headText: {
-    color: 'white',
-    textAlign: 'center',
-    fontFamily: 'serif',
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  subHeadText: {
-    color: 'white',
-    textAlign: 'center',
-    fontFamily: 'serif',
-    fontWeight: '500',
-    fontSize: 15,
-  },
-  linearGradient: {borderRadius: 50},
-  buttonText: {
-    fontSize: 18,
-    fontFamily: 'Gill Sans',
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  loginContainer: {
-    backgroundColor: 'transparent',
-  },
-});

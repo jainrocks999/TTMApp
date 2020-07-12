@@ -1,15 +1,21 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity, Alert} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import {TextInput} from 'react-native-gesture-handler';
 import LoginButton from '../../component/Button';
 import Statusbar from '../../common/Statusbar';
+import styles from './styles';
 
 export default class Login extends React.Component {
   state = {
     password: '',
   };
+
+  showAlert = () => {
+    Alert.alert('You need to...');
+  };
+
   constructor(props) {
     super(props);
     this.toggleSwitch = this.toggleSwitch.bind(this);
@@ -23,31 +29,12 @@ export default class Login extends React.Component {
   }
   render() {
     return (
-      <View style={{flex: 1, paddingHorizontal: 15}}>
-        <Text
-          style={{
-            fontFamily: 'SourceSansPro-Bold',
-            fontSize: 22,
-            marginVertical: 10,
-            fontWeight: 'bold',
-            marginTop: 100,
-          }}>
-          Log in
-        </Text>
-        <Text
-          style={{
-            fontSize: 18,
-            marginVertical: 10,
-            fontFamily: 'SourceSansPro',
-          }}>
+      <View style={styles.container}>
+        <Text style={styles.headText}>Log in</Text>
+        <Text style={styles.subHeadText}>
           To Start Using My day have to login
         </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderBottomWidth: 0.5,
-          }}>
+        <View style={styles.textInputContainer}>
           <Icon style={{color: 'black'}} name="person-outline" size={20} />
 
           <TextInput
@@ -57,13 +44,8 @@ export default class Login extends React.Component {
           />
         </View>
 
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            borderBottomWidth: 0.5,
-          }}>
-          <Icon style={{color: 'black'}} name="lock-closed-outline" size={20} />
+        <View style={styles.textInputContainer}>
+          <Icon style={styles.icons} name="lock-closed-outline" size={20} />
 
           <TextInput
             style={{paddingLeft: 10}}
@@ -72,40 +54,20 @@ export default class Login extends React.Component {
           />
         </View>
 
-        <Text
-          style={{
-            marginVertical: 20,
-            fontSize: 14,
-            fontFamily: 'SourceSansPro',
-          }}>
-          Forgot Your Password
-        </Text>
+        <Text style={styles.text}>Forgot Your Password</Text>
         <LoginButton title={'Login'} />
-        <Text
-          style={{
-            marginTop: 20,
-            fontSize: 14,
-            fontFamily: 'SourceSansPro',
-          }}>
-          Alternative Login Methods
-        </Text>
-        <View
-          style={{
-            marginTop: 10,
-            flexDirection: 'row',
-            width: 80,
-            justifyContent: 'space-between',
-          }}>
+        <Text style={styles.text}>Alternative Login Methods</Text>
+        <View style={styles.iconContainer}>
           <Image
-            style={{height: 22, width: 22}}
+            style={styles.icons}
             source={require('../../assets/images/twitter.png')}
           />
           <Image
-            style={{height: 22, width: 22}}
+            style={styles.icons}
             source={require('../../assets/images/fb.png')}
           />
           <Image
-            style={{height: 22, width: 22}}
+            style={styles.icons}
             source={require('../../assets/images/google.png')}
           />
         </View>
