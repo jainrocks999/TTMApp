@@ -14,7 +14,8 @@ import SplashPage from '../screens/splash/index';
 import demo from '../screens/demo/demo';
 import RegistrationPage from '../screens/registeration/index';
 import LoginPage from '../screens/login/index';
-
+import CRDetail from '../screens/CRDetail';
+import TradeMark from '../screens/TradeMark';
 import Sidebar from '../component/SideBar';
 
 const AuthNavigator = createStackNavigator(
@@ -25,6 +26,7 @@ const AuthNavigator = createStackNavigator(
     Login: {
       screen: LoginPage,
     },
+    
   },
   {
     defaultNavigationOptions: ({navigation}) => {
@@ -62,7 +64,14 @@ const HomeStackNavigator = createStackNavigator(
     },
   },
 );
-
+const apiNavigator=createStackNavigator({
+  copies:{
+    screen:CRDetail
+  },
+  trade:{
+    screen:TradeMark
+  }
+})
 const AppDrawerNavigator = createDrawerNavigator(
   {
     Dashboard: {
@@ -92,6 +101,7 @@ const AppDrawerNavigator = createDrawerNavigator(
         ),
       },
     },
+    
     share: {
       screen: shareScreen,
       navigationOptions: {
@@ -114,6 +124,7 @@ const AuthStack = createSwitchNavigator(
     FirstPage: {screen: FirstScreen},
     Auth: AuthNavigator,
     Drawer: AppDrawerNavigator,
+    apiScreen:apiNavigator
   },
   {
     initialRouteName: 'AuthLoading',

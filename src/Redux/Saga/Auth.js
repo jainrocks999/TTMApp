@@ -12,9 +12,9 @@ function* doLogin(action){
      User_Name: action.User_Name,
      Password: action.Password,
     });
-    console.log('dadada'+data)
-    console.log('api'+action.url)
-   // console.log('api'+Api.fetchDataByPOST)
+     console.log('dadada'+data)
+     console.log('api'+action.url)
+   //console.log('api'+Api.fetchDataByPOST)
     const p = yield call(Api.fetchDataByPOST,action.url,data)
     console.log('kapil'+p.data)
    if(p.data == ''){
@@ -59,8 +59,64 @@ if(action.navigateTo){
         }) 
     }  
 }
+
+function* doRegister(action){
+    try{
+    const data = JSON.stringify({
+     User_Name: action.User_Name,
+     Password: action.Password,
+    });
+    console.log('dadada'+data)
+    console.log('api'+action.url)
+   // console.log('api'+Api.fetchDataByPOST)
+    const p = yield call(Api.fetchDataByGET,action.url,data)
+    console.log('kapil'+p.data)
+   if(p.data == ''){
+    yield put({
+        type:'User_Register_Success',
+        payload:p.data
+    })
+     AsyncStorage.setItem(Constants.token, p.data)
+
+if(action.navigateTo){
+    const resetAction = StackActions.reset({
+        index:0,
+        actions:[NavigationActions.navigate({routeName:action.navigateTo})],
+    });
+    action.navigate.dispatch(resetAction);
+   }else{
+        const resetAction = StackActions.reset({
+                index: 0,
+                actions: [NavigationActions.navigate({ routeName: 'more' })],
+              });
+              action.navigation.dispatch(resetAction);
+            }
+        } else {
+            console.log(p.data)
+            Alert.alert(
+                'Explored',
+                p.data.error_description,
+                [
+                    {text:'Ok',style:'cancel',onPress:()=>console.log('Cancel Pressed')}
+                ]
+            )
+            yield put({
+                type:'User_Register_Error',
+            }) 
+        }
+       
+    } catch (error) {
+        console.log(error)
+      
+        yield put({
+            type:'User_Register_Error',
+        }) 
+    }  
+}
 export default function* authSaga(){
     yield takeEvery('User_Login_Request',doLogin)
+    yield takeEvery('User_Register_Request',doRegister)
+
 }         
 
 // export default function* authSaga(){

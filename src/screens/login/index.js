@@ -31,7 +31,7 @@ doLogin=()=>{
         console.log('pass'+password)
             this.props.dispatch({type:'User_Login_Request',url:'token',
             User_Name:name,Password:password,
-            name,password,navigation:this.props.navigation,navigateTo})
+            name,password,navigation:this.props.navigation,navigateTo},this.props.navigation.navigate('Dashboard'))
         }
 }
   render() {

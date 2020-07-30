@@ -6,6 +6,8 @@ import {
   ImageBackground,
   Dimensions,
   useWindowDimensions,
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import CardView from 'react-native-cardview';
@@ -14,7 +16,6 @@ import styles from './styles';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {floor} from 'react-native-reanimated';
-import {TouchableOpacity, ScrollView} from 'react-native-gesture-handler';
 
 class RegisterScreen extends React.Component {
   static navigationOptions = {
@@ -284,7 +285,7 @@ class RegisterScreen extends React.Component {
                   backgroundColor: 'white',
                   borderRadius: 10,
                 }}>
-                <TouchableOpacity
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('trade')}
                   style={{alignItems: 'center', height: '90%', width: '100%'}}>
                   <View
                     style={{
@@ -316,7 +317,7 @@ class RegisterScreen extends React.Component {
                   backgroundColor: 'white',
                   borderRadius: 10,
                 }}>
-                <TouchableOpacity
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('copies')}
                   style={{alignItems: 'center', height: '90%', width: '100%'}}>
                   <View
                     style={{
