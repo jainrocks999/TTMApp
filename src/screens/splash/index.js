@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Image, View, Text, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Statusbar from '../../common/Statusbar';
+import styles from './style';
 
 export default class SplashScreen extends React.Component {
   static navigationOptions = {
@@ -11,9 +12,6 @@ export default class SplashScreen extends React.Component {
   componentDidMount() {
     setTimeout(() => this.props.navigation.navigate('FirstPage'), 500);
   }
-
-  //background: linear-gradient(to right, #373b44, #4286f4);
-
   render() {
     return (
       <LinearGradient
@@ -24,7 +22,7 @@ export default class SplashScreen extends React.Component {
         <Statusbar />
 
         <Image
-          style={{height: '100%', width: '100%'}}
+          style={styles.image}
           source={require('../../assets/images/ttm_logo.png')}
           resizeMode={'center'}
         />
@@ -32,40 +30,3 @@ export default class SplashScreen extends React.Component {
     );
   }
 }
-// Later on in your styles..
-
-const styles = StyleSheet.create({
-  headText: {
-    color: 'white',
-    textAlign: 'center',
-    fontFamily: 'serif',
-    fontWeight: 'bold',
-    fontSize: 20,
-  },
-  subHeadText: {
-    color: 'white',
-    textAlign: 'center',
-    fontFamily: 'serif',
-    fontWeight: '500',
-    fontSize: 15,
-  },
-  linearGradient: {
-    flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontFamily: 'Gill Sans',
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

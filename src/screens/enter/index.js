@@ -18,24 +18,18 @@ export default class EnterScreen extends React.Component{
             source={require('../../assets/icons/plus.png')}
             
             />
-            ),
-            
-      };
-
-      
-
-
-    render(){
-        return(
-            <View>
-            <Icon
-                    style={{ paddingLeft:10, color: 'black' }}
-                    onPress={() => this.props.navigation.toggleDrawer()}
-                    name="menu"
-                    size={30}
-                />
-                <Text>Enter Screen</Text>
-            </View>
-        )
-    }
+            )};
+            render(){
+                return(
+                    <View>
+                    <Icon
+                            style={{ paddingLeft:10, color: 'black' }}
+                            onPress={() => this.props.navigation.toggleDrawer()}
+                            name="menu"
+                            size={30}
+                        />
+                        <Text>Enter Screen</Text>
+                    </View>
+                )
+            }
 }

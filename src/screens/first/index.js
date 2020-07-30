@@ -83,13 +83,7 @@ export default class FirstScreen extends React.Component {
         <View>
           <Statusbar />
           <Image
-            style={{
-              height: 150,
-              width: 150,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'center',
-            }}
+            style={styles.image}
             source={require('../../assets/images/ttm_logo.png')}
             resizeMode={'center'}
           />

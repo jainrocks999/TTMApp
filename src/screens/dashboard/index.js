@@ -43,27 +43,16 @@ class RegisterScreen extends React.Component {
             />
 
             <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                marginTop: 20,
-                paddingHorizontal: 10,
-              }}>
+              style={styles.viewHeader}>
               <View style={{justifyContent: 'center'}}>
-                <Text style={{fontSize: 15, color: '#fff'}}>Good Morning</Text>
-                <Text style={{fontSize: 15, color: '#fff'}}>Kashish</Text>
+                <Text style={styles.text}>Good Morning</Text>
+                <Text style={styles.text}>Kashish</Text>
               </View>
 
               <View
-                style={{
-                  borderWidth: 1,
-                  borderColor: 'blue',
-                  borderRadius: 50,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
+                style={styles.profileView}>
                 <Image
-                  style={{height: 55, width: 55}}
+                  style={styles.image}
                   source={require('../../assets/icons/profile.png')}
                   resizeMode={'cover'}
                 />
@@ -74,184 +63,83 @@ class RegisterScreen extends React.Component {
               cardElevation={5}
               cardMaxElevation={5}
               cornerRadius={5}
-              style={{
-                backgroundColor: 'white',
-                flex: 1,
-                marginTop: 60,
-                marginHorizontal: 10,
-                paddingVertical: 10,
-                justifyContent: 'center',
-                alignContent: 'center',
-              }}>
+              style={styles.card}>
               <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  borderBottomWidth: 0.5,
-                  borderBottomColor: '#b6b6b8',
-                  padding: 10,
-                  marginTop: 10,
-                }}>
+                style={styles.myBalance}>
                 <Text
-                  style={{textAlign: 'center', fontSize: 12, color: 'black'}}>
+                  style={styles.myText}>
                   My Balance
                 </Text>
                 <Text
-                  style={{textAlign: 'center', fontSize: 12, color: 'black'}}>
+                  style={styles.rs}>
                   Rp 1,000.00
                 </Text>
               </View>
               <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginVertical: 10,
-                  paddingVertical: 10,
-                  paddingHorizontal: 10,
-                }}>
+                style={styles.view1}>
                 <View
-                  style={{
-                    width: '25%',
-                    backgroundColor: 'white',
-                    borderRadius: 5,
-                  }}>
+                  style={styles.view2}>
                   <TouchableOpacity
-                    style={{
-                      alignItems: 'center',
-                      height: '100%',
-                      width: '100%',
-                      justifyContent: 'center',
-                    }}>
+                    style={styles.touch}>
                     <View
-                      style={{
-                        height: '80%',
-                        width: '90%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}>
+                      style={styles.touchView}>
                       <Image
-                        style={{
-                          height: '80%',
-                          width: '80%',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          alignSelf: 'center',
-                        }}
+                        style={styles.image2}
                         source={require('../../assets/icons/r.png')}
                         resizeMode={'center'}
                       />
-                      <Text style={{textAlign: 'center', fontSize: 10}}>
+                      <Text style={styles.same}>
                         Registered
                       </Text>
                     </View>
                   </TouchableOpacity>
                 </View>
                 <View
-                  style={{
-                    width: '25%',
-                    backgroundColor: 'white',
-                    borderRadius: 5,
-                  }}>
+                  style={styles.view2}>
                   <TouchableOpacity
-                    style={{
-                      alignItems: 'center',
-                      height: '100%',
-                      width: '100%',
-                      justifyContent: 'center',
-                    }}>
+                    style={styles.touch}>
                     <View
-                      style={{
-                        height: '80%',
-                        width: '90%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}>
+                      style={styles.touchView}>
                       <Image
-                        style={{
-                          height: '80%',
-                          width: '80%',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          alignSelf: 'center',
-                        }}
+                        style={styles.image2}
                         source={require('../../assets/icons/r.png')}
                         resizeMode={'center'}
                       />
-                      <Text style={{textAlign: 'center', fontSize: 10}}>
+                      <Text style={styles.same}>
                         Lost
                       </Text>
                     </View>
                   </TouchableOpacity>
                 </View>
                 <View
-                  style={{
-                    width: '25%',
-                    backgroundColor: 'white',
-                    borderRadius: 5,
-                  }}>
+                  style={styles.view2}>
                   <TouchableOpacity
-                    style={{
-                      alignItems: 'center',
-                      height: '100%',
-                      width: '100%',
-                      justifyContent: 'center',
-                    }}>
+                    style={styles.touch}>
                     <View
-                      style={{
-                        height: '80%',
-                        width: '90%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}>
+                      style={styles.touchView}>
                       <Image
-                        style={{
-                          height: '80%',
-                          width: '80%',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          alignSelf: 'center',
-                        }}
+                        style={styles.image2}
                         source={require('../../assets/icons/r.png')}
                         resizeMode={'center'}
                       />
-                      <Text style={{textAlign: 'center', fontSize: 10}}>
+                      <Text style={styles.same}>
                         Litigation
                       </Text>
                     </View>
                   </TouchableOpacity>
                 </View>
                 <View
-                  style={{
-                    width: '25%',
-                    backgroundColor: 'white',
-                    borderRadius: 5,
-                  }}>
+                  style={styles.view2}>
                   <TouchableOpacity
-                    style={{
-                      alignItems: 'center',
-                      height: '100%',
-                      width: '100%',
-                      justifyContent: 'center',
-                    }}>
+                    style={styles.touch}>
                     <View
-                      style={{
-                        height: '80%',
-                        width: '90%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}>
+                      style={styles.touchView}>
                       <Image
-                        style={{
-                          height: '80%',
-                          width: '80%',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          alignSelf: 'center',
-                        }}
+                        style={styles.image2}
                         source={require('../../assets/icons/r.png')}
                         resizeMode={'center'}
                       />
-                      <Text style={{textAlign: 'center', fontSize: 10}}>
+                      <Text style={styles.same}>
                         Pending
                       </Text>
                     </View>
@@ -261,79 +149,38 @@ class RegisterScreen extends React.Component {
             </CardView>
 
             <Text
-              style={{
-                fontSize: 20,
-                marginTop: 20,
-                marginBottom: 20,
-                paddingHorizontal: 10,
-              }}>
+              style={styles.service}>
               Services
             </Text>
 
             <View
-              style={{
-                flexDirection: 'row',
-                width: '100%',
-                height: 130,
-                paddingHorizontal: 10,
-                justifyContent: 'space-between',
-                paddingVertical: 10,
-              }}>
+              style={styles.firstView}>
               <View
-                style={{
-                  width: '45%',
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                }}>
+                style={styles.secondView}>
                 <TouchableOpacity onPress={()=>this.props.navigation.navigate('trade')}
-                  style={{alignItems: 'center', height: '90%', width: '100%'}}>
+                  style={styles.touchTm}>
                   <View
-                    style={{
-                      height: '80%',
-                      width: '90%',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
+                    style={styles.thirdView}>
                     <Image
-                      style={{
-                        height: 100,
-                        width: 100,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
+                      style={styles.tmImage}
                       source={require('../../assets/icons/tm.png')}
                       resizeMode={'stretch'}
                     />
                   </View>
-                  <Text style={{textAlign: 'center', fontSize: 14}}>
+                  <Text style={styles.trade}>
                     Trademark
                   </Text>
                 </TouchableOpacity>
               </View>
 
               <View
-                style={{
-                  width: '45%',
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                }}>
+                style={styles.copyView}>
                 <TouchableOpacity onPress={()=>this.props.navigation.navigate('copies')}
-                  style={{alignItems: 'center', height: '90%', width: '100%'}}>
+                  style={styles.copyTouch}>
                   <View
-                    style={{
-                      height: '80%',
-                      width: '90%',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
+                    style={styles.copyView2}>
                     <Image
-                      style={{
-                        height: 90,
-                        width: 90,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginBottom: -15,
-                      }}
+                      style={styles.copyImage}
                       source={require('../../assets/icons/c.png')}
                       resizeMode={'stretch'}
                     />
@@ -345,36 +192,15 @@ class RegisterScreen extends React.Component {
               </View>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                width: '100%',
-                height: 130,
-                paddingHorizontal: 10,
-                justifyContent: 'space-between',
-                paddingVertical: 10,
-              }}>
+              style={styles.designView}>
               <View
-                style={{
-                  width: '45%',
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                }}>
+                style={styles.designView2}>
                 <TouchableOpacity
-                  style={{alignItems: 'center', height: '90%', width: '100%'}}>
+                  style={styles.designTouch}>
                   <View
-                    style={{
-                      height: '80%',
-                      width: '90%',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
+                    style={styles.designView3}>
                     <Image
-                      style={{
-                        height: 90,
-                        width: 90,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
+                      style={styles.designImage}
                       source={require('../../assets/icons/d.png')}
                       resizeMode={'stretch'}
                     />
@@ -386,27 +212,13 @@ class RegisterScreen extends React.Component {
               </View>
 
               <View
-                style={{
-                  width: '45%',
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                }}>
+                style={styles.patentView1}>
                 <TouchableOpacity
-                  style={{alignItems: 'center', height: '90%', width: '100%'}}>
+                  style={styles.patentTouch}>
                   <View
-                    style={{
-                      height: '80%',
-                      width: '90%',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
+                    style={styles.patentView2}>
                     <Image
-                      style={{
-                        height: 100,
-                        width: 100,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
+                      style={styles.patentImage}
                       source={require('../../assets/icons/p.png')}
                       resizeMode={'stretch'}
                     />
@@ -419,36 +231,15 @@ class RegisterScreen extends React.Component {
             </View>
 
             <View
-              style={{
-                flexDirection: 'row',
-                width: '100%',
-                height: 130,
-                paddingHorizontal: 10,
-                justifyContent: 'space-between',
-                paddingVertical: 10,
-              }}>
+              style={styles.calenderView1}>
               <View
-                style={{
-                  width: '45%',
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                }}>
+                style={styles.calenderView2}>
                 <TouchableOpacity
-                  style={{alignItems: 'center', height: '90%', width: '100%'}}>
+                  style={styles.calenderTouch}>
                   <View
-                    style={{
-                      height: '80%',
-                      width: '90%',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
+                    style={styles.calenderView3}>
                     <Image
-                      style={{
-                        height: 60,
-                        width: 60,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
+                      style={styles.calenderImage}
                       source={require('../../assets/icons/calender.png')}
                       resizeMode={'stretch'}
                     />
@@ -460,27 +251,13 @@ class RegisterScreen extends React.Component {
               </View>
 
               <View
-                style={{
-                  width: '45%',
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                }}>
+                style={styles.calenderView2}>
                 <TouchableOpacity
-                  style={{alignItems: 'center', height: '90%', width: '100%'}}>
+                  style={styles.calenderTouch}>
                   <View
-                    style={{
-                      height: '80%',
-                      width: '90%',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
+                    style={styles.calenderView3}>
                     <Image
-                      style={{
-                        height: 60,
-                        width: 60,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}
+                      style={styles.calenderImage}
                       source={require('../../assets/icons/r.png')}
                       resizeMode={'stretch'}
                     />
@@ -502,7 +279,7 @@ class StatusScreen extends React.Component {
     title: 'Status',
     tabBarIcon: ({tintColor}) => (
       <Image
-        style={{height: 25, width: 25, tintColor: 'white'}}
+        style={styles.plusIcon}
         source={require('../../assets/icons/plus.png')}
       />
     ),
@@ -515,37 +292,16 @@ class StatusScreen extends React.Component {
         style={{flex: 1, width: useWindowDimensions.width, height: '50%'}}>
         <View style={{flex: 1}}>
           <View
-            style={{
-              flexDirection: 'row',
-              width: '100%',
-              height: 130,
-              paddingHorizontal: 10,
-              justifyContent: 'space-between',
-              paddingVertical: 10,
-            }}>
+            style={styles.pView}>
             <View
-              style={{
-                width: '45%',
-                backgroundColor: 'white',
-                borderRadius: 10,
-              }}>
+              style={styles.pView1}>
               <TouchableOpacity
-                style={{alignItems: 'center', height: '100%', width: '100%'}}>
+                style={styles.pTouch}>
                 <View
-                  style={{
-                    height: '80%',
-                    width: '90%',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
+                  style={styles.pView2}>
                   <Image
-                    style={{
-                      height: 100,
-                      width: 100,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                    source={require('../../assets/icons/r.png')}
+                    style={styles.pImage}
+                    source={require('../../assets/icons/tm.png')}
                     resizeMode={'stretch'}
                   />
                 </View>
@@ -554,28 +310,14 @@ class StatusScreen extends React.Component {
                 </Text>
               </TouchableOpacity>
             </View>
-
             <View
-              style={{
-                width: '45%',
-                backgroundColor: 'white',
-                borderRadius: 10,
-              }}>
+              style={styles.pView1}>
               <TouchableOpacity
-                style={{alignItems: 'center', height: '100%', width: '100%'}}>
+                style={styles.pTouch}>
                 <View
-                  style={{
-                    height: '80%',
-                    width: '90%',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.pView2}>
                   <Image
-                    style={{
-                      height: 130,
-                      width: 130,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
+                    style={styles.pImage}
                     source={require('../../assets/icons/tm.png')}
                     resizeMode={'stretch'}
                   />
@@ -587,35 +329,15 @@ class StatusScreen extends React.Component {
             </View>
           </View>
           <View
-            style={{
-              flexDirection: 'row',
-              width: '100%',
-              height: 150,
-              paddingHorizontal: 10,
-              justifyContent: 'space-between',
-              paddingVertical: 10,
-            }}>
+            style={styles.tm}>
             <View
-              style={{
-                width: '45%',
-                backgroundColor: 'white',
-                borderRadius: 10,
-              }}>
+              style={styles.pView1}>
               <TouchableOpacity
-                style={{alignItems: 'center', height: '100%', width: '100%'}}>
+                style={styles.pTouch}>
                 <View
-                  style={{
-                    height: '80%',
-                    width: '90%',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.pView2}>
                   <Image
-                    style={{
-                      height: 130,
-                      width: 130,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
+                    style={styles.pImage}
                     source={require('../../assets/icons/tm.png')}
                     resizeMode={'stretch'}
                   />
@@ -625,28 +347,14 @@ class StatusScreen extends React.Component {
                 </Text>
               </TouchableOpacity>
             </View>
-
             <View
-              style={{
-                width: '45%',
-                backgroundColor: 'white',
-                borderRadius: 10,
-              }}>
+              style={styles.pView1}>
               <TouchableOpacity
-                style={{alignItems: 'center', height: '100%', width: '100%'}}>
+                style={styles.pTouch}>
                 <View
-                  style={{
-                    height: '80%',
-                    width: '90%',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.pView2}>
                   <Image
-                    style={{
-                      height: 130,
-                      width: 130,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
+                    style={styles.pImage}
                     source={require('../../assets/icons/tm.png')}
                     resizeMode={'stretch'}
                   />
@@ -667,7 +375,7 @@ class HearingScreen extends React.Component {
     title: 'Hearing',
     tabBarIcon: ({tintColor}) => (
       <Image
-        style={{height: 25, width: 25, tintColor: 'white'}}
+        style={styles.hImage}
         source={require('../../assets/icons/plus.png')}
       />
     ),

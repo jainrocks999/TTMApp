@@ -20,7 +20,7 @@ import Loader from '../../component/Loader';
                }
   }
 doLogin=()=>{
-   const {name,password,Token,navigateTo} = this.state;
+    const {name,password,Token,navigateTo} = this.state;
        // let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
         if (name == '') {
         Toast.show('Please enter valid e-mail address.');
@@ -33,7 +33,7 @@ doLogin=()=>{
             User_Name:name,Password:password,
             name,password,navigation:this.props.navigation,navigateTo},this.props.navigation.navigate('Dashboard'))
         }
-}
+     }
   render() {
     const {password,name,eyewidth} = this.state;
    const {navigation,isFetching} = this.props

@@ -45,4 +45,11 @@ export default (styles = StyleSheet.create({
     marginHorizontal: 30,
     borderRadius: 50,
   },
+  image:{
+    height: 150,
+    width: 150,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+  }
 }));

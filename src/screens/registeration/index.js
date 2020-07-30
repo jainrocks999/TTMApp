@@ -46,7 +46,7 @@ class Registration extends React.Component {
              User_Name:User_Name,Password:Password,
               navigation:this.props.navigation,navigateTo})
          }
- }
+   }
   render() {
     return (
       <View style={styles.container}>
