@@ -22,7 +22,7 @@ class RegisterScreen extends React.Component {
     title: 'Action Required',
     tabBarIcon: ({tintColor}) => (
       <Image
-        style={{height: 25, width: 25, tintColor: 'white'}}
+        style={styles.tabImage}
         source={require('../../assets/icons/plus.png')}
       />
     ),
@@ -33,7 +33,7 @@ class RegisterScreen extends React.Component {
       <View style={{backgroundColor: '#F6F6F6', flex: 1}}>
         <ImageBackground
           source={require('../../assets/icons/bg_image.png')}
-          style={{flex: 1, height: '50%', width: '100%'}}>
+          style={styles.background}>
           <ScrollView style={{paddingHorizontal: 10, flex: 1}}>
             <Icon
               style={{paddingLeft: 10, color: 'white'}}
