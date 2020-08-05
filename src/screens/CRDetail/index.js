@@ -1,6 +1,7 @@
 import React from 'react';
 import { View,Text,TouchableOpacity,ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
+import styles from './styles';
 class CRDetail extends React.Component{
     constructor(props){
         super(props)
@@ -17,8 +18,8 @@ class CRDetail extends React.Component{
         return(
             <View style={{flex:1}}>
                <ActivityIndicator size={"large"}/>
-               <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
-               <TouchableOpacity style={{backgroundColor:'red',padding:20}} onPress={this.call}>
+               <View style={styles.view}>
+               <TouchableOpacity style={styles.button} onPress={this.call}>
                    <Text>CallApi</Text>
                </TouchableOpacity>
                </View>

@@ -1,12 +1,7 @@
 import React from 'react';
-import { View, Text, Image, ImageBackground, Dimensions, useWindowDimensions } from 'react-native'
+import { View, Text, Image,} from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo';
-
-
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
-import {createBottomTabNavigator} from 'react-navigation-tabs'
-import { floor } from 'react-native-reanimated';
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+import styles from './styles';
 
 export default class EnterScreen extends React.Component{
 
@@ -14,16 +9,16 @@ export default class EnterScreen extends React.Component{
         title: 'Hearing',
         tabBarIcon: ({ tintColor }) => (
             <Image
-            style={{ height: 25, width: 25, tintColor: 'white' }}
+            style={styles.image}
             source={require('../../assets/icons/plus.png')}
             
             />
             )};
             render(){
                 return(
-                    <View>
+                    <View style={styles.container}>
                     <Icon
-                            style={{ paddingLeft:10, color: 'black' }}
+                            style={styles.icon}
                             onPress={() => this.props.navigation.toggleDrawer()}
                             name="menu"
                             size={30}

@@ -4,14 +4,13 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import DashboardScreen from '../screens/dashboard/index';
 import FirstScreen from '../screens/first/index';
 import enterScreen from '../screens/enter/index';
 import rateScreen from '../screens/rate/index';
 import shareScreen from '../screens/share/index';
 import SplashPage from '../screens/splash/index';
-import demo from '../screens/demo/demo';
+import demo from '../screens/demo';
 import RegistrationPage from '../screens/registeration/index';
 import LoginPage from '../screens/login/index';
 import CRDetail from '../screens/CRDetail';

@@ -4,7 +4,6 @@ import {
   Text,
   Image,
   ImageBackground,
-  Dimensions,
   useWindowDimensions,
   TouchableOpacity,
   ScrollView
@@ -12,10 +11,7 @@ import {
 import Icon from 'react-native-vector-icons/Entypo';
 import CardView from 'react-native-cardview';
 import styles from './styles';
-
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {floor} from 'react-native-reanimated';
 
 class RegisterScreen extends React.Component {
   static navigationOptions = {

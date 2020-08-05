@@ -2,6 +2,7 @@ import React from 'react';
 import { View,Text,TouchableOpacity,ActivityIndicator } from 'react-native';
 import Loader from '../../component/Loader';
 import { connect } from 'react-redux';
+import styles from './styles';
 
 class TradeMark extends React.Component{
     constructor(props){
@@ -17,10 +18,10 @@ class TradeMark extends React.Component{
      }
     render(){
         return(
-            <View style={{flex:1}}>
+            <View style={styles.container}>
             <ActivityIndicator size={"large"}/>
-            <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
-            <TouchableOpacity style={{backgroundColor:'red',padding:20}} onPress={this.call}>
+            <View style={styles.view}>
+            <TouchableOpacity style={styles.button} onPress={this.call}>
                 <Text>CallApi</Text>
             </TouchableOpacity>
             </View>
