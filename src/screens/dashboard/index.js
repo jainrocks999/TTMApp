@@ -15,268 +15,170 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 class RegisterScreen extends React.Component {
   static navigationOptions = {
-    title: 'Action Required',
+    title: 'Status',
     tabBarIcon: ({tintColor}) => (
       <Image
         style={styles.tabImage}
-        source={require('../../assets/icons/plus.png')}
+        source={require('../../assets/icons/status.png')}
       />
     ),
   };
 
   render() {
     return (
-      <View style={{backgroundColor: '#F6F6F6', flex: 1}}>
-        <ImageBackground
-          source={require('../../assets/icons/bg_image.png')}
-          style={styles.background}>
-          <ScrollView style={{paddingHorizontal: 10, flex: 1}}>
-            <Icon
-              style={{paddingLeft: 10, color: 'white'}}
+      <View style={{backgroundColor: '#f6f8f9', flex: 1}}>
+           <View style={{backgroundColor:'white',padding:20,flexDirection:'row',justifyContent:'space-between'}}>
+             <View style={{flexDirection:'row'}}>
+           {/* <Icon
+              style={{paddingLeft: 1, color: 'black'}}
               onPress={() => this.props.navigation.toggleDrawer()}
               name="menu"
               size={30}
-            />
-
-            <View
-              style={styles.viewHeader}>
-              <View style={{justifyContent: 'center'}}>
-                <Text style={styles.text}>Good Morning</Text>
-                <Text style={styles.text}>Kashish</Text>
-              </View>
-
-              <View
-                style={styles.profileView}>
-                <Image
-                  style={styles.image}
-                  source={require('../../assets/icons/profile.png')}
-                  resizeMode={'cover'}
-                />
+            /> */}
+            <TouchableOpacity>
+            <Image source={require('../../assets/icons/menu.png')} style={{width:20,height:15,marginTop:7}}/>
+            </TouchableOpacity>
+            <Text style={{fontWeight:'bold',fontSize:22,marginLeft:6}}>Dashboard </Text>
+            </View>
+            <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+              <Image source={require('../../assets/icons/bell.png')} style={{width:30,height:30,marginRight:10}}/>
+              <View style={{borderWidth:1,borderRadius:15}}>
+              <Image source={require('../../assets/icons/profile.png')} style={{width:30,height:30}}/>
               </View>
             </View>
-
-            <CardView
-              cardElevation={5}
-              cardMaxElevation={5}
-              cornerRadius={5}
-              style={styles.card}>
-              <View
-                style={styles.myBalance}>
-                <Text
-                  style={styles.myText}>
-                  My Balance
-                </Text>
-                <Text
-                  style={styles.rs}>
-                  Rp 1,000.00
-                </Text>
-              </View>
-              <View
-                style={styles.view1}>
-                <View
-                  style={styles.view2}>
-                  <TouchableOpacity
-                    style={styles.touch}>
-                    <View
-                      style={styles.touchView}>
-                      <Image
-                        style={styles.image2}
-                        source={require('../../assets/icons/r.png')}
-                        resizeMode={'center'}
-                      />
-                      <Text style={styles.same}>
-                        Registered
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={styles.view2}>
-                  <TouchableOpacity
-                    style={styles.touch}>
-                    <View
-                      style={styles.touchView}>
-                      <Image
-                        style={styles.image2}
-                        source={require('../../assets/icons/r.png')}
-                        resizeMode={'center'}
-                      />
-                      <Text style={styles.same}>
-                        Lost
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={styles.view2}>
-                  <TouchableOpacity
-                    style={styles.touch}>
-                    <View
-                      style={styles.touchView}>
-                      <Image
-                        style={styles.image2}
-                        source={require('../../assets/icons/r.png')}
-                        resizeMode={'center'}
-                      />
-                      <Text style={styles.same}>
-                        Litigation
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={styles.view2}>
-                  <TouchableOpacity
-                    style={styles.touch}>
-                    <View
-                      style={styles.touchView}>
-                      <Image
-                        style={styles.image2}
-                        source={require('../../assets/icons/r.png')}
-                        resizeMode={'center'}
-                      />
-                      <Text style={styles.same}>
-                        Pending
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </CardView>
-
-            <Text
-              style={styles.service}>
-              Services
-            </Text>
-
+           </View>
+          <ScrollView style={{paddingHorizontal: 10, flex: 1,marginTop:15}}>
+           
             <View
               style={styles.firstView}>
               <View
                 style={styles.secondView}>
-                <TouchableOpacity onPress={()=>this.props.navigation.navigate('trade')}
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('tm')}
                   style={styles.touchTm}>
-                  <View
-                    style={styles.thirdView}>
-                    <Image
-                      style={styles.tmImage}
-                      source={require('../../assets/icons/tm.png')}
-                      resizeMode={'stretch'}
-                    />
-                  </View>
-                  <Text style={styles.trade}>
-                    Trademark
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              <View
-                style={styles.copyView}>
-                <TouchableOpacity onPress={()=>this.props.navigation.navigate('copies')}
-                  style={styles.copyTouch}>
-                  <View
-                    style={styles.copyView2}>
-                    <Image
+                  <Image
                       style={styles.copyImage}
-                      source={require('../../assets/icons/c.png')}
+                      source={require('../../assets/icons/trademark.png')}
                       resizeMode={'stretch'}
                     />
-                  </View>
-                  <Text style={{textAlign: 'center', fontSize: 14}}>
-                    Copyright
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View
-              style={styles.designView}>
-              <View
-                style={styles.designView2}>
-                <TouchableOpacity
-                  style={styles.designTouch}>
-                  <View
-                    style={styles.designView3}>
-                    <Image
-                      style={styles.designImage}
-                      source={require('../../assets/icons/d.png')}
-                      resizeMode={'stretch'}
-                    />
-                  </View>
-                  <Text style={{textAlign: 'center', fontSize: 14}}>
-                    Design
-                  </Text>
+                    <View style={{width:'100%',height:60,backgroundColor:'#f8fbf5',marginTop:20,padding:10}}>
+                     <Text style={{fontWeight:'normal',fontFamily:'Poppins-SemiBold'}}>
+                       Trademark
+                     </Text>
+                     <Text>23</Text>
+                    </View>
                 </TouchableOpacity>
               </View>
 
               <View
-                style={styles.patentView1}>
+                style={styles.secondView}>
                 <TouchableOpacity
-                  style={styles.patentTouch}>
-                  <View
-                    style={styles.patentView2}>
-                    <Image
-                      style={styles.patentImage}
-                      source={require('../../assets/icons/p.png')}
+                  style={styles.touchTm}>
+                  <Image
+                      style={styles.copyImage}
+                      source={require('../../assets/icons/copyright.png')}
                       resizeMode={'stretch'}
                     />
-                  </View>
-                  <Text style={{textAlign: 'center', fontSize: 14}}>
-                    Patent
-                  </Text>
+                    <View style={{width:'100%',height:60,backgroundColor:'#fffcf7',marginTop:20,padding:10}}>
+                     <Text style={{fontWeight:'normal',fontFamily:'Poppins-SemiBold'}}>
+                       Copyright
+                     </Text>
+                     <Text>23</Text>
+                    </View>
                 </TouchableOpacity>
               </View>
             </View>
-
             <View
-              style={styles.calenderView1}>
+              style={styles.firstView}>
               <View
-                style={styles.calenderView2}>
+                style={styles.secondView}>
                 <TouchableOpacity
-                  style={styles.calenderTouch}>
-                  <View
-                    style={styles.calenderView3}>
-                    <Image
-                      style={styles.calenderImage}
+                  style={styles.touchTm}>
+                  <Image
+                      style={styles.copyImage}
+                      source={require('../../assets/icons/path.png')}
+                      resizeMode={'stretch'}
+                    />
+                    <View style={{width:'100%',height:60,backgroundColor:'#fff8f4',marginTop:20,padding:10}}>
+                     <Text style={{fontWeight:'normal',fontFamily:'Poppins-SemiBold'}}>
+                       Design
+                     </Text>
+                     <Text>23</Text>
+                    </View>
+                </TouchableOpacity>
+              </View>
+
+              <View
+                style={styles.secondView}>
+                <TouchableOpacity
+                  style={styles.touchTm}>
+                  <Image
+                      style={styles.copyImage}
+                      source={require('../../assets/icons/copyright.png')}
+                      resizeMode={'stretch'}
+                    />
+                    <View style={{width:'100%',height:60,backgroundColor:'#f4f6fb',marginTop:20,padding:10}}>
+                     <Text style={{fontWeight:'normal',fontFamily:'Poppins-SemiBold'}}>
+                       Patent
+                     </Text>
+                     <Text>23</Text>
+                    </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View
+              style={styles.firstView}>
+              <View
+                style={styles.secondView}>
+                <TouchableOpacity
+                  style={styles.touchTm}>
+                  <Image
+                      style={styles.copyImage}
+                      source={require('../../assets/icons/search.png')}
+                      resizeMode={'stretch'}
+                    />
+                    <View style={{width:'100%',height:60,backgroundColor:'#f8f7ff',marginTop:20,padding:10}}>
+                     <Text style={{fontWeight:'normal',fontFamily:'Poppins-SemiBold'}}>
+                       Request for
+                     </Text>
+                     <Text style={{fontWeight:'normal',fontFamily:'Poppins-SemiBold'}}>
+                       TM Search
+                     </Text>
+                   
+                    </View>
+                </TouchableOpacity>
+              </View>
+
+              <View
+                style={styles.secondView}>
+                <TouchableOpacity
+                  style={styles.touchTm}>
+                  <Image
+                      style={styles.copyImage}
                       source={require('../../assets/icons/calender.png')}
                       resizeMode={'stretch'}
                     />
-                  </View>
-                  <Text style={{textAlign: 'center', fontSize: 14}}>
-                    Calendar
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              <View
-                style={styles.calenderView2}>
-                <TouchableOpacity
-                  style={styles.calenderTouch}>
-                  <View
-                    style={styles.calenderView3}>
-                    <Image
-                      style={styles.calenderImage}
-                      source={require('../../assets/icons/r.png')}
-                      resizeMode={'stretch'}
-                    />
-                  </View>
-                  <Text style={{textAlign: 'center', fontSize: 14}}>
-                    Require
-                  </Text>
+                    <View style={{width:'100%',height:60,backgroundColor:'#f8f7ff',marginTop:20,padding:10}}>
+                     <Text style={{fontWeight:'normal',fontFamily:'Poppins-SemiBold'}}>
+                       Calender
+                     </Text>
+                     <Text>23</Text>
+                    </View>
                 </TouchableOpacity>
               </View>
             </View>
           </ScrollView>
-        </ImageBackground>
+       
       </View>
     );
   }
 }
 class StatusScreen extends React.Component {
   static navigationOptions = {
-    title: 'Status',
+    title: 'Upcomming',
     tabBarIcon: ({tintColor}) => (
       <Image
         style={styles.plusIcon}
-        source={require('../../assets/icons/plus.png')}
+        source={require('../../assets/icons/msg.png')}
       />
     ),
   };
@@ -284,7 +186,7 @@ class StatusScreen extends React.Component {
   render() {
     return (
       <ImageBackground
-        source={require('../../assets/icons/bg_image.png')}
+        source={require('../../assets/icons/search.png')}
         style={{flex: 1, width: useWindowDimensions.width, height: '50%'}}>
         <View style={{flex: 1}}>
           <View
@@ -297,7 +199,7 @@ class StatusScreen extends React.Component {
                   style={styles.pView2}>
                   <Image
                     style={styles.pImage}
-                    source={require('../../assets/icons/tm.png')}
+                    source={require('../../assets/icons/trademark.png')}
                     resizeMode={'stretch'}
                   />
                 </View>
@@ -314,7 +216,7 @@ class StatusScreen extends React.Component {
                   style={styles.pView2}>
                   <Image
                     style={styles.pImage}
-                    source={require('../../assets/icons/tm.png')}
+                    source={require('../../assets/icons/trademark.png')}
                     resizeMode={'stretch'}
                   />
                 </View>
@@ -334,7 +236,7 @@ class StatusScreen extends React.Component {
                   style={styles.pView2}>
                   <Image
                     style={styles.pImage}
-                    source={require('../../assets/icons/tm.png')}
+                    source={require('../../assets/icons/trademark.png')}
                     resizeMode={'stretch'}
                   />
                 </View>
@@ -351,7 +253,7 @@ class StatusScreen extends React.Component {
                   style={styles.pView2}>
                   <Image
                     style={styles.pImage}
-                    source={require('../../assets/icons/tm.png')}
+                    source={require('../../assets/icons/trademark.png')}
                     resizeMode={'stretch'}
                   />
                 </View>
@@ -368,11 +270,30 @@ class StatusScreen extends React.Component {
 }
 class HearingScreen extends React.Component {
   static navigationOptions = {
-    title: 'Hearing',
+    title: 'Total Application',
     tabBarIcon: ({tintColor}) => (
       <Image
         style={styles.hImage}
-        source={require('../../assets/icons/plus.png')}
+        source={require('../../assets/icons/total.png')}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Litigation</Text>
+      </View>
+    );
+  }
+}
+class Application extends React.Component {
+  static navigationOptions = {
+    title: 'Action Required',
+    tabBarIcon: ({tintColor}) => (
+      <Image
+        style={styles.hImage}
+        source={require('../../assets/icons/timer.png')}
       />
     ),
   };
@@ -387,7 +308,7 @@ class HearingScreen extends React.Component {
 }
 const Navegador = createBottomTabNavigator(
   {
-    Action: {
+    Status: {
       screen: RegisterScreen,
     },
     status: {
@@ -396,6 +317,9 @@ const Navegador = createBottomTabNavigator(
     hearing: {
       screen: HearingScreen,
     },
+    application:{
+      screen:Application
+    }
   },
   {
     tabBarOptions: {

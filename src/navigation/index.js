@@ -16,6 +16,8 @@ import LoginPage from '../screens/login/index';
 import CRDetail from '../screens/CRDetail';
 import TradeMark from '../screens/TradeMark';
 import Sidebar from '../component/SideBar';
+import Other from '../screens/other';
+import  TMSearch from '../screens/tmSearch';
 
 const AuthNavigator = createStackNavigator(
   {
@@ -25,7 +27,12 @@ const AuthNavigator = createStackNavigator(
     Login: {
       screen: LoginPage,
     },
-    
+     Other:{
+       screen:Other
+     },
+     tm:{
+      screen:TMSearch
+     }
   },
   {
     defaultNavigationOptions: ({navigation}) => {

@@ -7,7 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 export default Sidebar = props =>(
     <ScrollView>
         <ImageBackground 
-        source={require('../assets/icons/bg_image.png')}
+        source={require('../assets/icons/search.png')}
         style={{width:undefined,padding:16,paddingTop:48}}
         >
 

@@ -104,59 +104,55 @@ export default StyleSheet.create({
     firstView:{
         flexDirection: 'row',
         width: '100%',
-        height: 130,
+        height: 140,
         paddingHorizontal: 10,
         justifyContent: 'space-between',
         paddingVertical: 10,
     },
     secondView:{
         width: '45%',
-        backgroundColor: 'white',
+        backgroundColor: '#fff',
         borderRadius: 10,
+        height:120
     },
       thirdView:{
         height: '80%',
         width: '90%',
-        justifyContent: 'center',
-        alignItems: 'center',
+        paddingVertical:15
     },
     tmImage:{
-        height: 100,
-        width: 100,
-        justifyContent: 'center',
-        alignItems: 'center',
+        height: 20,
+        width: 20,
       },
     touchTm:{
-        alignItems: 'center', 
+        padding:5,
         height: '90%', 
         width: '100%'
     },
     trade:{
-        textAlign: 'center', 
+         
         fontSize: 14
     },
     copyView:{
         width: '45%',
         backgroundColor: 'white',
         borderRadius: 10,
+        height:100
     },
     copyTouch:{
-        alignItems: 'center',
          height: '90%', 
-         width: '100%'
+         width: '100%',
+         padding:5
     },
     copyView2:{
         height: '80%',
         width: '90%',
-        justifyContent: 'center',
-        alignItems: 'center',
+        padding:10
     }, 
     copyImage:{
-        height: 90,
-        width: 90,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: -15,
+        height: 30,
+        width: 30,
+        marginLeft:8
       },
     designView:{
         flexDirection: 'row',

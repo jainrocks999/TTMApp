@@ -1,107 +1,123 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { Text,Image,View,TextInput,TouchableOpacity,Alert,SafeAreaView} from 'react-native';
-
-import LoginButton from '../../component/Button';
-import Statusbar from '../../common/Statusbar';
-import styles from './styles';
-import Toast from 'react-native-simple-toast';
+import { View,Text,StyleSheet,Image,TextInput,TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import Loader from '../../component/Loader';
 
-
- class Logindata extends React.Component {
-  constructor(props){
-        super(props)
+ class Login extends React.Component{
+  constructor(props) {
+        super(props);
         this.state = {
-            navigateTo:props.navigation.getParam('navigateTo'),
-            name:'webapi_ttm',
-            password:'hIrBPBcLiP@Ax9wBIR9CrjQ',
-               }
-  }
-doLogin=()=>{
-    const {name,password,Token,navigateTo} = this.state;
-       // let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
-        if (name == '') {
-        Toast.show('Please enter valid e-mail address.');
-        } else if(password == ''){
-            Toast.show('Please enter password.')
-        } else{
-        console.log('name'+name)
-        console.log('pass'+password)
-            this.props.dispatch({type:'User_Login_Request',url:'token',
-            User_Name:name,Password:password,
-            name,password,navigation:this.props.navigation,navigateTo},this.props.navigation.navigate('Dashboard'))
-        }
-     }
-  render() {
-    const {password,name,eyewidth} = this.state;
-   const {navigation,isFetching} = this.props
-    return (
-     <SafeAreaView style={{flex:1}}>
-     <View style={{flex:1}}>
-                 {isFetching
-                ?<Loader/> 
-                :null}
-      <View style={styles.container}>
-        <Text style={styles.headText}>Log in</Text>
-        <Text style={styles.subHeadText}>
-          To Start Using My day have to login
-        </Text>
-        <View style={styles.textInputContainer}>
-          <Icon style={{color: 'black'}} name="person-outline" size={20} />
-
-          <TextInput
-          value={name}
-            style={{paddingLeft: 10}}
-            placeholder={'User Name'}
-            placeholderTextColor={'black'}
-             onChangeText={(text)=>this.setState({name:text})}
-          />
+          navigateTo:props.navigation.getParam('navigateTo'),
+          Email:'webapi_ttm',
+          Password:'hIrBPBcLiP@Ax9wBIR9CrjQ',
+        };
+      }
+      doLogin=()=>{
+            const {Email,Password,navigateTo} = this.state;
+                // let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+                 if (Email == '') {
+                 Toast.show('Please enter valid e-mail address.');
+                 } else if(Password== ''){
+                     Toast.show('Please enter password.')
+                 }
+                 else{
+                 console.log('Login Detail'+Email+Password)
+                 
+                     this.props.dispatch({type:'User_Login_Request',
+                     Email:Email,Password:Password,
+                      navigation:this.props.navigation,navigateTo})
+                 }
+           }
+  render(){
+    return(
+      <View style={{ flex:1,padding:10}}>
+        <View>
+          <TouchableOpacity onPress={()=> this.props.navigation.navigate('any')}>
+          <Image source={require('../../assets/icons/arrow.png')} style={{width:24,height:15,color:'grey'}}/>
+          </TouchableOpacity>
+          <Text style={{fontWeight:'normal',fontFamily:'Poppins-SemiBold',fontSize:22,marginTop:10}}>
+            Login now
+          </Text>
+          <Text style={{color:'#98999a'}}>Please login to continue our app</Text>
         </View>
-
-        <View style={styles.textInputContainer}>
-          <Icon style={styles.icons} name="lock-closed-outline" size={20} />
-
-          <TextInput
-          value={password}
-            style={{paddingLeft: 10}}
-            placeholder={'Password'}
-            placeholderTextColor={'black'}
-             onChangeText={(text)=>this.setState({password:text})}
-          />
-        </View>
-
-        <Text style={styles.text}>Forgot Your Password</Text>
-        <LoginButton title={'Login'} onPress={()=>this.doLogin()}/>
-        <Text style={styles.text}>Alternative Login Methods</Text>
-        <View style={styles.iconContainer}>
-          <Image
-            style={styles.icons}
-            source={require('../../assets/images/twitter.png')}
-          />
-          <Image
-            style={styles.icons}
-            source={require('../../assets/images/fb.png')}
-          />
-          <Image
-            style={styles.icons}
-            source={require('../../assets/images/google.png')}
-          />
-        </View>
+         <View style={{justifyContent:'center',alignItems:'center',padding:10,marginTop:100}}>
+           <Text style={{color:'#98999a'}}>
+             Login with
+           </Text>
+         </View>
+         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Other')}
+                style={{alignItems:'center',justifyContent:'center',borderWidth:1,paddingHorizontal:72,borderRadius:10,padding:8}}>
+                  <Image source={require('../../assets/icons/facebook.png')} />
+                </TouchableOpacity>
+                <TouchableOpacity style={{justifyContent:'center',alignItems:'center',borderWidth:1,paddingHorizontal:65,borderRadius:10,padding:8}}>
+                  <Image source={require('../../assets/icons/google.png')} />
+                </TouchableOpacity>
+         </View>
+         <View style={{justifyContent:'center',alignItems:'center',padding:10}}>
+            <Text style={{color:'#98999a'}}>
+              or login with email/mobile
+            </Text>
+         </View>
+         <View>
+           <Text style={{color:'#98999a'}}>
+             E-mail ID or Mobile Number
+           </Text>
+           <View style={{borderWidth:1,width:'100%',height:40,borderRadius:10,marginTop:10}}>
+           <TextInput 
+           
+           />
+           </View>
+         </View>
+         <View style={{marginTop:10}}>
+           <Text style={{color:'#98999a'}}>
+            Password
+           </Text>
+           <View style={{borderWidth:1,width:'100%',borderRadius:10,
+           marginTop:10,height:40,flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingRight:10}}>
+           <TextInput 
+           secureTextEntry={true}
+           keyboardType='numeric'
+           />
+             <Image 
+            source={require('../../assets/icons/eye.png')} 
+            
+           />
+           </View>
+         </View>
+         <View style={{justifyContent:'space-between',flexDirection:'row',marginTop:10}}>
+              <View style={{flexDirection:'row'}}>
+             
+                <Text style={{marginLeft:2,marginTop:5}}>Remember me</Text>
+              </View>
+              <TouchableOpacity>
+                <Text style={{color:'blue'}}>
+                  ForgotPassword?
+                </Text>
+              </TouchableOpacity>
+         </View>
+         {/* onPress={()=>this.props.navigation.navigate('Dashboard') */}
+         <TouchableOpacity onPress={this.doLogin}
+         style={{backgroundColor:'#5f85e5',borderRadius:5,padding:10,alignItems:'center',marginTop:35}}>
+                    <Text style={{color:'white'}}>Login</Text>
+                </TouchableOpacity>
+         
+         <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop:10}}>
+           <Text style={{color:'#98999a'}}>Don't have an account ?</Text>
+           <TouchableOpacity onPress={()=>this.props.navigation.navigate('Registration')}>
+             <Text style={{color:'blue'}}>Register Now</Text>
+           </TouchableOpacity>
+         </View>
       </View>
-
-            </View>
-            </SafeAreaView>
-    );
+    )
   }
 }
 
-  const mapStateToProps=(state)=>{
-  console.log('ggggggggggggggggggg'+JSON.stringify(state.isFetching))
-    return{
-        isFetching:state.isFetching,
+const mapStateToProps=(state)=>{
+    console.log('Details'+JSON.stringify(state.isFetching))
+      return{
+          isFetching:state.isFetching,
+      }
     }
-  }
+    
+    export default connect(mapStateToProps)(Login)
   
-  export default connect(mapStateToProps)(Logindata)

@@ -1,55 +1,64 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-export default (styles = StyleSheet.create({
-  container: {
-    flex: 1,
+import Constants from '../../config/constants';
+
+export default StyleSheet.create({
+  container:{
+    flex:1,
+    padding:20,
+    backgroundColor:'white'
   },
-  logo: {
-    height: 150,
-    width: 150,
+  continue:{
+    backgroundColor:'#5f85e5',
+    borderRadius:5,
+    flexDirection:'row',
+    padding:10,
+    alignItems:'center',
+    justifyContent:'center',
+    marginTop:10
+  },
+  login:{
+    marginTop:80,
+    width: '100%',
+    height: 40,
+    backgroundColor: '#eef1f4',
     justifyContent: 'center',
+    borderRadius: 5,
     alignItems: 'center',
+    marginVertical: 10,
+  },
+  loginText:{
+    color: 'black',
+    fontSize: 18,
     alignSelf: 'center',
+    
   },
-  text: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'white',
-    textAlign: 'center',
-    fontFamily: 'SourceSansPro',
+  headerText:{
+    fontWeight:'normal',
+    fontFamily:'Poppins-SemiBold',
+    fontSize:20
   },
-  loginText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    fontFamily: 'SourceSansPro',
-    color: 'white',
-    textAlign: 'center',
-    textDecorationLine: 'underline',
-  },
-  linearGradient: {borderRadius: 50},
-  buttonText: {
-    fontSize: 18,
-    fontFamily: 'SourceSansPro',
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonContainer: {
-    marginTop: 20,
-    marginHorizontal: 30,
-    borderRadius: 50,
+  imageView:{
+    alignItems:'center',
+    justifyContent:'center',
+    marginTop:100,
+    paddingRight:19
   },
   image:{
-    height: 150,
-    width: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
+    width:350,
+    height:250
+  },
+  text:{
+    color:'white',
+    fontWeight:'normal',
+    fontFamily:'Poppins'
+  },
+  email:{
+    color:'#98999a',
+    color:'grey',
+    fontFamily:'Poppins',
+    fontWeight:'normal'
+   
   }
-}));
+}) 
+  

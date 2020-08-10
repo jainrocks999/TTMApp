@@ -8,7 +8,7 @@ export default function FlatButton({title, onPress, bgcolor, colorText}) {
     <View
       style={{
         width: '100%',
-        marginTop: 4,
+        marginTop: 20,
 
         alignItems: 'center',
       }}>
@@ -17,9 +17,9 @@ export default function FlatButton({title, onPress, bgcolor, colorText}) {
           width: '100%',
           height: 40,
           //justifyContent: 'center',
-          backgroundColor: Colors.buttonColor,
+          backgroundColor: ' #5f85e5',
           justifyContent: 'center',
-          borderRadius: 5,
+          borderRadius: 7,
           alignItems: 'center',
           marginVertical: 10,
         }}

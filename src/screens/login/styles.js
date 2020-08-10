@@ -1,42 +1,34 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 export default (styles = StyleSheet.create({
-  container: {flex: 1, paddingHorizontal: 15},
-  logo: {
-    height: 150,
-    width: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
+  container: {flex: 1, padding: 20,backgroundColor:'#fff'},
+  login:{
+    fontWeight:'Semibold',
+    fontFamily:'Poppins',
+    fontSize:20,
+    marginTop:10
   },
-  text: {
-    marginTop: 20,
-    fontSize: 14,
-    fontFamily: 'SourceSansPro',
+  loginView:{
+    justifyContent:'center',
+    alignItems:'center',
+    padding:10,
+    marginTop:100
   },
-  headText: {
-    fontFamily: 'SourceSansPro-Bold',
-    fontSize: 22,
-    marginVertical: 10,
-    fontWeight: 'bold',
-    marginTop: 100,
+  loginText:{
+    fontFamily:'Poppins',
+    fontWeight:'normal'
   },
-
-  subHeadText: {
-    fontSize: 18,
-    marginVertical: 10,
-    fontFamily: 'SourceSansPro',
+  view:{
+    flexDirection:'row',
+    justifyContent:'space-between'
   },
-  textInputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderBottomWidth: 0.5,
+  touch:{
+    alignItems:'center',
+    justifyContent:'center',
+    borderWidth:1,
+    paddingHorizontal:65,
+    borderRadius:10,
+    padding:5
   },
-  icons: {height: 22, width: 22},
-  iconContainer: {
-    marginTop: 10,
-    flexDirection: 'row',
-    width: 80,
-    justifyContent: 'space-between',
-  },
+  
 }));
