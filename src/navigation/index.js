@@ -23,26 +23,28 @@ import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import Other from '../screens/other';
 import TMSearch from '../screens/tmSearch';
 
-const TMSearchStack = createStackNavigator({
-   tm:{
-      screen:TMSearch
-     }
-},
- {
+const TMSearchStack = createStackNavigator(
+  {
+    tm: {
+      screen: TMSearch,
+    },
+  },
+  {
     defaultNavigationOptions: ({navigation}) => {
       return {
         header: false,
       };
     },
-  },)
+  },
+);
 const AuthNavigator = createStackNavigator(
   {
-//     FirstPage:{
-// screen:FirstScreen
-//     },
-  Other:{
-       screen:Other
-     },
+    //     FirstPage:{
+    // screen:FirstScreen
+    //     },
+    Other: {
+      screen: Other,
+    },
     RegistrationOne: {
       screen: RegistrationPageOne,
     },
@@ -52,8 +54,6 @@ const AuthNavigator = createStackNavigator(
     Login: {
       screen: LoginPage,
     },
-   
-    
   },
   {
     defaultNavigationOptions: ({navigation}) => {
@@ -64,72 +64,79 @@ const AuthNavigator = createStackNavigator(
   },
 );
 
-
-
-// const HomeStackNavigator = createStackNavigator(
-//   {
-//     Account: {
-//       screen: DashboardScreen,
-//     },
-//   },
-//   {
-//     defaultNavigationOptions: ({navigation}) => {
-//       return {
-//         header: false,
-//         title: '',
-//         headerStyle: {
-//           backgroundColor: 'transparent',
-//         },
-//         headerTintColor: 'black',
-//         headerLeft: () => (
-//           <Icon
-//             style={{paddingLeft: 10, color: 'white'}}
-//             onPress={() => navigation.toggleDrawer()}
-//             name="md-menu"
-//             size={30}
-//           />
-//         ),
-//       };
-//     },
-//   },
-// );
-const DrawerStack = createStackNavigator({
-   DashboardScreen: {
-            screen: DashboardScreen,
-},
-},
-    {
-         navigationOptions: ({ navigation }) => ({
-            headerTitle: 'Dashboard',
-           drawerLabel: 'Dashboard',
-           headerTintColor: '#fff',
-           headerStyle: {
-             backgroundColor: '#F97D09',
-           },
-            headerLeft: (
-                <TouchableOpacity onPress={navigation.toggleDrawer}>
-                    <Icon name="md-menu"
-                        style={{ marginLeft: 10 }} size={30} color="#000" />
-                </TouchableOpacity>
-            ),
-            headerRight: (
-                <TouchableOpacity  onPress={() => navigation.navigate('Notification')}>
-                <Icon name="ios-notifications-outline"
-                    style={{ marginRight: 10 }} size={30} color="#fff" />
-            </TouchableOpacity>
-              ),
-        }),
-   }
-
-    );
-const apiNavigator=createStackNavigator({
-  copies:{
-    screen:CRDetail
+const HomeStackNavigator = createStackNavigator(
+  {
+    Account: {
+      screen: DashboardScreen,
+    },
   },
-  trade:{
-    screen:TradeMark
-  }
-})
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+        title: '',
+        headerStyle: {
+          backgroundColor: 'transparent',
+        },
+        headerTintColor: 'black',
+        headerLeft: () => (
+          <Icon
+            style={{paddingLeft: 10, color: 'white'}}
+            onPress={() => navigation.toggleDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        ),
+      };
+    },
+  },
+);
+const DrawerStack = createStackNavigator(
+  {
+    DashboardScreen: {
+      screen: DashboardScreen,
+    },
+  },
+  {
+    navigationOptions: ({navigation}) => ({
+      header: false,
+      headerTitle: 'Dashboard',
+      drawerLabel: 'Dashboard',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: '#F97D09',
+      },
+      headerLeft: (
+        <TouchableOpacity onPress={navigation.toggleDrawer}>
+          <Icon
+            name="md-menu"
+            style={{marginLeft: 10}}
+            size={30}
+            color="#000"
+          />
+        </TouchableOpacity>
+      ),
+      headerRight: (
+        <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
+          <Icon
+            name="ios-notifications-outline"
+            style={{marginRight: 10}}
+            size={30}
+            color="red"
+          />
+        </TouchableOpacity>
+      ),
+    }),
+  },
+);
+const apiNavigator = createStackNavigator({
+  copies: {
+    screen: CRDetail,
+  },
+  trade: {
+    screen: TradeMark,
+  },
+});
 // const AppDrawerNavigator = createDrawerNavigator(
 //   {
 //     Dashboard: {
@@ -159,7 +166,7 @@ const apiNavigator=createStackNavigator({
 //         ),
 //       },
 //     },
-    
+
 //     share: {
 //       screen: shareScreen,
 //       navigationOptions: {
@@ -175,19 +182,18 @@ const apiNavigator=createStackNavigator({
 //   },
 // );
 const AppStack = createDrawerNavigator(
-    {
-        Dashboard: DrawerStack,
-       // Profile: ProfileStack,
-        //Notification: NotificationStack,
-       // About: AboutStack,
-        //Contact: ContactStack,
-        //AddIssue: IssueStack,
-     
-    },
-    {
-        initialRouteName: 'Dashboard',
-        contentComponent: drawerPage,
-    }
+  {
+    Dashboard: HomeStackNavigator,
+    // Profile: ProfileStack,
+    //Notification: NotificationStack,
+    // About: AboutStack,
+    //Contact: ContactStack,
+    //AddIssue: IssueStack,
+  },
+  {
+    initialRouteName: 'Dashboard',
+    contentComponent: drawerPage,
+  },
 );
 const AuthStack = createSwitchNavigator(
   {
@@ -196,8 +202,8 @@ const AuthStack = createSwitchNavigator(
     //FirstPage: {screen: FirstScreen},
     Auth: AuthNavigator,
     AppStack: AppStack,
-    apiScreen:apiNavigator,
-    TMSearchStack:TMSearchStack,
+    apiScreen: apiNavigator,
+    TMSearchStack: TMSearchStack,
   },
   {
     initialRouteName: 'AuthLoading',
