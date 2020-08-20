@@ -3,9 +3,9 @@ import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
     tabImage:{
-        height: 25, 
-        width: 25,
-        tintColor: 'white'
+        height: 16, 
+        width: 16,
+        //tintColor: 'white'
         },
     background:{
         flex: 1,
@@ -103,17 +103,23 @@ export default StyleSheet.create({
       },
     firstView:{
         flexDirection: 'row',
-        width: '100%',
-        height: 140,
-        paddingHorizontal: 10,
+        width: '98%',
+        height: 170,
+        paddingHorizontal: 4,
         justifyContent: 'space-between',
-        paddingVertical: 10,
+        paddingVertical: 4,
     },
     secondView:{
-        width: '45%',
+        width: '46%',
         backgroundColor: '#fff',
         borderRadius: 10,
-        height:120
+        height:150
+    },
+    secondView1:{
+       // width: '46%',
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        height:110
     },
       thirdView:{
         height: '80%',
@@ -152,7 +158,12 @@ export default StyleSheet.create({
     copyImage:{
         height: 30,
         width: 30,
-        marginLeft:8
+        margin:8
+      },
+        popupIcon:{
+        height: 26,
+        width: 26,
+        margin:8
       },
     designView:{
         flexDirection: 'row',

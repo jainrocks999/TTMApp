@@ -3,6 +3,7 @@ import {
   Image,
   View,
   Text,
+  StatusBar,
   TouchableOpacity,
 } from 'react-native';
 import styles from './style';
@@ -31,7 +32,9 @@ export default class FirstScreen extends React.Component {
          
             <TouchableOpacity style={styles.continue}>
               <View style={{width:20,height:20,marginRight:6,alignItems:'center',justifyContent:'center',backgroundColor:'white'}}>
-            <Image 
+            <Image style={{width:11,height:11,}}
+                                  resizeMode={'stretch'}
+
             source={require('../../assets/icons/facebook.png')} 
             />
             </View>
@@ -44,6 +47,10 @@ export default class FirstScreen extends React.Component {
                Signup with Email
              </Text>
            </TouchableOpacity>
+             <StatusBar
+      backgroundColor="#fff"
+      barStyle='dark-content'
+    />
         </View>
       )
     }

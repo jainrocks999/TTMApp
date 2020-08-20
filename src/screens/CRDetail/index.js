@@ -1,5 +1,5 @@
 import React from 'react';
-import { View,Text,TouchableOpacity,ActivityIndicator } from 'react-native';
+import { View,StatusBar,Text,TouchableOpacity,ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './styles';
 class CRDetail extends React.Component{
@@ -23,6 +23,10 @@ class CRDetail extends React.Component{
                    <Text>CallApi</Text>
                </TouchableOpacity>
                </View>
+               <StatusBar
+      backgroundColor="#fff"
+      barStyle='dark-content'
+    />
             </View>
         )
     }

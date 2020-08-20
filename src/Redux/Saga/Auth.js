@@ -7,69 +7,55 @@ import Constants from '../Constants';
 import { StackActions ,NavigationActions} from 'react-navigation';
 import qs from 'qs';
 function* doLogin(action){
-    try{
+    
     const data = JSON.stringify({
      User_Name: action.User_Name,
      Password: action.Password,
     });
-     console.log('dadada'+data)
-     console.log('api'+action.url)
-   //console.log('api'+Api.fetchDataByPOST)
+console.log('kapil first'+Api.fetchDataByPOST)
+console.log('kapil first'+action.url)
+console.log('kapil first'+data)
+
     const p = yield call(Api.fetchDataByPOST,action.url,data)
-    console.log('kapil'+p.data)
+    console.log('kapil'+ p)
    if(p.data == ''){
     yield put({
         type:'User_Login_Success',
         payload:p.data
     })
+    this.props.navigation.navigate('Drawer');
      AsyncStorage.setItem(Constants.token, p.data)
-
-if(action.navigateTo){
-    const resetAction = StackActions.reset({
-        index:0,
-        actions:[NavigationActions.navigate({routeName:action.navigateTo})],
-    });
-    action.navigate.dispatch(resetAction);
-   }else{
-        const resetAction = StackActions.reset({
-                index: 0,
-                actions: [NavigationActions.navigate({ routeName: 'more' })],
-              });
-              action.navigation.dispatch(resetAction);
-            }
-        } else {
-            console.log(p.data)
-            Alert.alert(
-                'Explored',
-                p.data.error_description,
-                [
-                    {text:'Ok',style:'cancel',onPress:()=>console.log('Cancel Pressed')}
-                ]
-            )
-            yield put({
-                type:'User_Login_Error',
-            }) 
-        }
-       
-    } catch (error) {
-        console.log(error)
-      
-        yield put({
+}else{
+Alert.alert(p.data)
+ yield put({
             type:'User_Login_Error',
         }) 
-    }  
+}
+
+       
 }
 
 function* doRegister(action){
     try{
     const data = JSON.stringify({
-     User_Name: action.User_Name,
-     Password: action.Password,
+    UserId:action.UserId,
+    firstname:action.firstname,
+    lastname:action.lastname,
+    email: action.email,
+    company:action.company,
+    state :action.state,
+    city:action.city,
+    pincode:action.pincode,
+    address:action.address,
+    NationalCode:"+91",
+    Phone:action.Phone,
+    CountryId:action.CountryId,
+    Company_Name:action.Company_Name 
     });
     console.log('dadada'+data)
     console.log('api'+action.url)
    // console.log('api'+Api.fetchDataByPOST)
-    const p = yield call(Api.fetchDataByGET,action.url,data)
+    const p = yield call(Api.fetchDataByPOST,action.url,data)
     console.log('kapil'+p.data)
    if(p.data == ''){
     yield put({

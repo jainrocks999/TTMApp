@@ -8,7 +8,10 @@ export default class Api {
         try {
             const response=await axios({
                 method:'POST',
-                headers:{ 'content-type': 'application/json','Accept': 'application/json'},
+                headers:{ 
+                'content-type': 'application/json',
+                'Accept': 'application/json',
+                 'Authorization': 'bearer ' + token},
                 url: Constants.MainUrl+url,
                 data
             })

@@ -29,13 +29,16 @@ export default StyleSheet.create({
   },
   loginText:{
     color: 'black',
-    fontSize: 18,
-    alignSelf: 'center',
+    fontSize: 16,
+  
+    fontFamily:'Poppins',
+
+    alignItems: 'center',
     
   },
   headerText:{
-    fontWeight:'normal',
-    fontFamily:'Poppins-SemiBold',
+    fontWeight:'700',
+    fontFamily:'Poppins',
     fontSize:20
   },
   imageView:{
