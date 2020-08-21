@@ -118,21 +118,22 @@ class Login extends React.Component {
             Please login to continue our app
           </Text>
         </View>
-        <View style={styles.imageView}>
-          <Image
-            source={require('../../assets/icons/group1.png')}
-            style={styles.image}
-          />
-        </View>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: 10,
-          }}>
-          <Text style={{color: '#000'}}>Login with</Text>
-        </View>
+
         <ScrollView style={{flex: 1}}>
+          <View style={styles.imageView}>
+            <Image
+              source={require('../../assets/icons/group1.png')}
+              style={styles.image}
+            />
+          </View>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: 10,
+            }}>
+            <Text style={{color: '#000'}}>Login with</Text>
+          </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Other')}
@@ -166,10 +167,12 @@ class Login extends React.Component {
               alignItems: 'center',
               padding: 10,
             }}>
-            <Text style={{color: '#000'}}>or login with email/mobile</Text>
+            <Text style={{color: '#000'}}>
+              or Login with Username/Mobile Number
+            </Text>
           </View>
           <View>
-            <Text style={{color: '#000'}}>E-mail ID or Mobile Number</Text>
+            <Text style={{color: '#000'}}>Username or Mobile Number</Text>
             <View
               style={{
                 borderWidth: 1,
@@ -224,10 +227,10 @@ class Login extends React.Component {
               marginTop: 10,
             }}>
             <View style={{flexDirection: 'row'}}>
-              <Text style={{marginLeft: 2, marginTop: 5}}>Remember me</Text>
+              <Text style={{marginLeft: 2, marginTop: 5}}>Remember me ?</Text>
             </View>
             <TouchableOpacity>
-              <Text style={{color: '#5F85E5'}}>ForgotPassword?</Text>
+              <Text style={{color: '#5F85E5'}}>Forgot Password ?</Text>
             </TouchableOpacity>
           </View>
           {/* onPress={()=>this.props.navigation.navigate('Dashboard') */}
@@ -253,7 +256,9 @@ class Login extends React.Component {
             <Text style={{color: '#000'}}>Don't have an account ?</Text>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('RegistrationOne')}>
-              <Text style={{color: '#6496CA'}}>Register Now</Text>
+              <Text style={{color: '#6496CA', marginLeft: 5}}>
+                Register Now
+              </Text>
             </TouchableOpacity>
           </View>
         </ScrollView>

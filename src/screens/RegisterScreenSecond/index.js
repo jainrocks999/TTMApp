@@ -179,172 +179,175 @@ class Registration extends React.Component {
               style={{width: 20, height: 15, color: 'grey'}}
             />
           </TouchableOpacity>
+        </View>
+        <ScrollView>
           <Text style={styles.register}>New User Registration</Text>
-          <Text style={styles.please}>Please fill detail for register</Text>
-        </View>
+          <Text style={styles.please}>Please the details to register</Text>
 
-        <View style={styles.imageView}>
-          <Image
-            source={require('../../assets/images/registration_two.png')}
-            style={styles.image}
-          />
-        </View>
-
-        <View style={{marginTop: 10}}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={[styles.inputContainer1]}>
-              <Text>Country</Text>
-              <View
-                style={{
-                  marginTop: 10,
-                  borderWidth: 1,
-                  borderRadius: 5,
-                  width: '100%',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                }}>
-                <Picker
-                  mode="dropdown"
-                  selectedValue={this.state.ResponseCode}
-                  style={{
-                    fontSize: 14,
-                    color: '#4E5764',
-                    fontFamily: 'Gilroy-Medium',
-                  }}
-                  itemTextStyle={{
-                    fontSize: 14,
-                    color: '#4E5764',
-                    fontFamily: 'Gilroy-Medium',
-                  }}
-                  textStyle={{
-                    fontSize: 16,
-                    color: '#4E5764',
-                    fontFamily: 'Gilroy-Medium',
-                  }}
-                  onValueChange={(itemValue, itemIndex) =>
-                    this.resposecode(itemValue)
-                  }>
-                  <Picker.Item
-                    label="-- Country --"
-                    value="Frequency"
-                    color="#3386FF"
-                  />
-                  {this.renderview()}
-                </Picker>
-              </View>
-            </View>
-            <View style={[styles.inputContainer1]}>
-              <Text>State</Text>
-              <View
-                style={{
-                  marginTop: 10,
-                  borderWidth: 1,
-                  borderRadius: 5,
-                  width: '100%',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                }}>
-                <Picker
-                  mode="dropdown"
-                  selectedValue={this.state.ResponseCode}
-                  style={{
-                    fontSize: 14,
-                    color: '#4E5764',
-                    fontFamily: 'Gilroy-Medium',
-                  }}
-                  itemTextStyle={{
-                    fontSize: 14,
-                    color: '#4E5764',
-                    fontFamily: 'Gilroy-Medium',
-                  }}
-                  textStyle={{
-                    fontSize: 16,
-                    color: '#4E5764',
-                    fontFamily: 'Gilroy-Medium',
-                  }}
-                  onValueChange={(itemValue, itemIndex) =>
-                    this.resposecode(itemValue)
-                  }>
-                  <Picker.Item
-                    label="-- state --"
-                    value="Frequency"
-                    color="#3386FF"
-                  />
-                  {this.renderview()}
-                </Picker>
-              </View>
-            </View>
-          </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={styles.inputContainer1}>
-              <Text>City</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="city"
-                value={this.state.city}
-                onChangeText={city => {
-                  this.setState({city: city});
-                }}
-              />
-            </View>
-            <View style={styles.inputContainer1}>
-              <Text>Pincode</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="Pincode"
-                keyboardType="numeric"
-                value={this.state.pincode}
-                onChangeText={pincode => {
-                  this.setState({pincode: pincode});
-                }}
-              />
-            </View>
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Text>Address</Text>
-            <TextInput
-              style={styles.input}
-              placeholder={'Address'}
-              value={this.state.address}
-              onChangeText={address => {
-                this.setState({address: address});
-              }}
+          <View style={styles.imageView}>
+            <Image
+              source={require('../../assets/images/registration_two.png')}
+              style={styles.image}
             />
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={styles.inputContainer1}>
-              <Text>Country Code</Text>
-              <TextInput
-                style={[styles.input, {backgroundColor: '#E9ECEF'}]}
-                placeholder={'+91'}
-                placeholderTextColor={'black'}
-                keyboardType="numeric"
-                onChangeText={Phone_Number => {
-                  this.setState({Phone_Number: Phone_Number});
-                }}
-              />
+
+          <View style={{marginTop: 10}}>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <View style={[styles.inputContainer1]}>
+                <Text>Country</Text>
+                <View
+                  style={{
+                    marginTop: 10,
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    width: '100%',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                  }}>
+                  <Picker
+                    mode="dropdown"
+                    selectedValue={this.state.ResponseCode}
+                    style={{
+                      fontSize: 14,
+                      color: '#4E5764',
+                      fontFamily: 'Gilroy-Medium',
+                    }}
+                    itemTextStyle={{
+                      fontSize: 14,
+                      color: '#4E5764',
+                      fontFamily: 'Gilroy-Medium',
+                    }}
+                    textStyle={{
+                      fontSize: 16,
+                      color: '#4E5764',
+                      fontFamily: 'Gilroy-Medium',
+                    }}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.resposecode(itemValue)
+                    }>
+                    <Picker.Item
+                      label="-- Country --"
+                      value="Frequency"
+                      color="#3386FF"
+                    />
+                    {this.renderview()}
+                  </Picker>
+                </View>
+              </View>
+              <View style={[styles.inputContainer1]}>
+                <Text>State</Text>
+                <View
+                  style={{
+                    marginTop: 10,
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    width: '100%',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                  }}>
+                  <Picker
+                    mode="dropdown"
+                    selectedValue={this.state.ResponseCode}
+                    style={{
+                      fontSize: 14,
+                      color: '#4E5764',
+                      fontFamily: 'Gilroy-Medium',
+                    }}
+                    itemTextStyle={{
+                      fontSize: 14,
+                      color: '#4E5764',
+                      fontFamily: 'Gilroy-Medium',
+                    }}
+                    textStyle={{
+                      fontSize: 16,
+                      color: '#4E5764',
+                      fontFamily: 'Gilroy-Medium',
+                    }}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.resposecode(itemValue)
+                    }>
+                    <Picker.Item
+                      label="-- State --"
+                      value="Frequency"
+                      color="#3386FF"
+                    />
+                    {this.renderview()}
+                  </Picker>
+                </View>
+              </View>
             </View>
-            <View style={styles.inputContainer1}>
-              <Text>Mobile number</Text>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <View style={styles.inputContainer1}>
+                <Text>City</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="City"
+                  value={this.state.city}
+                  onChangeText={city => {
+                    this.setState({city: city});
+                  }}
+                />
+              </View>
+              <View style={styles.inputContainer1}>
+                <Text>Pincode</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Pincode"
+                  keyboardType="numeric"
+                  value={this.state.pincode}
+                  onChangeText={pincode => {
+                    this.setState({pincode: pincode});
+                  }}
+                />
+              </View>
+            </View>
+
+            <View style={styles.inputContainer}>
+              <Text>Address</Text>
               <TextInput
                 style={styles.input}
-                placeholder={'Mobile number'}
-                value={this.state.Phone}
-                keyboardType="phone-pad"
-                onChangeText={Phone => {
-                  this.setState({Phone: Phone});
+                placeholder={'Address'}
+                value={this.state.address}
+                onChangeText={address => {
+                  this.setState({address: address});
                 }}
               />
             </View>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <View style={styles.inputContainer1}>
+                <Text>Country Code</Text>
+                <TextInput
+                  style={[styles.input, {backgroundColor: '#E9ECEF'}]}
+                  placeholder={'+91'}
+                  placeholderTextColor={'black'}
+                  keyboardType="numeric"
+                  onChangeText={Phone_Number => {
+                    this.setState({Phone_Number: Phone_Number});
+                  }}
+                />
+              </View>
+              <View style={styles.inputContainer1}>
+                <Text>Mobile number</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder={'Mobile number'}
+                  value={this.state.Phone}
+                  keyboardType="phone-pad"
+                  onChangeText={Phone => {
+                    this.setState({Phone: Phone});
+                  }}
+                />
+              </View>
+            </View>
           </View>
-          <ScrollView />
-        </View>
 
-        <TouchableOpacity style={styles.button} onPress={this.doRegister}>
-          <Text style={[{color: 'white'}, styles.font]}>Register</Text>
-        </TouchableOpacity>
-
+          <TouchableOpacity style={styles.button} onPress={this.doRegister}>
+            <Text style={[{color: 'white'}, styles.font]}>Register</Text>
+          </TouchableOpacity>
+        </ScrollView>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       </View>
     );

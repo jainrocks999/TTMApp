@@ -111,25 +111,25 @@ class Registration extends React.Component {
   };
   render() {
     return (
-      <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
-        <View style={{flex: 1, padding: 14}}>
-          <Spinner
-            visible={this.state.spinner}
-            textContent={'Loading...'}
-            textStyle={styles.spinnerTextStyle}
-          />
-          <View>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Login')}>
-              <Image
-                source={require('../../assets/icons/arrow.png')}
-                resizeMode={'stretch'}
-                style={{width: 20, height: 15, color: 'grey'}}
-              />
-            </TouchableOpacity>
-            <Text style={styles.register}>New User Registration</Text>
-            <Text style={styles.please}>Please fill detail for register</Text>
-          </View>
+      <View style={{flex: 1, padding: 14, backgroundColor: '#fff'}}>
+        <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          textStyle={styles.spinnerTextStyle}
+        />
+        <View>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Login')}>
+            <Image
+              source={require('../../assets/icons/arrow.png')}
+              resizeMode={'stretch'}
+              style={{width: 20, height: 15, color: 'grey'}}
+            />
+          </TouchableOpacity>
+        </View>
+        <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
+          <Text style={styles.register}>New User Registration</Text>
+          <Text style={styles.please}>Please fill the details to register</Text>
           <View style={styles.imageView}>
             <Image
               source={require('../../assets/images/registration_one.png')}
@@ -220,8 +220,8 @@ class Registration extends React.Component {
             </TouchableOpacity>
           </View>
           <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }

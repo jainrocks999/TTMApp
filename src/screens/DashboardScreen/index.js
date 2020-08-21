@@ -21,7 +21,7 @@ class RegisterScreen extends React.Component {
     tabBarIcon: ({tintColor}) => (
       <Image
         style={styles.tabImage}
-        source={require('../../assets/icons/status.png')}
+        source={require('../../assets/Image/Status_icon.png')}
       />
     ),
   };
@@ -100,7 +100,7 @@ class RegisterScreen extends React.Component {
                 style={styles.touchTm}>
                 <Image
                   style={styles.copyImage}
-                  source={require('../../assets/icons/tm_new.png')}
+                  source={require('../../assets/Image/trademark2x.png')}
                   resizeMode={'stretch'}
                 />
                 <View
@@ -136,7 +136,7 @@ class RegisterScreen extends React.Component {
               <TouchableOpacity style={styles.touchTm}>
                 <Image
                   style={styles.copyImage}
-                  source={require('../../assets/icons/copyright_new.png')}
+                  source={require('../../assets/Image/copyright_2x.png')}
                   resizeMode={'stretch'}
                 />
 
@@ -357,7 +357,7 @@ class RegisterScreen extends React.Component {
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/icons/trade_new.png')}
+                          source={require('../../assets/Image/Group2x.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -390,7 +390,7 @@ class RegisterScreen extends React.Component {
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/icons/tm_popup_new.png')}
+                          source={require('../../assets/Image/trademark_22x.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -423,7 +423,7 @@ class RegisterScreen extends React.Component {
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/icons/book_new.png')}
+                          source={require('../../assets/Image/IconAwesomeBook2x.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -463,7 +463,7 @@ class RegisterScreen extends React.Component {
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/icons/hearing_new.png')}
+                          source={require('../../assets/Image/hearing2x.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -496,7 +496,7 @@ class RegisterScreen extends React.Component {
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/icons/timer_new.png')}
+                          source={require('../../assets/Image/Icon_ionic_ios_timer2x.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -529,7 +529,7 @@ class RegisterScreen extends React.Component {
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/icons/open_timer.png')}
+                          source={require('../../assets/Image/Icon_open_timer2x.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -570,7 +570,7 @@ class RegisterScreen extends React.Component {
                       }}>
                       <Image
                         style={styles.popupIcon}
-                        source={require('../../assets/icons/similar_new.png')}
+                        source={require('../../assets/Image/commerce2x.png')}
                         resizeMode={'stretch'}
                       />
                       <Text
@@ -603,7 +603,7 @@ class RegisterScreen extends React.Component {
 }
 class StatusScreen extends React.Component {
   static navigationOptions = {
-    title: 'Upcomming',
+    title: 'Upcoming',
     tabBarIcon: ({tintColor}) => (
       <Image
         style={styles.tabImage}
