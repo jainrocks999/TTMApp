@@ -11,6 +11,11 @@ export default styles = StyleSheet.create({
     fontSize: 22,
     marginTop: 10,
   },
+  image: {
+    //flex:1,
+   // resizeMode: "stretch",
+    //justifyContent: "center"
+  },
   spinnerTextStyle: {
     color: '#fff',
   },
@@ -38,9 +43,10 @@ export default styles = StyleSheet.create({
     paddingRight: 10,
     alignItems: 'center',
   },
+           
 
   inputContainer1: {
-    marginVertical: 20,
+  marginTop:20,
     borderColor: '#A4A7AC',
     width: '48%',
     height: 40,

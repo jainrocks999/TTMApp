@@ -1,6 +1,7 @@
 import React from 'react';
 import { AsyncStorage,Linking, View, Alert, ScrollView, ActivityIndicator,Share, Text, Picker, Image, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
  import Icon from "react-native-vector-icons/Ionicons";
+ import storage from '../../config/storage';
 var serverurl='http://dev2.sbsgroupsolutions.co.in/admin/uploads/userprofile/';
 //import LanguagesString from '../Config/Languages';
 
@@ -21,6 +22,7 @@ export default class MyDrawer extends React.Component {
      this.props.navigation.navigate('Profile');
    }
     renderDrawerItem = (route) => {
+        console.log('jbkbjbjdbhjbd'+route)
         const onpress = (route.key === 'Logins') 
                      ?() => AsyncStorage.clear().then(p => this.props.navigation.navigate(route.key))
                      :(route.key === 'logout') 
@@ -28,10 +30,10 @@ export default class MyDrawer extends React.Component {
                      :() => {
                          this.setState({currentpage: route.key})
                          this.props.navigation.navigate(route.key)
-                         AsyncStorage.getItem('NAME')
+                         AsyncStorage.getItem(storage.UserName)
                         .then(Name => {
                             this.setState({ name: Name })
-                            Alert
+                    
                         })
                         AsyncStorage.getItem('contact_number')
                         .then(number => {
@@ -46,9 +48,9 @@ export default class MyDrawer extends React.Component {
                         })
                         }
         return (
-            <TouchableOpacity onPress={onpress} style={{ flexDirection: 'row', padding: 8, marginLeft: 10, marginRight: 10,alignItems:'center' }}>
+            <TouchableOpacity onPress={onpress} style={{ flexDirection: 'row', padding: 8,marginLeft:8,marginRight:8, alignItems:'center',backgroundColor:'#F5F5F5' }}>
                 <Image source={route.icon}></Image>
-                <Text style={{ padding: 8, marginLeft: 10, marginRight: 10, fontSize: 16}}>{route.label}</Text>
+                <Text style={{ padding: 8,color:'#000', marginLeft: 10, marginRight: 10, fontSize: 18,fontWeight:'bold'}}>{route.label}</Text>
             </TouchableOpacity>
             
         )
@@ -57,10 +59,10 @@ export default class MyDrawer extends React.Component {
 
 
     componentDidMount() {
-        AsyncStorage.getItem('NAME')
+        AsyncStorage.getItem(storage.UserName)
             .then(Name => {
                 this.setState({ name: Name })
-                Alert
+                
             })
             AsyncStorage.getItem('contact_number')
             .then(number => {
@@ -87,8 +89,10 @@ export default class MyDrawer extends React.Component {
         Linking.openURL('https://twitter.com/chandrakar_ajay?lang=en');
     }
     Logout = () => {
+        console.log('kbdsbdjhsbdb')
         Alert.alert(
             'Are you want to logout ?',
+            '',
             [
              {text: 'Cancel', onPress: () =>{cancelable: false }, style: 'cancel'},
               {text: 'ok', onPress: () => this.setlog()},
@@ -113,20 +117,22 @@ export default class MyDrawer extends React.Component {
 
                     <View style={styles.bluebox}>
                         <TouchableOpacity
-                            onPress={this.getprofile}
+                          
                             style={{flexDirection: 'row'}}>
                              <Image source={this.state.pimage} 
                              style={{width: 60, height: 60, margin:8, alignItems: 'center',borderRadius: 35}} />
                              <View style={{marginTop: 8, marginLeft: 4}}>
+                             <Text style={styles.TextStyle}>TTM APP</Text>
                              <Text style={styles.TextStyle}>{this.state.name}</Text>
                             <Text style={{color: '#278D27',fontSize: 16}}>{this.state.Number}</Text>
                             </View>
                         </TouchableOpacity>
+                        <View style={{height:1,backgroundColor:'#000'}}></View>
                 
                     </View>
 
                    
-                   {this.renderDrawerItem({  label: 'logout', key: 'logout' })}
+                   {this.renderDrawerItem({  label: 'Logout', key: 'logout',color:'#fff' })}
                 
                 </View>
             </ScrollView>
@@ -146,7 +152,7 @@ const styles = StyleSheet.create({
     bluebox: {
         width: '100%',
         height: 110,
-        backgroundColor: '#F97D09',
+        backgroundColor: '#fff',
         justifyContent: 'center'
     },
     ImageStyle: {
@@ -158,7 +164,7 @@ const styles = StyleSheet.create({
         height: 40,
     },
     TextStyle: {
-        color: '#278D27',
+        color: '#000',
         marginTop: 4,
         fontSize: 18,
     },

@@ -6,6 +6,7 @@ import {
   Image,
   Picker,
   StatusBar,
+  ImageBackground,
   Alert,
 } from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
@@ -88,7 +89,9 @@ class Registration extends React.Component {
       navigateTo,
     } = this.state;
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (FirstName == '') {
+    if (UserId == '') {
+      Toast.show('Please enter User ID.');
+   } else if (FirstName == '') {
       Toast.show('Please enter First name.');
     } else if (lastname == '') {
       Toast.show('Please enter last name.');
@@ -97,62 +100,24 @@ class Registration extends React.Component {
     } else if (company == '') {
       Toast.show('Please enter company name');
     } else {
-      this.setState({
-        spinner: true,
-      });
-      const data = qs.stringify({
-        UserId: UserId,
-        firstname: FirstName,
-        lastname: lastname,
-        email: Email,
-        company: company,
-        state: state,
-        city: city,
-        pincode: pincode,
-        address: address,
-        NationalCode: '+91',
-        Phone: Phone,
-        CountryId: CountryId,
-        Company_Name: Company_Name,
-      });
-      console.log('ppp' + data);
-      console.log('ppp' + token);
-      const headers = {
-        Authorization: 'bearer ' + token,
-        // 'Accept': 'application/x-www-form-urlencoded',
-        'Content-Type': 'application/x-www-form-urlencoded',
-      };
-      Axios.post(connection.Registeruser, data, {headers})
-        .then(p => {
-          console.log('rrrrrrrrrrr' + JSON.stringify(p));
-          if (p.data.Status == true) {
-            console.log('rrrrrrrrrrr' + p.data.Status);
-            Toast.show(p.data.message);
-            // setTimeout(() => this.props.navigation.navigate('FirstPage'), 2000);
-            //  AsyncStorage.setItem(storage.Token,p.data.data);
-            this.setState({
-              spinner: false,
-            });
-          } else {
-            Toast.show(p.data.message);
-            this.setState({
-              spinner: false,
-            });
-          }
-        })
-        .catch(Error);
-      console.log('ddddddd' + Error);
+this.props.navigation.navigate('RegistrationTwo',{
+   UserId:UserId,
+      FirstName:FirstName,
+      lastname:lastname,
+      Email:Email,
+      company:company,
+})
 
-      //   this.props.dispatch({
-      //     type: 'User_Register_Request',
-      //
-
-      //   });
     }
   };
   render() {
     return (
+      <ScrollView style={{flex:1}}>
       <View style={{flex: 1, padding: 14, backgroundColor: '#fff'}}>
+      <ImageBackground source={require('../../assets/icons/oneImg.png')}
+       resizeMode={'stretch'}
+         style={resstyle.image}
+      >
         <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
@@ -161,7 +126,7 @@ class Registration extends React.Component {
 
         <View>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('FirstPage')}>
+            onPress={() => this.props.navigation.navigate('Login')}>
             <Image
               source={require('../../assets/icons/arrow.png')}
               resizeMode={'stretch'}
@@ -221,10 +186,11 @@ class Registration extends React.Component {
               marginVertical: 20,
             }}>
             <View style={resstyle.inputContainer1}>
-              <Text>First Name</Text>
+              <Text>Email</Text>
               <TextInput
                 style={resstyle.input2}
                 placeholder={'Email'}
+                
                 value={this.state.Email}
                 onChangeText={Email => {
                   this.setState({Email: Email});
@@ -232,7 +198,7 @@ class Registration extends React.Component {
               />
             </View>
             <View style={resstyle.inputContainer1}>
-              <Text>First Name</Text>
+              <Text>Company Name</Text>
               <TextInput
                 style={resstyle.input2}
                 placeholder={'Company'}
@@ -250,26 +216,27 @@ class Registration extends React.Component {
               backgroundColor: '#343A40',
               alignItems: 'center',
               alignSelf: 'center',
-              marginTop: 150,
+              marginTop: 100,
               width: 70,
               height: 70,
             }}
-            onPress={() => this.props.navigation.navigate('RegistrationTwo')}>
+           onPress={this.doRegister}>
             <Image
               style={{
                 height: '100%',
                 width: '100%',
-                tintColor: '#ffff',
+               // tintColor: '#ffff',
                 alignSelf: 'center',
               }}
-              //resizeMode={'center'}
-             // source={require('../../assets/icons/next.png')}
+              resizeMode={'center'}
+              source={require('../../assets/icons/next.png')}
             />
           </TouchableOpacity>
         </View>
-
+</ImageBackground>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       </View>
+      </ScrollView>
     );
   }
 }

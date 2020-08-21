@@ -61,6 +61,7 @@ var token='';
                        this.props.navigation.navigate('AppStack')
                       console.log("rrrrrrrrrrr"+JSON.stringify(p.data.data.UserID))
                       AsyncStorage.setItem(storage.UserID,JSON.stringify(p.data.data.UserID));  
+                      AsyncStorage.setItem(storage.UserName,(p.data.data.UserName));  
                        Toast.show(p.data.message) 
                   this.setState({
                     spinner:false
