@@ -11,6 +11,11 @@ export default styles = StyleSheet.create({
     fontSize: 22,
     marginTop: 10,
   },
+    image: {
+  
+   // resizeMode: "stretch",
+   // justifyContent: "center"
+  },
   spinnerTextStyle: {
     color: '#fff',
   },
@@ -64,7 +69,7 @@ export default styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     alignItems: 'center',
-    marginTop: 150,
+    marginTop: 100,
   },
   nextButton: {
     backgroundColor: '#343A40',

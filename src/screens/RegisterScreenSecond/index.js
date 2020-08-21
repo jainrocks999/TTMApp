@@ -1,11 +1,20 @@
 import React from 'react';
-import {View, Text, ScrollView, Image, Picker, StatusBar} from 'react-native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  ScrollView,
+  Image,
+  Picker,
+  StatusBar,
+} from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import resstyle from './style.js';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../config/storage';
 import qs from 'qs';
 import Axios from 'axios';
+
 import Spinner from 'react-native-loading-spinner-overlay';
 import connection from '../../Redux/Constants';
 import RNPickerSelect from 'react-native-picker-select';
@@ -41,9 +50,19 @@ class Registration extends React.Component {
     this.loaddata();
   }
   loaddata = async () => {
+    const UserId = navigation.getParam('UserId');
+    const FirstName = navigation.getParam('FirstName');
+    const lastname = navigation.getParam('lastname');
+    const Email = navigation.getParam('Email');
+    const company = navigation.getParam('company');
     let token = await AsyncStorage.getItem(storage.Token);
     this.setState({
       token: token,
+      UserId: UserId,
+      FirstName: FirstName,
+      lastname: lastname,
+      Email: Email,
+      company: company,
     });
   };
   toggleSwitch() {
@@ -80,14 +99,14 @@ class Registration extends React.Component {
       navigateTo,
     } = this.state;
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (FirstName == '') {
-      Toast.show('Please enter First name.');
-    } else if (lastname == '') {
-      Toast.show('Please enter last name.');
-    } else if (Email == '') {
-      Toast.show('Please enter e-mail address');
-    } else if (company == '') {
-      Toast.show('Please enter company name');
+    if (city == '') {
+      Toast.show('Please enter city name.');
+    } else if (pincode == '') {
+      Toast.show('Please enter Pin Code.');
+    } else if (address == '') {
+      Toast.show('Please enter  address');
+    } else if (Phone == '') {
+      Toast.show('Please enter Phone number');
     } else {
       this.setState({
         spinner: true,
@@ -153,7 +172,7 @@ class Registration extends React.Component {
 
         <View>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('FirstPage')}>
+            onPress={() => this.props.navigation.navigate('RegistrationOne')}>
             <Image
               source={require('../../assets/icons/arrow.png')}
               resizeMode={'stretch'}
@@ -254,7 +273,7 @@ class Registration extends React.Component {
               <Text>City</Text>
               <TextInput
                 style={resstyle.input}
-                placeholder={'City'}
+                placeholder="city"
                 value={this.state.city}
                 onChangeText={city => {
                   this.setState({city: city});
@@ -265,7 +284,7 @@ class Registration extends React.Component {
               <Text>Pincode</Text>
               <TextInput
                 style={resstyle.input}
-                placeholder={'Pincode'}
+                placeholder="Pincode"
                 keyboardType="numeric"
                 value={this.state.pincode}
                 onChangeText={pincode => {
