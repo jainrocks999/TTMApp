@@ -11,10 +11,9 @@ export default styles = StyleSheet.create({
     fontSize: 22,
     marginTop: 10,
   },
-    image: {
-  
-   // resizeMode: "stretch",
-   // justifyContent: "center"
+  image: {
+    // resizeMode: "stretch",
+    // justifyContent: "center"
   },
   spinnerTextStyle: {
     color: '#fff',
@@ -43,6 +42,16 @@ export default styles = StyleSheet.create({
     paddingRight: 10,
     alignItems: 'center',
   },
+  imageView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+    paddingRight: 19,
+  },
+  image: {
+    width: 350,
+    height: 250,
+  },
 
   inputContainer1: {
     marginVertical: 20,
@@ -65,19 +74,13 @@ export default styles = StyleSheet.create({
   },
   font: {},
   button: {
-    backgroundColor: '#343A40',
+    backgroundColor: '#5F85E5',
     borderRadius: 5,
     padding: 10,
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: 40,
   },
-  nextButton: {
-    backgroundColor: '#343A40',
-    borderRadius: 5,
-    padding: 10,
-    alignItems: 'center',
-    marginTop: 43,
-  },
+
   exit: {
     justifyContent: 'center',
     alignItems: 'center',

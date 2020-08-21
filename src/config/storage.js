@@ -1,11 +1,5 @@
 export default {
-    Token:'token',
-    UserID:'Userid',
-   
-    
-    
-
-
-
-
-}
+  Token: 'token',
+  UserID: 'Userid',
+  UserName: 'UserName',
+};

@@ -18,6 +18,8 @@ import {takeEvery, put, call} from 'redux-saga/effects';
 import AsyncStorage from '@react-native-community/async-storage';
 import qs from 'qs';
 import Axios from 'axios';
+
+import styles from './styles';
 var token = '';
 class Login extends React.Component {
   constructor(props) {
@@ -53,8 +55,6 @@ class Login extends React.Component {
         Password: Password,
         Company_Name: 'BRAND',
       });
-
-      //iIi mam knnf
       console.log('ppp' + data);
       console.log('ppp' + token);
       const headers = {
@@ -62,7 +62,6 @@ class Login extends React.Component {
         // 'Accept': 'application/x-www-form-urlencoded',
         'Content-Type': 'application/x-www-form-urlencoded',
       };
-      //rohit jain
       Axios.post(connection.LoginUrl, data, {headers})
         .then(p => {
           console.log('rrrrrrrrrrr' + JSON.stringify(p));
@@ -99,8 +98,7 @@ class Login extends React.Component {
           textStyle={{color: '#fff'}}
         />
         <View>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('FirstPage')}>
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Image
               source={require('../../assets/icons/arrow.png')}
               resizeMode={'stretch'}
@@ -120,12 +118,17 @@ class Login extends React.Component {
             Please login to continue our app
           </Text>
         </View>
+        <View style={styles.imageView}>
+          <Image
+            source={require('../../assets/icons/group1.png')}
+            style={styles.image}
+          />
+        </View>
         <View
           style={{
             justifyContent: 'center',
             alignItems: 'center',
             padding: 10,
-            marginTop: 100,
           }}>
           <Text style={{color: '#000'}}>Login with</Text>
         </View>

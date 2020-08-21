@@ -39,9 +39,9 @@ const TMSearchStack = createStackNavigator(
 );
 const AuthNavigator = createStackNavigator(
   {
-    //     FirstPage:{
-    // screen:FirstScreen
-    //     },
+    FirstPage: {
+      screen: FirstScreen,
+    },
     Other: {
       screen: Other,
     },

@@ -122,7 +122,7 @@ class RegisterScreen extends React.Component {
                   </Text>
                   <Text
                     style={{
-                      color: '#000',
+                      color: '#262626',
                       fontFamily: 'Poppins',
                       fontSize: 12,
                     }}>
@@ -159,7 +159,7 @@ class RegisterScreen extends React.Component {
                   </Text>
                   <Text
                     style={{
-                      color: '#000',
+                      color: '#262626',
                       fontFamily: 'Poppins',
                       fontSize: 12,
                     }}>
@@ -197,7 +197,7 @@ class RegisterScreen extends React.Component {
                   </Text>
                   <Text
                     style={{
-                      color: '#000',
+                      color: '#262626',
                       fontFamily: 'Poppins',
                       fontSize: 12,
                     }}>
@@ -234,7 +234,7 @@ class RegisterScreen extends React.Component {
                   </Text>
                   <Text
                     style={{
-                      color: '#000',
+                      color: '#262626',
                       fontFamily: 'Poppins',
                       fontSize: 12,
                     }}>
@@ -307,7 +307,9 @@ class RegisterScreen extends React.Component {
                     }}>
                     Calendar
                   </Text>
-                  <Text style={{color: '#000', fontFamily: 'Poppins'}}>23</Text>
+                  <Text style={{color: '#262626', fontFamily: 'Poppins'}}>
+                    23
+                  </Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -737,7 +739,7 @@ const Navegador = createBottomTabNavigator(
   {
     tabBarOptions: {
       activeTintColor: '#000',
-      inactiveTintColor: 'gray',
+      inactiveTintColor: '#000',
       labelStyle: {
         fontFamily: 'Poppins',
         justifyContent: 'space-between',

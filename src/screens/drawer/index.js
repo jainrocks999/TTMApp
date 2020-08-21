@@ -15,6 +15,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import storage from '../../config/storage';
 var serverurl =
   'http://dev2.sbsgroupsolutions.co.in/admin/uploads/userprofile/';
 //import LanguagesString from '../Config/Languages';
@@ -45,7 +46,7 @@ export default class MyDrawer extends React.Component {
         : () => {
             this.setState({currentpage: route.key});
             this.props.navigation.navigate(route.key);
-            AsyncStorage.getItem('NAME').then(Name => {
+            AsyncStorage.getItem(storage.UserName).then(Name => {
               this.setState({name: Name});
               Alert;
             });
@@ -85,7 +86,7 @@ export default class MyDrawer extends React.Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('NAME').then(Name => {
+    AsyncStorage.getItem(storage.UserName).then(Name => {
       this.setState({name: Name});
       Alert;
     });
@@ -120,6 +121,7 @@ export default class MyDrawer extends React.Component {
   Logout = () => {
     Alert.alert(
       'Are you want to logout ?',
+      '',
       [
         {
           text: 'Cancel',

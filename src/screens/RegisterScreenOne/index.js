@@ -10,7 +10,7 @@ import {
   Alert,
 } from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
-import resstyle from './style.js';
+import styles from './style.js';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../config/storage';
 import qs from 'qs';
@@ -111,12 +111,12 @@ class Registration extends React.Component {
   };
   render() {
     return (
-      <ScrollView style={{flex: 1}}>
-        <View style={{flex: 1, padding: 14, backgroundColor: '#fff'}}>
+      <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
+        <View style={{flex: 1, padding: 14}}>
           <Spinner
             visible={this.state.spinner}
             textContent={'Loading...'}
-            textStyle={resstyle.spinnerTextStyle}
+            textStyle={styles.spinnerTextStyle}
           />
           <View>
             <TouchableOpacity
@@ -127,15 +127,23 @@ class Registration extends React.Component {
                 style={{width: 20, height: 15, color: 'grey'}}
               />
             </TouchableOpacity>
-            <Text style={resstyle.register}>New User Registration</Text>
-            <Text style={resstyle.please}>Please fill detail for register</Text>
+            <Text style={styles.register}>New User Registration</Text>
+            <Text style={styles.please}>Please fill detail for register</Text>
           </View>
-          <View style={{marginTop: 50, marginBottom: 30}}>
-            <View style={resstyle.inputContainer}>
-              <Text>User Id</Text>
+          <View style={styles.imageView}>
+            <Image
+              source={require('../../assets/images/registration_one.png')}
+              style={styles.image}
+            />
+          </View>
+
+          {/* registration_one */}
+          <View style={{marginTop: 10, marginBottom: 30}}>
+            <View style={styles.inputContainer}>
+              <Text style={{marginBottom: 10}}>User Id</Text>
               <TextInput
                 value={this.state.UserId}
-                style={resstyle.input}
+                style={styles.input}
                 placeholder={'User ID'}
                 placeholderTextColor={'#B0B3B7'}
                 onChangeText={UserId => {
@@ -143,16 +151,16 @@ class Registration extends React.Component {
                 }}
               />
             </View>
+
             <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
-                marginTop: 20,
               }}>
-              <View style={resstyle.inputContainer1}>
+              <View style={styles.inputContainer1}>
                 <Text>First Name</Text>
                 <TextInput
-                  style={resstyle.input2}
+                  style={styles.input2}
                   placeholder={'First Name'}
                   value={this.state.FirstName}
                   onChangeText={firstname => {
@@ -160,10 +168,10 @@ class Registration extends React.Component {
                   }}
                 />
               </View>
-              <View style={resstyle.inputContainer1}>
+              <View style={styles.inputContainer1}>
                 <Text>Last Name</Text>
                 <TextInput
-                  style={resstyle.input2}
+                  style={styles.input2}
                   placeholder={'Last Name'}
                   value={this.state.lastname}
                   onChangeText={lastname => {
@@ -178,10 +186,10 @@ class Registration extends React.Component {
                 justifyContent: 'space-between',
                 marginVertical: 20,
               }}>
-              <View style={resstyle.inputContainer1}>
+              <View style={styles.inputContainer1}>
                 <Text>Email</Text>
                 <TextInput
-                  style={resstyle.input2}
+                  style={styles.input2}
                   placeholder={'Email'}
                   value={this.state.Email}
                   onChangeText={Email => {
@@ -189,10 +197,10 @@ class Registration extends React.Component {
                   }}
                 />
               </View>
-              <View style={resstyle.inputContainer1}>
+              <View style={styles.inputContainer1}>
                 <Text>Company Name</Text>
                 <TextInput
-                  style={resstyle.input2}
+                  style={styles.input2}
                   placeholder={'Company'}
                   value={this.state.company}
                   onChangeText={company => {
@@ -203,26 +211,12 @@ class Registration extends React.Component {
             </View>
 
             <TouchableOpacity
-              style={{
-                borderRadius: 50,
-                backgroundColor: '#343A40',
-                alignItems: 'center',
-                alignSelf: 'center',
-                marginTop: 100,
-                width: 70,
-                height: 70,
-              }}
-              onPress={this.doRegister}>
-              <Image
-                style={{
-                  height: '100%',
-                  width: '100%',
-                  // tintColor: '#ffff',
-                  alignSelf: 'center',
-                }}
-                resizeMode={'center'}
-                source={require('../../assets/icons/next.png')}
-              />
+              //onPress={this.doLogin}
+              style={styles.button}
+              onPress={() => {
+                this.props.navigation.navigate('RegistrationTwo');
+              }}>
+              <Text style={{color: 'white'}}>Next</Text>
             </TouchableOpacity>
           </View>
           <StatusBar backgroundColor="#fff" barStyle="dark-content" />

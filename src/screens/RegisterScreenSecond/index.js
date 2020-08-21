@@ -9,7 +9,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
-import resstyle from './style.js';
+import styles from './style.js';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../config/storage';
 import qs from 'qs';
@@ -167,7 +167,7 @@ class Registration extends React.Component {
         <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
-          textStyle={resstyle.spinnerTextStyle}
+          textStyle={styles.spinnerTextStyle}
         />
 
         <View>
@@ -179,13 +179,20 @@ class Registration extends React.Component {
               style={{width: 20, height: 15, color: 'grey'}}
             />
           </TouchableOpacity>
-          <Text style={resstyle.register}>New User Registration</Text>
-          <Text style={resstyle.please}>Please fill detail for register</Text>
+          <Text style={styles.register}>New User Registration</Text>
+          <Text style={styles.please}>Please fill detail for register</Text>
         </View>
 
-        <View style={{marginTop: 50}}>
+        <View style={styles.imageView}>
+          <Image
+            source={require('../../assets/images/registration_two.png')}
+            style={styles.image}
+          />
+        </View>
+
+        <View style={{marginTop: 10}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={[resstyle.inputContainer1]}>
+            <View style={[styles.inputContainer1]}>
               <Text>Country</Text>
               <View
                 style={{
@@ -226,7 +233,7 @@ class Registration extends React.Component {
                 </Picker>
               </View>
             </View>
-            <View style={[resstyle.inputContainer1]}>
+            <View style={[styles.inputContainer1]}>
               <Text>State</Text>
               <View
                 style={{
@@ -269,10 +276,10 @@ class Registration extends React.Component {
             </View>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={resstyle.inputContainer1}>
+            <View style={styles.inputContainer1}>
               <Text>City</Text>
               <TextInput
-                style={resstyle.input}
+                style={styles.input}
                 placeholder="city"
                 value={this.state.city}
                 onChangeText={city => {
@@ -280,10 +287,10 @@ class Registration extends React.Component {
                 }}
               />
             </View>
-            <View style={resstyle.inputContainer1}>
+            <View style={styles.inputContainer1}>
               <Text>Pincode</Text>
               <TextInput
-                style={resstyle.input}
+                style={styles.input}
                 placeholder="Pincode"
                 keyboardType="numeric"
                 value={this.state.pincode}
@@ -294,10 +301,10 @@ class Registration extends React.Component {
             </View>
           </View>
 
-          <View style={resstyle.inputContainer}>
+          <View style={styles.inputContainer}>
             <Text>Address</Text>
             <TextInput
-              style={resstyle.input}
+              style={styles.input}
               placeholder={'Address'}
               value={this.state.address}
               onChangeText={address => {
@@ -306,10 +313,10 @@ class Registration extends React.Component {
             />
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={resstyle.inputContainer1}>
+            <View style={styles.inputContainer1}>
               <Text>Country Code</Text>
               <TextInput
-                style={[resstyle.input, {backgroundColor: '#E9ECEF'}]}
+                style={[styles.input, {backgroundColor: '#E9ECEF'}]}
                 placeholder={'+91'}
                 placeholderTextColor={'black'}
                 keyboardType="numeric"
@@ -318,10 +325,10 @@ class Registration extends React.Component {
                 }}
               />
             </View>
-            <View style={resstyle.inputContainer1}>
+            <View style={styles.inputContainer1}>
               <Text>Mobile number</Text>
               <TextInput
-                style={resstyle.input}
+                style={styles.input}
                 placeholder={'Mobile number'}
                 value={this.state.Phone}
                 keyboardType="phone-pad"
@@ -334,8 +341,8 @@ class Registration extends React.Component {
           <ScrollView />
         </View>
 
-        <TouchableOpacity style={resstyle.button} onPress={this.doRegister}>
-          <Text style={[{color: 'white'}, resstyle.font]}>Register</Text>
+        <TouchableOpacity style={styles.button} onPress={this.doRegister}>
+          <Text style={[{color: 'white'}, styles.font]}>Register</Text>
         </TouchableOpacity>
 
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
