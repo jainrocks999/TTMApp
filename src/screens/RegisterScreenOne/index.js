@@ -100,6 +100,11 @@ class Registration extends React.Component {
     } else if (company == '') {
       Toast.show('Please enter company name');
     } else {
+      console.log('User Id' + UserId);
+      console.log('User Id' + FirstName);
+      console.log('User Id' + lastname);
+      console.log('User Id' + Email);
+      console.log('User Id' + company);
       this.props.navigation.navigate('RegistrationTwo', {
         UserId: UserId,
         FirstName: FirstName,
@@ -119,7 +124,7 @@ class Registration extends React.Component {
         />
         <View>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Login')}>
+            onPress={() => this.props.navigation.navigate('Other')}>
             <Image
               source={require('../../assets/icons/arrow.png')}
               resizeMode={'stretch'}
@@ -211,11 +216,12 @@ class Registration extends React.Component {
             </View>
 
             <TouchableOpacity
-              //onPress={this.doLogin}
+              onPress={this.doRegister}
               style={styles.button}
-              onPress={() => {
-                this.props.navigation.navigate('RegistrationTwo');
-              }}>
+              // onPress={() => {
+              //   this.props.navigation.navigate('RegistrationTwo');
+              // }}
+            >
               <Text style={{color: 'white'}}>Next</Text>
             </TouchableOpacity>
           </View>

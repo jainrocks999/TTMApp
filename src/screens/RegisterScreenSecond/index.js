@@ -50,12 +50,18 @@ class Registration extends React.Component {
     this.loaddata();
   }
   loaddata = async () => {
-    const UserId = navigation.getParam('UserId');
-    const FirstName = navigation.getParam('FirstName');
-    const lastname = navigation.getParam('lastname');
-    const Email = navigation.getParam('Email');
-    const company = navigation.getParam('company');
+    const UserId = this.props.navigation.getParam('UserId');
+
+    const FirstName = this.props.navigation.getParam('FirstName');
+    const lastname = this.props.navigation.getParam('lastname');
+    const Email = this.props.navigation.getParam('Email');
+    const company = this.props.navigation.getParam('company');
     let token = await AsyncStorage.getItem(storage.Token);
+    console.log('userId' + UserId);
+    console.log('userId' + FirstName);
+    console.log('userId' + Email);
+    console.log('userId' + lastname);
+    console.log('userId' + company);
     this.setState({
       token: token,
       UserId: UserId,
