@@ -1,24 +1,25 @@
 initialstate={
   isFetching:false,
-    User:null
+  Token:null,
+  UserDetails:null
 }
 export default (state=initialstate,action)=>{
   switch(action.type){
-    case 'User_Login_Request':
+    //token Status Value
+     case 'User_Token_Request':
+     return{...state,isFetching:true}
+     case 'User_Token_Success':
+     return{...state,isFetching:false,Token:action.payload}
+     case 'User_Token_Error':
+     return {...state,isFetching:false}
+     //Login Status Value
+     case 'User_Login_Request':
     return{...state,isFetching:true}
     case 'User_Login_Success':
-    return{...state,isFetching:false,User:action.payload}
+    return{...state,isFetching:false,UserDetails:action.payload}
     case 'User_Login_Error':
     return{...state,isFetching:false}
-case 'Login_Token':
-    return{...state,isFetching:true}
-    case 'Token_Success':
-    return{...state,isFetching:false,User:action.payload}
-    case 'Token_Error':
-    return{...state,isFetching:false}
-
-
-
+//Register status Value
     case 'User_Register_Request':
     return{...state,isFetching:true}
     case 'User_Register_Success':

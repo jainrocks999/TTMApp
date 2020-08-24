@@ -3,19 +3,40 @@ import {Alert} from 'react-native';
 import {takeEvery,put,call} from 'redux-saga/effects';
 import Api from '../Api';
 import AsyncStorage from '@react-native-community/async-storage';
-import Constants from '../Constants';
+import Constants from '../../config/storage';
 import { StackActions ,NavigationActions} from 'react-navigation';
 import qs from 'qs';
+
+
+function* DoToken(action){
+    console.log('token api check'+action)
+    const data =JSON.stringify({
+        User_Name:action.usermail,
+        Password:action.password,
+    });
+    const p=yield call(Api.fetchDataByPOST,action.url,data)
+    console.log('token'+p)
+    if(p.data == null){
+        yield put({
+            type:'User_Token_Success',
+            payload:p.data
+        })
+         AsyncStorage.setItem(Constants.token, p.data)
+    }else{
+        Alert.alert(p.data)
+ yield put({
+            type:'User_Login_Error',
+        }) 
+}
+
+}
+
 function* doLogin(action){
     
     const data = JSON.stringify({
      User_Name: action.User_Name,
      Password: action.Password,
     });
-console.log('kapil first'+Api.fetchDataByPOST)
-console.log('kapil first'+action.url)
-console.log('kapil first'+data)
-
     const p = yield call(Api.fetchDataByPOST,action.url,data)
     console.log('kapil'+ p)
    if(p.data == ''){
@@ -102,6 +123,7 @@ if(action.navigateTo){
 export default function* authSaga(){
     yield takeEvery('User_Login_Request',doLogin)
     yield takeEvery('User_Register_Request',doRegister)
+    yield takeEvery('User_Token_Request',DoToken)
 
 }         
 
