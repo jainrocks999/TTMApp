@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {StyleSheet} from 'react-native';
 export default styles = StyleSheet.create({
@@ -9,28 +10,42 @@ export default styles = StyleSheet.create({
     fontWeight: 'normal',
     fontFamily: 'Poppins-SemiBold',
     fontSize: 22,
-    marginTop: 10,
+    marginTop: 8,
+  },
+  imageView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 4,
+    paddingRight: 19,
   },
   image: {
-    //flex:1,
-   // resizeMode: "stretch",
-    //justifyContent: "center"
+    width: 350,
+    height: 225,
   },
+
   spinnerTextStyle: {
     color: '#fff',
   },
   inputContainer: {
-    borderColor: '#A4A7AC',
     width: '100%',
-    marginVertical: 20,
-    height: 40,
+    marginVertical: 10,
+   // height: 40,
   },
   input: {
-    marginVertical: 10,
+    borderColor: '#A4A7AC',
+    // marginVertical: 10,
+    width: '100%',
     height: 40,
     paddingLeft: 10,
     borderRadius: 5,
     borderWidth: 1,
+  },
+  inputt: {
+    borderWidth: 1,
+    width: '100%',
+    height: 40,
+    borderRadius: 10,
+    marginTop: 10,
   },
   input1: {
     borderWidth: 1,
@@ -43,19 +58,18 @@ export default styles = StyleSheet.create({
     paddingRight: 10,
     alignItems: 'center',
   },
-           
 
   inputContainer1: {
-  marginTop:20,
-    borderColor: '#A4A7AC',
+   // marginTop: 20,
     width: '48%',
-    height: 40,
+    //height: 40,
   },
   input2: {
-    marginVertical: 10,
+    borderColor: '#A4A7AC',
+    borderWidth: 1,
+    marginVertical: 8,
     paddingLeft: 10,
     borderRadius: 5,
-    borderWidth: 1,
     height: 40,
   },
   password: {
@@ -66,11 +80,11 @@ export default styles = StyleSheet.create({
   },
   font: {},
   button: {
-    backgroundColor: '#343A40',
+    backgroundColor: '#5F85E5',
     borderRadius: 5,
     padding: 10,
     alignItems: 'center',
-    marginTop: 43,
+    marginTop: 35,
   },
   nextButton: {
     backgroundColor: '#343A40',

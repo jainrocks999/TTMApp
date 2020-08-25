@@ -9,45 +9,50 @@ import qs from 'qs';
 
 
 function* DoToken(action){
-    console.log('token api check'+action)
+    console.log('token api check'+action.usermail)
+
     const data =JSON.stringify({
         User_Name:action.usermail,
         Password:action.password,
     });
     const p=yield call(Api.fetchDataByPOST,action.url,data)
-    console.log('token'+p)
-    if(p.data == null){
+    console.log('token'+p.data)
+    if(p.data !== ''){
         yield put({
             type:'User_Token_Success',
             payload:p.data
         })
-         AsyncStorage.setItem(Constants.token, p.data)
+         AsyncStorage.setItem(Constants.Token, p.data)
     }else{
         Alert.alert(p.data)
  yield put({
-            type:'User_Login_Error',
+            type:'User_Token_Error',
         }) 
 }
 
 }
 
 function* doLogin(action){
-    
+    console.log('ka'+action)
     const data = JSON.stringify({
-     User_Name: action.User_Name,
+     User_Name: action.Email,
      Password: action.Password,
+     Company_Name: 'BRAND',
     });
-    const p = yield call(Api.fetchDataByPOST,action.url,data)
-    console.log('kapil'+ p)
-   if(p.data == ''){
+    const p = yield call(Api.fetchDataByPOST,action.url,data,action.token)
+    console.log('kapil'+ p.Status)
+    console.log('kapil'+JSON.stringify(p.data))
+    console.log('kapil'+ p.Status)
+   if(p.Status == true){
     yield put({
         type:'User_Login_Success',
-        payload:p.data
+        payload:p.data.data
     })
-    this.props.navigation.navigate('Drawer');
-     AsyncStorage.setItem(Constants.token, p.data)
+  
+     AsyncStorage.setItem(Constants.UserID,JSON.stringify(p.data.UserID))
+     AsyncStorage.setItem(Constants.UserName, p.data.UserName)
 }else{
-Alert.alert(p.data)
+Alert.alert(p.message)
  yield put({
             type:'User_Login_Error',
         }) 
@@ -121,10 +126,10 @@ if(action.navigateTo){
     }  
 }
 export default function* authSaga(){
+      yield takeEvery('User_Token_Request',DoToken)
     yield takeEvery('User_Login_Request',doLogin)
     yield takeEvery('User_Register_Request',doRegister)
-    yield takeEvery('User_Token_Request',DoToken)
-
+  
 }         
 
 // export default function* authSaga(){

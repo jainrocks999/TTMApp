@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {StyleSheet} from 'react-native';
 export default styles = StyleSheet.create({
@@ -37,7 +38,7 @@ export default styles = StyleSheet.create({
     paddingRight: 19,
   },
   image: {
-    width: 350,
-    height: 250,
+    width: 340,
+    height: 190,
   },
 });

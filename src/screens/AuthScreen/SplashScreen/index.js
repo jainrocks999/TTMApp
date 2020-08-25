@@ -25,32 +25,15 @@ import Axios from 'axios';
   }
 
   loaddata = async () => {
+     const {usermail, password} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
  this.props.dispatch({type:'User_Token_Request',url:'token',usermail,password})
-  
-  //   const data = qs.stringify({
-  //     User_Name: 'webapi_ttm',
-  //     Password: 'hIrBPBcLiP@Ax9wBIR9CrjQ',
-  //   });
-  //   const headers = {
-  //     'Content-Type': 'application/x-www-form-urlencoded',
-  //   };
-  //   Axios.post(connection.TokenUrl, data, {headers})
-  //     .then(p => {
-  //       console.log('jdnjdnjdn' + userid);
-  //       console.log('jdnjdnjdn' + p.data.data);
-  //       if (p.data.data !== '401') {
-  //         if (userid == null) {
-  //           setTimeout(() => this.props.navigation.navigate('Other'), 1000);
-  //         } else {
-  //           setTimeout(() => this.props.navigation.navigate('AppStack'), 1000);
-  //         }
-  //         AsyncStorage.setItem(storage.Token, p.data.data);
-  //       } else {
-  //         Toast.show(p.data.error_description);
-  //       }
-  //     })
-  //     .catch(Error);
+         console.log('kya hua ')
+          if (userid == null) {
+            setTimeout(() => this.props.navigation.navigate('Other'), 1000);
+          } else {
+            setTimeout(() => this.props.navigation.navigate('AppStack'), 1000);
+          }
    };
 
   render() {
@@ -74,9 +57,10 @@ import Axios from 'axios';
 }
 const mapStateToProps=(state)=>{
   console.log('Kapil jain'+JSON.stringify(state))
+  //console.log('Kapil jain'+JSON.stringify(Token))
   return{
-      isFetching:state.Auth.isFetching,
-      Token:state.Auth.Token,
+      isFetching:state.isFetching,
+      Token:state.Token,
   }
 }
 
