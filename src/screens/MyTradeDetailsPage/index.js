@@ -150,7 +150,7 @@ updateLayout = (index) => {
                 onClickFunction={this.updateLayout.bind(this, key)}
                 item={item}
                 style={{fontsize:10,padding:10}}
-                 onPress={()=>this.props.navigation.navigate('MyTradeDetailViewStack')}
+                 onclickview={()=>this.props.navigation.navigate('MyTradeDetailViewStack')}
               >
               </ExpandableItemComponent>
           </View>

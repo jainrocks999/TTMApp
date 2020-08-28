@@ -100,7 +100,7 @@ export default class ExpandableItemComponent extends Component {
           ))}
        <View style={{flex:1,width:'100%',justifyContent:'flex-end',alignItems:'flex-end'}}>
 <TouchableOpacity
-          onPress={() =>this.props.onclickview}
+          onPress={this.props.onclickview}
             style={{
               backgroundColor: '#5F85E5',
               borderRadius: 5,
@@ -113,7 +113,7 @@ export default class ExpandableItemComponent extends Component {
               alignItems: 'center',
               marginTop: 10,
             }}>
-            <Text style={{color: 'white',fontSize:14}}>View Report</Text>
+            <Text style={{color: 'white',fontSize:14}}>View More</Text>
           </TouchableOpacity>
           </View>
  </View>
