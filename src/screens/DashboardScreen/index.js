@@ -347,7 +347,9 @@ class RegisterScreen extends React.Component {
                     justifyContent: 'space-between',
                   }}>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+                    <TouchableOpacity style={styles.touchTm}
+                    onPress={()=>
+                    this.props.navigation.navigate('MyTradeDetailPage')}>
                       <View
                         style={{
                           justifyContent: 'center',

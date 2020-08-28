@@ -18,7 +18,8 @@ import LoginPage from '../screens/AuthScreen/LoginScreen';
 import CRDetail from '../screens/CRDetail';
 import TradeMark from '../screens/TradeMark';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
-
+import MyTradeDetailPage from  '../screens/MyTradeDetailsPage';
+import MyTradeDetailViewPage from  '../screens/MyTradeDetailsViewPage';
 //import Sidebar from '../component/SideBar';
 import Other from '../screens/other';
 import TMSearch from '../screens/tmSearch';
@@ -181,9 +182,21 @@ const apiNavigator = createStackNavigator({
 //     contentComponent: props => <Sidebar {...props} />,
 //   },
 // );
+const TradedetailsStack = createStackNavigator({
+  MyTradeDetailPage:{
+    screen:MyTradeDetailPage
+  },
+});
+const MyTradeDetailViewStack = createStackNavigator({
+  MyTradeDetailViewPage:{
+    screen:MyTradeDetailViewPage
+  },
+});
 const AppStack = createDrawerNavigator(
   {
     Dashboard: HomeStackNavigator,
+    TradedetailsStack:TradedetailsStack,
+    MyTradeDetailViewStack:MyTradeDetailViewStack,
     // Profile: ProfileStack,
     //Notification: NotificationStack,
     // About: AboutStack,
