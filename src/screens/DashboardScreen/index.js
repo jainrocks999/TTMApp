@@ -133,7 +133,10 @@ class RegisterScreen extends React.Component {
             </View>
 
             <View style={styles.secondView}>
-              <TouchableOpacity style={styles.touchTm}>
+              <TouchableOpacity style={styles.touchTm}
+                onPress={()=>
+                    this.props.navigation.navigate('CopyRightStack')}
+              >
                 <Image
                   style={styles.copyImage}
                   source={require('../../assets/Image/copyright_2x.png')}
@@ -171,7 +174,10 @@ class RegisterScreen extends React.Component {
           </View>
           <View style={styles.firstView}>
             <View style={styles.secondView}>
-              <TouchableOpacity style={styles.touchTm}>
+              <TouchableOpacity style={styles.touchTm}
+              onPress={()=>
+                    this.props.navigation.navigate('DesignPageStack')}
+              >
                 <Image
                   style={styles.copyImage}
                   source={require('../../assets/icons/design.png')}

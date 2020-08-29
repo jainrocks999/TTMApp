@@ -23,13 +23,15 @@ export default class Api {
     }
   
     static fetchDataByGET=async(url,token)=>{
+        console.log('jjjjjjjj'+url)
+        console.log('jjjjjjjj'+token)
       try {
         const response=await axios({
             method:'GET',
              headers: {
                 'Authorization': 'bearer ' + token
             },
-            url:url 
+            url:Constants.MainUrl+url 
         })
          return response.data
       } catch (error) {

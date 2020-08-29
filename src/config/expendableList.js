@@ -1,5 +1,6 @@
 /*Example of Expandable ListView in React Native*/
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 //import react in our project
 import {
   LayoutAnimation,
@@ -14,7 +15,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 //import basic react native components
 
-export default class ExpandableItemComponent extends Component {
+ class ExpandableItemComponent extends Component {
   //Custom Component for the Expandable List
   constructor() {
     super();
@@ -65,7 +66,7 @@ export default class ExpandableItemComponent extends Component {
               fontWeight: 'bold',
               color:'#939BA7'
             }}>
-            {this.props.item.category_name}
+            {this.props.CopyRight.Title}
           </Text>
 
           <Icon name="chevron-down" size={20} color="#3C3C3C" />
@@ -77,7 +78,7 @@ export default class ExpandableItemComponent extends Component {
             backgroundColor:'#fff'
           }}>
           {/*Content under the header of the Expandable List Item*/}
-          {this.props.item.subcategory.map((item, key) => (
+          {this.props.CopyRight.map((item, key) => (
             <TouchableOpacity
               key={key}
               style={{
@@ -93,7 +94,7 @@ export default class ExpandableItemComponent extends Component {
             marginLeft:10,
             borderColor: 'grey',
           }}>
-                  <Text style={{ fontSize: 16, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'}}>{item.val}</Text>
+                  <Text style={{ fontSize: 16, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'}}>{item.Status}</Text>
               <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center'}}>{item.val}</Text>             
               </View>
             </TouchableOpacity>
@@ -121,3 +122,11 @@ export default class ExpandableItemComponent extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  console.log('Details' + JSON.stringify(state.isFetching));
+  return {
+    isFetching: state.isFetching,
+    CopyRight: state.CopyRight,
+  };
+};
+export default connect(mapStateToProps)(ExpandableItemComponent);

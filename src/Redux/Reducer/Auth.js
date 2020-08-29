@@ -2,7 +2,7 @@ initialstate={
   isFetching:false,
   Token:null,
   UserDetails:null,
-  CopyRight:null,
+  CopyRight:[],
 }
 export default (state=initialstate,action)=>{
   switch(action.type){
@@ -41,7 +41,6 @@ export default (state=initialstate,action)=>{
     return{...state,isFetching:false,DesignDetails:action.payload}
     case 'User_Design_Details_Error':
     return{...state,isFetching:false}
-    
     default:         
     return state;
   }

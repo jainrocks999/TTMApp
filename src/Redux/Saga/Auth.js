@@ -9,14 +9,13 @@ import qs from 'qs';
 
 
 function* DoToken(action){
-    console.log('token api check'+action.usermail)
 
     const data =JSON.stringify({
         User_Name:action.usermail,
         Password:action.password,
     });
     const p=yield call(Api.fetchDataByPOST,action.url,data)
-    console.log('token'+p.data)
+   
     if(p.data !== ''){
         yield put({
             type:'User_Token_Success',
@@ -32,17 +31,36 @@ function* DoToken(action){
 
 }
 
+function* DoCopyRight(action){
+    console.log('copy cdcdcd'+action.url)
+    const p = yield call(Api.fetchDataByGET,action.url,action.token)
+    console.log('copy'+ p.Status)
+    console.log('copy'+JSON.stringify(p.data))
+    console.log('copy'+ p.Status)
+   if(p.Status == true){
+    yield put({
+        type:'User_CopyRight_Success',
+        payload:p.data
+    })
+  
+    // AsyncStorage.setItem(Constants.UserID,JSON.stringify(p.data.UserID))
+    // AsyncStorage.setItem(Constants.UserName, p.data.UserName)
+}else{
+Alert.alert(p.message)
+ yield put({
+            type:'User_CopyRight_Error',
+        }) 
+}
+
+}
+
 function* doLogin(action){
-    console.log('ka'+action)
     const data = JSON.stringify({
      User_Name: action.Email,
      Password: action.Password,
      Company_Name: 'BRAND',
     });
     const p = yield call(Api.fetchDataByPOST,action.url,data,action.token)
-    console.log('kapil'+ p.Status)
-    console.log('kapil'+JSON.stringify(p.data))
-    console.log('kapil'+ p.Status)
    if(p.Status == true){
     yield put({
         type:'User_Login_Success',
@@ -61,6 +79,7 @@ Alert.alert(p.message)
        
 }
 
+
 function* doRegister(action){
     try{
     const data = JSON.stringify({
@@ -78,11 +97,9 @@ function* doRegister(action){
     CountryId:action.CountryId,
     Company_Name:action.Company_Name 
     });
-    console.log('dadada'+data)
-    console.log('api'+action.url)
-   // console.log('api'+Api.fetchDataByPOST)
+    
     const p = yield call(Api.fetchDataByPOST,action.url,data)
-    console.log('kapil'+p.data)
+   
    if(p.data == ''){
     yield put({
         type:'User_Register_Success',
@@ -104,7 +121,7 @@ if(action.navigateTo){
               action.navigation.dispatch(resetAction);
             }
         } else {
-            console.log(p.data)
+         
             Alert.alert(
                 'Explored',
                 p.data.error_description,
@@ -118,7 +135,7 @@ if(action.navigateTo){
         }
        
     } catch (error) {
-        console.log(error)
+      
       
         yield put({
             type:'User_Register_Error',
@@ -129,6 +146,7 @@ export default function* authSaga(){
       yield takeEvery('User_Token_Request',DoToken)
     yield takeEvery('User_Login_Request',doLogin)
     yield takeEvery('User_Register_Request',doRegister)
+    yield takeEvery('User_CopyRight_Request',DoCopyRight)
   
 }         
 

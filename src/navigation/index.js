@@ -15,7 +15,8 @@ import demo from '../screens/demo';
 import RegistrationPageOne from '../screens/AuthScreen/RegisterScreenOne';
 import RegistrationPageTwo from '../screens/AuthScreen/RegisterScreenSecond';
 import LoginPage from '../screens/AuthScreen/LoginScreen';
-import CRDetail from '../screens/CRDetail';
+import CopyRightPage from '../screens/CopyRightScreen';
+import DesignPage from '../screens/DesignScreen';
 import TradeMark from '../screens/TradeMark';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import MyTradeDetailPage from  '../screens/MyTradeDetailsPage';
@@ -65,6 +66,11 @@ const AuthNavigator = createStackNavigator(
   },
 );
 
+const DesignPageStack = createStackNavigator({
+  DesignPage:{
+    screen:DesignPage
+  },
+});
 const HomeStackNavigator = createStackNavigator(
   {
     Account: {
@@ -131,9 +137,7 @@ const DrawerStack = createStackNavigator(
   },
 );
 const apiNavigator = createStackNavigator({
-  copies: {
-    screen: CRDetail,
-  },
+ 
   trade: {
     screen: TradeMark,
   },
@@ -192,16 +196,18 @@ const MyTradeDetailViewStack = createStackNavigator({
     screen:MyTradeDetailViewPage
   },
 });
+const CopyRightStack = createStackNavigator({
+  CopyRightPage:{
+    screen:CopyRightPage
+  },
+})
 const AppStack = createDrawerNavigator(
   {
     Dashboard: HomeStackNavigator,
     TradedetailsStack:TradedetailsStack,
     MyTradeDetailViewStack:MyTradeDetailViewStack,
-    // Profile: ProfileStack,
-    //Notification: NotificationStack,
-    // About: AboutStack,
-    //Contact: ContactStack,
-    //AddIssue: IssueStack,
+    CopyRightStack:CopyRightStack,
+    DesignPageStack:DesignPageStack,
   },
   {
     initialRouteName: 'Dashboard',
