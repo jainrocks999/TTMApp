@@ -31,6 +31,27 @@ function* DoToken(action){
 
 }
 
+function* DoDesign(action){
+    console.log('copy cdcdcd'+action.url)
+    const p = yield call(Api.fetchDataByGET,action.url,action.token)
+    console.log('copy'+ p.Status)
+    console.log('copy'+JSON.stringify(p.data))
+    console.log('copy'+ p.Status)
+   if(p.Status == true){
+    yield put({
+        type:'User_Design_details_Success',
+        payload:p.data
+    })
+}else{
+Alert.alert(p.message)
+ yield put({
+            type:'User_Design_Details_Error',
+        }) 
+}
+
+}
+
+
 function* DoCopyRight(action){
     console.log('copy cdcdcd'+action.url)
     const p = yield call(Api.fetchDataByGET,action.url,action.token)
@@ -147,6 +168,7 @@ export default function* authSaga(){
     yield takeEvery('User_Login_Request',doLogin)
     yield takeEvery('User_Register_Request',doRegister)
     yield takeEvery('User_CopyRight_Request',DoCopyRight)
+    yield takeEvery('User_Design_Details_Request',DoDesign)
   
 }         
 

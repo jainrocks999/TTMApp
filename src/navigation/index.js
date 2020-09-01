@@ -70,7 +70,15 @@ const DesignPageStack = createStackNavigator({
   DesignPage:{
     screen:DesignPage
   },
-});
+},
+ {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },
+  );
 const HomeStackNavigator = createStackNavigator(
   {
     Account: {
@@ -190,17 +198,37 @@ const TradedetailsStack = createStackNavigator({
   MyTradeDetailPage:{
     screen:MyTradeDetailPage
   },
-});
+},
+ {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },);
 const MyTradeDetailViewStack = createStackNavigator({
   MyTradeDetailViewPage:{
     screen:MyTradeDetailViewPage
   },
-});
+}, {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },);
 const CopyRightStack = createStackNavigator({
   CopyRightPage:{
     screen:CopyRightPage
   },
-})
+},
+ {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },)
 const AppStack = createDrawerNavigator(
   {
     Dashboard: HomeStackNavigator,

@@ -1,96 +1,10 @@
 import React, {Component} from 'react';
-import {View, StyleSheet,Text,ScrollView,Platform,  LayoutAnimation,UIManager,TouchableOpacity, ImageBackground} from 'react-native';
+import {View,Image,TextInput,FlatList, StyleSheet,Text,ScrollView,Platform,  LayoutAnimation,UIManager,TouchableOpacity, ImageBackground} from 'react-native';
 import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {SliderBox} from 'react-native-image-slider-box';
+import Icon1 from 'react-native-vector-icons/Feather';
 import ExpandableItemComponent from '../../config/expendableList.js'; 
- const CONTENT = [
-  {
-    isExpanded: false,
-    
-    category_name: 'Tm No. :1252362\nTrade mark :jonne',
-    subcategory: [
-      {id: 1, val: 'Sajana Bore'},
-      {id: 2, val: 'MAN'},
-      {id: 3, val: 'KIDS'},
-      {id: 4, val: 'SHOES & BAGS'},
-      {id: 5, val: 'HOME'},
-      {id: 6, val: 'STUDIOWEST'},
-    ],
-  },
-  {
-    isExpanded: false,
-   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
-    subcategory: [
-      {id: 1, val: 'ABOUT US'},
-      {id: 2, val: 'CONTACT US'},
-      {id: 3, val: 'STORE LOCATOR'},
-      {id: 4, val: 'INVESTORS'},
-      {id: 5, val: 'MEDIA CENTERS'},
-      {id: 6, val: 'CLUBWEST'},
-    ],
-  },
-  {
-    isExpanded: false,
-   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
-    subcategory: [
-      {id: 1, val: 'ABOUT US'},
-      {id: 2, val: 'CONTACT US'},
-      {id: 3, val: 'STORE LOCATOR'},
-      {
-    isExpanded: false,
-   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
-    subcategory: [
-      {id: 1, val: 'ABOUT US'},
-      {id: 2, val: 'CONTACT US'},
-      {id: 3, val: 'STORE LOCATOR'},
-      {id: 4, val: 'INVESTORS'},
-      {id: 5, val: 'MEDIA CENTERS'},
-      {id: 6, val: 'CLUBWEST'},
-    ],
-  },
-  {
-    isExpanded: false,
-   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
-    subcategory: [
-      {id: 1, val: 'ABOUT US'},
-      {id: 2, val: 'CONTACT US'},
-      {id: 3, val: 'STORE LOCATOR'},
-      {id: 4, val: 'INVESTORS'},
-      {id: 5, val: 'MEDIA CENTERS'},
-      {id: 6, val: 'CLUBWEST'},
-    ],
-  },
-      {id: 4, val: 'INVESTORS'},
-      {id: 5, val: 'MEDIA CENTERS'},
-      {id: 6, val: 'CLUBWEST'},
-    ],
-  },
-  {
-    isExpanded: false,
-   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
-    subcategory: [
-      {id: 1, val: 'ABOUT US'},
-      {id: 2, val: 'CONTACT US'},
-      {id: 3, val: 'STORE LOCATOR'},
-      {id: 4, val: 'INVESTORS'},
-      {id: 5, val: 'MEDIA CENTERS'},
-      {id: 6, val: 'CLUBWEST'},
-    ],
-  },
-  {
-    isExpanded: false,
-   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
-    subcategory: [
-      {id: 1, val: 'ABOUT US'},
-      {id: 2, val: 'CONTACT US'},
-      {id: 3, val: 'STORE LOCATOR'},
-      {id: 4, val: 'INVESTORS'},
-      {id: 5, val: 'MEDIA CENTERS'},
-      {id: 6, val: 'CLUBWEST'},
-    ],
-  },
-];
 
 export default class MyTradedetailsPage extends Component {
 static navigationOptions = ({ navigation }) => ({
@@ -112,36 +26,119 @@ static navigationOptions = ({ navigation }) => ({
   constructor(props) {
     super(props);
     this.state = {
-        expanded: false,
-          listDataSource: CONTENT,
-      images: [
-        require('../../assets/images/yogi.png'),
-        require('../../assets/images/pppp.png'),
-        require('../../assets/images/logo.png'),
-        require('../../assets/images/logo.png'),
-      ],
+
     };
     if (Platform.OS === 'android') {
       UIManager.setLayoutAnimationEnabledExperimental(true);
     }
   }
-updateLayout = (index) => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    const array = [...this.state.listDataSource];
-    array[index]['isExpanded'] = !array[index]['isExpanded'];
-    this.setState(() => {
-      return {
-        listDataSource: array,
-      };
-    });
-  };
 
-
- 
   render() {
     return (
-     
+  
         <View style={{flex:1}}>
+         <View
+          style={{
+            backgroundColor: 'white',
+            padding: 12,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.toggleDrawer();
+            }}>
+            <Image
+              source={require('../../assets/icons/menu.png')}
+              style={{width: 20, height: 15}}
+            />
+          </TouchableOpacity>
+
+          <View style={{}}>
+            <Text
+              style={{
+                fontSize: 22,
+                textAlign: 'center',
+              }}>
+              {'My Trade Details'}
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Image
+              source={require('../../assets/icons/bell_one.png')}
+              style={{
+                width: 22,
+                height: 22,
+                marginRight: 15,
+                justifyContent: 'center',
+              }}
+            />
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={require('../../assets/icons/profile.png')}
+                style={{width: 31, height: 31}}
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={{
+            backgroundColor: 'white',
+            padding: 12,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+          <View
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              flexDirection: 'row',
+              height: 45,
+              width: 350,
+              alignItems: 'center',
+              backgroundColor: '#fff',
+            }}>
+            <View style={{}}>
+              <Icon1 name="search" size={28} style={{marginLeft: 5}} />
+            </View>
+            <View
+              style={{
+                backgroundColor: 'transparent',
+                height: 42,
+                width: 305,
+                borderLeftWidth: 0.5,
+                marginLeft: 5,
+              }}>
+              <TextInput
+                style={{
+                  backgroundColor: 'transparent',
+                  height: 42,
+                  width: '100%',
+                }}
+                placeholder={'Tm search ...'}
+              />
+            </View>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <View style={{alignItems: 'center', marginLeft: 10}}>
+              <Icon name="filter" size={35} />
+            </View>
+          </View>
+        </View>
+        
          <FlatList
                     data={this.state.MappingListArray}
                     keyExtractor={(item, index) => index.toString()}

@@ -23,7 +23,7 @@ export default class Api {
     }
   
     static fetchDataByGET=async(url,token)=>{
-        console.log('jjjjjjjj'+url)
+        console.log('jjjjjjjj'+ Constants.MainUrl + url)
         console.log('jjjjjjjj'+token)
       try {
         const response=await axios({
@@ -33,6 +33,7 @@ export default class Api {
             },
             url:Constants.MainUrl+url 
         })
+        console.log('kakakakaka'+JSON.stringify(response))
          return response.data
       } catch (error) {
           throw error

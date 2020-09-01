@@ -3,6 +3,7 @@ initialstate={
   Token:null,
   UserDetails:null,
   CopyRight:[],
+  DesignDetails:[],
 }
 export default (state=initialstate,action)=>{
   switch(action.type){

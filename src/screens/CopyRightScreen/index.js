@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import {View, StyleSheet,Text,ScrollView,Platform,  LayoutAnimation,UIManager,TouchableOpacity, ImageBackground} from 'react-native';
+import {View,FlatList, TextInput, Image, StyleSheet,Text,ScrollView,Platform,  LayoutAnimation,UIManager,TouchableOpacity, ImageBackground} from 'react-native';
 import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {SliderBox} from 'react-native-image-slider-box';
 import AsyncStorage from '@react-native-community/async-storage';
 import connection from '../../Redux/Constants';
 import {connect} from 'react-redux';
+//import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon1 from 'react-native-vector-icons/Feather';
 import storage from '../../config/storage';
+
 import ExpandableItemComponent from '../../config/expendableList.js'; 
  const CONTENT = [
   {
@@ -97,21 +100,21 @@ import ExpandableItemComponent from '../../config/expendableList.js';
 ];
 
  class CopyRightPage extends Component {
-static navigationOptions = ({ navigation }) => ({
-        headerTitle: 'My Trade Details',
-       // drawerLabel: 'Details',
-        headerTintColor: 'black',
-        headerStyle: {
-          backgroundColor: '#fff',
+// static navigationOptions = ({ navigation }) => ({
+//         headerTitle: 'My Trade Details',
+//        // drawerLabel: 'Details',
+//         headerTintColor: 'black',
+//         headerStyle: {
+//           backgroundColor: '#fff',
          
-        },
-        headerLeft: (
-          <TouchableOpacity onPress={navigation.toggleDrawer}>
-            <Icon name="md-menu"
-              style={{ marginLeft: 10 }} size={30} color="#000" />
-          </TouchableOpacity>
-        ),
-      })
+//         },
+//         headerLeft: (
+//           <TouchableOpacity onPress={navigation.toggleDrawer}>
+//             <Icon name="md-menu"
+//               style={{ marginLeft: 10 }} size={30} color="#000" />
+//           </TouchableOpacity>
+//         ),
+//       })
 
   constructor(props) {
     super(props);
@@ -137,7 +140,7 @@ static navigationOptions = ({ navigation }) => ({
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
     console.log('bdb'+userid);
-    this.props.dispatch({type:'User_CopyRight_Request',url:'/NewTMApi/CRDetail?UserId='+userid+'&PageNo=1&Nor=10&search=',token:token})
+    this.props.dispatch({type:'User_CopyRight_Request',url:'/NewTMApi/CRDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
    };
 
 
@@ -171,19 +174,119 @@ updateLayout = (index) => {
     const {CopyRight}=this.props
     return (
         <View style={{flex:1}}>
+         <View
+          style={{
+            backgroundColor: 'white',
+            padding: 12,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.toggleDrawer();
+            }}>
+            <Image
+              source={require('../../assets/icons/menu.png')}
+              style={{width: 20, height: 15}}
+            />
+          </TouchableOpacity>
+
+          <View style={{}}>
+            <Text
+              style={{
+                fontSize: 22,
+                textAlign: 'center',
+              }}>
+              {'My Trade Details'}
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Image
+              source={require('../../assets/icons/bell_one.png')}
+              style={{
+                width: 22,
+                height: 22,
+                marginRight: 15,
+                justifyContent: 'center',
+              }}
+            />
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={require('../../assets/icons/profile.png')}
+                style={{width: 31, height: 31}}
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={{
+            backgroundColor: 'white',
+            padding: 12,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+          <View
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              flexDirection: 'row',
+              height: 45,
+              width: 350,
+              alignItems: 'center',
+              backgroundColor: '#fff',
+            }}>
+            <View style={{}}>
+              <Icon1 name="search" size={28} style={{marginLeft: 5}} />
+            </View>
+            <View
+              style={{
+                backgroundColor: 'transparent',
+                height: 42,
+                width: 305,
+                borderLeftWidth: 0.5,
+                marginLeft: 5,
+              }}>
+              <TextInput
+                style={{
+                  backgroundColor: 'transparent',
+                  height: 42,
+                  width: '100%',
+                }}
+                placeholder={'Tm search ...'}
+              />
+            </View>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <View style={{alignItems: 'center', marginLeft: 10}}>
+              <Icon name="filter" size={35} />
+            </View>
+          </View>
+        </View>
      <FlatList
                     data={CopyRight}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) =>
                        <View style={{ flexDirection: 'column',marginEnd:10, elevation: 10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'space-between' ,alignItems: 'flex-start' }}>
-        <View style={{ flexDirection: 'column', marginBottom: 4,justifyContent:'center' }}>
-        <Text style={{ fontSize: 16, color: '#000', fontFamily: 'Poppins-Bold',marginTop:4}}>T.M. No :996866222</Text>
-        </View>
+       
+
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between'}}>
-        <Text style={{ fontSize: 13, color: '#000',fontFamily: 'Poppins-Bold', alignItems:'center',justifyContent:'center' }}>Title</Text>
-        <Text style={{ fontSize: 14, color: '#000',alignItems:'center',justifyContent:'center' }}>{item.Title}</Text>             
+                <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Title</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Title}</Text>             
         </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:20}}>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
         <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Work</Text>
         <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Work}</Text>             
         </View>

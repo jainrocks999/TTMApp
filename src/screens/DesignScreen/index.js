@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
-import {View, StyleSheet,Text,ScrollView,Platform,  LayoutAnimation,UIManager,TouchableOpacity, ImageBackground} from 'react-native';
+import {View,Image,TextInput,FlatList, StyleSheet,Text,ScrollView,Platform,  LayoutAnimation,UIManager,TouchableOpacity, ImageBackground} from 'react-native';
 import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {SliderBox} from 'react-native-image-slider-box';
+import Icon1 from 'react-native-vector-icons/Feather';
+import {connect} from 'react-redux';
+import storage from '../../config/storage';
+
+import AsyncStorage from '@react-native-community/async-storage';
 import ExpandableItemComponent from '../../config/expendableList.js'; 
  const CONTENT = [
   {
@@ -92,7 +97,7 @@ import ExpandableItemComponent from '../../config/expendableList.js';
   },
 ];
 
-export default class MyTradedetailsPage extends Component {
+ class DesignDetails extends Component {
 static navigationOptions = ({ navigation }) => ({
         headerTitle: 'My Trade Details',
        // drawerLabel: 'Details',
@@ -132,7 +137,7 @@ static navigationOptions = ({ navigation }) => ({
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
     console.log('bdb'+userid);
-    this.props.dispatch({type:'User_Design_Details_Request',url:'/NewTMApi/CRDetail?UserId='+userid+'&PageNo=1&Nor=10&search=',token:token})
+    this.props.dispatch({type:'User_Design_Details_Request',url:'/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
    };
 updateLayout = (index) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -161,54 +166,145 @@ updateLayout = (index) => {
 //             </ScrollView>
  
   render() {
+const {DesignDetails}=this.props
     return (
      
         <View style={{flex:1}}>
+         <View
+          style={{
+            backgroundColor: 'white',
+            padding: 12,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.navigation.toggleDrawer();
+            }}>
+            <Image
+              source={require('../../assets/icons/menu.png')}
+              style={{width: 20, height: 15}}
+            />
+          </TouchableOpacity>
+
+          <View style={{}}>
+            <Text
+              style={{
+                fontSize: 22,
+                textAlign: 'center',
+              }}>
+              Design
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Image
+              source={require('../../assets/icons/bell_one.png')}
+              style={{
+                width: 22,
+                height: 22,
+                marginRight: 15,
+                justifyContent: 'center',
+              }}
+            />
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={require('../../assets/icons/profile.png')}
+                style={{width: 31, height: 31}}
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={{
+            backgroundColor: 'white',
+            padding: 12,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+          <View
+            style={{
+              borderWidth: 1,
+              borderRadius: 10,
+              flexDirection: 'row',
+              height: 45,
+              width: 350,
+              alignItems: 'center',
+              backgroundColor: '#fff',
+            }}>
+            <View style={{}}>
+              <Icon1 name="search" size={28} style={{marginLeft: 5}} />
+            </View>
+            <View
+              style={{
+                backgroundColor: 'transparent',
+                height: 42,
+                width: 305,
+                borderLeftWidth: 0.5,
+                marginLeft: 5,
+              }}>
+              <TextInput
+                style={{
+                  backgroundColor: 'transparent',
+                  height: 42,
+                  width: '100%',
+                }}
+                placeholder={'Tm search ...'}
+              />
+            </View>
+          </View>
+
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <View style={{alignItems: 'center', marginLeft: 10}}>
+              <Icon name="filter" size={35} />
+            </View>
+          </View>
+        </View>
      <FlatList
-                    data={this.state.MappingListArray}
+                    data={DesignDetails}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) =>
                        <View style={{ flexDirection: 'column',marginEnd:10, elevation: 10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'space-between' ,alignItems: 'flex-start' }}>
-        <View style={{ flexDirection: 'column', marginBottom: 4,justifyContent:'center' }}>
-        <Text style={{ fontSize: 16, color: '#000', fontFamily: 'Poppins-Bold',marginTop:4}}>T.M. No :996866222</Text>
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between'}}>
-        <Text style={{ fontSize: 13, color: '#000',fontFamily: 'Poppins-Bold', alignItems:'center',justifyContent:'center' }}>TradeMark : </Text>
-        <Text style={{ fontSize: 14, color: '#000',alignItems:'center',justifyContent:'center' }}>Liyouess</Text>             
-        </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:20}}>
-        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>STATUS</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>Registered</Text>             
+        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>App No</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.App_No}</Text>             
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold',width:'40%'  }}>APP.Date</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>14-02-2020</Text>
+        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold',width:'40%'  }}>ShortTrade Mark</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center',width:'55%' }}>{item.ShortTrade_Mark}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%' }}>TM Type</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>Colone</Text>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%' }}>FullTrade Mark</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center',width:'55%' }}>{item.FullTrade_Mark}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>APPpro Office</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', marginLeft:10, fontFamily: 'Poppins',alignItems:'center',justifyContent:'center' }}>Delhi</Text>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>App Status</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', marginLeft:10, fontFamily: 'Poppins',alignItems:'center',justifyContent:'center',width:'55%',color:'green' }}>{item.App_Status}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Journal No.</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center' }}>1990-20</Text>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Full Prop Name</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center' }}>{item.FullPropName}</Text>
         </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Vaild Upto</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>17/11/2020</Text>
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>Class</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>30</Text>
-        </View>
+      
+  
         </View>
                     }
                 />
                
         </View>
+
+
     );
   }
 }
@@ -216,6 +312,7 @@ const mapStateToProps = state => {
   console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
-    CopyRight: state.CopyRight,
+    DesignDetails: state.DesignDetails,
   };
 };
+export default connect(mapStateToProps)(DesignDetails);

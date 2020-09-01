@@ -28,7 +28,7 @@ import Axios from 'axios';
      const {usermail, password} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
  this.props.dispatch({type:'User_Token_Request',url:'token',usermail,password})
-         console.log('kya hua ')
+         console.log('kya hua '+userid)
           if (userid == null) {
             setTimeout(() => this.props.navigation.navigate('Other'), 1000);
           } else {
@@ -46,7 +46,7 @@ import Axios from 'axios';
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={require('../../../assets/images/ttm_logo.png')}
+            source={require('../../../assets/images/thumbnail.bmp')}
             resizeMode={'contain'}
           />
         </View>
