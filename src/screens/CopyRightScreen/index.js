@@ -151,28 +151,70 @@ updateLayout = (index) => {
       };
     });
   };
-
+// <ScrollView style={{ flex: 1}}>
+//     //     {CopyRight.map((item, key) => (
+//     //         <View style={{flex:1,padding:4}}>
+//     //           <ExpandableItemComponent
+//     //             key={item.Title}
+//     //             onClickFunction={this.updateLayout.bind(this, key)}
+//     //             item={item}
+//     //             style={{fontsize:10,padding:10}}
+//     //              onclickview={()=>this.props.navigation.navigate('MyTradeDetailViewStack')}
+//     //           >
+//     //           </ExpandableItemComponent>
+//     //       </View>
+//     //         ))}
+//     //         </ScrollView>
 
  
   render() {
     const {CopyRight}=this.props
     return (
-     
         <View style={{flex:1}}>
-    <ScrollView style={{ flex: 1}}>
-        {CopyRight.map((item, key) => (
-            <View style={{flex:1,padding:4}}>
-              <ExpandableItemComponent
-                key={item.Title}
-                onClickFunction={this.updateLayout.bind(this, key)}
-                item={item}
-                style={{fontsize:10,padding:10}}
-                 onclickview={()=>this.props.navigation.navigate('MyTradeDetailViewStack')}
-              >
-              </ExpandableItemComponent>
-          </View>
-            ))}
-            </ScrollView>
+     <FlatList
+                    data={CopyRight}
+                    keyExtractor={(item, index) => index.toString()}
+                    renderItem={({ item }) =>
+                       <View style={{ flexDirection: 'column',marginEnd:10, elevation: 10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'space-between' ,alignItems: 'flex-start' }}>
+        <View style={{ flexDirection: 'column', marginBottom: 4,justifyContent:'center' }}>
+        <Text style={{ fontSize: 16, color: '#000', fontFamily: 'Poppins-Bold',marginTop:4}}>T.M. No :996866222</Text>
+        </View>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between'}}>
+        <Text style={{ fontSize: 13, color: '#000',fontFamily: 'Poppins-Bold', alignItems:'center',justifyContent:'center' }}>Title</Text>
+        <Text style={{ fontSize: 14, color: '#000',alignItems:'center',justifyContent:'center' }}>{item.Title}</Text>             
+        </View>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:20}}>
+        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Work</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Work}</Text>             
+        </View>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold',width:'40%'  }}>Full Prop Name</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.FullPropName}</Text>
+        </View>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%' }}>Dairy No</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Dairy_No}</Text>
+        </View>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>APPpro Office</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', marginLeft:10, fontFamily: 'Poppins',alignItems:'center',justifyContent:'center' }}>Delhi</Text>
+        </View>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Journal No.</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center' }}>1990-20</Text>
+        </View>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Vaild Upto</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>17/11/2020</Text>
+        </View>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>Class</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>30</Text>
+        </View>
+        </View>
+                    }
+                />
+               
         </View>
     );
   }
