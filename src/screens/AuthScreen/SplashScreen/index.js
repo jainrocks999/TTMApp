@@ -46,8 +46,8 @@ import Axios from 'axios';
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={require('../../../assets/images/thumbnail.bmp')}
-            resizeMode={'contain'}
+            source={require('../../../assets/images/app_iocn.png')}
+            resizeMode={'stretch'}
           />
         </View>
         <Statusbar />

@@ -55,7 +55,7 @@ static navigationOptions = ({ navigation }) => ({
             />
           </TouchableOpacity>
 
-          <View style={{}}>
+          <View>
             <Text
               style={{
                 fontSize: 22,
@@ -89,6 +89,7 @@ static navigationOptions = ({ navigation }) => ({
         </View>
         <View
           style={{
+            width:'100%',
             backgroundColor: 'white',
             padding: 12,
             flexDirection: 'row',
@@ -101,12 +102,12 @@ static navigationOptions = ({ navigation }) => ({
               borderRadius: 10,
               flexDirection: 'row',
               height: 45,
-              width: 350,
+              width: '88%',
               alignItems: 'center',
               backgroundColor: '#fff',
             }}>
             <View style={{}}>
-              <Icon1 name="search" size={28} style={{marginLeft: 5}} />
+              <Icon1 name="search" size={25} style={{marginLeft: 5}} />
             </View>
             <View
               style={{
@@ -129,6 +130,7 @@ static navigationOptions = ({ navigation }) => ({
 
           <View
             style={{
+              width:'12%',
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',

@@ -228,6 +228,7 @@ updateLayout = (index) => {
           style={{
             backgroundColor: 'white',
             padding: 12,
+             width:'100%',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -238,12 +239,12 @@ updateLayout = (index) => {
               borderRadius: 10,
               flexDirection: 'row',
               height: 45,
-              width: 350,
+              width: '88%',
               alignItems: 'center',
               backgroundColor: '#fff',
             }}>
             <View style={{}}>
-              <Icon1 name="search" size={28} style={{marginLeft: 5}} />
+              <Icon1 name="search" size={25} style={{marginLeft: 5}} />
             </View>
             <View
               style={{
@@ -268,6 +269,7 @@ updateLayout = (index) => {
             style={{
               flexDirection: 'row',
               justifyContent: 'center',
+              width:'12%',
               alignItems: 'center',
             }}>
             <View style={{alignItems: 'center', marginLeft: 10}}>

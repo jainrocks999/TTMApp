@@ -224,28 +224,29 @@ const {DesignDetails}=this.props
           style={{
             backgroundColor: 'white',
             padding: 12,
+             width:'100%',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
           <View
             style={{
+             width:'88%',
               borderWidth: 1,
               borderRadius: 10,
               flexDirection: 'row',
               height: 45,
-              width: 350,
               alignItems: 'center',
               backgroundColor: '#fff',
             }}>
             <View style={{}}>
-              <Icon1 name="search" size={28} style={{marginLeft: 5}} />
+              <Icon1 name="search" size={25} style={{marginLeft: 5}} />
             </View>
             <View
               style={{
                 backgroundColor: 'transparent',
                 height: 42,
-                width: 305,
+                width:'68%',
                 borderLeftWidth: 0.5,
                 marginLeft: 5,
               }}>
@@ -262,6 +263,7 @@ const {DesignDetails}=this.props
 
           <View
             style={{
+              width:'12%',
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
