@@ -10,100 +10,165 @@ import {connect} from 'react-redux';
 import Icon1 from 'react-native-vector-icons/Feather';
 import storage from '../../config/storage';
 
+import ExpandableItemComponent from '../../config/expendableList.js'; 
+ const CONTENT = [
+  {
+    isExpanded: false,
+    
+    category_name: 'Tm No. :1252362\nTrade mark :jonne',
+    subcategory: [
+      {id: 1, val: 'Sajana Bore'},
+      {id: 2, val: 'MAN'},
+      {id: 3, val: 'KIDS'},
+      {id: 4, val: 'SHOES & BAGS'},
+      {id: 5, val: 'HOME'},
+      {id: 6, val: 'STUDIOWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+];
 
- class CopyRightPage extends Component {
-// static navigationOptions = ({ navigation }) => ({
-//         headerTitle: 'My Trade Details',
-//        // drawerLabel: 'Details',
-//         headerTintColor: 'black',
-//         headerStyle: {
-//           backgroundColor: '#fff',
-         
-//         },
-//         headerLeft: (
-//           <TouchableOpacity onPress={navigation.toggleDrawer}>
-//             <Icon name="md-menu"
-//               style={{ marginLeft: 10 }} size={30} color="#000" />
-//           </TouchableOpacity>
-//         ),
-//       })
-
+ class CalendraPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    
-          PageNo:'1',
-          Nor:'10',
           visible:false,
-      
     };
    
     this.loaddata();
   }
- loaddata = async () => {
+ loaddata = async () => { 
      const {Nor,PageNo} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
     console.log('bdb'+userid);
-    this.props.dispatch({type:'User_CopyRight_Request',url:'/NewTMApi/CRDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
+    this.props.dispatch({type:'User_Calendra_Details_Request',url:'NewTMApi/Calendar?UserId=7',token:token})
    };
-
-
 
   getVisible(item) {
         if (this.state.visible == false) {
             console.log('rohit12' + this.state.visible)
             this.setState({
                 visible: true,
-                itemValue: item.Id
+                itemValue: item.TextType
             })
         } else {
             this.setState({
                 visible: false,
-                itemValue: item.Id
+                itemValue: item.TextType
             })
         }
     }
    renderItemView = (item) => {
         if (this.state.visible == true) {
-            if (this.state.itemValue == item.Id) {
-                return (
+             if (this.state.itemValue == item.TextType) {
+                return (   // "DAY": 8,
+//  "Month": 7,
+//  "CMonth": 7,
+//  "Year": 2020,
+//  "EvdDate": "08-Jul-2020",
+//  "TextType": "SURCHARGE"
                    <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'space-between' ,alignItems: 'flex-start' }}>
 
                          <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 13, color: '#000',fontFamily: 'Poppins-Bold',width:'40%'  }}>Full Prop Name</Text>
-        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.FullPropName}</Text>
+        <Text style={{ fontSize: 13, color: '#000',fontFamily: 'Poppins-Bold',width:'40%'  }}>DAY</Text>
+        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.DAY}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%' }}>Dairy No</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Dairy_No}</Text>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%' }}>Month</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Month}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>APPpro Office</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', marginLeft:10, fontFamily: 'Poppins',alignItems:'center',justifyContent:'center' }}>Delhi</Text>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>CMonth</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', marginLeft:10, fontFamily: 'Poppins',alignItems:'center',justifyContent:'center' }}>{item.CMonth}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Journal No.</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center' }}>1990-20</Text>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Year</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center' }}>{item.Year}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Vaild Upto</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>17/11/2020</Text>
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>Class</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>30</Text>
+        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Evd Date</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.EvdDate}</Text>
         </View>
                        
                 
                     </View>
 
                 )
-            } else {
+ } else {
 
-            }
-        
-
+        }
         } else {
 
         }
@@ -111,7 +176,7 @@ import storage from '../../config/storage';
     }
  
   render() {
-    const {CopyRight}=this.props
+    const {CalendraDetails}=this.props
     return (
         <View style={{flex:1}}>
          <View
@@ -122,10 +187,10 @@ import storage from '../../config/storage';
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
-          <View style={{flexDirection:'row',alignItems:'center',justifyContent:'flex-start'}}>
+          <View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
           <TouchableOpacity
             onPress={() => {
-             this.props.navigation.goBack(null);
+              this.props.navigation.goBack(null);
             }}>
             <Image
               source={require('../../assets/icons/arrow.png')}
@@ -139,7 +204,7 @@ import storage from '../../config/storage';
                 fontSize: 20,
                 textAlign: 'center',
               }}>
-              Copy Right
+              Calendar Details
             </Text>
           </View>
           </View>
@@ -220,21 +285,18 @@ import storage from '../../config/storage';
           </View>
         </View>
      <FlatList
-                    data={CopyRight}
+                    data={CalendraDetails}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) =>
                      <View style={{ flex: 1 }}>
                             <TouchableOpacity
                                 onPress={() => this.getVisible(item)}>
 
-                       <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'center' ,alignItems: 'flex-start' }}>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'flex-start'}}>
-                <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Title</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Title}</Text>             
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Work</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Work}</Text>             
+
+                       <View style={{ flexDirection: 'column',marginEnd:10, elevation: 2, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'center' ,alignItems: 'flex-start' }}>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between'}}>
+                <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Text Type</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.TextType}</Text>             
         </View>
        
         </View>
@@ -257,8 +319,8 @@ const mapStateToProps = state => {
   console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
-    CopyRight: state.CopyRight,
+    CalendraDetails: state.CalendraDetails,
   };
 };
 
-export default connect(mapStateToProps)(CopyRightPage);
+export default connect(mapStateToProps)(CalendraPage);

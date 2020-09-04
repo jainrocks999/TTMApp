@@ -10,8 +10,96 @@ import {connect} from 'react-redux';
 import Icon1 from 'react-native-vector-icons/Feather';
 import storage from '../../config/storage';
 
+import ExpandableItemComponent from '../../config/expendableList.js'; 
+ const CONTENT = [
+  {
+    isExpanded: false,
+    
+    category_name: 'Tm No. :1252362\nTrade mark :jonne',
+    subcategory: [
+      {id: 1, val: 'Sajana Bore'},
+      {id: 2, val: 'MAN'},
+      {id: 3, val: 'KIDS'},
+      {id: 4, val: 'SHOES & BAGS'},
+      {id: 5, val: 'HOME'},
+      {id: 6, val: 'STUDIOWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+  {
+    isExpanded: false,
+   category_name: 'Tm No. :526356\nTrade mark :Lyour ',
+    subcategory: [
+      {id: 1, val: 'ABOUT US'},
+      {id: 2, val: 'CONTACT US'},
+      {id: 3, val: 'STORE LOCATOR'},
+      {id: 4, val: 'INVESTORS'},
+      {id: 5, val: 'MEDIA CENTERS'},
+      {id: 6, val: 'CLUBWEST'},
+    ],
+  },
+];
 
- class CopyRightPage extends Component {
+ class HearingPage extends Component {
 // static navigationOptions = ({ navigation }) => ({
 //         headerTitle: 'My Trade Details',
 //        // drawerLabel: 'Details',
@@ -31,13 +119,21 @@ import storage from '../../config/storage';
   constructor(props) {
     super(props);
     this.state = {
-    
+        expanded: false,
+          listDataSource: CONTENT,
           PageNo:'1',
           Nor:'10',
           visible:false,
-      
+      images: [
+        require('../../assets/images/yogi.png'),
+        require('../../assets/images/pppp.png'),
+        require('../../assets/images/logo.png'),
+        require('../../assets/images/logo.png'),
+      ],
     };
-   
+    if (Platform.OS === 'android') {
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
     this.loaddata();
   }
  loaddata = async () => {
@@ -49,7 +145,16 @@ import storage from '../../config/storage';
    };
 
 
-
+updateLayout = (index) => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    const array = [...this.state.listDataSource];
+    array[index]['isExpanded'] = !array[index]['isExpanded'];
+    this.setState(() => {
+      return {
+        listDataSource: array,
+      };
+    });
+  };
   getVisible(item) {
         if (this.state.visible == false) {
             console.log('rohit12' + this.state.visible)
@@ -122,26 +227,24 @@ import storage from '../../config/storage';
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
-          <View style={{flexDirection:'row',alignItems:'center',justifyContent:'flex-start'}}>
           <TouchableOpacity
             onPress={() => {
-             this.props.navigation.goBack(null);
+              this.props.navigation.toggleDrawer();
             }}>
             <Image
-              source={require('../../assets/icons/arrow.png')}
-              style={{width: 20, height: 15,marginEnd:15}}
+              source={require('../../assets/icons/menu.png')}
+              style={{width: 20, height: 15}}
             />
           </TouchableOpacity>
 
           <View style={{}}>
             <Text
               style={{
-                fontSize: 20,
+                fontSize: 22,
                 textAlign: 'center',
               }}>
-              Copy Right
+              {'My Trade Details'}
             </Text>
-          </View>
           </View>
           <View
             style={{
@@ -152,8 +255,8 @@ import storage from '../../config/storage';
             <Image
               source={require('../../assets/icons/bell_one.png')}
               style={{
-                width: 18,
-                height: 18,
+                width: 22,
+                height: 22,
                 marginRight: 15,
                 justifyContent: 'center',
               }}
@@ -227,7 +330,7 @@ import storage from '../../config/storage';
                             <TouchableOpacity
                                 onPress={() => this.getVisible(item)}>
 
-                       <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'center' ,alignItems: 'flex-start' }}>
+                       <View style={{ flexDirection: 'column',marginEnd:10, elevation: 2, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'center' ,alignItems: 'flex-start' }}>
         <View style={{flexDirection:'row',flex:1,justifyContent:'flex-start'}}>
                 <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Title</Text>
         <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Title}</Text>             
@@ -257,8 +360,8 @@ const mapStateToProps = state => {
   console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
-    CopyRight: state.CopyRight,
+    Hearing: state.Hearing,
   };
 };
 
-export default connect(mapStateToProps)(CopyRightPage);
+export default connect(mapStateToProps)(HearingPage);

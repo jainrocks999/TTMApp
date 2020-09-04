@@ -4,6 +4,8 @@ initialstate={
   UserDetails:null,
   CopyRight:[],
   DesignDetails:[],
+  PatentDetails:[],
+  CalendraDetails:[],
 }
 export default (state=initialstate,action)=>{
   switch(action.type){
@@ -41,6 +43,22 @@ export default (state=initialstate,action)=>{
     case 'User_Design_details_Success':
     return{...state,isFetching:false,DesignDetails:action.payload}
     case 'User_Design_Details_Error':
+    return{...state,isFetching:false}
+
+  //Patent Details
+    case 'User_Patent_Details_Request':
+    return{...state,isFetching:true}
+    case 'User_Patent_Details_Success':
+    return{...state,isFetching:false,PatentDetails:action.payload}
+    case 'User_Patent_Details_Error':
+    return{...state,isFetching:false} 
+
+    //Calendra Details 
+    case 'User_Calendra_Details_Request':
+    return{...state,isFetching:true}
+    case 'User_Calendra_Details_Success':
+    return{...state,isFetching:false,CalendraDetails:action.payload}
+    case 'User_Calendra_Details_Error':
     return{...state,isFetching:false}
     default:         
     return state;

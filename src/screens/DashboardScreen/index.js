@@ -214,7 +214,9 @@ class RegisterScreen extends React.Component {
             </View>
 
             <View style={styles.secondView}>
-              <TouchableOpacity style={styles.touchTm}>
+             <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('PatentStack')}
+                style={styles.touchTm}>
                 <Image
                   style={styles.copyImage}
                   source={require('../../assets/icons/Patent_New.png')}
@@ -291,7 +293,9 @@ class RegisterScreen extends React.Component {
             </View>
 
             <View style={styles.secondView}>
-              <TouchableOpacity style={styles.touchTm}>
+             <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('CalendraPageStack')}
+                style={styles.touchTm}>
                 <Image
                   style={styles.copyImage}
                   source={require('../../assets/icons/calendra_new.png')}

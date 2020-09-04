@@ -21,15 +21,23 @@ import TradeMark from '../screens/TradeMark';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import MyTradeDetailPage from  '../screens/MyTradeDetailsPage';
 import MyTradeDetailViewPage from  '../screens/MyTradeDetailsViewPage';
-//import Sidebar from '../component/SideBar';
+import CalendraPage from  '../screens/CalendraScreen';
+import PatentPage from  '../screens/PatentScreen';
 import Other from '../screens/other';
-import TMSearch from '../screens/tmSearch';
+import TMSearchPage from '../screens/TMSearchScreen';
+
+
+
+const PatentStack = createStackNavigator({
+  PatentPage:{screen:PatentPage},
+ // header:false
+})
 
 const TMSearchStack = createStackNavigator(
   {
-    tm: {
-      screen: TMSearch,
-    },
+    TMSearchPage: {
+      screen: TMSearchPage,
+    }
   },
   {
     defaultNavigationOptions: ({navigation}) => {
@@ -65,7 +73,19 @@ const AuthNavigator = createStackNavigator(
     },
   },
 );
-
+const CalendraPageStack = createStackNavigator({
+  CalendraPage:{
+    screen:CalendraPage
+  },
+},
+{
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+}
+)
 const DesignPageStack = createStackNavigator({
   DesignPage:{
     screen:DesignPage
@@ -150,50 +170,6 @@ const apiNavigator = createStackNavigator({
     screen: TradeMark,
   },
 });
-// const AppDrawerNavigator = createDrawerNavigator(
-//   {
-//     Dashboard: {
-//       screen: DashboardScreen,
-//       navigationOptions: {
-//         title: 'Home',
-//         drawerIcon: ({tintColor}) => (
-//           <Icon name="home" size={20} color={tintColor} />
-//         ),
-//       },
-//     },
-//     enter: {
-//       screen: enterScreen,
-//       navigationOptions: {
-//         title: 'Enter',
-//         drawerIcon: ({tintColor}) => (
-//           <Icon name="globe-outline" size={20} color={tintColor} />
-//         ),
-//       },
-//     },
-//     rate: {
-//       screen: rateScreen,
-//       navigationOptions: {
-//         title: 'Rate',
-//         drawerIcon: ({tintColor}) => (
-//           <Icon name="star-outline" size={20} color={tintColor} />
-//         ),
-//       },
-//     },
-
-//     share: {
-//       screen: shareScreen,
-//       navigationOptions: {
-//         title: 'Share',
-//         drawerIcon: ({tintColor}) => (
-//           <Icon name="share-social-outline" size={20} color={tintColor} />
-//         ),
-//       },
-//     },
-//   },
-//   {
-//     contentComponent: props => <Sidebar {...props} />,
-//   },
-// );
 const TradedetailsStack = createStackNavigator({
   MyTradeDetailPage:{
     screen:MyTradeDetailPage
@@ -236,6 +212,9 @@ const AppStack = createDrawerNavigator(
     MyTradeDetailViewStack:MyTradeDetailViewStack,
     CopyRightStack:CopyRightStack,
     DesignPageStack:DesignPageStack,
+    
+   
+    
   },
   {
     initialRouteName: 'Dashboard',
@@ -250,7 +229,8 @@ const AuthStack = createSwitchNavigator(
     Auth: AuthNavigator,
     AppStack: AppStack,
     apiScreen: apiNavigator,
-    TMSearchStack: TMSearchStack,
+   PatentStack:PatentStack,
+   CalendraPageStack:CalendraPageStack,
   },
   {
     initialRouteName: 'AuthLoading',

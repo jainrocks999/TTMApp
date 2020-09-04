@@ -75,6 +75,53 @@ Alert.alert(p.message)
 
 }
 
+function* DoCalendra(action){
+    console.log('copy cdcdcd'+action.url)
+    const p = yield call(Api.fetchDataByGET,action.url,action.token)
+    console.log('copy'+ p.Status)
+    console.log('copy'+JSON.stringify(p.data))
+    console.log('copy'+ p.Status)
+   if(p.Status == true){
+    yield put({
+        type:'User_Calendra_Details_Success',
+        payload:p.data
+    })
+  
+    // AsyncStorage.setItem(Constants.UserID,JSON.stringify(p.data.UserID))
+    // AsyncStorage.setItem(Constants.UserName, p.data.UserName)
+}else{
+Alert.alert(p.message)
+ yield put({
+            type:'User_Calendra_Details_Error',
+        }) 
+}
+
+}
+
+function* DoPatent(action){
+    console.log('copy cdcdcd'+action.url)
+    const p = yield call(Api.fetchDataByGET,action.url,action.token)
+    console.log('copy'+ p.Status)
+    console.log('copy'+JSON.stringify(p.data))
+    console.log('copy'+ p.Status)
+   if(p.Status == true){
+    yield put({
+        type:'User_Patent_Details_Success',
+        payload:p.data
+    })
+  
+    // AsyncStorage.setItem(Constants.UserID,JSON.stringify(p.data.UserID))
+    // AsyncStorage.setItem(Constants.UserName, p.data.UserName)
+}else{
+Alert.alert(p.message)
+ yield put({
+            type:'User_Patent_Details_Error',
+        }) 
+}
+
+}
+
+
 function* doLogin(action){
     const data = JSON.stringify({
      User_Name: action.Email,
@@ -142,9 +189,8 @@ if(action.navigateTo){
               action.navigation.dispatch(resetAction);
             }
         } else {
-         
             Alert.alert(
-                'Explored',
+                '',
                 p.data.error_description,
                 [
                     {text:'Ok',style:'cancel',onPress:()=>console.log('Cancel Pressed')}
@@ -154,37 +200,18 @@ if(action.navigateTo){
                 type:'User_Register_Error',
             }) 
         }
-       
     } catch (error) {
-      
-      
         yield put({
             type:'User_Register_Error',
         }) 
     }  
 }
 export default function* authSaga(){
-      yield takeEvery('User_Token_Request',DoToken)
+    yield takeEvery('User_Token_Request',DoToken)
     yield takeEvery('User_Login_Request',doLogin)
     yield takeEvery('User_Register_Request',doRegister)
     yield takeEvery('User_CopyRight_Request',DoCopyRight)
     yield takeEvery('User_Design_Details_Request',DoDesign)
-  
+    yield takeEvery('User_Calendra_Details_Request',DoCalendra)
+    yield takeEvery('User_Patent_Details_Request',DoPatent)
 }         
-
-// export default function* authSaga(){
-//     yield takeEvery('Fetch_TourData_Request',fetchTourData)
-//     yield takeEvery('Fetch_User_Request',fetchUser)
-//     yield takeEvery('Fetch_Profile_Request',fetchProfile)
-//     yield takeEvery('User_Register_Request',doRegister)
-//     yield takeEvery('Influencer_Register_Request',doInfluencerRegister)
-//     yield takeEvery('Business_Register_Request',doBusinessRegister)
-//     yield takeEvery('PhotoG_Register_Request',doPhotoGRegister)
-//     yield takeEvery('Taxi_Register_Request',doTaxiRegister)
-//     yield takeEvery('User_Login_Request',doLogin)
-//     yield takeEvery('Change_Password_Request',changePassword)
-//     yield takeEvery('Set_ProfileEmpty_Request',setProfileEmpty)
-//     yield takeEvery('Set_ProfilPic_Request',setProfilePic)
-//     yield takeEvery('Fetch_Bookings_Request',fetchBookings)
-//     yield takeEvery('Remove_FcmToken_Request',unsetFcm)
-// }

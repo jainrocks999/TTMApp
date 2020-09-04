@@ -6,19 +6,15 @@ import {SliderBox} from 'react-native-image-slider-box';
 import Icon1 from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
 import storage from '../../config/storage';
-
 import AsyncStorage from '@react-native-community/async-storage';
 
- class DesignDetails extends Component {
+ class PatentPage extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-        
           visible:false,
-     
     };
-   
     this.loaddata()
   }
  renderItemView = (item) => {
@@ -67,23 +63,13 @@ import AsyncStorage from '@react-native-community/async-storage';
      const {Nor,PageNo} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-    
     console.log('bdb'+userid);
-    this.props.dispatch({type:'User_Design_Details_Request',url:'/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
+    this.props.dispatch({type:'User_Patent_Details_Request',url:'NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
    };
-updateLayout = (index) => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    const array = [...this.state.listDataSource];
-    array[index]['isExpanded'] = !array[index]['isExpanded'];
-    this.setState(() => {
-      return {
-        listDataSource: array,
-      };
-    });
-  };
+
 
   render() {
-const {DesignDetails}=this.props
+const {PatentDetails}=this.props
     return (
      
         <View style={{flex:1}}>
@@ -95,14 +81,13 @@ const {DesignDetails}=this.props
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
-           <View style={{flexDirection:'row',alignItems:'center',justifyContent:'flex-start'}}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.goBack(null);
+           this.props.navigation.goBack(null);
             }}>
             <Image
               source={require('../../assets/icons/arrow.png')}
-              style={{width: 20, height: 15,marginEnd:15}}
+              style={{width: 20, height: 15}}
             />
           </TouchableOpacity>
 
@@ -114,7 +99,6 @@ const {DesignDetails}=this.props
               }}>
               Design
             </Text>
-          </View>
           </View>
           <View
             style={{
@@ -193,7 +177,7 @@ const {DesignDetails}=this.props
           </View>
         </View>
      <FlatList
-                    data={DesignDetails}
+                    data={PatentDetails}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) =>
                     <View style={{ flex: 1 }}>
@@ -227,7 +211,7 @@ const mapStateToProps = state => {
   console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
-    DesignDetails: state.DesignDetails,
+    PatentDetails: state.PatentDetails,
   };
 };
-export default connect(mapStateToProps)(DesignDetails);
+export default connect(mapStateToProps)(PatentPage);
