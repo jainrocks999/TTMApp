@@ -21,39 +21,35 @@ class DashBoardPage extends React.Component {
     super(props);
     this.state = {
       isVisible: false,
-      isVisibleAction:false,
-      isVisibleApplication:false,
-      isVisibleStatus:false,
-      isVisibleUpcoming:false,
-      
+      isVisibleAction: false,
+      isVisibleApplication: false,
+      isVisibleStatus: false,
+      isVisibleUpcoming: false,
 
       //  spinner: true,
     };
   }
-  tmdata = (name) => {
-    if(name== 'status'){
-       this.setState({
-      isVisibleStatus: true,
-    });
-
-    }else if(name == 'Application'){
-    this.setState({
-      isVisibleApplication: true,
-    });
-    }else if(name == 'Upcoming'){
+  tmdata = name => {
+    if (name == 'status') {
       this.setState({
-        isVisibleUpcoming:true
-      })
-
-    }else if(name == 'Action'){
+        isVisibleStatus: true,
+      });
+    } else if (name == 'Application') {
       this.setState({
-        isVisibleAction:true
-      })
-
-    }else{
-       this.setState({
-      isVisible: true,
-    });
+        isVisibleApplication: true,
+      });
+    } else if (name == 'Upcoming') {
+      this.setState({
+        isVisibleUpcoming: true,
+      });
+    } else if (name == 'Action') {
+      this.setState({
+        isVisibleAction: true,
+      });
+    } else {
+      this.setState({
+        isVisible: true,
+      });
     }
   };
 
@@ -151,10 +147,11 @@ class DashBoardPage extends React.Component {
             </View>
 
             <View style={styles.secondView}>
-              <TouchableOpacity style={styles.touchTm}
-                onPress={()=>
-                    this.props.navigation.navigate('CopyRightStack')}
-              >
+              <TouchableOpacity
+                style={styles.touchTm}
+                onPress={() =>
+                  this.props.navigation.navigate('CopyRightStack')
+                }>
                 <Image
                   style={styles.copyImage}
                   source={require('../../assets/Image/copyright_2x.png')}
@@ -192,10 +189,11 @@ class DashBoardPage extends React.Component {
           </View>
           <View style={styles.firstView}>
             <View style={styles.secondView}>
-              <TouchableOpacity style={styles.touchTm}
-              onPress={()=>
-                    this.props.navigation.navigate('DesignPageStack')}
-              >
+              <TouchableOpacity
+                style={styles.touchTm}
+                onPress={() =>
+                  this.props.navigation.navigate('DesignPageStack')
+                }>
                 <Image
                   style={styles.copyImage}
                   source={require('../../assets/icons/design.png')}
@@ -232,7 +230,7 @@ class DashBoardPage extends React.Component {
             </View>
 
             <View style={styles.secondView}>
-             <TouchableOpacity
+              <TouchableOpacity
                 onPress={() => this.props.navigation.navigate('PatentStack')}
                 style={styles.touchTm}>
                 <Image
@@ -311,8 +309,10 @@ class DashBoardPage extends React.Component {
             </View>
 
             <View style={styles.secondView}>
-             <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('CalendraPageStack')}
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate('CalendraPageStack')
+                }
                 style={styles.touchTm}>
                 <Image
                   style={styles.copyImage}
@@ -343,58 +343,108 @@ class DashBoardPage extends React.Component {
             </View>
           </View>
         </ScrollView>
-        <View style={{flexDirection:'row',backgroundColor:'white', width:'100%',borderLeftWidth: 1,
-    borderRightWidth: 1,borderTopLeftRadius:20,borderTopRightRadius:20}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            backgroundColor: 'white',
+            width: '100%',
+            borderLeftWidth: 1,
+            borderRightWidth: 1,
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+          }}>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '25%',
+              padding: 10,
+            }}>
+            <TouchableOpacity
+              onPress={() => this.tmdata('status')}
+              style={{alignItems: 'center'}}>
+              <Image
+                style={styles.tabImage}
+                source={require('../../assets/Image/Status_icon.png')}
+              />
+              <Text style={{fontSize: 12, color: 'gray', padding: 4}}>
+                Status
+              </Text>
+            </TouchableOpacity>
+          </View>
 
-<View style={{justifyContent:'center',alignItems:'center', width:'25%',padding:10}}>
-      <TouchableOpacity
-                onPress={() => this.tmdata("status")}
-                style={{alignItems:'center'}}
-                >
-       <Image
-        style={styles.tabImage}
-        source={require('../../assets/Image/Status_icon.png')}
-      />
-  <Text style={{fontSize:12,color:'gray',padding:4}}>Status</Text>
-  </TouchableOpacity>
-</View>
-
-<View style={{justifyContent:'center',alignItems:'center', width:'25%',padding:10}}>
-      <TouchableOpacity
-                onPress={() => this.tmdata("Upcoming")}
-                style={{alignItems:'center'}}
-                >
-       <Image
-        style={styles.tabImage}
-         source={require('../../assets/icons/upcoming.png')}
-      />
- <Text style={{fontSize:12,color:'gray',justifyContent:'center', padding:4}}>Upcoming</Text>
-</TouchableOpacity>
-</View>
-<View style={{justifyContent:'center',alignItems:'center', width:'25%',padding:10}}>
-<TouchableOpacity
-                onPress={() => this.tmdata("Application")}
-                style={{alignItems:'center'}}
-                >
-       <Image
-        style={styles.tabImage}
-        source={require('../../assets/icons/total.png')}
-      />
-       <Text style={{fontSize:12,color:'gray',padding:4,}}>     Total Application</Text>
-</TouchableOpacity>
-</View>
-<View style={{justifyContent:'center',alignItems:'center', width:'24%',padding:10}}>
- <TouchableOpacity
-                onPress={() => this.tmdata("Action")}
-                style={{alignItems:'center',justifyContent:'center'}}
-                >
-       <Image
-        style={styles.tabImage}
-         source={require('../../assets/icons/action.png')}
-      />
-<Text style={{fontSize:12,color:'gray',padding:4,alignItems:'center',justifyContent:'center'}}>   Action  Required</Text>
-</TouchableOpacity>
-</View>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '25%',
+              padding: 10,
+            }}>
+            <TouchableOpacity
+              onPress={() => this.tmdata('Upcoming')}
+              style={{alignItems: 'center'}}>
+              <Image
+                style={styles.tabImage}
+                source={require('../../assets/icons/upcoming.png')}
+              />
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: 'gray',
+                  justifyContent: 'center',
+                  padding: 4,
+                }}>
+                Upcoming
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '25%',
+              padding: 10,
+            }}>
+            <TouchableOpacity
+              onPress={() => this.tmdata('Application')}
+              style={{alignItems: 'center'}}>
+              <Image
+                style={styles.tabImage}
+                source={require('../../assets/icons/total.png')}
+              />
+              <Text style={{fontSize: 12, color: 'gray', padding: 4}}>
+                {' '}
+                Total Application
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '24%',
+              padding: 10,
+            }}>
+            <TouchableOpacity
+              onPress={() => this.tmdata('Action')}
+              style={{alignItems: 'center', justifyContent: 'center'}}>
+              <Image
+                style={styles.tabImage}
+                source={require('../../assets/icons/action.png')}
+              />
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: 'gray',
+                  padding: 4,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                {' '}
+                Action Required
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
         <Modal
           isVisible={this.state.isVisible}
@@ -428,9 +478,11 @@ class DashBoardPage extends React.Component {
                     justifyContent: 'space-between',
                   }}>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}
-                    onPress={()=>
-                    this.props.navigation.navigate('MyTradeDetailPage')}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -679,10 +731,9 @@ class DashBoardPage extends React.Component {
             </ScrollView>
           </View>
         </Modal>
-        
 
-         <Modal
-         //upcoming
+        <Modal
+          //upcoming
           isVisible={this.state.isVisibleUpcoming}
           onSwipeComplete={() => this.setState({isVisibleUpcoming: false})}
           swipeDirection="right"
@@ -696,27 +747,36 @@ class DashBoardPage extends React.Component {
                   marginTop: 4,
                   alignItems: 'center',
                 }}>
-                <View style={{flexDirection:'row',width:'100%',justifyContent:'flex-start', alignItems:'center'}}>
-                 <TouchableOpacity style={{alignItems:'center'}}
-                    onPress={()=> this.setState({
-                      isVisibleUpcoming:false
-                    })}>
-                 <Image
-                          style={styles.popupIcon}
-                          source={require('../../assets/Image/Group2x.png')}
-                          resizeMode={'stretch'}
-                        />
-                        </TouchableOpacity>
-                <Text
+                <View
                   style={{
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    fontFamily: 'Poppins-SemiBold',
-                    color: '#000',
+                    flexDirection: 'row',
+                    width: '100%',
+                    justifyContent: 'flex-start',
                     alignItems: 'center',
                   }}>
-                  Upcoming
-                </Text>
+                  <TouchableOpacity
+                    style={{alignItems: 'center'}}
+                    onPress={() =>
+                      this.setState({
+                        isVisibleUpcoming: false,
+                      })
+                    }>
+                    <Image
+                      style={styles.popupIcon}
+                      source={require('../../assets/Image/Group2x.png')}
+                      resizeMode={'stretch'}
+                    />
+                  </TouchableOpacity>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      fontFamily: 'Poppins-SemiBold',
+                      color: '#000',
+                      alignItems: 'center',
+                    }}>
+                    Upcoming
+                  </Text>
                 </View>
                 <View
                   style={{
@@ -726,9 +786,11 @@ class DashBoardPage extends React.Component {
                     justifyContent: 'flex-start',
                   }}>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}
-                    onPress={()=>
-                    this.props.navigation.navigate('MyTradeDetailPage')}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -753,7 +815,11 @@ class DashBoardPage extends React.Component {
                     </TouchableOpacity>
                   </View>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -777,10 +843,13 @@ class DashBoardPage extends React.Component {
                       </View>
                     </TouchableOpacity>
                   </View>
-                 
-                  
+
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -804,9 +873,13 @@ class DashBoardPage extends React.Component {
                       </View>
                     </TouchableOpacity>
                   </View>
-        
-                 <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+
+                  <View style={styles.secondView1}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -830,15 +903,14 @@ class DashBoardPage extends React.Component {
                       </View>
                     </TouchableOpacity>
                   </View>
-               </View>
+                </View>
               </View>
             </ScrollView>
           </View>
         </Modal>
-       
 
         <Modal
-        //Application
+          //Application
           isVisible={this.state.isVisibleApplication}
           onSwipeComplete={() => this.setState({isVisibleApplication: false})}
           swipeDirection="right"
@@ -852,22 +924,22 @@ class DashBoardPage extends React.Component {
                   marginTop: 4,
                   alignItems: 'center',
                 }}>
-                <View style={{flexDirection:'row',width:'100%'}}>
-                 <Image
-                          style={styles.popupIcon}
-                          source={require('../../assets/Image/Group2x.png')}
-                          resizeMode={'stretch'}
-                        />
-                <Text
-                  style={{
-                    fontSize: 22,
-                    fontWeight: 'bold',
-                    fontFamily: 'Poppins-SemiBold',
-                    color: '#000',
-                    alignItems: 'center',
-                  }}>
-                  Application
-                </Text>
+                <View style={{flexDirection: 'row', width: '100%'}}>
+                  <Image
+                    style={styles.popupIcon}
+                    source={require('../../assets/Image/Group2x.png')}
+                    resizeMode={'stretch'}
+                  />
+                  <Text
+                    style={{
+                      fontSize: 22,
+                      fontWeight: 'bold',
+                      fontFamily: 'Poppins-SemiBold',
+                      color: '#000',
+                      alignItems: 'center',
+                    }}>
+                    Application
+                  </Text>
                 </View>
                 <View
                   style={{
@@ -877,9 +949,9 @@ class DashBoardPage extends React.Component {
                     justifyContent: 'space-between',
                   }}>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}
-                    onPress={()=>
-                    this.tmdata()}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() => this.tmdata()}>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -898,14 +970,17 @@ class DashBoardPage extends React.Component {
                             fontFamily: 'Poppins',
                             fontSize: 12,
                           }}>
-                        Registered
+                          Registered
                         </Text>
-    
                       </View>
                     </TouchableOpacity>
                   </View>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -926,12 +1001,15 @@ class DashBoardPage extends React.Component {
                           }}>
                           Lost
                         </Text>
-                       
                       </View>
                     </TouchableOpacity>
                   </View>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -952,7 +1030,6 @@ class DashBoardPage extends React.Component {
                           }}>
                           Litigation
                         </Text>
-                       
                       </View>
                     </TouchableOpacity>
                   </View>
@@ -964,7 +1041,11 @@ class DashBoardPage extends React.Component {
                     justifyContent: 'space-between',
                   }}>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -983,22 +1064,19 @@ class DashBoardPage extends React.Component {
                             fontFamily: 'Poppins',
                             fontSize: 12,
                           }}>
-                        Padding
+                          Padding
                         </Text>
-                        
                       </View>
                     </TouchableOpacity>
                   </View>
-              
-              </View>
-          
+                </View>
               </View>
             </ScrollView>
           </View>
         </Modal>
-       
+
         <Modal
-        //Action
+          //Action
           isVisible={this.state.isVisibleAction}
           onSwipeComplete={() => this.setState({isVisibleAction: false})}
           swipeDirection="right"
@@ -1013,22 +1091,22 @@ class DashBoardPage extends React.Component {
                   marginTop: 4,
                   alignItems: 'center',
                 }}>
-                <View style={{flexDirection:'row',width:'100%'}}>
-                <Image
-                          style={styles.popupIcon}
-                          source={require('../../assets/Image/Group2x.png')}
-                          resizeMode={'stretch'}
-                        />
-                <Text
-                  style={{
-                    fontSize: 22,
-                    fontWeight: 'bold',
-                    fontFamily: 'Poppins-SemiBold',
-                    color: '#000',
-                    alignItems: 'center',
-                  }}>
-                  Action Required
-                </Text>
+                <View style={{flexDirection: 'row', width: '100%'}}>
+                  <Image
+                    style={styles.popupIcon}
+                    source={require('../../assets/Image/Group2x.png')}
+                    resizeMode={'stretch'}
+                  />
+                  <Text
+                    style={{
+                      fontSize: 22,
+                      fontWeight: 'bold',
+                      fontFamily: 'Poppins-SemiBold',
+                      color: '#000',
+                      alignItems: 'center',
+                    }}>
+                    Action Required
+                  </Text>
                 </View>
                 <View
                   style={{
@@ -1038,9 +1116,11 @@ class DashBoardPage extends React.Component {
                     justifyContent: 'flex-start',
                   }}>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}
-                    onPress={()=>
-                    this.props.navigation.navigate('MyTradeDetailPage')}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -1061,12 +1141,15 @@ class DashBoardPage extends React.Component {
                           }}>
                           Own
                         </Text>
-                        
                       </View>
                     </TouchableOpacity>
                   </View>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -1087,20 +1170,17 @@ class DashBoardPage extends React.Component {
                           }}>
                           Similar
                         </Text>
-                       
                       </View>
                     </TouchableOpacity>
                   </View>
-                  
                 </View>
               </View>
-            
             </ScrollView>
           </View>
         </Modal>
-       
-         <Modal
-         //status
+
+        <Modal
+          //status
           isVisible={this.state.isVisibleStatus}
           onSwipeComplete={() => this.setState({isVisibleStatus: false})}
           swipeDirection="right"
@@ -1111,37 +1191,40 @@ class DashBoardPage extends React.Component {
               <View
                 style={{
                   justifyContent: 'center',
-                
+
                   alignItems: 'center',
                 }}>
-                 <View
-                style={{
-                  justifyContent: 'flex-start',
-                
-                  width:'100%',
-                  flexDirection:'row',
-                  alignItems: 'center',
-                }}>
-                 <TouchableOpacity style={{width:'20%',justifyContent:'center'}}
-                    onPress={()=>this.setState({
-                      isVisibleStatus:false
-                    })}>
-                 <Image
-                          style={styles.popupIcon}
-                          source={require('../../assets/Image/Group2x.png')}
-                          resizeMode={'stretch'}
-                        />
-                        </TouchableOpacity>
-                <Text
+                <View
                   style={{
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    fontFamily: 'Poppins-SemiBold',
-                    color: '#000',
+                    justifyContent: 'flex-start',
+
+                    width: '100%',
+                    flexDirection: 'row',
                     alignItems: 'center',
                   }}>
-                  Status
-                </Text>
+                  <TouchableOpacity
+                    style={{width: '20%', justifyContent: 'center'}}
+                    onPress={() =>
+                      this.setState({
+                        isVisibleStatus: false,
+                      })
+                    }>
+                    <Image
+                      style={styles.popupIcon}
+                      source={require('../../assets/Image/Group2x.png')}
+                      resizeMode={'stretch'}
+                    />
+                  </TouchableOpacity>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      fontFamily: 'Poppins-SemiBold',
+                      color: '#000',
+                      alignItems: 'center',
+                    }}>
+                    Status
+                  </Text>
                 </View>
                 <View
                   style={{
@@ -1151,9 +1234,11 @@ class DashBoardPage extends React.Component {
                     justifyContent: 'space-around',
                   }}>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}
-                    onPress={()=>
-                    this.props.navigation.navigate('MyTradeDetailPage')}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('MyTradeDetailPage')
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -1202,12 +1287,12 @@ class DashBoardPage extends React.Component {
                       </View>
                     </TouchableOpacity>
                   </View>
-                  </View>
                 </View>
+              </View>
             </ScrollView>
           </View>
         </Modal>
-       
+
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
       </View>
     );
@@ -1221,4 +1306,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(DashBoardPage);
-

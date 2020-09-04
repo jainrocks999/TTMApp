@@ -19,35 +19,34 @@ import CopyRightPage from '../screens/CopyRightScreen';
 import DesignPage from '../screens/DesignScreen';
 import TradeMark from '../screens/TradeMark';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
-import MyTradeDetailPage from  '../screens/MyTradeDetailsPage';
-import MyTradeDetailViewPage from  '../screens/MyTradeDetailsViewPage';
-import CalendraPage from  '../screens/CalendraScreen';
-import PatentPage from  '../screens/PatentScreen';
+import MyTradeDetailPage from '../screens/MyTradeDetailsPage';
+import MyTradeDetailViewPage from '../screens/MyTradeDetailsViewPage';
+import CalendarPage from '../screens/CalendarPage';
+import PatentPage from '../screens/PatentScreen';
 import Other from '../screens/other';
 import TMSearchPage from '../screens/TMSearchScreen';
 
-
-
-const PatentStack = createStackNavigator({
-  PatentPage:{
-    screen:PatentPage
+const PatentStack = createStackNavigator(
+  {
+    PatentPage: {
+      screen: PatentPage,
     },
- // header:false
-},
- {
+    // header:false
+  },
+  {
     defaultNavigationOptions: ({navigation}) => {
       return {
         header: false,
       };
     },
   },
-  );
+);
 
 const TMSearchStack = createStackNavigator(
   {
     TMSearchPage: {
       screen: TMSearchPage,
-    }
+    },
   },
   {
     defaultNavigationOptions: ({navigation}) => {
@@ -83,32 +82,34 @@ const AuthNavigator = createStackNavigator(
     },
   },
 );
-const CalendraPageStack = createStackNavigator({
-  CalendraPage:{
-    screen:CalendraPage
-  },
-},
-{
-    defaultNavigationOptions: ({navigation}) => {
-      return {
-        header: false,
-      };
+const CalendraPageStack = createStackNavigator(
+  {
+    CalendarPage: {
+      screen: CalendarPage,
     },
-}
-)
-const DesignPageStack = createStackNavigator({
-  DesignPage:{
-    screen:DesignPage
   },
-},
- {
+  {
     defaultNavigationOptions: ({navigation}) => {
       return {
         header: false,
       };
     },
   },
-  );
+);
+const DesignPageStack = createStackNavigator(
+  {
+    DesignPage: {
+      screen: DesignPage,
+    },
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },
+);
 const HomeStackNavigator = createStackNavigator(
   {
     Account: {
@@ -175,57 +176,62 @@ const DrawerStack = createStackNavigator(
   },
 );
 const apiNavigator = createStackNavigator({
- 
   trade: {
     screen: TradeMark,
   },
 });
-const TradedetailsStack = createStackNavigator({
-  MyTradeDetailPage:{
-    screen:MyTradeDetailPage
+const TradedetailsStack = createStackNavigator(
+  {
+    MyTradeDetailPage: {
+      screen: MyTradeDetailPage,
+    },
   },
-},
- {
+  {
     defaultNavigationOptions: ({navigation}) => {
       return {
         header: false,
       };
     },
-  },);
-const MyTradeDetailViewStack = createStackNavigator({
-  MyTradeDetailViewPage:{
-    screen:MyTradeDetailViewPage
   },
-}, {
+);
+const MyTradeDetailViewStack = createStackNavigator(
+  {
+    MyTradeDetailViewPage: {
+      screen: MyTradeDetailViewPage,
+    },
+  },
+  {
     defaultNavigationOptions: ({navigation}) => {
       return {
         header: false,
       };
     },
-  },);
-const CopyRightStack = createStackNavigator({
-  CopyRightPage:{
-    screen:CopyRightPage
   },
-},
- {
+);
+const CopyRightStack = createStackNavigator(
+  {
+    CopyRightPage: {
+      screen: CopyRightPage,
+    },
+  },
+  {
     defaultNavigationOptions: ({navigation}) => {
       return {
         header: false,
       };
     },
-  },)
+  },
+);
 const AppStack = createDrawerNavigator(
   {
     Dashboard: HomeStackNavigator,
-    TradedetailsStack:TradedetailsStack,
-    MyTradeDetailViewStack:MyTradeDetailViewStack,
-    CopyRightStack:CopyRightStack,
-    DesignPageStack:DesignPageStack,
-    PatentStack:PatentStack,
-   CalendraPageStack:CalendraPageStack,
-   
-    
+    TradedetailsStack: TradedetailsStack,
+    MyTradeDetailViewStack: MyTradeDetailViewStack,
+    CopyRightStack: CopyRightStack,
+    DesignPageStack: DesignPageStack,
+    PatentStack: PatentStack,
+    CalendraPageStack: CalendraPageStack,
+    TMSearchStack: TMSearchStack,
   },
   {
     initialRouteName: 'Dashboard',
@@ -240,7 +246,6 @@ const AuthStack = createSwitchNavigator(
     Auth: AuthNavigator,
     AppStack: AppStack,
     apiScreen: apiNavigator,
-   
   },
   {
     initialRouteName: 'AuthLoading',
