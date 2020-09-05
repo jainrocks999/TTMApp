@@ -25,6 +25,7 @@ import CalendarPage from '../screens/CalendarPage';
 import PatentPage from '../screens/PatentScreen';
 import Other from '../screens/other';
 import TMSearchPage from '../screens/TMSearchScreen';
+import RegScreenDetails from '../screens/RegisteredScreen';
 
 const PatentStack = createStackNavigator(
   {
@@ -96,6 +97,22 @@ const CalendraPageStack = createStackNavigator(
     },
   },
 );
+
+const RegDetailsStack = createStackNavigator(
+  {
+    RegScreenDetails: {
+      screen: RegScreenDetails,
+    },
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },
+);
+
 const DesignPageStack = createStackNavigator(
   {
     DesignPage: {
@@ -232,6 +249,7 @@ const AppStack = createDrawerNavigator(
     PatentStack: PatentStack,
     CalendraPageStack: CalendraPageStack,
     TMSearchStack: TMSearchStack,
+    RegDetailsStack:RegDetailsStack,
   },
   {
     initialRouteName: 'Dashboard',

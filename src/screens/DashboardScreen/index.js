@@ -951,7 +951,8 @@ class DashBoardPage extends React.Component {
                   <View style={styles.secondView1}>
                     <TouchableOpacity
                       style={styles.touchTm}
-                      onPress={() => this.tmdata()}>
+                      onPress={() =>
+                        this.props.navigation.navigate('RegDetailsStack')}>
                       <View
                         style={{
                           justifyContent: 'center',

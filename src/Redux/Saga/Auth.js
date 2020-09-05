@@ -32,11 +32,7 @@ function* DoToken(action){
 }
 
 function* DoDesign(action){
-    console.log('copy cdcdcd'+action.url)
     const p = yield call(Api.fetchDataByGET,action.url,action.token)
-    console.log('copy'+ p.Status)
-    console.log('copy'+JSON.stringify(p.data))
-    console.log('copy'+ p.Status)
    if(p.Status == true){
     yield put({
         type:'User_Design_details_Success',
@@ -53,11 +49,9 @@ Alert.alert(p.message)
 
 
 function* DoCopyRight(action){
-    console.log('copy cdcdcd'+action.url)
+   
     const p = yield call(Api.fetchDataByGET,action.url,action.token)
-    console.log('copy'+ p.Status)
-    console.log('copy'+JSON.stringify(p.data))
-    console.log('copy'+ p.Status)
+   
    if(p.Status == true){
     yield put({
         type:'User_CopyRight_Success',
@@ -76,19 +70,13 @@ Alert.alert(p.message)
 }
 
 function* DoCalendra(action){
-    console.log('copy cdcdcd'+action.url)
-    const p = yield call(Api.fetchDataByGET,action.url,action.token)
-    console.log('copy'+ p.Status)
-    console.log('copy'+JSON.stringify(p.data))
-    console.log('copy'+ p.Status)
+const p = yield call(Api.fetchDataByGET,action.url,action.token)
    if(p.Status == true){
     yield put({
         type:'User_Calendra_Details_Success',
         payload:p.data
     })
   
-    // AsyncStorage.setItem(Constants.UserID,JSON.stringify(p.data.UserID))
-    // AsyncStorage.setItem(Constants.UserName, p.data.UserName)
 }else{
 Alert.alert(p.message)
  yield put({
@@ -97,6 +85,28 @@ Alert.alert(p.message)
 }
 
 }
+//Registered Api function
+function* DoRegisterd(action){
+     const p = yield call(Api.fetchDataByGET,action.url,action.token)
+    //const p = yield call (Api.fetchDataByGET,action.url,action.token)
+    if(p.Status == true){
+
+        console.log('staus'+p.Status)
+        console.log('staus'+JSON.stringify(p.data))
+        yield put({
+            type:'User_Registered_Details_Success',
+            payload:p.data
+        })
+    }else{
+        Alert.alert(p.message)
+        yield put({
+            type:'User_Registered_Details_Error'
+        })
+    }
+
+}
+
+
 
 function* DoPatent(action){
     console.log('copy cdcdcd'+action.url)
@@ -109,9 +119,6 @@ function* DoPatent(action){
         type:'User_Patent_Details_Success',
         payload:p.data
     })
-  
-    // AsyncStorage.setItem(Constants.UserID,JSON.stringify(p.data.UserID))
-    // AsyncStorage.setItem(Constants.UserName, p.data.UserName)
 }else{
 Alert.alert(p.message)
  yield put({
@@ -120,6 +127,7 @@ Alert.alert(p.message)
 }
 
 }
+
 
 
 function* doLogin(action){
@@ -214,4 +222,5 @@ export default function* authSaga(){
     yield takeEvery('User_Design_Details_Request',DoDesign)
     yield takeEvery('User_Calendra_Details_Request',DoCalendra)
     yield takeEvery('User_Patent_Details_Request',DoPatent)
+    yield takeEvery('User_Registered_Details_Request',DoRegisterd)
 }         

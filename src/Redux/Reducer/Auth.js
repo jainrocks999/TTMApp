@@ -6,6 +6,9 @@ initialstate={
   DesignDetails:[],
   PatentDetails:[],
   CalendraDetails:[],
+  //new api
+  RegisteredDetails:[],
+
 }
 export default (state=initialstate,action)=>{
   switch(action.type){
@@ -60,6 +63,16 @@ export default (state=initialstate,action)=>{
     return{...state,isFetching:false,CalendraDetails:action.payload}
     case 'User_Calendra_Details_Error':
     return{...state,isFetching:false}
+    
+    //Registered Details
+    case 'User_Registered_Details_Request':
+    return{...state,isFetching:true}
+    case 'User_Registered_Details_Success':
+    return{...state,isFetching:false,RegisteredDetails:action.payload}
+    case 'User_Registered_Details_Error':
+    return{...state,isFetching:false}
+
+
     default:         
     return state;
   }

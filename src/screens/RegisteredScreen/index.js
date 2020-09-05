@@ -18,26 +18,51 @@ import AsyncStorage from '@react-native-community/async-storage';
     this.loaddata()
   }
  renderItemView = (item) => {
+    // "App_Status": "Registered",
+        
+    //         "": "2027-11-05T00:00:00",
+    //         "Class_Class": 30,
+    //         "App_Date_New": "2007-11-05T00:00:00",
+    //         "DocCount": 0,
+    //         "JournalNoSupp": " 1401-0     Dated : 01/10/2008",
+    //         "App_Group1": "Registered",
+    //         "Alerts": ""
 
         if (this.state.visible == true) {
-            if (this.state.itemValue == item.Rowno) {
+            if (this.state.itemValue == item.FullPropName) {
                 return (
                     <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'space-between' ,alignItems: 'flex-start' }}>
                   <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 13, color: '#000',fontFamily: 'Poppins-Bold',width:'40%'  }}>ShortTrade Mark</Text>
-        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center',width:'55%' }}>{item.ShortTrade_Mark}</Text>
+        <Text style={{ fontSize: 13, color: '#000',fontFamily: 'Poppins-Bold',width:'40%'  }}>App No</Text>
+        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center',width:'55%' }}>{item.App_No}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold',width:'40%' }}>FullTrade Mark</Text>
-        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center',width:'55%' }}>{item.FullTrade_Mark}</Text>
+        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold',width:'40%' }}>New Prop Id</Text>
+        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center',width:'55%' }}>{item.NewProp_Id}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>App Status</Text>
-        <Text style={{ fontSize: 14, color: '#5A6779', marginLeft:10, fontFamily: 'Poppins',alignItems:'center',justifyContent:'center',width:'55%',color:'green',width:'55%' }}>{item.App_Status}</Text>
+        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>Trade_Mark</Text>
+        <Text style={{ fontSize: 14, color: '#5A6779', marginLeft:10, fontFamily: 'Poppins',alignItems:'center',justifyContent:'center',width:'55%',color:'green',width:'55%' }}>{item.Trade_Mark}</Text>
         </View>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Full Prop Name</Text>
-        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center',width:'55%' }}>{item.FullPropName}</Text>
+        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Short Prop Name</Text>
+        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center',width:'55%' }}>{item.ShortPropName}</Text>
+        </View>
+         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Prop Name</Text>
+        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center',width:'55%' }}>{item.PropName}</Text>
+        </View>
+         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Prop Address</Text>
+        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center',width:'55%' }}>{item.Prop_Address}</Text>
+        </View>
+         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>TM Type</Text>
+        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center',width:'55%' }}>{item.Tm_Type}</Text>
+        </View>
+         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
+        <Text style={{ fontSize: 13, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Valid upto</Text>
+        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center',width:'55%' }}>{item.Valid_upto}</Text>
         </View>
       </View>
                 )
@@ -49,12 +74,12 @@ import AsyncStorage from '@react-native-community/async-storage';
             console.log('rohit12' + this.state.visible)
             this.setState({
                 visible: true,
-                itemValue: item.Rowno
+                itemValue: item.FullPropName
             })
         } else {
             this.setState({
                 visible: false,
-                itemValue: item.Rowno
+                itemValue: item.FullPropName
             })
         }
     }
@@ -64,12 +89,12 @@ import AsyncStorage from '@react-native-community/async-storage';
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
     console.log('bdb'+userid);
-    this.props.dispatch({type:'User_Patent_Details_Request',url:'NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
+    this.props.dispatch({type:'User_Registered_Details_Request',url:'NewTMApi/TMAPI?UserId=122&ASA&Ag=Registered&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',token:token})
    };
 
 
   render() {
-const {PatentDetails}=this.props
+const {RegisteredDetails}=this.props
     return (
      
         <View style={{flex:1}}>
@@ -97,7 +122,7 @@ const {PatentDetails}=this.props
                 fontSize: 22,
                 textAlign: 'center',
               }}>
-              Design
+              Registered
             </Text>
           </View>
           <View
@@ -176,8 +201,14 @@ const {PatentDetails}=this.props
             </View>
           </View>
         </View>
+
+
+
+
+
+
      <FlatList
-                    data={PatentDetails}
+                    data={RegisteredDetails}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) =>
                     <View style={{ flex: 1 }}>
@@ -185,12 +216,16 @@ const {PatentDetails}=this.props
                                 onPress={() => this.getVisible(item)}>
                        <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'space-between' ,alignItems: 'flex-start' }}>
         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:20}}>
-        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>App No</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.App_No}</Text>             
+        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Full Prop Name</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.FullPropName}</Text>             
         </View>
-        
+         <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'space-between' ,alignItems: 'flex-start' }}>
+        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:20}}>
+        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Appropriate Office</Text>
+        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Appropriate_Office}</Text>             
+        </View>
       
-  
+  </View>
         </View>
         </TouchableOpacity>
 
@@ -211,7 +246,7 @@ const mapStateToProps = state => {
   console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
-    PatentDetails: state.PatentDetails,
+    RegisteredDetails: state.RegisteredDetails,
   };
 };
-export default connect(mapStateToProps)(PatentPage);
+export default connect(mapStateToProps)(RegisteredPage);

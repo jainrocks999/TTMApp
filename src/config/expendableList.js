@@ -123,7 +123,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
   }
 }
 const mapStateToProps = state => {
-  console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
     CopyRight: state.CopyRight,
