@@ -26,6 +26,7 @@ import PatentPage from '../screens/PatentScreen';
 import Other from '../screens/other';
 import TMSearchPage from '../screens/TMSearchScreen';
 import RegScreenDetails from '../screens/RegisteredScreen';
+import LostScreenDetails from '../screens/LostScreen';
 
 const PatentStack = createStackNavigator(
   {
@@ -102,6 +103,20 @@ const RegDetailsStack = createStackNavigator(
   {
     RegScreenDetails: {
       screen: RegScreenDetails,
+    },
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },
+);
+const LostDetailsStack = createStackNavigator(
+  {
+    LostScreenDetails: {
+      screen: LostScreenDetails,
     },
   },
   {
@@ -249,7 +264,8 @@ const AppStack = createDrawerNavigator(
     PatentStack: PatentStack,
     CalendraPageStack: CalendraPageStack,
     TMSearchStack: TMSearchStack,
-    RegDetailsStack:RegDetailsStack,
+    RegDetailsStack: RegDetailsStack,
+    LostDetailsStack: LostDetailsStack,
   },
   {
     initialRouteName: 'Dashboard',

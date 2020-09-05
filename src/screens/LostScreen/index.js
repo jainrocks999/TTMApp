@@ -13,7 +13,6 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {SliderBox} from 'react-native-image-slider-box';
 import Icon1 from 'react-native-vector-icons/Feather';
@@ -22,7 +21,7 @@ import storage from '../../config/storage';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-class DesignDetails extends Component {
+class LostDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -192,8 +191,9 @@ class DesignDetails extends Component {
 
     console.log('bdb' + userid);
     this.props.dispatch({
-      type: 'User_Design_Details_Request',
-      url: '/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',
+      type: 'User_Lost_Details_Request',
+      url:
+        'NewTMApi/TMAPI?UserId=122&ASA&Ag=Lost&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
       token: token,
     });
   };
@@ -209,7 +209,7 @@ class DesignDetails extends Component {
   };
 
   render() {
-    const {DesignDetails} = this.props;
+    const {LostDetails} = this.props;
     return (
       <View style={{flex: 1}}>
         <View
@@ -243,7 +243,7 @@ class DesignDetails extends Component {
                   textAlign: 'center',
                   marginLeft: 10,
                 }}>
-                Design
+                Lost
               </Text>
             </View>
           </View>
@@ -324,7 +324,7 @@ class DesignDetails extends Component {
           </View>
         </View>
         <FlatList
-          data={DesignDetails}
+          data={LostDetails}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <View style={{flex: 1}}>
@@ -386,7 +386,7 @@ const mapStateToProps = state => {
   console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
-    DesignDetails: state.DesignDetails,
+    LostDetails: state.LostDetails,
   };
 };
-export default connect(mapStateToProps)(DesignDetails);
+export default connect(mapStateToProps)(LostDetails);

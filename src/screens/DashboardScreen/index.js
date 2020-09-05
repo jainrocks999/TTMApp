@@ -407,12 +407,18 @@ class DashBoardPage extends React.Component {
             }}>
             <TouchableOpacity
               onPress={() => this.tmdata('Application')}
-              style={{alignItems: 'center'}}>
+              style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
                 style={styles.tabImage}
                 source={require('../../assets/icons/total.png')}
               />
-              <Text style={{fontSize: 12, color: 'gray', padding: 4}}>
+              <Text
+                style={{
+                  fontSize: 12,
+                  color: 'gray',
+                  padding: 4,
+                  textAlign: 'center',
+                }}>
                 {' '}
                 Total Application
               </Text>
@@ -439,6 +445,7 @@ class DashBoardPage extends React.Component {
                   padding: 4,
                   alignItems: 'center',
                   justifyContent: 'center',
+                  textAlign: 'center',
                 }}>
                 {' '}
                 Action Required
@@ -755,16 +762,16 @@ class DashBoardPage extends React.Component {
                     alignItems: 'center',
                   }}>
                   <TouchableOpacity
-                    style={{alignItems: 'center'}}
+                    style={{alignItems: 'center', alignItems: 'center'}}
                     onPress={() =>
                       this.setState({
                         isVisibleUpcoming: false,
                       })
                     }>
                     <Image
-                      style={styles.popupIcon}
-                      source={require('../../assets/Image/Group2x.png')}
-                      resizeMode={'stretch'}
+                      style={styles.crossIcon}
+                      source={require('../../assets/Image/cross.png')}
+                      resizeMode={'center'}
                     />
                   </TouchableOpacity>
                   <Text
@@ -789,7 +796,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Similar',
+                        })
                       }>
                       <View
                         style={{
@@ -818,7 +827,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Opposition',
+                        })
                       }>
                       <View
                         style={{
@@ -848,7 +859,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Post.Reg.Hearing',
+                        })
                       }>
                       <View
                         style={{
@@ -878,7 +891,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Post.Reg.Hearing',
+                        })
                       }>
                       <View
                         style={{
@@ -924,12 +939,29 @@ class DashBoardPage extends React.Component {
                   marginTop: 4,
                   alignItems: 'center',
                 }}>
-                <View style={{flexDirection: 'row', width: '100%'}}>
-                  <Image
-                    style={styles.popupIcon}
-                    source={require('../../assets/Image/Group2x.png')}
-                    resizeMode={'stretch'}
-                  />
+                {/* //yeha pr dismiss ka iocn add kr dena  */}
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    width: '100%',
+                  }}>
+                  <TouchableOpacity
+                    style={{
+                      width: '20%',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                    onPress={() =>
+                      this.setState({
+                        isVisibleStatus: false,
+                      })
+                    }>
+                    <Image
+                      style={styles.crossIcon}
+                      source={require('../../assets/Image/cross.png')}
+                      resizeMode={'center'}
+                    />
+                  </TouchableOpacity>
                   <Text
                     style={{
                       fontSize: 22,
@@ -952,7 +984,10 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('RegDetailsStack')}>
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Registered',
+                        })
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -980,7 +1015,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Lost',
+                        })
                       }>
                       <View
                         style={{
@@ -1009,7 +1046,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Litigation',
+                        })
                       }>
                       <View
                         style={{
@@ -1045,7 +1084,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Pending',
+                        })
                       }>
                       <View
                         style={{
@@ -1065,7 +1106,7 @@ class DashBoardPage extends React.Component {
                             fontFamily: 'Poppins',
                             fontSize: 12,
                           }}>
-                          Padding
+                          Pending
                         </Text>
                       </View>
                     </TouchableOpacity>
@@ -1092,12 +1133,28 @@ class DashBoardPage extends React.Component {
                   marginTop: 4,
                   alignItems: 'center',
                 }}>
-                <View style={{flexDirection: 'row', width: '100%'}}>
-                  <Image
-                    style={styles.popupIcon}
-                    source={require('../../assets/Image/Group2x.png')}
-                    resizeMode={'stretch'}
-                  />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    width: '100%',
+                  }}>
+                  <TouchableOpacity
+                    style={{
+                      width: '20%',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                    onPress={() =>
+                      this.setState({
+                        isVisibleStatus: false,
+                      })
+                    }>
+                    <Image
+                      style={styles.crossIcon}
+                      source={require('../../assets/Image/cross.png')}
+                      resizeMode={'center'}
+                    />
+                  </TouchableOpacity>
                   <Text
                     style={{
                       fontSize: 22,
@@ -1120,7 +1177,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Own',
+                        })
                       }>
                       <View
                         style={{
@@ -1149,7 +1208,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Similar',
+                        })
                       }>
                       <View
                         style={{
@@ -1204,16 +1265,20 @@ class DashBoardPage extends React.Component {
                     alignItems: 'center',
                   }}>
                   <TouchableOpacity
-                    style={{width: '20%', justifyContent: 'center'}}
+                    style={{
+                      width: '20%',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
                     onPress={() =>
                       this.setState({
                         isVisibleStatus: false,
                       })
                     }>
                     <Image
-                      style={styles.popupIcon}
-                      source={require('../../assets/Image/Group2x.png')}
-                      resizeMode={'stretch'}
+                      style={styles.crossIcon}
+                      source={require('../../assets/Image/cross.png')}
+                      resizeMode={'center'}
                     />
                   </TouchableOpacity>
                   <Text
@@ -1238,7 +1303,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Application',
+                        })
                       }>
                       <View
                         style={{
@@ -1264,7 +1331,13 @@ class DashBoardPage extends React.Component {
                     </TouchableOpacity>
                   </View>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Proprietors',
+                        })
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',

@@ -4,8 +4,8 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   tabImage: {
     height: 16,
-    justifyContent:'center',
-    alignItems:'center',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: 16,
     //tintColor: 'white'
   },
@@ -164,6 +164,11 @@ export default StyleSheet.create({
   popupIcon: {
     height: 26,
     width: 26,
+    margin: 8,
+  },
+  crossIcon: {
+    height: 18,
+    width: 18,
     margin: 8,
   },
   designView: {
