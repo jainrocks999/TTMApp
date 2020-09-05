@@ -41,6 +41,8 @@ export default class MyDrawer extends React.Component {
             AsyncStorage.clear().then(p =>
               this.props.navigation.navigate(route.key),
             )
+            :route.key === 'DashBoard'
+            ?()=>{ this.props.navigation.goBack(null)}
         : route.key === 'logout'
         ? () => this.Logout()
         : () => {
@@ -169,7 +171,7 @@ export default class MyDrawer extends React.Component {
               </View>
             </TouchableOpacity>
           </View>
-
+          {this.renderDrawerItem({label: 'DashBoard', key: 'DashBoard'})}
           {this.renderDrawerItem({label: 'logout', key: 'logout'})}
         </View>
       </ScrollView>

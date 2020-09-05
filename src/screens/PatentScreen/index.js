@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View,Image,TextInput,FlatList, StyleSheet,Text,ScrollView,Platform,  LayoutAnimation,UIManager,TouchableOpacity, ImageBackground} from 'react-native';
+import {View,Alert,Image,TextInput,FlatList, StyleSheet,Text,ScrollView,Platform,  LayoutAnimation,UIManager,TouchableOpacity, ImageBackground} from 'react-native';
 import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {SliderBox} from 'react-native-image-slider-box';
@@ -64,7 +64,8 @@ import AsyncStorage from '@react-native-community/async-storage';
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
     console.log('bdb'+userid);
-    this.props.dispatch({type:'User_Patent_Details_Request',url:'NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
+    Alert.alert('Data Not found')
+   // this.props.dispatch({type:'User_Patent_Details_Request',url:'NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
    };
 
 
@@ -81,13 +82,14 @@ const {PatentDetails}=this.props
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
+           <View style={{flexDirection:'row',alignItems:'center',justifyContent:'flex-start'}}>
           <TouchableOpacity
             onPress={() => {
            this.props.navigation.goBack(null);
             }}>
             <Image
               source={require('../../assets/icons/arrow.png')}
-              style={{width: 20, height: 15}}
+              style={{width: 24, height: 15,marginEnd:10}}
             />
           </TouchableOpacity>
 
@@ -97,8 +99,9 @@ const {PatentDetails}=this.props
                 fontSize: 22,
                 textAlign: 'center',
               }}>
-              Design
+              Patent
             </Text>
+          </View>
           </View>
           <View
             style={{
@@ -109,8 +112,8 @@ const {PatentDetails}=this.props
             <Image
               source={require('../../assets/icons/bell_one.png')}
               style={{
-                width: 22,
-                height: 22,
+                width: 18,
+                height: 18,
                 marginRight: 15,
                 justifyContent: 'center',
               }}
@@ -132,6 +135,7 @@ const {PatentDetails}=this.props
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
+          
           <View
             style={{
              width:'88%',

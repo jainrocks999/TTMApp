@@ -161,12 +161,9 @@ import ExpandableItemComponent from '../../config/expendableList.js';
         <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Evd Date</Text>
         <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.EvdDate}</Text>
         </View>
-                       
-                
-                    </View>
-
+        </View>
                 )
- } else {
+        } else {
 
         }
         } else {
@@ -194,7 +191,7 @@ import ExpandableItemComponent from '../../config/expendableList.js';
             }}>
             <Image
               source={require('../../assets/icons/arrow.png')}
-              style={{width: 20, height: 15,marginEnd:15}}
+              style={{width: 24, height: 15,marginEnd:10}}
             />
           </TouchableOpacity>
 
@@ -284,24 +281,20 @@ import ExpandableItemComponent from '../../config/expendableList.js';
             </View>
           </View>
         </View>
-     <FlatList
+            <FlatList
                     data={CalendraDetails}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) =>
                      <View style={{ flex: 1 }}>
                             <TouchableOpacity
-                                onPress={() => this.getVisible(item)}>
-
-
-                       <View style={{ flexDirection: 'column',marginEnd:10, elevation: 2, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'center' ,alignItems: 'flex-start' }}>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between'}}>
-                <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Text Type</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.TextType}</Text>             
-        </View>
-       
-        </View>
-</TouchableOpacity>
-
+                            onPress={() => this.getVisible(item)}>
+                       <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'center' ,alignItems: 'flex-start' }}>
+                       <View style={{flexDirection:'row',flex:1,justifyContent:'space-between'}}>
+                      <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Text Type</Text>
+                      <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.TextType}</Text>             
+                      </View>
+                      </View>
+                      </TouchableOpacity>
                             {this.renderItemView(item)}
 
                         </View>

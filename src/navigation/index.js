@@ -29,9 +29,19 @@ import TMSearchPage from '../screens/TMSearchScreen';
 
 
 const PatentStack = createStackNavigator({
-  PatentPage:{screen:PatentPage},
+  PatentPage:{
+    screen:PatentPage
+    },
  // header:false
-})
+},
+ {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },
+  );
 
 const TMSearchStack = createStackNavigator(
   {
@@ -212,7 +222,8 @@ const AppStack = createDrawerNavigator(
     MyTradeDetailViewStack:MyTradeDetailViewStack,
     CopyRightStack:CopyRightStack,
     DesignPageStack:DesignPageStack,
-    
+    PatentStack:PatentStack,
+   CalendraPageStack:CalendraPageStack,
    
     
   },
@@ -229,8 +240,7 @@ const AuthStack = createSwitchNavigator(
     Auth: AuthNavigator,
     AppStack: AppStack,
     apiScreen: apiNavigator,
-   PatentStack:PatentStack,
-   CalendraPageStack:CalendraPageStack,
+   
   },
   {
     initialRouteName: 'AuthLoading',

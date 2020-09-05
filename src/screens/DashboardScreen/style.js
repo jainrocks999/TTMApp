@@ -4,6 +4,8 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   tabImage: {
     height: 16,
+    justifyContent:'center',
+    alignItems:'center',
     width: 16,
     //tintColor: 'white'
   },
@@ -116,10 +118,10 @@ export default StyleSheet.create({
     height: 150,
   },
   secondView1: {
-    // width: '46%',
+    width: '25%',
     backgroundColor: '#fff',
     borderRadius: 10,
-    height: 110,
+    height: 90,
   },
   thirdView: {
     height: '80%',
