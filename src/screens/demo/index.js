@@ -8,7 +8,6 @@ export default class App extends Component {
     super(props);
     this.state = {
       images: [
-        require('../../assets/images/yogi.png'),
         require('../../assets/images/pppp.png'),
         require('../../assets/images/logo.png'),
         require('../../assets/images/logo.png'),
@@ -21,8 +20,7 @@ export default class App extends Component {
       <ImageBackground
         source={require('../../assets/images/bg.png')}
         style={styles.back}>
-        <View style={styles.container} 
-        onLayout={this.onLayout}>
+        <View style={styles.container} onLayout={this.onLayout}>
           <SliderBox
             //ImageComponent={require('../../assets/images/logo.png')}
             images={this.state.images}

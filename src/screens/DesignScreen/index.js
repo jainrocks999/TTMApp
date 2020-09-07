@@ -211,10 +211,10 @@ class DesignDetails extends Component {
   render() {
     const {DesignDetails} = this.props;
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: '#F6F8F9'}}>
         <View
           style={{
-            backgroundColor: 'white',
+            backgroundColor: '#FFFFFF',
             padding: 12,
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -331,46 +331,46 @@ class DesignDetails extends Component {
               <TouchableOpacity onPress={() => this.getVisible(item)}>
                 <View
                   style={{
-                    flexDirection: 'column',
-                    marginEnd: 10,
-                    margin: 10,
-                    backgroundColor: '#FAFAFA',
-                    borderRadius: 8,
+                    marginTop: 15,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 10,
+
                     padding: 10,
-                    marginBottom: 4,
                     justifyContent: 'space-between',
-                    alignItems: 'flex-start',
+                    paddingVertical: 20,
+
+                    marginHorizontal: 20,
                   }}>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 20,
-                    }}>
-                    <Text
+                  <View>
+                    <View
                       style={{
-                        fontSize: 14,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
+                        flexDirection: 'row',
                         alignItems: 'center',
-                        justifyContent: 'center',
+                        paddingHorizontal: 5,
                       }}>
-                      App No
-                    </Text>
-                    <Text
-                      style={{
-                        fontSize: 15,
-                        color: '#5A6779',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}>
-                      {item.App_No}
-                    </Text>
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          fontFamily: 'Poppins-Bold',
+                        }}>
+                        {'App No :'}
+                      </Text>
+                      <Text
+                        style={{
+                          fontFamily: 'Poppins-Bold',
+                          fontSize: 14,
+                          marginLeft: 20,
+                        }}>
+                        {item.App_No}
+                      </Text>
+                    </View>
                   </View>
+                  <Image
+                    style={{height: 25, width: 25, marginRight: 10}}
+                    source={require('../../assets/icons/arrow_down.png')}
+                  />
                 </View>
               </TouchableOpacity>
 

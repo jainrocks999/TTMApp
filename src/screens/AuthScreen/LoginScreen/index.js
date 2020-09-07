@@ -35,7 +35,7 @@ class Login extends React.Component {
 
   loaddata = async () => {
     let token = await AsyncStorage.getItem(storage.Token);
-    console.log('token check login'+token)
+    console.log('token check login' + token);
     this.setState({
       token: token,
     });
@@ -48,14 +48,20 @@ class Login extends React.Component {
     } else if (Password == '') {
       Toast.show('Please enter password.');
     } else {
-     this.props.dispatch({type:'User_Login_Request',url:'NewTMApi/Login',Email,Password,token:token})
-     this.props.navigation.navigate('AppStack');
-     }
+      this.props.dispatch({
+        type: 'User_Login_Request',
+        url: 'NewTMApi/Login',
+        Email,
+        Password,
+        token: token,
+      });
+      this.props.navigation.navigate('AppStack');
+    }
   };
 
   render() {
     return (
-      <View style={{flex: 1,paddingRight:10,paddingLeft:10,marginTop:4}}>
+      <View style={{flex: 1, paddingRight: 10, paddingLeft: 10, marginTop: 4}}>
         <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
@@ -66,7 +72,7 @@ class Login extends React.Component {
             <Image
               source={require('../../../assets/icons/arrow.png')}
               resizeMode={'stretch'}
-              style={{width: 20, height: 15, color: 'grey',marginTop:4}}
+              style={{width: 20, height: 15, color: 'grey', marginTop: 4}}
             />
           </TouchableOpacity>
           <Text
@@ -88,7 +94,7 @@ class Login extends React.Component {
             <Image
               source={require('../../../assets/icons/group1.png')}
               style={styles.image}
-              resizeMode={"stretch"}
+              resizeMode={'center'}
             />
           </View>
           <View
@@ -142,7 +148,7 @@ class Login extends React.Component {
               style={{
                 borderWidth: 1,
                 width: '100%',
-               // height: 40,
+                // height: 40,
                 borderRadius: 10,
                 marginTop: 4,
               }}>
@@ -150,7 +156,7 @@ class Login extends React.Component {
                 placeholder="Enter Username"
                 //labelFontSize={14}
                 value={this.state.Email}
-                style={{color: '#001630', fontSize: 14,height:40}}
+                style={{color: '#001630', fontSize: 14, height: 40}}
                 keyboardType="email-address"
                 onChangeText={Email => {
                   this.setState({Email});
@@ -166,7 +172,7 @@ class Login extends React.Component {
                 width: '100%',
                 borderRadius: 10,
                 marginTop: 4,
-              
+
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -176,7 +182,7 @@ class Login extends React.Component {
                 placeholder="Enter Password"
                 value={this.state.Password}
                 //labelFontSize={14}
-                style={{color: '#001630', fontSize: 14,height:40}}
+                style={{color: '#001630', fontSize: 14, height: 40}}
                 secureTextEntry={true}
                 onChangeText={Password => {
                   this.setState({Password});

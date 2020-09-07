@@ -30,6 +30,7 @@ export default class other extends React.Component {
           <Image
             source={require('../../assets/icons/group2.png')}
             style={{width: 340, height: 250}}
+            resizeMode={'center'}
           />
         </View>
         <View
