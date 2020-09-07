@@ -27,6 +27,7 @@ import Other from '../screens/other';
 import TMSearchPage from '../screens/TMSearchScreen';
 import RegScreenDetails from '../screens/RegisteredScreen';
 import LostScreenDetails from '../screens/LostScreen';
+import ProfilePage from '../screens/ProfileScreen';
 
 const PatentStack = createStackNavigator(
   {
@@ -99,6 +100,20 @@ const CalendraPageStack = createStackNavigator(
   },
 );
 
+const ProfileStack = createStackNavigator(
+  {
+    ProfilePage: {
+      screen: ProfilePage,
+    },
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },
+);
 const RegDetailsStack = createStackNavigator(
   {
     RegScreenDetails: {
@@ -266,6 +281,7 @@ const AppStack = createDrawerNavigator(
     TMSearchStack: TMSearchStack,
     RegDetailsStack: RegDetailsStack,
     LostDetailsStack: LostDetailsStack,
+    ProfileStack: ProfileStack,
   },
   {
     initialRouteName: 'Dashboard',

@@ -145,7 +145,7 @@ function* doLogin(action) {
       type: 'User_Login_Success',
       payload: p.data.data,
     });
-
+    console.log('dataaaa' + p.data);
     AsyncStorage.setItem(Constants.UserID, JSON.stringify(p.data.UserID));
     AsyncStorage.setItem(Constants.UserName, p.data.UserName);
   } else {

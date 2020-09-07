@@ -37,15 +37,15 @@ class RegisteredDetails extends Component {
         return (
           <View
             style={{
+              borderTopWidth: 0.5,
+              flex: 1,
               flexDirection: 'column',
-              marginEnd: 10,
-              margin: 10,
-              backgroundColor: '#FAFAFA',
+              marginHorizontal: 20,
+              backgroundColor: '#FFF',
               borderRadius: 8,
-              padding: 10,
-              marginBottom: 4,
               justifyContent: 'space-between',
-              alignItems: 'flex-start',
+              paddingHorizontal: 10,
+              paddingVertical: 10,
             }}>
             <View
               style={{
@@ -61,76 +61,16 @@ class RegisteredDetails extends Component {
                   fontFamily: 'Poppins-Bold',
                   width: '40%',
                 }}>
-                ShortTrade Mark
+                Status
               </Text>
               <Text
                 style={{
                   fontSize: 14,
-                  color: '#5A6779',
+                  color: '#82C2EC',
                   fontFamily: 'Poppins',
                   marginLeft: 10,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '55%',
-                }}>
-                {item.ShortTrade_Mark}
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
-              <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
-                FullTrade Mark
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                }}>
-                {item.FullTrade_Mark}
-              </Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
-              <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
-                App Status
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  marginLeft: 10,
-                  fontFamily: 'Poppins',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                  color: 'green',
                   width: '55%',
                 }}>
                 {item.App_Status}
@@ -150,7 +90,7 @@ class RegisteredDetails extends Component {
                   fontFamily: 'Poppins-Bold',
                   width: '40%',
                 }}>
-                Full Prop Name
+                App. Date
               </Text>
               <Text
                 style={{
@@ -162,7 +102,124 @@ class RegisteredDetails extends Component {
                   justifyContent: 'center',
                   width: '55%',
                 }}>
-                {item.FullPropName}
+                {item.App_Date_New}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                TM Type
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#5A6779',
+                  marginLeft: 10,
+                  fontFamily: 'Poppins',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '55%',
+                  width: '55%',
+                }}>
+                {item.Tm_Type}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                Valid Upto
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#5A6779',
+                  fontFamily: 'Poppins',
+                  marginLeft: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '55%',
+                }}>
+                {item.Valid_upto}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                APPro Office
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#5A6779',
+                  fontFamily: 'Poppins',
+                  marginLeft: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '55%',
+                }}>
+                {item.Appropriate_Office}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                Class
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#5A6779',
+                  fontFamily: 'Poppins',
+                  marginLeft: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '55%',
+                }}>
+                {item.Class_Class}
               </Text>
             </View>
           </View>
@@ -338,46 +395,68 @@ class RegisteredDetails extends Component {
               <TouchableOpacity onPress={() => this.getVisible(item)}>
                 <View
                   style={{
-                    flexDirection: 'column',
-                    marginEnd: 10,
-                    margin: 10,
-                    backgroundColor: '#FAFAFA',
-                    borderRadius: 8,
+                    marginTop: 15,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 10,
+
                     padding: 10,
-                    marginBottom: 4,
                     justifyContent: 'space-between',
-                    alignItems: 'flex-start',
+                    paddingVertical: 20,
+
+                    marginHorizontal: 20,
                   }}>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 20,
-                    }}>
-                    <Text
+                  <View>
+                    <View
                       style={{
-                        fontSize: 14,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
+                        flexDirection: 'row',
                         alignItems: 'center',
-                        justifyContent: 'center',
+                        paddingHorizontal: 5,
                       }}>
-                      App No
-                    </Text>
-                    <Text
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          fontFamily: 'Poppins-Bold',
+                        }}>
+                        {'App No :'}
+                      </Text>
+                      <Text
+                        style={{
+                          fontFamily: 'Poppins-Bold',
+                          fontSize: 14,
+                          marginLeft: 20,
+                        }}>
+                        {item.App_No}
+                      </Text>
+                    </View>
+                    <View
                       style={{
-                        fontSize: 15,
-                        color: '#5A6779',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
+                        flexDirection: 'row',
                         alignItems: 'center',
-                        justifyContent: 'center',
+                        paddingHorizontal: 5,
                       }}>
-                      {item.App_No}
-                    </Text>
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          fontFamily: 'Poppins-Bold',
+                        }}>
+                        {'Trademark :'}
+                      </Text>
+                      <Text
+                        style={{
+                          fontFamily: 'Poppins',
+                          fontSize: 14,
+                          marginLeft: 20,
+                        }}>
+                        {item.Trade_Mark}
+                      </Text>
+                    </View>
                   </View>
+                  <Image
+                    style={{height: 25, width: 25, marginRight: 10}}
+                    source={require('../../assets/icons/arrow_down.png')}
+                  />
                 </View>
               </TouchableOpacity>
 

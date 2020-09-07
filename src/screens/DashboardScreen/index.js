@@ -98,12 +98,16 @@ class DashBoardPage extends React.Component {
                 justifyContent: 'center',
               }}
             />
-            <View style={{alignItems: 'center'}}>
+            <TouchableOpacity
+              style={{alignItems: 'center'}}
+              onPress={() => {
+                this.props.navigation.navigate('ProfileStack');
+              }}>
               <Image
                 source={require('../../assets/icons/profile.png')}
                 style={{width: 31, height: 31}}
               />
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
         <ScrollView style={{paddingHorizontal: 10, flex: 1, marginTop: 15}}>

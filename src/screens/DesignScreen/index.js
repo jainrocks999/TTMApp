@@ -336,11 +336,9 @@ class DesignDetails extends Component {
                     alignItems: 'center',
                     backgroundColor: '#FFFFFF',
                     borderRadius: 10,
-
                     padding: 10,
                     justifyContent: 'space-between',
                     paddingVertical: 20,
-
                     marginHorizontal: 20,
                   }}>
                   <View>
