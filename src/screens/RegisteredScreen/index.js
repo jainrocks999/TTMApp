@@ -12,6 +12,7 @@ import {
   UIManager,
   TouchableOpacity,
   ImageBackground,
+  Alert,
 } from 'react-native';
 import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -244,19 +245,48 @@ class RegisteredDetails extends Component {
 
   loaddata = async () => {
     const BtnName = this.props.navigation.getParam('btnValue');
-    console.log('data of btn' + BtnName);
     const {Nor, PageNo} = this.state;
-    let userid = await AsyncStorage.getItem(storage.UserID);
-    let token = await AsyncStorage.getItem(storage.Token);
-    console.log('bdb' + userid);
-    this.props.dispatch({
-      type: 'User_Registered_Details_Request',
-      url:
-        'NewTMApi/TMAPI?UserId=122&ASA&Ag=' +
-        BtnName +
-        '&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
-      token: token,
-    });
+    switch (BtnName) {
+      case 'Lost':
+        {
+          console.log('data of btn' + BtnName);
+          const {Nor, PageNo} = this.state;
+          let userid = await AsyncStorage.getItem(storage.UserID);
+          let token = await AsyncStorage.getItem(storage.Token);
+          console.log('bdb' + userid);
+          this.props.dispatch({
+            type: 'User_Lost_Details_Request',
+            url:
+              'NewTMApi/TMAPI?UserId=122&ASA&Ag=' +
+              BtnName +
+              '&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
+            token: token,
+          });
+        }
+        break;
+      case 'Registered':
+        {
+          console.log('data of btn' + BtnName);
+          let userid = await AsyncStorage.getItem(storage.UserID);
+          let token = await AsyncStorage.getItem(storage.Token);
+          console.log('bdb' + userid);
+          this.props.dispatch({
+            type: 'User_Registered_Details_Request',
+            url:
+              'NewTMApi/TMAPI?UserId=122&ASA&Ag=' +
+              BtnName +
+              '&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
+            token: token,
+          });
+        }
+
+        break;
+      default:
+        Alert.alert('blank');
+        break;
+    }
+    console.log('çase');
+    clear();
   };
 
   updateLayout = index => {

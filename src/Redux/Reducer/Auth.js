@@ -75,7 +75,7 @@ export default (state = initialstate, action) => {
     case 'User_Lost_Details_Request':
       return {...state, isFetching: true};
     case 'User_Lost_Details_Success':
-      return {...state, isFetching: false, LostDetails: action.payload};
+      return {...state, isFetching: false, RegisteredDetails: action.payload};
     case 'User_Lost_Details_Error':
       return {...state, isFetching: false};
 
