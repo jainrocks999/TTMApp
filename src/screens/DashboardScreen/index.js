@@ -957,7 +957,7 @@ class DashBoardPage extends React.Component {
                     }}
                     onPress={() =>
                       this.setState({
-                        isVisibleStatus: false,
+                        isVisibleApplication: false,
                       })
                     }>
                     <Image
@@ -1143,14 +1143,10 @@ class DashBoardPage extends React.Component {
                     width: '100%',
                   }}>
                   <TouchableOpacity
-                    style={{
-                      width: '20%',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
+                    style={{alignItems: 'center', alignItems: 'center'}}
                     onPress={() =>
                       this.setState({
-                        isVisibleStatus: false,
+                        isVisibleAction: false,
                       })
                     }>
                     <Image
