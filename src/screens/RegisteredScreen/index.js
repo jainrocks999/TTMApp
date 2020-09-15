@@ -245,6 +245,7 @@ class RegisteredDetails extends Component {
 
   loaddata = async () => {
     const BtnName = this.props.navigation.getParam('btnValue');
+    console.log('Button Value : ' + BtnName);
     const {Nor, PageNo} = this.state;
     switch (BtnName) {
       case 'Lost':
