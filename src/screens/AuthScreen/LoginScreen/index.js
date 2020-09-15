@@ -71,7 +71,7 @@ class Login extends React.Component {
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Image
               source={require('../../../assets/icons/arrow.png')}
-              resizeMode={'stretch'}
+              resizeMode={'center'}
               style={{width: 20, height: 15, color: 'grey', marginTop: 4}}
             />
           </TouchableOpacity>
@@ -156,7 +156,7 @@ class Login extends React.Component {
                 placeholder="Enter Username"
                 //labelFontSize={14}
                 value={this.state.Email}
-                style={{color: '#001630', fontSize: 14, height: 40}}
+                style={{color: '#001630', fontSize: 14, height: 40,width:'100%',paddingHorizontal:10}}
                 keyboardType="email-address"
                 onChangeText={Email => {
                   this.setState({Email});
@@ -182,7 +182,7 @@ class Login extends React.Component {
                 placeholder="Enter Password"
                 value={this.state.Password}
                 //labelFontSize={14}
-                style={{color: '#001630', fontSize: 14, height: 40}}
+                style={{color: '#001630', fontSize: 14, height: 40,width:'80%',paddingHorizontal:10}}
                 secureTextEntry={true}
                 onChangeText={Password => {
                   this.setState({Password});
