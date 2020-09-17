@@ -223,6 +223,30 @@ class RegisteredDetails extends Component {
                 {item.Class_Class}
               </Text>
             </View>
+            <View
+              style={{
+                flex: 1,
+                width: '100%',
+                justifyContent: 'flex-end',
+                alignItems: 'flex-end',
+              }}>
+              <TouchableOpacity
+                onPress={this.props.onclickview}
+                style={{
+                  backgroundColor: '#5F85E5',
+                  borderRadius: 5,
+                  padding: 4,
+                  width: '30%',
+                  borderRadius: 10,
+
+                  right: 10,
+                  bottom: 10,
+                  alignItems: 'center',
+                  marginTop: 10,
+                }}>
+                <Text style={{color: 'white', fontSize: 14}}>View More</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         );
       }
@@ -258,9 +282,7 @@ class RegisteredDetails extends Component {
           this.props.dispatch({
             type: 'User_Lost_Details_Request',
             url:
-              'NewTMApi/TMAPI?UserId=122&ASA&Ag=' +
-              BtnName +
-              '&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
+              'NewTMApi/TMAPI?UserId=122&ASA&Ag=Lost&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
             token: token,
           });
         }
@@ -274,20 +296,122 @@ class RegisteredDetails extends Component {
           this.props.dispatch({
             type: 'User_Registered_Details_Request',
             url:
-              'NewTMApi/TMAPI?UserId=122&ASA&Ag=' +
-              BtnName +
-              '&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
+              'NewTMApi/TMAPI?UserId=122&ASA&Ag=Registered&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
             token: token,
           });
         }
-
         break;
+
+      case 'Litigation':
+        {
+          console.log('data of btn' + BtnName);
+          let userid = await AsyncStorage.getItem(storage.UserID);
+          let token = await AsyncStorage.getItem(storage.Token);
+          console.log('bdb' + userid);
+          this.props.dispatch({
+            type: 'User_Litigation_Details_Request',
+            url:
+              'NewTMApi/TMAPI?UserId=123&ASA=&Ag=Litigation&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead=&As=&search=&Status=',
+            token: token,
+          });
+        }
+        break;
+
+      case 'Pending':
+        {
+          console.log('data of btn' + BtnName);
+          let userid = await AsyncStorage.getItem(storage.UserID);
+          let token = await AsyncStorage.getItem(storage.Token);
+          console.log('bdb' + userid);
+          this.props.dispatch({
+            type: 'User_Pending_Details_Request',
+            url:
+              'NewTMApi/TMAPI?UserId=122&ASA&Ag=Pending&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
+            token: token,
+          });
+        }
+        break;
+
+      case 'Applications':
+        {
+          console.log('data of btn' + BtnName);
+          let userid = await AsyncStorage.getItem(storage.UserID);
+          let token = await AsyncStorage.getItem(storage.Token);
+          console.log('bdb' + userid);
+          this.props.dispatch({
+            type: 'User_ApplicationStatus_Details_Request',
+            url:
+              'NewTMApi/TMAPI?UserId=122&ASA=&Ag=&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead=PropStatus&As=&search=&Status=',
+            token: token,
+          });
+        }
+        break;
+
+      case 'Proprieter':
+        {
+          console.log('data of btn' + BtnName);
+          let userid = await AsyncStorage.getItem(storage.UserID);
+          let token = await AsyncStorage.getItem(storage.Token);
+          console.log('bdb' + userid);
+          this.props.dispatch({
+            type: 'User_Proprieter_Details_Request',
+            url:
+              'NewTMApi/TMAPI?UserId=122&ASA=&Ag=&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead=Proprieter Summary&As=&search=&Status=',
+            token: token,
+          });
+        }
+        break;
+
+      case 'Opposition':
+        {
+          console.log('data of btn' + BtnName);
+          let userid = await AsyncStorage.getItem(storage.UserID);
+          let token = await AsyncStorage.getItem(storage.Token);
+          console.log('bdb' + userid);
+          this.props.dispatch({
+            type: 'User_Opposition_Details_Request',
+            url:
+              'NewTMApi/TMAPI?UserId=122&ASA=&Ag=&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead=Proposed Opposition&As=FourMonthSixDaysAfter&search=',
+            token: token,
+          });
+        }
+        break;
+
+      case 'MyTrademark':
+        {
+          console.log('data of btn' + BtnName);
+          let userid = await AsyncStorage.getItem(storage.UserID);
+          let token = await AsyncStorage.getItem(storage.Token);
+          console.log('bdb' + userid);
+          this.props.dispatch({
+            type: 'User_MyTrademark_Details_Request',
+            url:
+              'NewTMApi/TMAPI?UserId=122&ASA=&Ag=&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead=&As&search=',
+            token: token,
+          });
+        }
+        break;
+
+      case 'Lapsed Renewal':
+        {
+          console.log('data of btn' + BtnName);
+          let userid = await AsyncStorage.getItem(storage.UserID);
+          let token = await AsyncStorage.getItem(storage.Token);
+          console.log('bdb' + userid);
+          this.props.dispatch({
+            type: 'User_LapsedRenewal_Details_Request',
+            url:
+              'NewTMApi/TMAPI?UserId=122&ASA=&Ag=&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead=&As=Lapsed Renewal&search=&Status=',
+            token: token,
+          });
+        }
+        break;
+
       default:
         Alert.alert('blank');
         break;
     }
-    console.log('çase');
-    clear();
+    console.log('case');
   };
 
   updateLayout = index => {

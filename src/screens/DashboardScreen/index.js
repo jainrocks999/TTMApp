@@ -492,7 +492,9 @@ class DashBoardPage extends React.Component {
                     <TouchableOpacity
                       style={styles.touchTm}
                       onPress={() =>
-                        this.props.navigation.navigate('MyTradeDetailPage')
+                        this.props.navigation.navigate('MyTradeDetailPage', {
+                          btnValue: 'MyTrademark',
+                        })
                       }>
                       <View
                         style={{
@@ -665,7 +667,13 @@ class DashBoardPage extends React.Component {
                     </TouchableOpacity>
                   </View>
                   <View style={styles.secondView1}>
-                    <TouchableOpacity style={styles.touchTm}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Lapsed Renewal',
+                        })
+                      }>
                       <View
                         style={{
                           justifyContent: 'center',
@@ -1304,7 +1312,7 @@ class DashBoardPage extends React.Component {
                       style={styles.touchTm}
                       onPress={() =>
                         this.props.navigation.navigate('RegScreenDetails', {
-                          btnValue: 'Application',
+                          btnValue: 'Applications',
                         })
                       }>
                       <View
@@ -1335,7 +1343,7 @@ class DashBoardPage extends React.Component {
                       style={styles.touchTm}
                       onPress={() =>
                         this.props.navigation.navigate('RegScreenDetails', {
-                          btnValue: 'Proprietors',
+                          btnValue: 'Proprieter',
                         })
                       }>
                       <View
@@ -1356,7 +1364,7 @@ class DashBoardPage extends React.Component {
                             fontFamily: 'Poppins',
                             fontSize: 12,
                           }}>
-                          Proprietors
+                          Proprieters
                         </Text>
                       </View>
                     </TouchableOpacity>

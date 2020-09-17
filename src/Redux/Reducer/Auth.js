@@ -18,6 +18,7 @@ export default (state = initialstate, action) => {
       return {...state, isFetching: false, Token: action.payload};
     case 'User_Token_Error':
       return {...state, isFetching: false};
+
     //Login Status Value
     case 'User_Login_Request':
       return {...state, isFetching: true};
@@ -25,6 +26,7 @@ export default (state = initialstate, action) => {
       return {...state, isFetching: false, UserDetails: action.payload};
     case 'User_Login_Error':
       return {...state, isFetching: false};
+
     //Register status Value
     case 'User_Register_Request':
       return {...state, isFetching: true};
@@ -32,6 +34,7 @@ export default (state = initialstate, action) => {
       return {...state, isFetching: false, User: action.payload};
     case 'User_Register_Error':
       return {...state, isFetching: false};
+
     //CopyRight details
     case 'User_CopyRight_Request':
       return {...state, isFetching: true};
@@ -39,6 +42,7 @@ export default (state = initialstate, action) => {
       return {...state, isFetching: false, CopyRight: action.payload};
     case 'User_CopyRight_Error':
       return {...state, isFetching: false};
+
     //Design Details
     case 'User_Design_Details_Request':
       return {...state, isFetching: true};
@@ -77,6 +81,62 @@ export default (state = initialstate, action) => {
     case 'User_Lost_Details_Success':
       return {...state, isFetching: false, RegisteredDetails: action.payload};
     case 'User_Lost_Details_Error':
+      return {...state, isFetching: false};
+
+    //Litigation Details
+    case 'User_Litigation_Details_Request':
+      return {...state, isFetching: true};
+    case 'User_Litigation_Details_Success':
+      return {...state, isFetching: false, RegisteredDetails: action.payload};
+    case 'User_Litigation_Details_Error':
+      return {...state, isFetching: false};
+
+    //Pending Details
+    case 'User_Pending_Details_Request':
+      return {...state, isFetching: true};
+    case 'User_Pending_Details_Success':
+      return {...state, isFetching: false, RegisteredDetails: action.payload};
+    case 'User_Pending_Details_Error':
+      return {...state, isFetching: false};
+
+    //MyTrademark Details
+    case 'User_MyTrademark_Details_Request':
+      return {...state, isFetching: true};
+    case 'User_MyTrademark_Details_Success':
+      return {...state, isFetching: false, RegisteredDetails: action.payload};
+    case 'User_MyTrademark_Details_Error':
+      return {...state, isFetching: false};
+
+    //Lapsed Renewal Details
+    case 'User_LapsedRenewal_Details_Request':
+      return {...state, isFetching: true};
+    case 'User_LapsedRenewal_Details_Success':
+      return {...state, isFetching: false, RegisteredDetails: action.payload};
+    case 'User_LapsedRenewal_Details_Error':
+      return {...state, isFetching: false};
+
+    //ApplicationStatus Details
+    case 'User_ApplicationStatus_Details_Request':
+      return {...state, isFetching: true};
+    case 'User_ApplicationStatus_Details_Success':
+      return {...state, isFetching: false, RegisteredDetails: action.payload};
+    case 'User_ApplicationStatus_Details_Error':
+      return {...state, isFetching: false};
+
+    //Proprieter Details
+    case 'User_Proprieter_Details_Request':
+      return {...state, isFetching: true};
+    case 'User_Proprieter_Details_Success':
+      return {...state, isFetching: false, RegisteredDetails: action.payload};
+    case 'User_Proprieter_Details_Error':
+      return {...state, isFetching: false};
+
+    //Opposition Details
+    case 'User_Opposition_Details_Request':
+      return {...state, isFetching: true};
+    case 'User_Opposition_Details_Success':
+      return {...state, isFetching: false, RegisteredDetails: action.payload};
+    case 'User_Opposition_Details_Error':
       return {...state, isFetching: false};
 
     default:

@@ -95,6 +95,26 @@ function* DoRegisterd(action) {
   }
 }
 
+//Litigation Api function
+function* DoLitigation(action) {
+  const p = yield call(Api.fetchDataByGET, action.url, action.token);
+  //const p = yield call (Api.fetchDataByGET,action.url,action.token)
+  console.log('DOLitigation sbs     ' + JSON.stringify(p));
+  if (p.Status == true) {
+    console.log('staus' + p.Status);
+    console.log('staus' + JSON.stringify(p.data));
+    yield put({
+      type: 'User_Litigation_Details_Success',
+      payload: p.data,
+    });
+  } else {
+    Alert.alert(p.message);
+    yield put({
+      type: 'User_Litigation_Details_Error',
+    });
+  }
+}
+
 //Lost Api function
 function* DoLost(action) {
   const p = yield call(Api.fetchDataByGET, action.url, action.token);
@@ -114,6 +134,7 @@ function* DoLost(action) {
   }
 }
 
+//Patent Api Function
 function* DoPatent(action) {
   console.log('copy cdcdcd' + action.url);
   const p = yield call(Api.fetchDataByGET, action.url, action.token);
@@ -133,6 +154,127 @@ function* DoPatent(action) {
   }
 }
 
+//Pending Api Function
+function* DoPending(action) {
+  console.log('copy cdcdcd' + action.url);
+  const p = yield call(Api.fetchDataByGET, action.url, action.token);
+  console.log('copy' + p.Status);
+  console.log('copy' + JSON.stringify(p.data));
+  console.log('copy' + p.Status);
+  if (p.Status == true) {
+    yield put({
+      type: 'User_Pending_Details_Success',
+      payload: p.data,
+    });
+  } else {
+    Alert.alert(p.message);
+    yield put({
+      type: 'User_Pending_Details_Error',
+    });
+  }
+}
+
+//ApplicationStatus Api Function
+function* DoApplicationStatus(action) {
+  console.log('copy cdcdcd' + action.url);
+  const p = yield call(Api.fetchDataByGET, action.url, action.token);
+  console.log('copy' + p.Status);
+  console.log('copy' + JSON.stringify(p.data));
+  console.log('copy' + p.Status);
+  if (p.Status == true) {
+    yield put({
+      type: 'User_ApplicationStatus_Details_Success',
+      payload: p.data,
+    });
+  } else {
+    Alert.alert(p.message);
+    yield put({
+      type: 'User_ApplicationStatus_Details_Error',
+    });
+  }
+}
+
+//Proprieter Api Function
+function* DoProprieter(action) {
+  console.log('copy cdcdcd' + action.url);
+  const p = yield call(Api.fetchDataByGET, action.url, action.token);
+  console.log('copy' + p.Status);
+  console.log('copy' + JSON.stringify(p.data));
+  console.log('copy' + p.Status);
+  if (p.Status == true) {
+    yield put({
+      type: 'User_Proprieter_Details_Success',
+      payload: p.data,
+    });
+  } else {
+    Alert.alert(p.message);
+    yield put({
+      type: 'User_Proprieter_Details_Error',
+    });
+  }
+}
+
+//MyTrademark Api Function
+function* DoMyTrademark(action) {
+  console.log('copy cdcdcd' + action.url);
+  const p = yield call(Api.fetchDataByGET, action.url, action.token);
+  console.log('copy' + p.Status);
+  console.log('copy' + JSON.stringify(p.data));
+  console.log('copy' + p.Status);
+  if (p.Status == true) {
+    yield put({
+      type: 'User_MyTrademark_Details_Success',
+      payload: p.data,
+    });
+  } else {
+    Alert.alert(p.message);
+    yield put({
+      type: 'User_MyTrademark_Details_Error',
+    });
+  }
+}
+
+//LapsedRenewal Api Function
+function* DoLapsedRenewal(action) {
+  console.log('copy cdcdcd' + action.url);
+  const p = yield call(Api.fetchDataByGET, action.url, action.token);
+  console.log('copy' + p.Status);
+  console.log('copy' + JSON.stringify(p.data));
+  console.log('copy' + p.Status);
+  if (p.Status == true) {
+    yield put({
+      type: 'User_LapsedRenewal_Details_Success',
+      payload: p.data,
+    });
+  } else {
+    Alert.alert(p.message);
+    yield put({
+      type: 'User_LapsedRenewal_Details_Error',
+    });
+  }
+}
+
+//Opposition Api Function
+function* DoOpposition(action) {
+  console.log('copy cdcdcd' + action.url);
+  const p = yield call(Api.fetchDataByGET, action.url, action.token);
+  console.log('copy' + p.Status);
+  console.log('copy' + JSON.stringify(p.data));
+  console.log('copy' + p.Status);
+  if (p.Status == true) {
+    yield put({
+      type: 'User_Opposition_Details_Success',
+      payload: p.data,
+    });
+  } else {
+    Alert.alert(p.message);
+    yield put({
+      type: 'User_Opposition_Details_Error',
+    });
+  }
+}
+
+//Login
 function* doLogin(action) {
   const data = JSON.stringify({
     User_Name: action.Email,
@@ -140,12 +282,13 @@ function* doLogin(action) {
     Company_Name: 'BRAND',
   });
   const p = yield call(Api.fetchDataByPOST, action.url, data, action.token);
+  console.log('login ----------- ' + JSON.stringify(p));
   if (p.Status == true) {
     yield put({
       type: 'User_Login_Success',
       payload: p.data.data,
     });
-    console.log('dataaaa' + p.data);
+    console.log('dataaaa' + JSON.stringify(p.data));
     AsyncStorage.setItem(Constants.UserID, JSON.stringify(p.data.UserID));
     AsyncStorage.setItem(Constants.UserName, p.data.UserName);
   } else {
@@ -223,5 +366,15 @@ export default function* authSaga() {
   yield takeEvery('User_Calendra_Details_Request', DoCalendra);
   yield takeEvery('User_Patent_Details_Request', DoPatent);
   yield takeEvery('User_Registered_Details_Request', DoRegisterd);
+  yield takeEvery('User_Litigation_Details_Request', DoLitigation);
   yield takeEvery('User_Lost_Details_Request', DoLost);
+  yield takeEvery('User_Pending_Details_Request', DoPending);
+  yield takeEvery('User_MyTrademark_Details_Request', DoMyTrademark);
+  yield takeEvery(
+    'User_ApplicationStatus_Details_Request',
+    DoApplicationStatus,
+  );
+  yield takeEvery('User_Proprieter_Details_Request', DoProprieter);
+  yield takeEvery('User_LapsedRenewal_Details_Request', DoLapsedRenewal);
+  yield takeEvery('User_Opposition_Details_Request', DoOpposition);
 }
