@@ -15,6 +15,7 @@ import styles from './style';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Modal from 'react-native-modal';
 import {connect} from 'react-redux';
+import Loader from '../../screens/Util/loading';
 
 class DashBoardPage extends React.Component {
   constructor(props) {
@@ -770,10 +771,10 @@ class DashBoardPage extends React.Component {
                   style={{
                     flexDirection: 'row',
                     width: '100%',
-                    justifyContent: 'flex-start',
+                    justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={{alignItems: 'center', alignItems: 'center'}}
                     onPress={() =>
                       this.setState({
@@ -785,7 +786,7 @@ class DashBoardPage extends React.Component {
                       source={require('../../assets/Image/cross.png')}
                       resizeMode={'center'}
                     />
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   <Text
                     style={{
                       fontSize: 20,
@@ -793,6 +794,7 @@ class DashBoardPage extends React.Component {
                       fontFamily: 'Poppins-SemiBold',
                       color: '#000',
                       alignItems: 'center',
+                      justifyContent: 'center',
                     }}>
                     Upcoming
                   </Text>
@@ -893,7 +895,7 @@ class DashBoardPage extends React.Component {
                             fontFamily: 'Poppins',
                             fontSize: 12,
                           }}>
-                          Post.Reg.Hearing
+                          {'Post.Reg.\n Hearing'}
                         </Text>
                       </View>
                     </TouchableOpacity>
@@ -914,18 +916,20 @@ class DashBoardPage extends React.Component {
                           padding: 4,
                           borderRadius: 10,
                         }}>
-                        <Image
-                          style={styles.popupIcon}
-                          source={require('../../assets/Image/IconAwesomeBook2x.png')}
-                          resizeMode={'stretch'}
-                        />
+                        <View>
+                          <Image
+                            style={styles.popupIcon}
+                            source={require('../../assets/Image/IconAwesomeBook2x.png')}
+                            resizeMode={'stretch'}
+                          />
+                        </View>
                         <Text
                           style={{
                             color: '#000',
                             fontFamily: 'Poppins',
                             fontSize: 12,
                           }}>
-                          Post.Reg.Hearing
+                          {'Post.Reg.\n Hearing'}
                         </Text>
                       </View>
                     </TouchableOpacity>
@@ -956,8 +960,9 @@ class DashBoardPage extends React.Component {
                   style={{
                     flexDirection: 'row',
                     width: '100%',
+                    justifyContent: 'center',
                   }}>
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={{
                       width: '20%',
                       justifyContent: 'center',
@@ -973,7 +978,7 @@ class DashBoardPage extends React.Component {
                       source={require('../../assets/Image/cross.png')}
                       resizeMode={'center'}
                     />
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   <Text
                     style={{
                       fontSize: 22,
@@ -1134,8 +1139,7 @@ class DashBoardPage extends React.Component {
           isVisible={this.state.isVisibleAction}
           onSwipeComplete={() => this.setState({isVisibleAction: false})}
           swipeDirection="right"
-          onBackdropP
-          ress={() => this.setState({isVisibleAction: false})}>
+          onBackdropPress={() => this.setState({isVisibleAction: false})}>
           <View
             style={{width: '100%', borderRadius: 10, backgroundColor: '#fff'}}>
             <ScrollView style={{margin: 4, padding: 4}}>
@@ -1149,8 +1153,9 @@ class DashBoardPage extends React.Component {
                   style={{
                     flexDirection: 'row',
                     width: '100%',
+                    justifyContent: 'center',
                   }}>
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={{alignItems: 'center', alignItems: 'center'}}
                     onPress={() =>
                       this.setState({
@@ -1162,7 +1167,7 @@ class DashBoardPage extends React.Component {
                       source={require('../../assets/Image/cross.png')}
                       resizeMode={'center'}
                     />
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   <Text
                     style={{
                       fontSize: 22,
@@ -1270,9 +1275,9 @@ class DashBoardPage extends React.Component {
 
                     width: '100%',
                     flexDirection: 'row',
-                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}>
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={{
                       width: '20%',
                       justifyContent: 'center',
@@ -1288,7 +1293,7 @@ class DashBoardPage extends React.Component {
                       source={require('../../assets/Image/cross.png')}
                       resizeMode={'center'}
                     />
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   <Text
                     style={{
                       fontSize: 20,

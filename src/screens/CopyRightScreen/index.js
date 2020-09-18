@@ -1,5 +1,18 @@
 import React, {Component} from 'react';
-import {View,FlatList, TextInput, Image, StyleSheet,Text,ScrollView,Platform,  LayoutAnimation,UIManager,TouchableOpacity, ImageBackground} from 'react-native';
+import {
+  View,
+  FlatList,
+  TextInput,
+  Image,
+  StyleSheet,
+  Text,
+  ScrollView,
+  Platform,
+  LayoutAnimation,
+  UIManager,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {SliderBox} from 'react-native-image-slider-box';
@@ -10,111 +23,256 @@ import {connect} from 'react-redux';
 import Icon1 from 'react-native-vector-icons/Feather';
 import storage from '../../config/storage';
 
+class CopyRightPage extends Component {
+  // static navigationOptions = ({ navigation }) => ({
+  //         headerTitle: 'My Trade Details',
+  //        // drawerLabel: 'Details',
+  //         headerTintColor: 'black',
+  //         headerStyle: {
+  //           backgroundColor: '#fff',
 
- class CopyRightPage extends Component {
-// static navigationOptions = ({ navigation }) => ({
-//         headerTitle: 'My Trade Details',
-//        // drawerLabel: 'Details',
-//         headerTintColor: 'black',
-//         headerStyle: {
-//           backgroundColor: '#fff',
-         
-//         },
-//         headerLeft: (
-//           <TouchableOpacity onPress={navigation.toggleDrawer}>
-//             <Icon name="md-menu"
-//               style={{ marginLeft: 10 }} size={30} color="#000" />
-//           </TouchableOpacity>
-//         ),
-//       })
+  //         },
+  //         headerLeft: (
+  //           <TouchableOpacity onPress={navigation.toggleDrawer}>
+  //             <Icon name="md-menu"
+  //               style={{ marginLeft: 10 }} size={30} color="#000" />
+  //           </TouchableOpacity>
+  //         ),
+  //       })
 
   constructor(props) {
     super(props);
     this.state = {
-    
-          PageNo:'1',
-          Nor:'10',
-          visible:false,
-      
+      PageNo: '1',
+      Nor: '10',
+      visible: false,
     };
-   
+
     this.loaddata();
   }
- loaddata = async () => {
-     const {Nor,PageNo} = this.state;
+  loaddata = async () => {
+    const {Nor, PageNo} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-    console.log('bdb'+userid);
-    this.props.dispatch({type:'User_CopyRight_Request',url:'/NewTMApi/CRDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
-   };
-
-
+    console.log('bdb' + userid);
+    this.props.dispatch({
+      type: 'User_CopyRight_Request',
+      url: '/NewTMApi/CRDetail?UserId=7&PageNo=1&Nor=10&search=',
+      token: token,
+    });
+  };
 
   getVisible(item) {
-        if (this.state.visible == false) {
-            console.log('rohit12' + this.state.visible)
-            this.setState({
-                visible: true,
-                itemValue: item.Id
-            })
-        } else {
-            this.setState({
-                visible: false,
-                itemValue: item.Id
-            })
-        }
+    if (this.state.visible == false) {
+      console.log('rohit12' + this.state.visible);
+      this.setState({
+        visible: true,
+        itemValue: item.Id,
+      });
+    } else {
+      this.setState({
+        visible: false,
+        itemValue: item.Id,
+      });
     }
-   renderItemView = (item) => {
-        if (this.state.visible == true) {
-            if (this.state.itemValue == item.Id) {
-                return (
-                   <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'space-between' ,alignItems: 'flex-start' }}>
-
-                         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 13, color: '#000',fontFamily: 'Poppins-Bold',width:'40%'  }}>Full Prop Name</Text>
-        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.FullPropName}</Text>
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%' }}>Dairy No</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Dairy_No}</Text>
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>APPpro Office</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', marginLeft:10, fontFamily: 'Poppins',alignItems:'center',justifyContent:'center' }}>Delhi</Text>
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Journal No.</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center' }}>1990-20</Text>
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Vaild Upto</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>17/11/2020</Text>
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>Class</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>30</Text>
-        </View>
-                       
-                
-                    </View>
-
-                )
-            } else {
-
-            }
-        
-
-        } else {
-
-        }
-    
+  }
+  renderItemView = item => {
+    if (this.state.visible == true) {
+      if (this.state.itemValue == item.Id) {
+        return (
+          <View
+            style={{
+              flexDirection: 'column',
+              marginBottom: 10,
+              backgroundColor: '#FFF',
+              borderBottomLeftRadius: 8,
+              borderBottomRightRadius: 8,
+              marginHorizontal: 20,
+              paddingHorizontal: 15,
+              paddingRight: 10,
+              justifyContent: 'space-between',
+            }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 13,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                Full Prop Name
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#5A6779',
+                  fontFamily: 'Poppins',
+                  marginLeft: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                {item.FullPropName}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                Dairy No
+              </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#5A6779',
+                  fontFamily: 'Poppins',
+                  marginLeft: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                {item.Dairy_No}
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                APPpro Office
+              </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#5A6779',
+                  marginLeft: 10,
+                  fontFamily: 'Poppins',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                Delhi
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                Journal No.
+              </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#5A6779',
+                  fontFamily: 'Poppins',
+                  marginLeft: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                1990-20
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                Vaild Upto
+              </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#5A6779',
+                  fontFamily: 'Poppins',
+                  marginLeft: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                17/11/2020
+              </Text>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-between',
+                marginTop: 8,
+              }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: '#000',
+                  fontFamily: 'Poppins-Bold',
+                  width: '40%',
+                }}>
+                Class
+              </Text>
+              <Text
+                style={{
+                  fontSize: 15,
+                  color: '#5A6779',
+                  fontFamily: 'Poppins',
+                  marginLeft: 10,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                30
+              </Text>
+            </View>
+          </View>
+        );
+      } else {
+      }
+    } else {
     }
- 
+  };
+
   render() {
-    const {CopyRight}=this.props
+    const {CopyRight} = this.props;
     return (
-        <View style={{flex:1}}>
-         <View
+      <View style={{flex: 1}}>
+        <View
           style={{
             backgroundColor: 'white',
             padding: 12,
@@ -122,26 +280,31 @@ import storage from '../../config/storage';
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
-          <View style={{flexDirection:'row',alignItems:'center',justifyContent:'flex-start'}}>
-          <TouchableOpacity
-            onPress={() => {
-             this.props.navigation.goBack(null);
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
             }}>
-            <Image
-              source={require('../../assets/icons/arrow.png')}
-              style={{width: 20, height: 15,marginEnd:15}}
-            />
-          </TouchableOpacity>
-
-          <View style={{}}>
-            <Text
-              style={{
-                fontSize: 20,
-                textAlign: 'center',
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.goBack(null);
               }}>
-              Copy Right
-            </Text>
-          </View>
+              <Image
+                source={require('../../assets/icons/arrow.png')}
+                style={{width: 20, height: 15, marginEnd: 15}}
+              />
+            </TouchableOpacity>
+
+            <View style={{}}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  textAlign: 'center',
+                }}>
+                Copy Right
+              </Text>
+            </View>
           </View>
           <View
             style={{
@@ -170,7 +333,7 @@ import storage from '../../config/storage';
           style={{
             backgroundColor: 'white',
             padding: 12,
-             width:'100%',
+            width: '100%',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -211,7 +374,7 @@ import storage from '../../config/storage';
             style={{
               flexDirection: 'row',
               justifyContent: 'center',
-              width:'12%',
+              width: '12%',
               alignItems: 'center',
             }}>
             <View style={{alignItems: 'center', marginLeft: 10}}>
@@ -219,36 +382,82 @@ import storage from '../../config/storage';
             </View>
           </View>
         </View>
-     <FlatList
-                    data={CopyRight}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item }) =>
-                     <View style={{ flex: 1 }}>
-                            <TouchableOpacity
-                                onPress={() => this.getVisible(item)}>
+        <FlatList
+          data={CopyRight}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item}) => (
+            <View style={{flex: 1}}>
+              <TouchableOpacity onPress={() => this.getVisible(item)}>
+                <View
+                  style={{
+                    marginTop: 15,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: 10,
+                    padding: 10,
+                    justifyContent: 'space-between',
+                    paddingVertical: 20,
 
-                       <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'center' ,alignItems: 'flex-start' }}>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'flex-start'}}>
-                <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Title</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Title}</Text>             
-        </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Work</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Work}</Text>             
-        </View>
-       
-        </View>
-</TouchableOpacity>
-
-                            {this.renderItemView(item)}
-
-                        </View>
-
-
-                    }
-                />
-               
-        </View>
+                    marginHorizontal: 20,
+                  }}>
+                  <View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        paddingHorizontal: 5,
+                      }}>
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          fontFamily: 'Poppins-Bold',
+                        }}>
+                        {'Title     :'}
+                      </Text>
+                      <Text
+                        style={{
+                          fontFamily: 'Poppins-Bold',
+                          fontSize: 14,
+                          marginLeft: 21,
+                        }}>
+                        {item.Title}
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        paddingHorizontal: 5,
+                      }}>
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          fontFamily: 'Poppins-Bold',
+                        }}>
+                        {'Work  :'}
+                      </Text>
+                      <Text
+                        style={{
+                          fontFamily: 'Poppins',
+                          fontSize: 14,
+                          marginLeft: 20,
+                        }}>
+                        {item.Work}
+                      </Text>
+                    </View>
+                  </View>
+                  <Image
+                    style={{height: 25, width: 25, marginRight: 10}}
+                    source={require('../../assets/icons/arrow_down.png')}
+                  />
+                </View>
+              </TouchableOpacity>
+              {this.renderItemView(item)}
+            </View>
+          )}
+        />
+      </View>
     );
   }
 }

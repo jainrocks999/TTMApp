@@ -20,6 +20,7 @@ import {SliderBox} from 'react-native-image-slider-box';
 import Icon1 from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
 import storage from '../../config/storage';
+import Loader from '../../screens/Util/loading';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -38,14 +39,13 @@ class RegisteredDetails extends Component {
         return (
           <View
             style={{
-              borderTopWidth: 0.5,
               flex: 1,
               flexDirection: 'column',
               marginHorizontal: 20,
               backgroundColor: '#FFF',
               borderRadius: 8,
               justifyContent: 'space-between',
-              paddingHorizontal: 10,
+              paddingHorizontal: 15,
               paddingVertical: 10,
             }}>
             <View
@@ -428,9 +428,11 @@ class RegisteredDetails extends Component {
   render() {
     const BtnName = this.props.navigation.getParam('btnValue');
 
-    const {RegisteredDetails} = this.props;
+    const {RegisteredDetails, isFetching} = this.props;
     return (
       <View style={{flex: 1}}>
+        {isFetching ? <Loader /> : null}
+
         <View
           style={{
             backgroundColor: 'white',

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   ScrollView,
@@ -8,6 +8,7 @@ import {
   StatusBar,
   TextInput,
   TouchableOpacity,
+  CheckBox,
 } from 'react-native';
 import {connect} from 'react-redux';
 import Toast from 'react-native-simple-toast';
@@ -16,6 +17,8 @@ import storage from '../../../config/storage';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {takeEvery, put, call} from 'redux-saga/effects';
 import AsyncStorage from '@react-native-community/async-storage';
+//import CheckBox from '@react-native-community/checkbox';
+
 import qs from 'qs';
 import Axios from 'axios';
 
@@ -24,11 +27,13 @@ import styles from './style';
 class Login extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       Email: '',
       Password: '',
       token: '',
       spinner: false,
+      isSelected: false,
     };
     this.loaddata();
   }
@@ -97,7 +102,7 @@ class Login extends React.Component {
               resizeMode={'center'}
             />
           </View>
-          <View
+          {/* <View
             style={{
               justifyContent: 'center',
               alignItems: 'center',
@@ -131,15 +136,17 @@ class Login extends React.Component {
               }}>
               <Image source={require('../../../assets/icons/google.png')} />
             </TouchableOpacity>
-          </View>
+          </View> */}
           <View
             style={{
               justifyContent: 'center',
               alignItems: 'center',
               padding: 10,
+              marginTop: 20,
+              marginBottom: 10,
             }}>
             <Text style={{color: '#000'}}>
-              or Login with Username/Mobile Number
+              Login with Username/Mobile Number
             </Text>
           </View>
           <View>
@@ -156,7 +163,13 @@ class Login extends React.Component {
                 placeholder="Enter Username"
                 //labelFontSize={14}
                 value={this.state.Email}
-                style={{color: '#001630', fontSize: 14, height: 40,width:'100%',paddingHorizontal:10}}
+                style={{
+                  color: '#001630',
+                  fontSize: 14,
+                  height: 40,
+                  width: '100%',
+                  paddingHorizontal: 10,
+                }}
                 keyboardType="email-address"
                 onChangeText={Email => {
                   this.setState({Email});
@@ -182,7 +195,13 @@ class Login extends React.Component {
                 placeholder="Enter Password"
                 value={this.state.Password}
                 //labelFontSize={14}
-                style={{color: '#001630', fontSize: 14, height: 40,width:'80%',paddingHorizontal:10}}
+                style={{
+                  color: '#001630',
+                  fontSize: 14,
+                  height: 40,
+                  width: '80%',
+                  paddingHorizontal: 10,
+                }}
                 secureTextEntry={true}
                 onChangeText={Password => {
                   this.setState({Password});
@@ -199,6 +218,7 @@ class Login extends React.Component {
             }}>
             <View style={{flexDirection: 'row'}}>
               <Text style={{marginLeft: 2, marginTop: 4}}>Remember me ?</Text>
+              <CheckBox value={this.state.isSelected} style={styles.checkbox} />
             </View>
             <TouchableOpacity>
               <Text style={{color: '#5F85E5'}}>Forgot Password ?</Text>
