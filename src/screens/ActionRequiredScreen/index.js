@@ -13,7 +13,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import styles from './style';
+//import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {SliderBox} from 'react-native-image-slider-box';
 import Icon1 from 'react-native-vector-icons/Feather';
@@ -22,7 +22,7 @@ import storage from '../../config/storage';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-class PatentScreen extends Component {
+class ActionRequieredScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -324,7 +324,7 @@ class PatentScreen extends Component {
                   textAlign: 'center',
                   marginLeft: 10,
                 }}>
-                Patent
+                Action Required
               </Text>
             </View>
           </View>
@@ -404,7 +404,123 @@ class PatentScreen extends Component {
             </View>
           </View>
         </View>
-        <FlatList
+        <View style={{backgroundColor: '#fff', flex: 1}}>
+          <View
+            style={{
+              marginTop: 20,
+              marginHorizontal: 10,
+              backgroundColor: '#fff',
+            }}>
+            <Text
+              style={{
+                fontFamily: 'Poppins-Bold',
+                fontSize: 18,
+                marginVertical: 10,
+              }}>
+              Own
+            </Text>
+            <View style={{marginLeft: 20}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '80%',
+                }}>
+                <Text
+                  style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
+                  Proceeding Certificate
+                </Text>
+                <Text>4</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '80%',
+                }}>
+                <Text
+                  style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
+                  Renewal Proceeding
+                </Text>
+                <Text>3</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '80%',
+                }}>
+                <Text
+                  style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
+                  Certificate of Registration
+                </Text>
+                <Text>3</Text>
+              </View>
+            </View>
+          </View>
+
+          <View
+            style={{
+              marginTop: 20,
+              marginHorizontal: 10,
+              backgroundColor: '#fff',
+            }}>
+            <Text
+              style={{
+                fontFamily: 'Poppins-Bold',
+                fontSize: 18,
+                marginVertical: 10,
+              }}>
+              Similar
+            </Text>
+            <View style={{marginLeft: 20}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '80%',
+                }}>
+                <Text
+                  style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
+                  Proposed Opposition
+                </Text>
+                <Text>3</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '80%',
+                }}>
+                <Text
+                  style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
+                  Intimation of Notice of Publication
+                </Text>
+                <Text>3</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '80%',
+                }}>
+                <Text
+                  style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
+                  Proposed Rectification
+                </Text>
+                <Text>3</Text>
+              </View>
+            </View>
+          </View>
+        </View>
+
+        {/* <FlatList
           data={DesignDetails}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
@@ -436,7 +552,7 @@ class PatentScreen extends Component {
                           fontSize: 14,
                           fontFamily: 'Poppins-Bold',
                         }}>
-                        {'App No :'}
+                        {'Status :'}
                       </Text>
                       <Text
                         style={{
@@ -444,29 +560,7 @@ class PatentScreen extends Component {
                           fontSize: 14,
                           marginLeft: 20,
                         }}>
-                        {item.App_No}
-                      </Text>
-                    </View>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        paddingHorizontal: 5,
-                      }}>
-                      <Text
-                        style={{
-                          fontSize: 14,
-                          fontFamily: 'Poppins-Bold',
-                        }}>
-                        {'Trademark :'}
-                      </Text>
-                      <Text
-                        style={{
-                          fontFamily: 'Poppins',
-                          fontSize: 14,
-                          marginLeft: 20,
-                        }}>
-                        {item.ShortTrade_Mark}
+                        Status
                       </Text>
                     </View>
                   </View>
@@ -480,7 +574,7 @@ class PatentScreen extends Component {
               {this.renderItemView(item)}
             </View>
           )}
-        />
+        /> */}
       </View>
     );
   }
@@ -492,4 +586,4 @@ const mapStateToProps = state => {
     DesignDetails: state.DesignDetails,
   };
 };
-export default connect(mapStateToProps)(PatentScreen);
+export default connect(mapStateToProps)(ActionRequieredScreen);

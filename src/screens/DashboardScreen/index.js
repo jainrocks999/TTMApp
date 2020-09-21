@@ -65,21 +65,28 @@ class DashBoardPage extends React.Component {
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.toggleDrawer();
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
             }}>
-            <Image
-              source={require('../../assets/icons/menu.png')}
-              style={{width: 20, height: 15}}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={{width: 25, height: 20}}
+              onPress={() => {
+                this.props.navigation.toggleDrawer();
+              }}>
+              <Image
+                source={require('../../assets/icons/menu.png')}
+                style={{width: '99%', height: '99%'}}
+              />
+            </TouchableOpacity>
 
-          <View style={{}}>
             <Text
               style={{
+                textAlignVertical: 'center',
+                marginLeft: 20,
                 fontSize: 22,
-                textAlign: 'center',
+                fontFamily: 'Poppins-Bold',
               }}>
               {'Dashboard'}
             </Text>
@@ -366,7 +373,10 @@ class DashBoardPage extends React.Component {
               padding: 10,
             }}>
             <TouchableOpacity
-              onPress={() => this.tmdata('status')}
+              // onPress={() => this.tmdata('status')}
+              onPress={() => {
+                this.props.navigation.navigate('Status');
+              }}
               style={{alignItems: 'center'}}>
               <Image
                 style={styles.tabImage}
@@ -398,8 +408,9 @@ class DashBoardPage extends React.Component {
                   color: 'gray',
                   justifyContent: 'center',
                   padding: 4,
+                  textAlign: 'center',
                 }}>
-                Upcoming
+                Upcoming Hearing
               </Text>
             </TouchableOpacity>
           </View>
@@ -437,7 +448,10 @@ class DashBoardPage extends React.Component {
               padding: 10,
             }}>
             <TouchableOpacity
-              onPress={() => this.tmdata('Action')}
+              //onPress={() => this.tmdata('Action')}
+              onPress={() => {
+                this.props.navigation.navigate('ActionRequiered');
+              }}
               style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
                 style={styles.tabImage}
@@ -770,7 +784,7 @@ class DashBoardPage extends React.Component {
                 <View
                   style={{
                     flexDirection: 'row',
-                    width: '100%',
+                    width: '99%',
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
@@ -802,9 +816,9 @@ class DashBoardPage extends React.Component {
                 <View
                   style={{
                     flexDirection: 'row',
-                    width: '100%',
+                    width: '99%',
                     marginTop: 24,
-                    justifyContent: 'flex-start',
+                    justifyContent: 'space-evenly',
                   }}>
                   <View style={styles.secondView1}>
                     <TouchableOpacity
@@ -951,7 +965,6 @@ class DashBoardPage extends React.Component {
             <ScrollView style={{margin: 4, padding: 4}}>
               <View
                 style={{
-                  justifyContent: 'center',
                   marginTop: 4,
                   alignItems: 'center',
                 }}>
@@ -995,7 +1008,7 @@ class DashBoardPage extends React.Component {
                     flexDirection: 'row',
                     width: '99%',
                     marginTop: 24,
-                    justifyContent: 'space-between',
+                    justifyContent: 'space-evenly',
                   }}>
                   <View style={styles.secondView1}>
                     <TouchableOpacity
@@ -1090,13 +1103,6 @@ class DashBoardPage extends React.Component {
                       </View>
                     </TouchableOpacity>
                   </View>
-                </View>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    width: '99%',
-                    justifyContent: 'space-between',
-                  }}>
                   <View style={styles.secondView1}>
                     <TouchableOpacity
                       style={styles.touchTm}
@@ -1184,7 +1190,7 @@ class DashBoardPage extends React.Component {
                     flexDirection: 'row',
                     width: '99%',
                     marginTop: 24,
-                    justifyContent: 'flex-start',
+                    justifyContent: 'space-evenly',
                   }}>
                   <View style={styles.secondView1}>
                     <TouchableOpacity

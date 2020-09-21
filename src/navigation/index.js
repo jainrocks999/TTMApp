@@ -28,6 +28,8 @@ import TMSearchPage from '../screens/TMSearchScreen';
 import RegScreenDetails from '../screens/RegisteredScreen';
 import LostScreenDetails from '../screens/LostScreen';
 import ProfilePage from '../screens/ProfileScreen';
+import StatusDetailScreen from '../screens/StatusDetailScreen/index';
+import ActionRequieredScreen from '../screens/ActionRequiredScreen/index';
 
 const PatentStack = createStackNavigator(
   {
@@ -157,10 +159,28 @@ const DesignPageStack = createStackNavigator(
     },
   },
 );
+
+const ActionRequieredStack = createStackNavigator(
+  {
+    ActionRequiered: {
+      screen: ActionRequieredScreen,
+    },
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },
+);
 const HomeStackNavigator = createStackNavigator(
   {
     Account: {
       screen: DashboardScreen,
+    },
+    Status: {
+      screen: StatusDetailScreen,
     },
   },
   {
@@ -272,6 +292,7 @@ const CopyRightStack = createStackNavigator(
 const AppStack = createDrawerNavigator(
   {
     Dashboard: HomeStackNavigator,
+    ActionRequiered: ActionRequieredStack,
     TradedetailsStack: TradedetailsStack,
     MyTradeDetailViewStack: MyTradeDetailViewStack,
     CopyRightStack: CopyRightStack,

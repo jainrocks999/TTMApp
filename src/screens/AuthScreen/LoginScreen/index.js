@@ -150,7 +150,7 @@ class Login extends React.Component {
             </Text>
           </View>
           <View>
-            <Text style={{color: '#000'}}>Username or Mobile Number</Text>
+            <Text style={{color: '#000'}}>Username</Text>
             <View
               style={{
                 borderWidth: 1,

@@ -118,7 +118,8 @@ export default StyleSheet.create({
     height: 150,
   },
   secondView1: {
-    width: '25%',
+    justifyContent: 'space-evenly',
+    width: '33%',
     backgroundColor: '#fff',
     borderRadius: 10,
     height: 90,

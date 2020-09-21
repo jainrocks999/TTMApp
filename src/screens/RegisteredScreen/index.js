@@ -39,6 +39,7 @@ class RegisteredDetails extends Component {
         return (
           <View
             style={{
+              marginTop: -10,
               flex: 1,
               flexDirection: 'column',
               marginHorizontal: 20,
