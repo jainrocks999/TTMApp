@@ -25,7 +25,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 let data = [
   {
     id: 1,
-    title: 'Application',
+    title: 'Applications',
     number: 7,
   },
   {
@@ -61,9 +61,6 @@ class StatusDetail extends Component {
               paddingVertical: 10,
             }}>
             <FlatList
-              ItemSeparatorComponent={() => {
-                return <View style={{height: 10}}></View>;
-              }}
               data={RegisteredDetails}
               keyExtractor={(item, index) => index.toString()}
               renderItem={({item}) => (
@@ -366,6 +363,9 @@ class StatusDetail extends Component {
                   {this.renderItemView(item)}
                 </View>
               )}
+              ItemSeparatorComponent={() => {
+                return <View style={{height: 10}}></View>;
+              }}
             />
           </View>
         );
@@ -473,7 +473,7 @@ class StatusDetail extends Component {
             </View>
           </View>
         </View>
-        <View
+        {/* <View
           style={{
             backgroundColor: 'white',
             padding: 12,
@@ -525,7 +525,7 @@ class StatusDetail extends Component {
               <Icon name="filter" size={35} />
             </View>
           </View>
-        </View>
+        </View> */}
 
         <ScrollView style={{marginVertical: 20}}>
           <FlatList
@@ -535,14 +535,20 @@ class StatusDetail extends Component {
               <View style={{flex: 1}}>
                 <View
                   style={{
-                    paddingHorizontal: 10,
-                    marginHorizontal: 20,
+                    paddingHorizontal: 20,
                     paddingVertical: 10,
                     backgroundColor: '#fff',
+                    marginTop: 10,
                   }}>
                   <TouchableOpacity
-                    onPress={() => this.getVisible(item)}
+                    onPress={() =>
+                      this.props.navigation.navigate('RegScreenDetails', {
+                        btnValue: item.title,
+                      })
+                    }
                     style={{
+                      paddingVertical: 5,
+                      marginLeft: 20,
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
@@ -551,7 +557,7 @@ class StatusDetail extends Component {
                     <Text
                       style={{
                         fontSize: 16,
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Poppins-SemiBold',
                         marginTop: 6,
                       }}>
                       {item.title}
@@ -559,7 +565,6 @@ class StatusDetail extends Component {
                     <Text>{item.number}</Text>
                   </TouchableOpacity>
                 </View>
-                {this.renderItemView(item)}
               </View>
             )}
           />

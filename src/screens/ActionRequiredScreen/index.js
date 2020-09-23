@@ -351,59 +351,7 @@ class ActionRequieredScreen extends Component {
             </View>
           </View>
         </View>
-        <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <View
-            style={{
-              width: '88%',
-              borderWidth: 1,
-              borderRadius: 10,
-              flexDirection: 'row',
-              height: 45,
-              alignItems: 'center',
-              backgroundColor: '#fff',
-            }}>
-            <View style={{}}>
-              <Icon1 name="search" size={25} style={{marginLeft: 5}} />
-            </View>
-            <View
-              style={{
-                backgroundColor: 'transparent',
-                height: 42,
-                width: '68%',
-                borderLeftWidth: 0.5,
-                marginLeft: 5,
-              }}>
-              <TextInput
-                style={{
-                  backgroundColor: 'transparent',
-                  height: 42,
-                  width: '100%',
-                }}
-                placeholder={'Tm search ...'}
-              />
-            </View>
-          </View>
 
-          <View
-            style={{
-              width: '12%',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <View style={{alignItems: 'center', marginLeft: 10}}>
-              <Icon name="filter" size={35} />
-            </View>
-          </View>
-        </View>
         <View style={{backgroundColor: '#fff', flex: 1}}>
           <View
             style={{

@@ -348,7 +348,7 @@ class RegisteredDetails extends Component {
         }
         break;
 
-      case 'Proprieter':
+      case 'Proprietors':
         {
           console.log('data of btn' + BtnName);
           let userid = await AsyncStorage.getItem(storage.UserID);
