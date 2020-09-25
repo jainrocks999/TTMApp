@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Image, View, Text, StyleSheet} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+//import LinearGradient from 'react-native-linear-gradient';
 import Statusbar from '../../../common/Statusbar';
 import styles from './style';
 import { connect } from 'react-redux';
@@ -38,11 +38,12 @@ import Axios from 'axios';
 
   render() {
     return (
-      <LinearGradient
-        colors={['#373b44', '#4286f4']}
-        style={styles.container}
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 1}}>
+      // <LinearGradient
+      //   colors={['#373b44', '#4286f4']}
+      //   style={styles.container}
+      //   start={{x: 0, y: 0}}
+      //   end={{x: 1, y: 1}}>
+      <View>
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
@@ -51,7 +52,7 @@ import Axios from 'axios';
           />
         </View>
         <Statusbar />
-      </LinearGradient>
+        </View>
     );
   }
 }
