@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import {StatusBar, StyleSheet} from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
 export default function Status() {
   return (
     //     <LinearGradient
@@ -17,9 +16,10 @@ export default function Status() {
     //     />
     //       </LinearGradient>
 
-    <LinearGradient colors={['#373b44', '#4286f4']} style={{flex: 1}}>
-      <StatusBar translucent={true} backgroundColor={'transparent'} />
-    </LinearGradient>
+    <StatusBar
+            backgroundColor={'#373b44'}
+            barStyle='light-content'
+        />
   );
 }
 

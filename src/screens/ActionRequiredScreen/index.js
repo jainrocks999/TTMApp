@@ -27,6 +27,13 @@ class ActionRequieredScreen extends Component {
     super(props);
     this.state = {
       visible: false,
+      Proposed_OppositionCount:'',
+      Intimation_Of_Notice_Of_PublicationCount:'',
+      Proposed_RectificationCount:'',
+      Certificate_of_RegistrationCount:'',
+      Proceeding_CertificateCount:'',
+      Renewal_ProceedingName:'',
+      Renewal_ProceedingCount:'',
     };
 
     this.loaddata();
@@ -267,10 +274,26 @@ class ActionRequieredScreen extends Component {
   }
 
   loaddata = async () => {
+
     const {Nor, PageNo} = this.state;
+    const PC = this.props.navigation.getParam('Proceeding_CertificateCount');
+    const RP = this.props.navigation.getParam('Renewal_ProceedingCount');
+    const CR = this.props.navigation.getParam('Certificate_of_RegistrationCount'); 
+    const PO= this.props.navigation.getParam('Proposed_OppositionCount');
+    const Int= this.props.navigation.getParam('Intimation_Of_Notice_Of_PublicationCount');
+    const PR= this.props.navigation.getParam('Proposed_RectificationCount');
+  console.log('fddbdbdnbndb'+RP)
+  
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-
+    this.setState({
+      Proceeding_CertificateCount:PC,
+  Renewal_ProceedingCount:RP,
+  Certificate_of_RegistrationCount:CR,
+  Proposed_OppositionCount:PO,
+  Intimation_Of_Notice_Of_PublicationCount:Int,
+  Proposed_RectificationCount:PR,
+    })
     console.log('bdb' + userid);
     this.props.dispatch({
       type: 'User_Design_Details_Request',
@@ -379,7 +402,7 @@ class ActionRequieredScreen extends Component {
                   style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
                   Proceeding Certificate
                 </Text>
-                <Text>4</Text>
+              <Text>{this.state.Proceeding_CertificateCount}</Text>
               </View>
               <View
                 style={{
@@ -392,7 +415,7 @@ class ActionRequieredScreen extends Component {
                   style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
                   Renewal Proceeding
                 </Text>
-                <Text>3</Text>
+              <Text>{this.state.Renewal_ProceedingCount}</Text>
               </View>
               <View
                 style={{
@@ -405,7 +428,7 @@ class ActionRequieredScreen extends Component {
                   style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
                   Certificate of Registration
                 </Text>
-                <Text>3</Text>
+              <Text>{this.state.Certificate_of_RegistrationCount}</Text>
               </View>
             </View>
           </View>
@@ -436,7 +459,7 @@ class ActionRequieredScreen extends Component {
                   style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
                   Proposed Opposition
                 </Text>
-                <Text>3</Text>
+              <Text>{this.state.Proposed_OppositionCount}</Text>
               </View>
               <View
                 style={{
@@ -449,7 +472,7 @@ class ActionRequieredScreen extends Component {
                   style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
                   Intimation of Notice of Publication
                 </Text>
-                <Text>3</Text>
+              <Text>{this.state.Intimation_Of_Notice_Of_PublicationCount}</Text>
               </View>
               <View
                 style={{
@@ -462,7 +485,7 @@ class ActionRequieredScreen extends Component {
                   style={{fontSize: 16, fontFamily: 'Poppins', marginTop: 6}}>
                   Proposed Rectification
                 </Text>
-                <Text>3</Text>
+              <Text>{this.state.Proposed_RectificationCount}</Text>
               </View>
             </View>
           </View>

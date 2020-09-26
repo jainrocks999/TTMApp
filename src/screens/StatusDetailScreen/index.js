@@ -22,24 +22,26 @@ import storage from '../../config/storage';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-let data = [
-  {
-    id: 1,
-    title: 'Applications',
-    number: 7,
-  },
-  {
-    id: 2,
-    title: 'Proprietors',
-    number: 1,
-  },
-];
+// let data = [
+//   {
+//     id: 1,
+//     title: 'Applications',
+//     number: 7,
+//   },
+//   {
+//     id: 2,
+//     title: 'Proprietors',
+//     number: 1,
+//   },
+// ];
 
 class StatusDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
+      ProprietorsCoun:'',
+      Applicaticount:'',
     };
 
     this.loaddata();
@@ -360,7 +362,7 @@ class StatusDetail extends Component {
                     </TouchableOpacity>
                   </View>
 
-                  {this.renderItemView(item)}
+                  {/* {this.renderItemView(item)} */}
                 </View>
               )}
               ItemSeparatorComponent={() => {
@@ -389,16 +391,23 @@ class StatusDetail extends Component {
 
   loaddata = async () => {
     const {Nor, PageNo} = this.state;
+   // const FirstName = this.props.navigation.getParam('FirstName');
+    const  Applicaticount = this.props.navigation.getParam('Applicaticount');
+    const ProprietorsCoun = this.props.navigation.getParam('ProprietorsCount');
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-
+    console.log('hhhhhhhh'+Applicaticount)
+this.setState({
+  Applicaticount:Applicaticount,
+  ProprietorsCoun:ProprietorsCoun,
+})
     console.log('bdb' + userid);
-    this.props.dispatch({
-      type: 'User_ApplicationStatus_Details_Request',
-      url:
-        'NewTMApi/TMAPI?UserId=122&ASA=&Ag=&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead=PropStatus&As=&search=&Status=',
-      token: token,
-    });
+    // this.props.dispatch({
+    //   type: 'User_ApplicationStatus_Details_Request',
+    //   url:
+    //     'NewTMApi/TMAPI?UserId=122&ASA=&Ag=&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead=PropStatus&As=&search=&Status=',
+    //   token: token,
+    // });
   };
   updateLayout = index => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -473,65 +482,8 @@ class StatusDetail extends Component {
             </View>
           </View>
         </View>
-        {/* <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <View
-            style={{
-              width: '88%',
-              borderWidth: 1,
-              borderRadius: 10,
-              flexDirection: 'row',
-              height: 45,
-              alignItems: 'center',
-              backgroundColor: '#fff',
-            }}>
-            <View style={{}}>
-              <Icon1 name="search" size={25} style={{marginLeft: 5}} />
-            </View>
-            <View
-              style={{
-                backgroundColor: 'transparent',
-                height: 42,
-                width: '68%',
-                borderLeftWidth: 0.5,
-                marginLeft: 5,
-              }}>
-              <TextInput
-                style={{
-                  backgroundColor: 'transparent',
-                  height: 42,
-                  width: '100%',
-                }}
-                placeholder={'Tm search ...'}
-              />
-            </View>
-          </View>
-
-          <View
-            style={{
-              width: '12%',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <View style={{alignItems: 'center', marginLeft: 10}}>
-              <Icon name="filter" size={35} />
-            </View>
-          </View>
-        </View> */}
-
+       
         <ScrollView style={{marginVertical: 20}}>
-          <FlatList
-            data={data}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
               <View style={{flex: 1}}>
                 <View
                   style={{
@@ -543,31 +495,68 @@ class StatusDetail extends Component {
                   <TouchableOpacity
                     onPress={() =>
                       this.props.navigation.navigate('RegScreenDetails', {
-                        btnValue: item.title,
+                        btnValue: 'Applications',
                       })
                     }
                     style={{
                       paddingVertical: 5,
-                      marginLeft: 20,
+                      marginLeft: 10,
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      width: '80%',
+                      width: '90%',
                     }}>
+                       {/* <Image 
+                         source={require('../../assets/Image/Applications.png')}
+                         style={{width:40,height:40,marginRight:10}}/> */}
                     <Text
                       style={{
                         fontSize: 16,
                         fontFamily: 'Poppins-SemiBold',
                         marginTop: 6,
                       }}>
-                      {item.title}
+                      Applications
                     </Text>
-                    <Text>{item.number}</Text>
+                    <Text>{this.state.Applicaticount}</Text>
+                  </TouchableOpacity>
+                </View>
+                <View
+                  style={{
+                    paddingHorizontal: 20,
+                    paddingVertical: 10,
+                    backgroundColor: '#fff',
+                    marginTop: 10,
+                  }}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.navigate('RegScreenDetails', {
+                        btnValue: 'Proprietor',
+                      })
+                    }
+                    style={{
+                      paddingVertical: 5,
+                      marginLeft: 10,
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      width: '90%',
+                    }}>
+                         {/* <Image 
+                         source={require('../../assets/Image/Proprieter.png')}
+                         style={{width:40,height:40,marginRight:10}}/> */}
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        fontFamily: 'Poppins-SemiBold',
+                        marginTop: 6,
+                      }}>
+                      Proprietors
+                    </Text>
+                    <Text>{this.state.ProprietorsCoun}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
-            )}
-          />
+
         </ScrollView>
       </View>
     );

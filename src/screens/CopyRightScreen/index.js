@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
+import Loader from '../../config/loader';
 import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {SliderBox} from 'react-native-image-slider-box';
@@ -24,21 +25,7 @@ import Icon1 from 'react-native-vector-icons/Feather';
 import storage from '../../config/storage';
 
 class CopyRightPage extends Component {
-  // static navigationOptions = ({ navigation }) => ({
-  //         headerTitle: 'My Trade Details',
-  //        // drawerLabel: 'Details',
-  //         headerTintColor: 'black',
-  //         headerStyle: {
-  //           backgroundColor: '#fff',
-
-  //         },
-  //         headerLeft: (
-  //           <TouchableOpacity onPress={navigation.toggleDrawer}>
-  //             <Icon name="md-menu"
-  //               style={{ marginLeft: 10 }} size={30} color="#000" />
-  //           </TouchableOpacity>
-  //         ),
-  //       })
+  
 
   constructor(props) {
     super(props);
@@ -46,6 +33,8 @@ class CopyRightPage extends Component {
       PageNo: '1',
       Nor: '10',
       visible: false,
+      Token:'',
+      UserID:'',
     };
 
     this.loaddata();
@@ -55,13 +44,26 @@ class CopyRightPage extends Component {
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
     console.log('bdb' + userid);
+    this.setState({
+      Token:token,
+      UserID:'',
+    })
+    let search ='';
+this.loadsearch(search);
     this.props.dispatch({
       type: 'User_CopyRight_Request',
       url: '/NewTMApi/CRDetail?UserId=7&PageNo=1&Nor=10&search=',
       token: token,
     });
   };
-
+  loadsearch(search){
+    console.log('jseajdjdhjhjhjhsjdsjds'+search)
+    this.props.dispatch({
+      type: 'User_CopyRight_Request',
+      url: '/NewTMApi/CRDetail?UserId=7&PageNo=1&Nor=10&search='+search,
+      token: this.state.Token,
+    });
+  }
   getVisible(item) {
     if (this.state.visible == false) {
       console.log('rohit12' + this.state.visible);
@@ -269,7 +271,7 @@ class CopyRightPage extends Component {
   };
 
   render() {
-    const {CopyRight} = this.props;
+    const {CopyRight,isFetching} = this.props;
     return (
       <View style={{flex: 1}}>
         <View
@@ -280,6 +282,7 @@ class CopyRightPage extends Component {
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
+              {isFetching ? <Loader /> : null}
           <View
             style={{
               flexDirection: 'row',
@@ -360,12 +363,18 @@ class CopyRightPage extends Component {
                 marginLeft: 5,
               }}>
               <TextInput
-                style={{
-                  backgroundColor: 'transparent',
-                  height: 42,
-                  width: '100%',
-                }}
                 placeholder={'Tm search ...'}
+                //labelFontSize={14}
+                value={this.state.Email}
+               style={{
+                   backgroundColor: 'transparent',
+                   height: 42,
+                   width: '100%',
+                 }}
+                //keyboardType="email-address"
+                onChangeText={Email => {
+                  this.loadsearch(Email)
+                }}
               />
             </View>
           </View>

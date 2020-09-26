@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Image, View, Text, StyleSheet} from 'react-native';
-//import LinearGradient from 'react-native-linear-gradient';
+import {Image, View, Text, StyleSheet} from 'react-native'
 import Statusbar from '../../../common/Statusbar';
 import styles from './style';
 import { connect } from 'react-redux';

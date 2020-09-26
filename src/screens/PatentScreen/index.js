@@ -5,6 +5,7 @@ import {
   TextInput,
   FlatList,
   StyleSheet,
+  SafeAreaView,
   Text,
   ScrollView,
   Platform,
@@ -19,7 +20,7 @@ import {SliderBox} from 'react-native-image-slider-box';
 import Icon1 from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
 import storage from '../../config/storage';
-
+import Loader from '../../config/loader';
 import AsyncStorage from '@react-native-community/async-storage';
 
 class PatentScreen extends Component {
@@ -27,6 +28,7 @@ class PatentScreen extends Component {
     super(props);
     this.state = {
       visible: false,
+      Token:'',
     };
 
     this.loaddata();
@@ -39,6 +41,7 @@ class PatentScreen extends Component {
             style={{
               marginTop: -10,
               flex: 1,
+              width:'92%',
               flexDirection: 'column',
               marginHorizontal: 20,
               backgroundColor: '#FFF',
@@ -66,7 +69,7 @@ class PatentScreen extends Component {
               <Text
                 style={{
                   fontSize: 14,
-                  color: '#82C2EC',
+                  color: '#5A6779',
                   fontFamily: 'Poppins',
                   marginLeft: 10,
                   alignItems: 'center',
@@ -270,14 +273,23 @@ class PatentScreen extends Component {
     const {Nor, PageNo} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-
+this.setState({
+  Token:token,
+})
+let search ='';
+this.loadsearch(search);
     console.log('bdb' + userid);
+    
+  };
+
+  loadsearch(search){
+    console.log('jseajdjdhjhjhjhsjdsjds'+search)
     this.props.dispatch({
       type: 'User_Design_Details_Request',
-      url: '/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',
-      token: token,
+      url: '/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search='+search,
+      token: this.state.Token,
     });
-  };
+  }
   updateLayout = index => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     const array = [...this.state.listDataSource];
@@ -290,9 +302,10 @@ class PatentScreen extends Component {
   };
 
   render() {
-    const {DesignDetails} = this.props;
+    const {DesignDetails,isFetching} = this.props;
     return (
       <View style={{flex: 1}}>
+          {isFetching ? <Loader /> : null}
         <View
           style={{
             backgroundColor: 'white',
@@ -382,12 +395,19 @@ class PatentScreen extends Component {
                 marginLeft: 5,
               }}>
               <TextInput
-                style={{
+               placeholder={'Tm search ...'}
+               //labelFontSize={14}
+               value={this.state.Email}
+              style={{
                   backgroundColor: 'transparent',
                   height: 42,
                   width: '100%',
                 }}
-                placeholder={'Tm search ...'}
+               //keyboardType="email-address"
+               onChangeText={Email => {
+                 this.loadsearch(Email)
+               }}
+                
               />
             </View>
           </View>
@@ -417,7 +437,7 @@ class PatentScreen extends Component {
                     alignItems: 'center',
                     backgroundColor: '#FFFFFF',
                     borderRadius: 10,
-
+                    width:'92%',
                     padding: 10,
                     justifyContent: 'space-between',
                     paddingVertical: 20,
@@ -429,6 +449,7 @@ class PatentScreen extends Component {
                       style={{
                         flexDirection: 'row',
                         alignItems: 'center',
+                      //  width:'90%',
                         paddingHorizontal: 5,
                       }}>
                       <Text
@@ -451,10 +472,12 @@ class PatentScreen extends Component {
                       style={{
                         flexDirection: 'row',
                         alignItems: 'center',
+                       // width:'90%',
                         paddingHorizontal: 5,
                       }}>
                       <Text
                         style={{
+                        //  width:'29%',
                           fontSize: 14,
                           fontFamily: 'Poppins-Bold',
                         }}>
@@ -462,18 +485,21 @@ class PatentScreen extends Component {
                       </Text>
                       <Text
                         style={{
+                         width:'60%',
                           fontFamily: 'Poppins',
                           fontSize: 14,
-                          marginLeft: 20,
+                          marginLeft: 10,
                         }}>
                         {item.ShortTrade_Mark}
                       </Text>
                     </View>
                   </View>
+                 
                   <Image
                     style={{height: 25, width: 25, marginRight: 10}}
                     source={require('../../assets/icons/arrow_down.png')}
                   />
+                 
                 </View>
               </TouchableOpacity>
 
