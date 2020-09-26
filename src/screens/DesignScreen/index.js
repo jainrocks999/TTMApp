@@ -19,6 +19,8 @@ import {SliderBox} from 'react-native-image-slider-box';
 import Icon1 from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
 import storage from '../../config/storage';
+import Loader from '../../config/loader';
+
 
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -27,6 +29,8 @@ class DesignDetails extends Component {
     super(props);
     this.state = {
       visible: false,
+      UserID:'',
+      Token:'',
     };
 
     this.loaddata();
@@ -37,15 +41,16 @@ class DesignDetails extends Component {
         return (
           <View
             style={{
+              marginTop: -10,
+              flex: 1,
+              width:'92%',
               flexDirection: 'column',
-              marginEnd: 10,
-              margin: 10,
-              backgroundColor: '#FAFAFA',
+              marginHorizontal: 20,
+              backgroundColor: '#FFF',
               borderRadius: 8,
-              padding: 10,
-              marginBottom: 4,
               justifyContent: 'space-between',
-              alignItems: 'flex-start',
+              paddingHorizontal: 15,
+              paddingVertical: 10,
             }}>
             <View
               style={{
@@ -130,7 +135,7 @@ class DesignDetails extends Component {
                   alignItems: 'center',
                   justifyContent: 'center',
                   width: '55%',
-                  color: 'green',
+                
                   width: '55%',
                 }}>
                 {item.App_Status}
@@ -189,14 +194,22 @@ class DesignDetails extends Component {
     const {Nor, PageNo} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
+this.setState({
+Token:token,
+UserID:userid,
+})
+    let search ='';
+this.loadsearch(search);
+    
+  }
 
-    console.log('bdb' + userid);
+  loadsearch(search){
     this.props.dispatch({
       type: 'User_Design_Details_Request',
-      url: '/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',
-      token: token,
+      url: '/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search='+search,
+      token: this.state.Token,
     });
-  };
+  }
   updateLayout = index => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     const array = [...this.state.listDataSource];
@@ -209,9 +222,10 @@ class DesignDetails extends Component {
   };
 
   render() {
-    const {DesignDetails} = this.props;
+    const {DesignDetails,isFetching} = this.props;
     return (
       <View style={{flex: 1, backgroundColor: '#F6F8F9'}}>
+         {isFetching ? <Loader /> : null}
         <View
           style={{
             backgroundColor: '#FFFFFF',
@@ -300,13 +314,20 @@ class DesignDetails extends Component {
                 borderLeftWidth: 0.5,
                 marginLeft: 5,
               }}>
-              <TextInput
-                style={{
+             <TextInput
+               placeholder={'Tm search ...'}
+               //labelFontSize={14}
+               value={this.state.Email}
+              style={{
                   backgroundColor: 'transparent',
                   height: 42,
                   width: '100%',
                 }}
-                placeholder={'Tm search ...'}
+               //keyboardType="email-address"
+               onChangeText={Email => {
+                 this.loadsearch(Email)
+               }}
+                
               />
             </View>
           </View>
@@ -336,6 +357,7 @@ class DesignDetails extends Component {
                     alignItems: 'center',
                     backgroundColor: '#FFFFFF',
                     borderRadius: 10,
+                    width:'92%',
                     padding: 10,
                     justifyContent: 'space-between',
                     paddingVertical: 20,

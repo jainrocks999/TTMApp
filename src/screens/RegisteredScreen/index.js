@@ -409,7 +409,7 @@ class RegisteredDetails extends Component {
         break;
 
       default:
-        Alert.alert('blank');
+       // Alert.alert('blank');
         break;
     }
     console.log('case');

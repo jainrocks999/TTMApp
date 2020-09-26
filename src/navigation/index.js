@@ -162,7 +162,7 @@ const DesignPageStack = createStackNavigator(
 
 const ActionRequieredStack = createStackNavigator(
   {
-    ActionRequiered: {
+    ActionRequiedPage: {
       screen: ActionRequieredScreen,
     },
   },

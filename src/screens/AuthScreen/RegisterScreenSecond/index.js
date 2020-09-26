@@ -43,7 +43,7 @@ class Registration extends React.Component {
       address: '',
       NationalCode: '+91',
       Phone: '',
-      CountryId: '99',
+      CountryId: '',
       Company_Name: 'BRAND',
     };
 
@@ -202,89 +202,32 @@ class Registration extends React.Component {
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <View style={[styles.inputContainer1]}>
-                <Text>Country</Text>
-                <View
-                  style={{
-                    marginTop: 4,
-                    borderWidth: 1,
-                    borderRadius: 5,
-                    width: '100%',
-                    height:40,
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                  }}>
-                  <Picker
-                    mode="dropdown"
-                    selectedValue={this.state.ResponseCode}
-                    style={{
-                      fontSize: 14,
-                      color: '#4E5764',
-                      fontFamily: 'Gilroy-Medium',
-                    }}
-                    itemTextStyle={{
-                      fontSize: 14,
-                      color: '#4E5764',
-                      fontFamily: 'Gilroy-Medium',
-                    }}
-                    textStyle={{
-                      fontSize: 16,
-                      color: '#4E5764',
-                      fontFamily: 'Gilroy-Medium',
-                    }}
-                    onValueChange={(itemValue, itemIndex) =>
-                      this.resposecode(itemValue)
-                    }>
-                    <Picker.Item
-                      label="-- Country --"
-                      value="Frequency"
-                      color="#3386FF"
-                    />
-                    {this.renderview()}
-                  </Picker>
-                </View>
+                <Text >Country</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Country"
+                  value={this.state.CountryId}
+                  onChangeText={CountryId => {
+                    this.setState({CountryId: CountryId});
+                  }}
+                />
+      
+              
               </View>
               <View style={[styles.inputContainer1]}>
-                <Text>State</Text>
-                <View
-                  style={{
-                    marginTop: 4,
-                    borderWidth: 1,
-                    borderRadius: 5,
-                    width: '100%',
-                    height:40,
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                  }}>
-                  <Picker
-                    mode="dropdown"
-                    selectedValue={this.state.ResponseCode}
-                    style={{
-                      fontSize: 14,
-                      color: '#4E5764',
-                      fontFamily: 'Gilroy-Medium',
-                    }}
-                    itemTextStyle={{
-                      fontSize: 14,
-                      color: '#4E5764',
-                      fontFamily: 'Gilroy-Medium',
-                    }}
-                    textStyle={{
-                      fontSize: 16,
-                      color: '#4E5764',
-                      fontFamily: 'Gilroy-Medium',
-                    }}
-                    onValueChange={(itemValue, itemIndex) =>
-                      this.resposecode(itemValue)
-                    }>
-                    <Picker.Item
-                      label="-- State --"
-                      value="Frequency"
-                      color="#3386FF"
-                    />
-                    {this.renderview()}
-                  </Picker>
-                </View>
+                <Text >State</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="state"
+                  value={this.state.state}
+                  onChangeText={state => {
+                    this.setState({state: state});
+                  }}
+                />
+      
+              
               </View>
+              
             </View>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>

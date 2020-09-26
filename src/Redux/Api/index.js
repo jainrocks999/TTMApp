@@ -21,9 +21,9 @@ export default class Api {
   };
 
   static fetchDataByGET = async (url, token) => {
-    console.log('url     ....     ........' + url);
-    console.log('token' + token);
-    console.log('main' + Constants.MainUrl + url);
+    console.log('Api roll' + url);
+    console.log('Aoi roll' + token);
+    console.log('Aoi Roll' + Constants.MainUrl + url);
     try {
       const response = await axios({
         method: 'GET',
@@ -34,7 +34,7 @@ export default class Api {
       });
       return response.data;
     } catch (error) {
-      console.log('érror' + error);
+      console.log('érror' +JSON.stringify(error));
       throw error;
     }
   };

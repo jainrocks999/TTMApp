@@ -8,9 +8,13 @@ initialstate = {
   CalendraDetails: [],
   //new api
   RegisteredDetails: [],
+  DashboardDetails:'',
 };
 export default (state = initialstate, action) => {
+  console.log('Dekho yaro'+action.type)
+  console.log('Dekho yaro'+action.payload)
   switch (action.type) {
+    
     //token Status Value
     case 'User_Token_Request':
       return {...state, isFetching: true};
@@ -138,6 +142,14 @@ export default (state = initialstate, action) => {
       return {...state, isFetching: false, RegisteredDetails: action.payload};
     case 'User_Opposition_Details_Error':
       return {...state, isFetching: false};
+
+//Dashboard Details
+case 'User_Dashboard_Request':
+  return {...state, isFetching: true};
+case 'User_Dashboard_Success':
+  return {...state, isFetching: false, DashboardDetails: action.payload};
+case 'User_Dashboard_Error':
+  return {...state, isFetching: false};
 
     default:
       return state;

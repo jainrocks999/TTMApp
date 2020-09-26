@@ -7,7 +7,7 @@ import {
   ImageBackground,
   useWindowDimensions,
   TouchableOpacity,
-  ScrollView,
+  ScrollView, Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import CardView from 'react-native-cardview';
@@ -15,37 +15,131 @@ import styles from './style';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import Modal from 'react-native-modal';
 import {connect} from 'react-redux';
+import storage from '../../config/storage';
 import Loader from '../../screens/Util/loading';
+import AsyncStorage from '@react-native-community/async-storage';
+import axios from 'axios';
+import Spinner from 'react-native-loading-spinner-overlay';
+
 
 class DashBoardPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      spinner:true,
       isVisible: false,
       isVisibleAction: false,
       isVisibleApplication: false,
       isVisibleStatus: false,
       isVisibleUpcoming: false,
+      Total_ApplicationsName:'',
+      Total_ApplicationsCount:'',
+      Proceeding_CertificateName:'',
+      Proceeding_CertificateCount:'',
+      Renewal_ProceedingName:'',
+      Renewal_ProceedingCount:'',
+      CopyRightCount:'',
+      CopyRightName:'',
+      MyTradeMarkName:'',
+      MyTradeMarkCount:'',
+      DesignName:'',
+      DesignCount:'',
+      ProprietorsName:'',
+      ProprietorsCount:'',
+      FullData:'',
+      Proposed_OppositionCount:'',
+      Intimation_Of_Notice_Of_PublicationCount:'',
+      Proposed_RectificationCount:'',
+      Certificate_of_RegistrationCount:'',
+
 
       //  spinner: true,
     };
+    this.loaddata();
   }
+// R
+// "PursuanceName":"Pursuance",
+// "PursuanceCount":"0","Formalities_Check_FailName":"
+// Formalities Check Fail","Formalities_Check_FailCount"
+// :"0","Certificate_of_RegistrationName":"Certificate of 
+// Registration","Certificate_of_RegistrationCount":"0",
+// "Proposed_OppositionName":"Proposed Opposition",
+// "Proposed_OppositionCount":"0","Intimation_Of_Notice
+// _Of_PublicationName":"Intimation Of Notice Of Publication"
+// ,"Intimation_Of_Notice_Of_PublicationCount":"1","Proposed_R
+// ectificationName":"Proposed Rectification","Proposed_Rectifica
+// tionCount":"11","":"Proprietors","
+// t":"1","Oppositions_LodgedName":"Oppositions Lodged","Oppositions_L
+// odgedCount":"5","Objections_LodgedName":"Objections Lodged","Object
+// ions_LodgedCount":"0","OwnName":"Own","O
+
+  loaddata = async () => {
+    let token = await AsyncStorage.getItem(storage.Token);
+    let UserID = await AsyncStorage.getItem(storage.UserID);
+    let ID = parseInt(UserID)
+    console.log('llllllllllll'+ ID)
+    axios.get('http://api.tajtrademark.in/api/NewTMApi/Dashboard?UserId=2382', {
+    headers:{
+        Authorization: 'bearer ' + token,
+        // 'Accept': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }
+    })
+    .then((res) => {
+if(res.data.Status == true){
+console.log('jjjjjjj'+JSON.stringify(res.data.data))
+  this.setState({
+    Total_ApplicationsName:res.data.data.Total_ApplicationsName,
+    Total_ApplicationsCount:res.data.data.Total_ApplicationsCount,
+    Proceeding_CertificateName:res.data.data.Proceeding_CertificateName,
+    Proceeding_CertificateCount:res.data.data.Proceeding_CertificateCount,
+    Renewal_ProceedingName:res.data.data.Renewal_ProceedingName,
+    CopyRightName:res.data.data.CopyRightName,
+    CopyRightCount:res.data.data.CopyRightCount,
+    MyTradeMarkName:res.data.data.MyTradeMarkName,
+    MyTradeMarkCount:res.data.data.MyTradeMarkCount,
+    DesignName:res.data.data.DesignName,
+    DesignCount:res.data.data.DesignCount,
+    ProprietorsName:res.data.data.ProprietorsName,
+    ProprietorsCount:res.data.data.ProprietorsCount,
+    //own
+    Renewal_ProceedingCount:res.data.data.Renewal_ProceedingCount,
+    Proposed_OppositionCount:res.data.data.Proposed_OppositionCount,
+    Intimation_Of_Notice_Of_PublicationCount:res.data.data.Intimation_Of_Notice_Of_PublicationCount,
+    Proposed_RectificationCount:res.data.data.Proposed_RectificationCount,
+    Certificate_of_RegistrationCount:res.data.data.Certificate_of_RegistrationCount,
+
+spinner:false,
+
+
+
+
+
+
+  })
+
+}
+
+
+      console.log('Hello dear resp' +JSON.stringify(res.data))
+    })
+    .catch((error) => {
+      console.error(error)
+    }) 
+    // this.props.dispatch({type: 'User_Dashboard_Success',
+    //   url:
+    //     'NewTMApi/Dashboard?UserId=122',
+    //   token: token,
+    // });
+  };
   tmdata = name => {
-    if (name == 'status') {
-      this.setState({
-        isVisibleStatus: true,
-      });
-    } else if (name == 'Application') {
+   if (name == 'Application') {
       this.setState({
         isVisibleApplication: true,
       });
     } else if (name == 'Upcoming') {
       this.setState({
         isVisibleUpcoming: true,
-      });
-    } else if (name == 'Action') {
-      this.setState({
-        isVisibleAction: true,
       });
     } else {
       this.setState({
@@ -55,8 +149,14 @@ class DashBoardPage extends React.Component {
   };
 
   render() {
+   // Alert.alert(this.props.DashboardDetails)
     return (
       <View style={{backgroundColor: '#f6f8f9', flex: 1}}>
+         <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          textStyle={styles.spinnerTextStyle}
+        />
         <View
           style={{
             backgroundColor: 'white',
@@ -144,7 +244,7 @@ class DashBoardPage extends React.Component {
                       fontFamily: 'Poppins-SemiBold',
                       fontSize: 14,
                     }}>
-                    Trademark
+                    {this.state.MyTradeMarkName}
                   </Text>
                   <Text
                     style={{
@@ -152,7 +252,7 @@ class DashBoardPage extends React.Component {
                       fontFamily: 'Poppins',
                       fontSize: 12,
                     }}>
-                    23
+                    {this.state.MyTradeMarkCount}
                   </Text>
                 </View>
               </TouchableOpacity>
@@ -185,7 +285,7 @@ class DashBoardPage extends React.Component {
                       fontFamily: 'Poppins-SemiBold',
                       fontSize: 14,
                     }}>
-                    Copyright
+                    {this.state.CopyRightName}
                   </Text>
                   <Text
                     style={{
@@ -193,7 +293,7 @@ class DashBoardPage extends React.Component {
                       fontFamily: 'Poppins',
                       fontSize: 12,
                     }}>
-                    23
+                    {this.state.CopyRightCount}
                   </Text>
                 </View>
               </TouchableOpacity>
@@ -227,7 +327,7 @@ class DashBoardPage extends React.Component {
                       fontFamily: 'Poppins-SemiBold',
                       fontSize: 14,
                     }}>
-                    Design
+                    {this.state.DesignName}
                   </Text>
                   <Text
                     style={{
@@ -235,7 +335,7 @@ class DashBoardPage extends React.Component {
                       fontFamily: 'Poppins',
                       fontSize: 12,
                     }}>
-                    23
+                    {this.state.DesignCount}
                   </Text>
                 </View>
               </TouchableOpacity>
@@ -375,7 +475,10 @@ class DashBoardPage extends React.Component {
             <TouchableOpacity
               // onPress={() => this.tmdata('status')}
               onPress={() => {
-                this.props.navigation.navigate('Status');
+                this.props.navigation.navigate('Status',{
+                  Applicaticount:this.state.Total_ApplicationsCount,
+                  ProprietorsCount:this.state.ProprietorsCount,
+                });
               }}
               style={{alignItems: 'center'}}>
               <Image
@@ -435,7 +538,6 @@ class DashBoardPage extends React.Component {
                   padding: 4,
                   textAlign: 'center',
                 }}>
-                {' '}
                 Total Application
               </Text>
             </TouchableOpacity>
@@ -450,7 +552,15 @@ class DashBoardPage extends React.Component {
             <TouchableOpacity
               //onPress={() => this.tmdata('Action')}
               onPress={() => {
-                this.props.navigation.navigate('ActionRequiered');
+                this.props.navigation.navigate('ActionRequiedPage',{
+                  Proceeding_CertificateCount:this.state.Proceeding_CertificateCount,
+                  Renewal_ProceedingCount:this.state.Renewal_ProceedingCount,
+                  Certificate_of_RegistrationCount:this.state.Certificate_of_RegistrationCount,
+                  Proposed_OppositionCount:this.state.Proposed_OppositionCount,
+Intimation_Of_Notice_Of_PublicationCount:this.state.Intimation_Of_Notice_Of_PublicationCount,
+Proposed_RectificationCount:this.state.Proposed_RectificationCount,
+                
+                });
               }}
               style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
@@ -1395,6 +1505,7 @@ const mapStateToProps = state => {
   console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
+    DashboardDetails:state.DashboardDetails,
   };
 };
 
