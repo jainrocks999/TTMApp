@@ -159,6 +159,7 @@ export default class other extends React.Component {
             marginTop: 40,
           }}>
           <TouchableOpacity
+            onPress={this.fbLogin}
             style={{
               backgroundColor: '#eef1f4',
               borderRadius: 20,
