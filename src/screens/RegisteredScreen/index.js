@@ -246,7 +246,7 @@ class RegisteredDetails extends Component {
                 alignItems: 'flex-end',
               }}>
               <TouchableOpacity
-                onPress={this.props.onclickview}
+              
                 style={{
                   backgroundColor: '#5F85E5',
                   borderRadius: 5,
@@ -259,7 +259,9 @@ class RegisteredDetails extends Component {
                   alignItems: 'center',
                   marginTop: 10,
                 }}>
+                  <TouchableOpacity onPress={ ()=> this.props.navigation.navigate('MyTradeDetailViewPage')}>
                 <Text style={{color: 'white', fontSize: 14}}>View More</Text>
+                </TouchableOpacity>
               </TouchableOpacity>
             </View>
           </View>
@@ -545,6 +547,7 @@ class RegisteredDetails extends Component {
 
     return (
       <View style={{flex: 1}}>
+        <ScrollView>
         {isFetching ? <Loader /> : null}
 
         <View
@@ -735,7 +738,9 @@ class RegisteredDetails extends Component {
             </View>
           )}
         />
+        </ScrollView>
       </View>
+      
     );
   }
 }

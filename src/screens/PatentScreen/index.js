@@ -246,7 +246,9 @@ class PatentScreen extends Component {
                   alignItems: 'center',
                   marginTop: 10,
                 }}>
+                  <TouchableOpacity onPress={()=>this.props.navigation.navigate('MyTradeDetailViewPage')}>
                 <Text style={{color: 'white', fontSize: 14}}>View More</Text>
+                </TouchableOpacity>
               </TouchableOpacity>
             </View>
           </View>
@@ -305,6 +307,7 @@ this.loadsearch(search);
     const {DesignDetails,isFetching} = this.props;
     return (
       <View style={{flex: 1}}>
+        <ScrollView>
           {isFetching ? <Loader /> : null}
         <View
           style={{
@@ -507,6 +510,7 @@ this.loadsearch(search);
             </View>
           )}
         />
+        </ScrollView>
       </View>
     );
   }

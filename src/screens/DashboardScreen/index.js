@@ -898,19 +898,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  {/* <TouchableOpacity
-                    style={{alignItems: 'center', alignItems: 'center'}}
-                    onPress={() =>
-                      this.setState({
-                        isVisibleUpcoming: false,
-                      })
-                    }>
-                    <Image
-                      style={styles.crossIcon}
-                      source={require('../../assets/Image/cross.png')}
-                      resizeMode={'center'}
-                    />
-                  </TouchableOpacity> */}
+                 
                   <Text
                     style={{
                       fontSize: 20,
@@ -920,16 +908,49 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    Upcoming
+                    Upcoming Hearing
                   </Text>
                 </View>
                 <View
                   style={{
                     flexDirection: 'row',
                     width: '99%',
-                    marginTop: 24,
+                    marginTop: 12,
                     justifyContent: 'space-evenly',
                   }}>
+                      <View style={styles.secondView1}>
+                    <TouchableOpacity
+                      style={styles.touchTm}
+                      onPress={() =>
+                        this.props.navigation.navigate('RegScreenDetails', {
+                          btnValue: 'Own',
+                        })
+                      }>
+                      <View
+                        style={{
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: 4,
+                          borderRadius: 10,
+                        }}>
+                        <View>
+                          <Image
+                            style={styles.popupIcon}
+                            source={require('../../assets/icons/Own.png')}
+                            resizeMode={'stretch'}
+                          />
+                        </View>
+                        <Text
+                          style={{
+                            color: '#000',
+                            fontFamily: 'Poppins',
+                            fontSize: 12,
+                          }}>
+                          {'Own'}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
                   <View style={styles.secondView1}>
                     <TouchableOpacity
                       style={styles.touchTm}
@@ -947,7 +968,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/Image/Group2x.png')}
+                          source={require('../../assets/icons/Similar1.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -978,7 +999,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/Image/trademark_22x.png')}
+                          source={require('../../assets/icons/Opposition.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -1010,7 +1031,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/Image/IconAwesomeBook2x.png')}
+                          source={require('../../assets/icons/Post.Reg.Hearing.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -1025,39 +1046,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                     </TouchableOpacity>
                   </View>
 
-                  <View style={styles.secondView1}>
-                    <TouchableOpacity
-                      style={styles.touchTm}
-                      onPress={() =>
-                        this.props.navigation.navigate('RegScreenDetails', {
-                          btnValue: 'Post.Reg.Hearing',
-                        })
-                      }>
-                      <View
-                        style={{
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          padding: 4,
-                          borderRadius: 10,
-                        }}>
-                        <View>
-                          <Image
-                            style={styles.popupIcon}
-                            source={require('../../assets/Image/IconAwesomeBook2x.png')}
-                            resizeMode={'stretch'}
-                          />
-                        </View>
-                        <Text
-                          style={{
-                            color: '#000',
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
-                          }}>
-                          {'Post.Reg.\n Hearing'}
-                        </Text>
-                      </View>
-                    </TouchableOpacity>
-                  </View>
+                
                 </View>
               </View>
             </ScrollView>
@@ -1117,7 +1106,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                   style={{
                     flexDirection: 'row',
                     width: '99%',
-                    marginTop: 24,
+                    marginTop: 12,
                     justifyContent: 'space-evenly',
                   }}>
                   <View style={styles.secondView1}>
@@ -1137,7 +1126,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/Image/Group2x.png')}
+                          source={require('../../assets/icons/Registered.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -1168,7 +1157,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/Image/trademark_22x.png')}
+                          source={require('../../assets/icons/Lost.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -1199,7 +1188,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/Image/IconAwesomeBook2x.png')}
+                          source={require('../../assets/icons/Litigation.png')}
                           resizeMode={'stretch'}
                         />
                         <Text
@@ -1230,7 +1219,7 @@ Proposed_RectificationCount:this.state.Proposed_RectificationCount,
                         }}>
                         <Image
                           style={styles.popupIcon}
-                          source={require('../../assets/Image/hearing2x.png')}
+                          source={require('../../assets/icons/Pending.png')}
                           resizeMode={'stretch'}
                         />
                         <Text

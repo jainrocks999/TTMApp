@@ -289,9 +289,15 @@ import ExpandableItemComponent from '../../config/expendableList.js';
                             <TouchableOpacity
                             onPress={() => this.getVisible(item)}>
                        <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'center' ,alignItems: 'flex-start' }}>
-                       <View style={{flexDirection:'row',flex:1,justifyContent:'space-between'}}>
+                       <View style={{flexDirection:'row'}}>
                       <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Text Type</Text>
-                      <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.TextType}</Text>             
+                       <View style={{flexDirection:'row',justifyContent:'space-between',flex:1}}>
+                      <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.TextType}</Text>   
+                      <Image
+                    style={{height: 25, width: 25,}}
+                    source={require('../../assets/icons/arrow_down.png')}
+                  />    
+                  </View>     
                       </View>
                       </View>
                       </TouchableOpacity>
