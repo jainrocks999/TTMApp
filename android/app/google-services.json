@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1081701070616",
+    "firebase_url": "https://ttmapp-1601120435572.firebaseio.com",
+    "project_id": "ttmapp-1601120435572",
+    "storage_bucket": "ttmapp-1601120435572.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081701070616:android:b3239f0da07ecd71f8906d",
+        "android_client_info": {
+          "package_name": "com.ttmapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081701070616-89lo2froq88s6i1c94jeql3h355104v8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ttmapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1081701070616-8qee66fb0m3dvn4vo6bdpdcuogt803h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdIMV8ELlbxM8ifgKBIA6QTFIhDdNa3Ug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081701070616-8qee66fb0m3dvn4vo6bdpdcuogt803h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import {GoogleSignin} from 'react-native-google-signin';
 import Icon from 'react-native-vector-icons/Ionicons';
 import storage from '../../config/storage';
 var serverurl =
@@ -41,8 +42,10 @@ export default class MyDrawer extends React.Component {
             AsyncStorage.clear().then(p =>
               this.props.navigation.navigate(route.key),
             )
-            :route.key === 'DashBoard'
-            ?()=>{ this.props.navigation.goBack(null)}
+        : route.key === 'DashBoard'
+        ? () => {
+            this.props.navigation.goBack(null);
+          }
         : route.key === 'logout'
         ? () => this.Logout()
         : () => {
@@ -109,10 +112,20 @@ export default class MyDrawer extends React.Component {
     });
   }
   setlog = () => {
-    AsyncStorage.clear();
-    AsyncStorage.setItem('USER_ID', '');
-    // LanguagesString.setLanguage('en')
-    this.props.navigation.navigate('Other');
+    try {
+      GoogleSignin.revokeAccess();
+      GoogleSignin.signOut();
+      console.log('SignOut');
+
+      AsyncStorage.clear();
+      AsyncStorage.setItem('USER_ID', '');
+      // LanguagesString.setLanguage('en')
+      this.props.navigation.navigate('Other');
+
+      this.setState({user: null, loggedIn: false}); // Remember to remove the user from your app's state as well
+    } catch (error) {
+      console.error(error);
+    }
   };
   sharefb = () => {
     Linking.openURL('https://www.facebook.com/chandrakar.ajay/');
@@ -120,6 +133,21 @@ export default class MyDrawer extends React.Component {
   shareTwitter = () => {
     Linking.openURL('https://twitter.com/chandrakar_ajay?lang=en');
   };
+
+  signOut = async () => {
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      console.log('SignOut');
+
+      this.props.navigation.navigate('AuthNavigator');
+
+      this.setState({user: null, loggedIn: false}); // Remember to remove the user from your app's state as well
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   Logout = () => {
     Alert.alert(
       'Are you want to logout ?',

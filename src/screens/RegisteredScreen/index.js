@@ -24,15 +24,29 @@ import Loader from '../../screens/Util/loading';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
+let initialCount = 0;
+let finalCount = 0;
+
 class RegisteredDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       visible: false,
+      productData: [],
+      spinner: true,
+      fullList: [],
+      RegisteredDetails: [],
+      isFirstTime: true,
     };
 
     this.loaddata();
   }
+
+  componentWillReceiveProps = props => {
+    if (this.state.isFirstTime) {
+      this.myMethod(props);
+    }
+  };
   renderItemView = item => {
     if (this.state.visible == true) {
       if (this.state.itemValue == item.Rowno) {
@@ -269,6 +283,8 @@ class RegisteredDetails extends Component {
   }
 
   loaddata = async () => {
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     const BtnName = this.props.navigation.getParam('btnValue');
     console.log('Button Value : ' + BtnName);
     const {Nor, PageNo} = this.state;
@@ -409,7 +425,7 @@ class RegisteredDetails extends Component {
         break;
 
       default:
-       // Alert.alert('blank');
+        // Alert.alert('blank');
         break;
     }
     console.log('case');
@@ -425,11 +441,108 @@ class RegisteredDetails extends Component {
       };
     });
   };
+  myMethod = props => {
+    const res = props.RegisteredDetails;
+    console.log('Registered details : ' + JSON.stringify(res));
+    // let sectionData = [];
+    // if (res && res.length > 0) {
+    //   if (res.length > 6) {
+    //     for (let i = 0; i < 6; i++) {
+    //       sectionData.push(res[i]);
+    //     }
+    //   } else {
+    //     for (let j = 0; j < res.length; j++) {
+    //       sectionData.push(res[j]);
+    //     }
+    //   }
+    //   initialCount = 1;
+    //   finalCount = sectionData.length;
+    // }
+
+    // this.setState({
+    //   spinner: false,
+    //   productData: sectionData,
+    //   fullList: res,
+    // });
+    // console.log('final res', res);
+    // this.setState({
+    //   isFirstTime: false,
+    // });
+  };
+
+  // onNext = () => {
+  //   const {fullList, RegisteredDetails} = this.state;
+  //   let sectionData = [];
+  //   let index = null;
+  //   for (let i = 0; i < fullList.length; i++) {
+  //     if (
+  //       RegisteredDetails[RegisteredDetails.length - 1].id &&
+  //       fullList[i].id
+  //     ) {
+  //       if (
+  //         RegisteredDetails[RegisteredDetails.length - 1].id == fullList[i].id
+  //       ) {
+  //         index = i;
+  //       }
+  //     }
+  //   }
+  //   if (index) {
+  //     console.log('next index', index);
+  //     initialCount =
+  //       finalCount + 1 > fullList.length ? fullList.length : finalCount + 1;
+  //     finalCount =
+  //       initialCount + 5 > fullList.length ? fullList.length : initialCount + 5;
+  //     for (let j = index; j < index + 6; j++) {
+  //       sectionData.push(fullList[j]);
+  //     }
+  //   }
+  //   if (sectionData.length > 0) {
+  //     this.setState({RegisteredDetails: sectionData});
+  //   }
+  // };
+
+  // onPrevious = () => {
+  //   const {fullList, RegisteredDetails} = this.state;
+  //   let sectionData = [];
+  //   let index = null;
+  //   for (let i = 0; i < fullList.length; i++) {
+  //     if (RegisteredDetails[0].id && fullList[i].id) {
+  //       if (RegisteredDetails[0].id == fullList[i].id) {
+  //         index = i;
+  //       }
+  //     }
+  //   }
+  //   console.log('index', index);
+  //   if (index) {
+  //     if (index <= 5) {
+  //       initialCount = 1;
+  //       finalCount = index + 6 > fullList.length ? fullList.length : index + 1;
+  //       // if (fullList.length <= 5) {
+  //       for (let k = 0; k < index + 1; k++) {
+  //         sectionData.push(fullList[k]);
+  //       }
+  //       sectionData.reverse();
+  //       //}
+  //     } else {
+  //       initialCount =
+  //         index + 2 > fullList.length ? fullList.length : index + 2;
+  //       finalCount = index + 6 > fullList.length ? fullList.length : index + 6;
+  //       for (let j = index; j > index - 6; j--) {
+  //         sectionData.push(fullList[j]);
+  //       }
+  //     }
+  //   }
+  //   console.log('sectionData... previous', sectionData);
+  //   if (sectionData.length > 0) {
+  //     this.setState({RegisteredDetails: sectionData.reverse()});
+  //   }
+  // };
 
   render() {
+    const {RegisteredDetails, isFetching} = this.props;
+
     const BtnName = this.props.navigation.getParam('btnValue');
 
-    const {RegisteredDetails, isFetching} = this.props;
     return (
       <View style={{flex: 1}}>
         {isFetching ? <Loader /> : null}
