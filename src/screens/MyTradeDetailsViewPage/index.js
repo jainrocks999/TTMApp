@@ -7,6 +7,7 @@ import {
   LayoutAnimation,
   TouchableOpacity,
   ImageBackground,
+  Image
 } from 'react-native';
 import styles from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -42,6 +43,65 @@ export default class MyTradedetailsViewPage extends Component {
   render() {
     return (
       <View style={{flex: 1}}>
+        
+        <View
+          style={{
+            backgroundColor: 'white',
+            padding: 12,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.goBack(null);
+              }}>
+              <Image
+                source={require('../../assets/icons/arrow.png')}
+                style={{width: 24, height: 15, marginEnd: 10}}
+              />
+            </TouchableOpacity>
+
+            <View style={{}}>
+              <Text
+                style={{
+                  fontSize: 22,
+                  textAlign: 'center',
+                  marginLeft: 10,
+                }}>
+                Details
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Image
+              source={require('../../assets/icons/bell_one.png')}
+              style={{
+                width: 22,
+                height: 22,
+                marginRight: 15,
+                justifyContent: 'center',
+              }}
+            />
+            <View style={{alignItems: 'center'}}>
+              <Image
+                source={require('../../assets/icons/profile.png')}
+                style={{width: 31, height: 31}}
+              />
+            </View>
+          </View>
+        </View>
         <ScrollView style={{flex: 1}}>
           <View
             style={{

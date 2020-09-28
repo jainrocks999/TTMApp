@@ -506,9 +506,10 @@ this.setState({
                       alignItems: 'center',
                       width: '90%',
                     }}>
-                       {/* <Image 
-                         source={require('../../assets/Image/Applications.png')}
-                         style={{width:40,height:40,marginRight:10}}/> */}
+                      <View style={{flexDirection:'row',alignItems:'center'}}>
+                       <Image 
+                         source={require('../../assets/icons/Applications.png')}
+                         style={{width:26,height:26,marginRight:10}}/>
                     <Text
                       style={{
                         fontSize: 16,
@@ -517,6 +518,7 @@ this.setState({
                       }}>
                       Applications
                     </Text>
+                    </View>
                     <Text>{this.state.Applicaticount}</Text>
                   </TouchableOpacity>
                 </View>
@@ -541,9 +543,10 @@ this.setState({
                       alignItems: 'center',
                       width: '90%',
                     }}>
-                         {/* <Image 
-                         source={require('../../assets/Image/Proprieter.png')}
-                         style={{width:40,height:40,marginRight:10}}/> */}
+                      <View style={{flexDirection:'row',alignItems:'center'}}>
+                         <Image 
+                         source={require('../../assets/icons/Proprieter.png')}
+                         style={{width:26,height:26,marginRight:10}}/>
                     <Text
                       style={{
                         fontSize: 16,
@@ -552,6 +555,7 @@ this.setState({
                       }}>
                       Proprietors
                     </Text>
+                    </View>
                     <Text>{this.state.ProprietorsCoun}</Text>
                   </TouchableOpacity>
                 </View>
