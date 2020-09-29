@@ -27,7 +27,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 let initialCount = 0;
 let finalCount = 0;
-var token = '';
+// var token = '';
 
 class RegisteredDetails extends Component {
   constructor(props) {
@@ -41,47 +41,22 @@ class RegisteredDetails extends Component {
       isFirstTime: true,
     };
 
-    // this.loaddata();
-    this.TokenCall();
+    this.ApiCall();
   }
 
-  componentWillReceiveProps = props => {
-    if (this.state.isFirstTime) {
-      this.myMethod(props);
-    }
-  };
+  ApiCall = async () => {
+    const BtnName = this.props.navigation.getParam('btnValue');
 
-  TokenCall = () => {
-    var myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
+    let token = '';
+    token = await AsyncStorage.getItem(storage.Token);
 
-    var raw = JSON.stringify({
-      User_Name: 'webapi_ttm',
-      Password: 'hIrBPBcLiP@Ax9wBIR9CrjQ',
-    });
+    console.log('new token' + token);
 
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow',
-    };
+    console.log('API Call running');
 
-    fetch('http://api.tajtrademark.in/api/token', requestOptions)
-      .then(response => response.text())
-      .then(result => {
-        console.log('TTM Token : ' + result);
-        let tokenData = JSON.parse(result);
-        token = tokenData.data;
-        console.log('token :' + token);
-        this.ApiCall();
-      })
-      .catch(error => console.log('error', error));
-  };
-
-  ApiCall = () => {
     initialCount = 0;
     finalCount = 0;
+    let buttonValue = 'Lost';
 
     console.log('tokennnn : ' + token);
     var myHeaders = new Headers();
@@ -97,7 +72,10 @@ class RegisteredDetails extends Component {
     };
 
     fetch(
-      'http://api.tajtrademark.in/api/NewTMApi/TMAPI?UserId=122&ASA&Ag=Registered&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
+      'http://api.tajtrademark.in/api/NewTMApi/TMAPI?UserId=122&ASA&Ag=' +
+        buttonValue +
+        '&PropName&AppStatusAll&AppStatusProposed&Prop_Id&ActionHead&As&search=',
+
       requestOptions,
     )
       .then(response => response.text())
@@ -110,8 +88,8 @@ class RegisteredDetails extends Component {
 
         if (Data.data && Data.data.length > 0) {
           let allProducts = Data.data;
-          if (allProducts.length > 6) {
-            for (let i = 0; i < 6; i++) {
+          if (allProducts.length > 10) {
+            for (let i = 0; i < 10; i++) {
               sectionData.push(allProducts[i]);
             }
           } else {

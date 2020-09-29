@@ -116,6 +116,20 @@ const ProfileStack = createStackNavigator(
     },
   },
 );
+const DashboardStack = createStackNavigator(
+  {
+    DashboardScreen: {
+      screen: DashboardScreen,
+    },
+  },
+  {
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        header: false,
+      };
+    },
+  },
+);
 const RegDetailsStack = createStackNavigator(
   {
     RegScreenDetails: {
@@ -313,6 +327,7 @@ const AuthStack = createSwitchNavigator(
   {
     AuthLoading: {screen: SplashPage},
     Demo: demo,
+    DashboardScreen: DashboardStack,
     //FirstPage: {screen: FirstScreen},
     Auth: AuthNavigator,
     AppStack: AppStack,
