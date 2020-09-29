@@ -162,14 +162,73 @@ class Registration extends React.Component {
         })
         .catch(Error);
       console.log('ddddddd' + Error);
-
-      //   this.props.dispatch({
-      //     type: 'User_Register_Request',
-      //
-
-      //   });
     }
   };
+  getCountry = () => {
+    const {
+     name,
+     Id,
+     token
+    } = this.state;
+      const headers = {
+        Authorization: 'bearer ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      };
+      Axios.get(connection.Country,{headers})
+    
+        .then(p => {
+          console.log('country data' + JSON.stringify(p));
+          if (p.data.Status == true) {
+            console.log('country status' + p.data.Status);
+            Toast.show(p.data.message);
+            this.setState({
+              spinner: false,
+            });
+          } else {
+            Toast.show(p.data.message);
+            this.setState({
+              spinner: false,
+            });
+          }
+        })
+        .catch(Error);
+      console.log('PPPPPP' + Error);
+    }
+  
+/////State
+    getState = () => {
+      const {
+        Id,
+        State,
+        token
+      } = this.state;
+        const headers = {
+          Authorization: 'bearer ' + token,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        };
+        Axios.get(connection.State,{headers})
+      
+          .then(p => {
+            console.log('State data' + JSON.stringify(p));
+            if (p.data.Status == true) {
+              console.log('state status' + p.data.Status);
+              Toast.show(p.data.message);
+              this.setState({
+                spinner: false,
+              });
+            } else {
+              Toast.show(p.data.message);
+              this.setState({
+                spinner: false,
+              });
+            }
+          })
+          .catch(Error);
+        console.log('PPPPPP' + Error);
+      }
+    
+  //
+  
   render() {
     return (
       <View style={{flex: 1, padding: 14, backgroundColor: '#fff'}}>
@@ -200,13 +259,15 @@ class Registration extends React.Component {
               resizeMode={'stretch'}
             />
           </View>
-
+           
           <View>
+
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <View style={[styles.inputContainer1]}>
                 <Text >Country</Text>
-                <TextInput
+              
+                {/* <TextInput
                   style={styles.input}
                   editable={false}
                   placeholder="Country"
@@ -214,9 +275,16 @@ class Registration extends React.Component {
                   onChangeText={CountryId => {
                     this.setState({CountryId: 99});
                   }}
-                />
-      
-              
+                /> */}
+                <RNPickerSelect
+                 onValueChange={(value) => console.log(value)}
+                 items={[
+                  { label: 'Football', value: 'football' },
+                  { label: 'Baseball', value: 'baseball' },
+                  { label: 'Hockey', value: 'hockey' },
+              ]}
+        />
+             
               </View>
               <View style={[styles.inputContainer1]}>
                 <Text >State</Text>
