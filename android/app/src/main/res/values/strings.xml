@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TTMApp</string>
-    <string name="facebook_app_id">2839678789649831</string>
+<string name="facebook_app_id">725239691359736</string>
+<string name="fb_login_protocol_scheme">fb725239691359736</string>
+
 
 </resources>
