@@ -1,14 +1,33 @@
-import React from 'react';
-import {View, Image, TouchableOpacity, Text,StyleSheet} from 'react-native';
+import React,{useState,useEffect} from 'react';
+import {View, Image, TouchableOpacity, Text,StyleSheet,Alert} from 'react-native';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import About from './about';
 import Setting from './setting';
 import RootApp from '../../navigation';
 import {createAppContainer} from 'react-navigation';
 import pickImages from '../../component/pickImage';
+import AsyncStorage from '@react-native-community/async-storage';
+import storage from '../../config/storage';
 
 const ProfileScreen=(props)=>{
   const [pickImage,photoUri,photo]=pickImages()
+  const [age, setAge] = useState('')
+  
+  const readData = async () => {
+    try {
+      const userAge = await AsyncStorage.getItem(storage.UserName)
+     
+       
+      if (userAge !== null) {
+        setAge(userAge)
+      }
+    } catch (e) {
+      Alert.alert('Failed to fetch the data from storage')
+    }
+  }
+  useEffect(() => {
+    readData()
+  }, [])
     return (
       <View
         style={styles.main}>
@@ -52,7 +71,7 @@ const ProfileScreen=(props)=>{
 
         <View
           style={styles.title}>
-          <Text style={{fontSize: 22, fontWeight: 'bold'}}>RAM SHARMA</Text>
+          <Text style={{fontSize: 22, fontWeight: 'bold'}}>{age}</Text>
         </View>
         <RootNav />
        

@@ -1,17 +1,35 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {View, Image, TouchableOpacity, Text,Switch,Button} from 'react-native';
 import { TextInput } from 'react-native-paper';
 import Modal from 'react-native-modal';
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
+import storage from '../../config/storage';
+import AsyncStorage from "@react-native-community/async-storage";
+
   const ProfileScreen =()=>{
 
-    const [name, setName] = useState('Ram sharma');
     const [mobile, setMobile] = useState(987654321);
     const [location, setLocation] = useState('Bucharest, Romania');
     const [isEnabled, setIsEnabled] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [name, setName] = useState('')
+
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-    
+    const readData = async () => {
+      try {
+        const userAge = await AsyncStorage.getItem(storage.UserName)
+       
+         
+        if (userAge !== null) {
+          setName(userAge)
+        }
+      } catch (e) {
+        Alert.alert('Failed to fetch the data from storage')
+      }
+    }
+    useEffect(() => {
+      readData()
+    }, [])
     return (
       <View
         style={{

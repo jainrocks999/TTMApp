@@ -1,11 +1,15 @@
 import React from 'react';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {View, Image, TouchableOpacity, Text,Alert} from 'react-native';
 import Modal from 'react-native-modal';
 import { TextInput } from 'react-native-paper';
+import AsyncStorage from "@react-native-community/async-storage";
+import storage from '../../config/storage';
+
 export default class ProfileScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      UserName:'',
       spinner:true,
       isVisible:false,
       isPhoneVisible: false,
@@ -28,8 +32,23 @@ export default class ProfileScreen extends React.Component {
                });
              }
            };
+    componentDidMount=()=>{
+      this.readData()
+    }
+   readData = async () => {
+      try {
+        const userAge = await AsyncStorage.getItem(storage.UserName)
+        if (userAge !== null) {
+          this.setState({UserName:userAge})
+          
+        }
+      } catch (e) {
+        Alert.alert('Failed to fetch the data from storage')
+      }
+    }     
    render() {
- 
+
+    console.log(this.state.UserName)
     return (
       <View
         style={{
@@ -44,7 +63,7 @@ export default class ProfileScreen extends React.Component {
               marginTop: 10,
             }}>
             <Text style={{color: 'grey'}}>Name </Text>
-            <Text style={{marginBottom: 10, marginTop: 5}}>Ram Sharma</Text>
+          <Text style={{marginBottom: 10, marginTop: 5}}>{this.state.UserName}</Text>
           </View>
           <View
             style={{
