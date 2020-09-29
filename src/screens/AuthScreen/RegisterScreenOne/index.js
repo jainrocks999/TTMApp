@@ -89,6 +89,7 @@ class Registration extends React.Component {
       navigateTo,
     } = this.state;
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    AsyncStorage.setItem(storage.UserName);
     if (UserId == '') {
       Toast.show('Please enter User ID.');
     } else if (FirstName == '') {

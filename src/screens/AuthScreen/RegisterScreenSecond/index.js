@@ -87,86 +87,88 @@ class Registration extends React.Component {
     }
   };
   doRegister = () => {
-    Alert.alert('API is missing')
-    // const {
-    //   FirstName,
-    //   UserId,
-    //   lastname,
-    //   Email,
-    //   company,
-    //   state,
-    //   token,
-    //   city,
-    //   pincode,
-    //   address,
-    //   NationalCode,
-    //   Phone,
-    //   CountryId,
-    //   Company_Name,
-    //   navigateTo,
-    // } = this.state;
-    // let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    // if (city == '') {
-    //   Toast.show('Please enter city name.');
-    // } else if (pincode == '') {
-    //   Toast.show('Please enter Pin Code.');
-    // } else if (address == '') {
-    //   Toast.show('Please enter  address');
-    // } else if (Phone == '') {
-    //   Toast.show('Please enter Phone number');
-    // } else {
-    //   this.setState({
-    //     spinner: true,
-    //   });
-    //   const data = qs.stringify({
-    //     UserId: UserId,
-    //     firstname: FirstName,
-    //     lastname: lastname,
-    //     email: Email,
-    //     company: company,
-    //     state: state,
-    //     city: city,
-    //     pincode: pincode,
-    //     address: address,
-    //     NationalCode: '+91',
-    //     Phone: Phone,
-    //     CountryId: CountryId,
-    //     Company_Name: Company_Name,
-    //   });
-    //   console.log('ppp' + data);
-    //   console.log('ppp' + token);
-    //   const headers = {
-    //     Authorization: 'bearer ' + token,
-    //     // 'Accept': 'application/x-www-form-urlencoded',
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //   };
-    //   Axios.post(connection.Registeruser, data, {headers})
-    //     .then(p => {
-    //       console.log('rrrrrrrrrrr' + JSON.stringify(p));
-    //       if (p.data.Status == true) {
-    //         console.log('rrrrrrrrrrr' + p.data.Status);
-    //         Toast.show(p.data.message);
-    //         // setTimeout(() => this.props.navigation.navigate('FirstPage'), 2000);
-    //         //  AsyncStorage.setItem(storage.Token,p.data.data);
-    //         this.setState({
-    //           spinner: false,
-    //         });
-    //       } else {
-    //         Toast.show(p.data.message);
-    //         this.setState({
-    //           spinner: false,
-    //         });
-    //       }
-    //     })
-    //     .catch(Error);
-    //   console.log('ddddddd' + Error);
+    // Alert.alert('API is missing')
+    const {
+      FirstName,
+      UserId,
+      lastname,
+      Email,
+      company,
+      state,
+      token,
+      city,
+      pincode,
+      address,
+      NationalCode,
+      Phone,
+      CountryId,
+      Company_Name,
+      navigateTo,
+    } = this.state;
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (city == '') {
+      Toast.show('Please enter city name.');
+    } else if (pincode == '') {
+      Toast.show('Please enter Pin Code.');
+    } else if (address == '') {
+      Toast.show('Please enter  address');
+    } else if (Phone == '') {
+      Toast.show('Please enter Phone number');
+    } else {
+      this.setState({
+        spinner: true,
+      });
+      const data = qs.stringify({
+        UserId: UserId,
+        firstname: FirstName,
+        lastname: lastname,
+        email: Email,
+        company: company,
+        state: state,
+        city: city,
+        pincode: pincode,
+        address: address,
+        NationalCode: '+91',
+        Phone: Phone,
+        CountryId: 99,
+        Company_Name: Company_Name,
+      });
+      console.log('ppp' + data);
+      console.log('ppp' + token);
+      const headers = {
+        Authorization: 'bearer ' + token,
+        // 'Accept': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      };
+     // console.log('dkaskflaskfld'+connection.Signup)
+      Axios.post(connection.Signup, data, {headers})
+    
+        .then(p => {
+          console.log('rrrrrrrrrrr' + JSON.stringify(p));
+          if (p.data.Status == true) {
+            console.log('rrrrrrrrrrr' + p.data.Status);
+            Toast.show(p.data.message);
+            setTimeout(() => this.props.navigation.navigate('Login'), 2000);
+             AsyncStorage.setItem(storage.Token,p.data.data);
+            this.setState({
+              spinner: false,
+            });
+          } else {
+            Toast.show(p.data.message);
+            this.setState({
+              spinner: false,
+            });
+          }
+        })
+        .catch(Error);
+      console.log('ddddddd' + Error);
 
-    //   //   this.props.dispatch({
-    //   //     type: 'User_Register_Request',
-    //   //
+      //   this.props.dispatch({
+      //     type: 'User_Register_Request',
+      //
 
-    //   //   });
-    // }
+      //   });
+    }
   };
   render() {
     return (
@@ -206,10 +208,11 @@ class Registration extends React.Component {
                 <Text >Country</Text>
                 <TextInput
                   style={styles.input}
+                  editable={false}
                   placeholder="Country"
                   value={this.state.CountryId}
                   onChangeText={CountryId => {
-                    this.setState({CountryId: CountryId});
+                    this.setState({CountryId: 99});
                   }}
                 />
       
