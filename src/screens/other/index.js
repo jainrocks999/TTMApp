@@ -29,6 +29,7 @@ export default class other extends React.Component {
         if (result.isCancelled) {
           console.log('Login cancelled');
         } else {
+          this.props.navigation.navigate('AppStack');
           console.log(
             'Login success with permissions: ' +
               result.grantedPermissions.toString(),
