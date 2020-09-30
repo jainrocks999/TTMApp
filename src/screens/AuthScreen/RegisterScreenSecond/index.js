@@ -14,10 +14,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../config/storage';
 import qs from 'qs';
 import Axios from 'axios';
-
+import RNPickerSelect  from 'react-native-picker-select';
 import Spinner from 'react-native-loading-spinner-overlay';
 import connection from '../../../Redux/Constants';
-import RNPickerSelect from 'react-native-picker-select';
 import Toast from 'react-native-simple-toast';
 
 class Registration extends React.Component {
@@ -267,7 +266,7 @@ class Registration extends React.Component {
               <View style={[styles.inputContainer1]}>
                 <Text >Country</Text>
               
-                {/* <TextInput
+                <TextInput
                   style={styles.input}
                   editable={false}
                   placeholder="Country"
@@ -275,16 +274,8 @@ class Registration extends React.Component {
                   onChangeText={CountryId => {
                     this.setState({CountryId: 99});
                   }}
-                /> */}
-                <RNPickerSelect
-                 onValueChange={(value) => console.log(value)}
-                 items={[
-                  { label: 'Football', value: 'football' },
-                  { label: 'Baseball', value: 'baseball' },
-                  { label: 'Hockey', value: 'hockey' },
-              ]}
-        />
-             
+                />
+              
               </View>
               <View style={[styles.inputContainer1]}>
                 <Text >State</Text>

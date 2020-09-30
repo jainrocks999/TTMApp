@@ -17,7 +17,6 @@ import qs from 'qs';
 import Axios from 'axios';
 import Spinner from 'react-native-loading-spinner-overlay';
 import connection from '../../../Redux/Constants';
-import RNPickerSelect from 'react-native-picker-select';
 import Toast from 'react-native-simple-toast';
 
 class Registration extends React.Component {
