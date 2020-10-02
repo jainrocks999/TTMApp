@@ -361,13 +361,11 @@ function* doRegister(action) {
 
 //Dashboard
 function* DoDashboard(action) {
-  console.log('Khaniyadhana Bale' + action.url);
-  console.log('Khaniyadhana Bale' + action.token);
+  console.log('copy cdcdcd' + action.url);
   const p = yield call(Api.fetchDataByGET, action.url, action.token);
   console.log('copy' + p.Status);
   console.log('copy' + JSON.stringify(p.data));
   console.log('copy' + p.Status);
-  console.log('copy' + p.data.data);
   if (p.Status == true) {
     yield put({
       type: 'User_Dashboard_Success',
@@ -377,6 +375,44 @@ function* DoDashboard(action) {
     Alert.alert(p.message);
     yield put({
       type: 'User_Dashboard_Error',
+    });
+  }
+}
+//Country
+function* DoCountry(action) {
+  console.log('copy cdcdcd' + action.url);
+  const p = yield call(Api.fetchDataByGET, action.url, action.token);
+  console.log('copy' + p.Status);
+  console.log('copy' + JSON.stringify(p.data));
+  console.log('copy' + p.Status);
+  if (p.Status == true) {
+    yield put({
+      type: 'User_Country_Success',
+      payload: p.data,
+    });
+  } else {
+    Alert.alert(p.message);
+    yield put({
+      type: 'User_Country_Error',
+    });
+  }
+}
+//state
+function* DoState(action) {
+  console.log('copy cdcdcd' + action.url);
+  const p = yield call(Api.fetchDataByGET, action.url, action.token);
+  console.log('copy' + p.Status);
+  console.log('copy' + JSON.stringify(p.data));
+  console.log('copy' + p.Status);
+  if (p.Status == true) {
+    yield put({
+      type: 'User_Country_Success',
+      payload: p.data,
+    });
+  } else {
+    Alert.alert(p.message);
+    yield put({
+      type: 'User_Country_Error',
     });
   }
 }
@@ -401,4 +437,8 @@ export default function* authSaga() {
   yield takeEvery('User_LapsedRenewal_Details_Request', DoLapsedRenewal);
   yield takeEvery('User_Opposition_Details_Request', DoOpposition);
   yield takeEvery('User_Dashboard_Request', DoDashboard);
+  yield takeEvery('User_State_Request', DoState);
+  yield takeEvery('User_Country_Request', DoCountry);
+
+
 }

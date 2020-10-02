@@ -14,11 +14,10 @@ import {
   ImageBackground,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {SliderBox} from 'react-native-image-slider-box';
 import Icon1 from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
 import storage from '../../config/storage';
-
+import styles from './style';
 import AsyncStorage from '@react-native-community/async-storage';
 
 class LostDetails extends Component {
@@ -35,132 +34,48 @@ class LostDetails extends Component {
       if (this.state.itemValue == item.Rowno) {
         return (
           <View
-            style={{
-              flexDirection: 'column',
-              marginEnd: 10,
-              margin: 10,
-              backgroundColor: '#FAFAFA',
-              borderRadius: 8,
-              padding: 10,
-              marginBottom: 4,
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-            }}>
+            style={styles.drop}>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.same}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.same1}>
                 ShortTrade Mark
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                }}>
+                style={styles.same2}>
                 {item.ShortTrade_Mark}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.same}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.same1}>
                 FullTrade Mark
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                }}>
+                style={styles.same2}>
                 {item.FullTrade_Mark}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.same}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.same1}>
                 App Status
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  marginLeft: 10,
-                  fontFamily: 'Poppins',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                  color: 'green',
-                  width: '55%',
-                }}>
+                style={styles.same2}>
                 {item.App_Status}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.same}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.same1}>
                 Full Prop Name
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                }}>
+                style={styles.same2}>
                 {item.FullPropName}
               </Text>
             </View>
@@ -188,8 +103,6 @@ class LostDetails extends Component {
     const {Nor, PageNo} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-
-    console.log('bdb' + userid);
     this.props.dispatch({
       type: 'User_Lost_Details_Request',
       url:
@@ -213,54 +126,31 @@ class LostDetails extends Component {
     return (
       <View style={{flex: 1}}>
         <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.main}>
           <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-            }}>
+            style={styles.arrow}>
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.goBack(null);
               }}>
               <Image
                 source={require('../../assets/icons/arrow.png')}
-                style={{width: 24, height: 15, marginEnd: 10}}
+                style={styles.image}
               />
             </TouchableOpacity>
 
             <View style={{}}>
               <Text
-                style={{
-                  fontSize: 22,
-                  textAlign: 'center',
-                  marginLeft: 10,
-                }}>
+                style={styles.lost}>
                 Lost
               </Text>
             </View>
           </View>
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.view}>
             <Image
               source={require('../../assets/icons/bell_one.png')}
-              style={{
-                width: 22,
-                height: 22,
-                marginRight: 15,
-                justifyContent: 'center',
-              }}
+              style={styles.bell}
             />
             <View style={{alignItems: 'center'}}>
               <Image
@@ -271,53 +161,23 @@ class LostDetails extends Component {
           </View>
         </View>
         <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
+          style={styles.search}>
           <View
-            style={{
-              width: '88%',
-              borderWidth: 1,
-              borderRadius: 10,
-              flexDirection: 'row',
-              height: 45,
-              alignItems: 'center',
-              backgroundColor: '#fff',
-            }}>
+            style={styles.search1}>
             <View style={{}}>
               <Icon1 name="search" size={25} style={{marginLeft: 5}} />
             </View>
             <View
-              style={{
-                backgroundColor: 'transparent',
-                height: 42,
-                width: '68%',
-                borderLeftWidth: 0.5,
-                marginLeft: 5,
-              }}>
+              style={styles.inputView}>
               <TextInput
-                style={{
-                  backgroundColor: 'transparent',
-                  height: 42,
-                  width: '100%',
-                }}
+                style={styles.input}
                 placeholder={'Tm search ...'}
               />
             </View>
           </View>
 
           <View
-            style={{
-              width: '12%',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.filter}>
             <View style={{alignItems: 'center', marginLeft: 10}}>
               <Icon name="filter" size={35} />
             </View>
@@ -330,44 +190,15 @@ class LostDetails extends Component {
             <View style={{flex: 1}}>
               <TouchableOpacity onPress={() => this.getVisible(item)}>
                 <View
-                  style={{
-                    flexDirection: 'column',
-                    marginEnd: 10,
-                    margin: 10,
-                    backgroundColor: '#FAFAFA',
-                    borderRadius: 8,
-                    padding: 10,
-                    marginBottom: 4,
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-start',
-                  }}>
+                  style={styles.card}>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 20,
-                    }}>
+                    style={styles.card1}>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}>
+                      style={styles.app}>
                       App No
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 15,
-                        color: '#5A6779',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}>
+                      style={styles.no}>
                       {item.App_No}
                     </Text>
                   </View>

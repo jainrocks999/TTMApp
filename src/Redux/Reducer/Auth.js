@@ -2,13 +2,16 @@ initialstate = {
   isFetching: false,
   Token: null,
   UserDetails: null,
+  User:null,
   CopyRight: [],
   DesignDetails: [],
   PatentDetails: [],
   CalendraDetails: [],
   //new api
   RegisteredDetails: [],
-  DashboardDetails:'',
+  DashboardDetails:[],
+  CountryName:[],
+  stateName:[]
 };
 export default (state = initialstate, action) => {
   console.log('Dekho yaro'+action.type)
@@ -151,6 +154,22 @@ case 'User_Dashboard_Success':
 case 'User_Dashboard_Error':
   return {...state, isFetching: false};
 
+  //Country Details
+  case 'User_Country_Request':
+  return {...state, isFetching: true};
+case 'User_Country_Success':
+  return {...state, isFetching: false, CountryName: action.payload};
+case 'User_Country_Error':
+  return {...state, isFetching: false};
+
+   //Country Details
+   case 'User_State_Request':
+    return {...state, isFetching: true};
+  case 'User_State_Success':
+    return {...state, isFetching: false, stateName: action.payload};
+  case 'User_State_Error':
+    return {...state, isFetching: false};
+  
     default:
       return state;
   }

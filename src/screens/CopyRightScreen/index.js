@@ -83,182 +83,70 @@ this.loadsearch(search);
       if (this.state.itemValue == item.Id) {
         return (
           <View
-            style={{
-              flexDirection: 'column',
-              marginBottom: 10,
-              backgroundColor: '#FFF',
-              borderBottomLeftRadius: 8,
-              borderBottomRightRadius: 8,
-              marginHorizontal: 20,
-              paddingHorizontal: 15,
-              paddingRight: 10,
-              justifyContent: 'space-between',
-            }}>
+            style={styles.view1}>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.fullView}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.full1}>
                 Full Prop Name
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+                style={styles.full}>
                 {item.FullPropName}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.dairyView}>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.dairy1}>
                 Dairy No
               </Text>
               <Text
-                style={{
-                  fontSize: 15,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+                style={styles.dairy}>
                 {item.Dairy_No}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.office}>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.office1}>
                 APPpro Office
               </Text>
               <Text
-                style={{
-                  fontSize: 15,
-                  color: '#5A6779',
-                  marginLeft: 10,
-                  fontFamily: 'Poppins',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+                style={styles.office2}>
                 Delhi
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.journal}>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.journal1}>
                 Journal No.
               </Text>
               <Text
-                style={{
-                  fontSize: 15,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+                style={styles.journal2}>
                 1990-20
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.valid}>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.valid1}>
                 Vaild Upto
               </Text>
               <Text
-                style={{
-                  fontSize: 15,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+                style={styles.valid2}>
                 17/11/2020
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.class}>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.class1}>
                 Class
               </Text>
               <Text
-                style={{
-                  fontSize: 15,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+                style={styles.class2}>
                 30
               </Text>
             </View>
@@ -274,55 +162,34 @@ this.loadsearch(search);
     const {CopyRight,isFetching} = this.props;
     return (
       <View style={{flex: 1}}>
+        <ScrollView>
+        {isFetching ? <Loader /> : null}
         <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
-              {isFetching ? <Loader /> : null}
+          style={styles.loaderView}> 
           <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-            }}>
+            style={styles.arrowView}>
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.goBack(null);
               }}>
               <Image
                 source={require('../../assets/icons/arrow.png')}
-                style={{width: 20, height: 15, marginEnd: 15}}
+                style={styles.arrow}
               />
             </TouchableOpacity>
 
-            <View style={{}}>
+            <View>
               <Text
-                style={{
-                  fontSize: 20,
-                  textAlign: 'center',
-                }}>
+                style={styles.text}>
                 Copy Right
               </Text>
             </View>
           </View>
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.bellView}>
             <Image
               source={require('../../assets/icons/bell_one.png')}
-              style={{
-                width: 18,
-                height: 18,
-                marginRight: 15,
-                justifyContent: 'center',
-              }}
+              style={styles.bell}
             />
             <View style={{alignItems: 'center'}}>
               <Image
@@ -333,45 +200,21 @@ this.loadsearch(search);
           </View>
         </View>
         <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
+          style={styles.view2}>
           <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              flexDirection: 'row',
-              height: 45,
-              width: '88%',
-              alignItems: 'center',
-              backgroundColor: '#fff',
-            }}>
-            <View style={{}}>
-              <Icon1 name="search" size={25} style={{marginLeft: 5}} />
+            style={styles.view3}>
+            <View>
+              <Icon1 
+              name="search" size={25} 
+              style={{marginLeft: 5}} />
             </View>
             <View
-              style={{
-                backgroundColor: 'transparent',
-                height: 42,
-                width: 305,
-                borderLeftWidth: 0.5,
-                marginLeft: 5,
-              }}>
+              style={styles.inputView}>
               <TextInput
                 placeholder={'Tm search ...'}
-                //labelFontSize={14}
+
                 value={this.state.Email}
-               style={{
-                   backgroundColor: 'transparent',
-                   height: 42,
-                   width: '100%',
-                 }}
-                //keyboardType="email-address"
+               style={styles.input}
                 onChangeText={Email => {
                   this.loadsearch(Email)
                 }}
@@ -380,12 +223,7 @@ this.loadsearch(search);
           </View>
 
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              width: '12%',
-              alignItems: 'center',
-            }}>
+            style={styles.filter}>
             <View style={{alignItems: 'center', marginLeft: 10}}>
               <Icon name="filter" size={35} />
             </View>
@@ -398,25 +236,10 @@ this.loadsearch(search);
             <View style={{flex: 1}}>
               <TouchableOpacity onPress={() => this.getVisible(item)}>
                 <View
-                  style={{
-                    marginTop: 15,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    backgroundColor: '#FFFFFF',
-                    borderRadius: 10,
-                    padding: 10,
-                    justifyContent: 'space-between',
-                    paddingVertical: 20,
-
-                    marginHorizontal: 20,
-                  }}>
+                  style={styles.main}>
                   <View>
                     <View
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        paddingHorizontal: 5,
-                      }}>
+                      style={styles.title}>
                       <Text
                         style={{
                           fontSize: 14,
@@ -425,20 +248,12 @@ this.loadsearch(search);
                         {'Title     :'}
                       </Text>
                       <Text
-                        style={{
-                          fontFamily: 'Poppins-Bold',
-                          fontSize: 14,
-                          marginLeft: 21,
-                        }}>
+                        style={styles.work}>
                         {item.Title}
                       </Text>
                     </View>
                     <View
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        paddingHorizontal: 5,
-                      }}>
+                      style={styles.workView}>
                       <Text
                         style={{
                           fontSize: 14,
@@ -447,17 +262,13 @@ this.loadsearch(search);
                         {'Work  :'}
                       </Text>
                       <Text
-                        style={{
-                          fontFamily: 'Poppins',
-                          fontSize: 14,
-                          marginLeft: 20,
-                        }}>
+                        style={styles.item}>
                         {item.Work}
                       </Text>
                     </View>
                   </View>
                   <Image
-                    style={{height: 25, width: 25, marginRight: 10}}
+                    style={styles.down}
                     source={require('../../assets/icons/arrow_down.png')}
                   />
                 </View>
@@ -466,6 +277,7 @@ this.loadsearch(search);
             </View>
           )}
         />
+        </ScrollView>
       </View>
     );
   }

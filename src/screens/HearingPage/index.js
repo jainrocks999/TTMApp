@@ -11,6 +11,7 @@ import Icon1 from 'react-native-vector-icons/Feather';
 import storage from '../../config/storage';
 
 import ExpandableItemComponent from '../../config/expendableList.js'; 
+import style from './style';
  const CONTENT = [
   {
     isExpanded: false,
@@ -100,22 +101,6 @@ import ExpandableItemComponent from '../../config/expendableList.js';
 ];
 
  class HearingPage extends Component {
-// static navigationOptions = ({ navigation }) => ({
-//         headerTitle: 'My Trade Details',
-//        // drawerLabel: 'Details',
-//         headerTintColor: 'black',
-//         headerStyle: {
-//           backgroundColor: '#fff',
-         
-//         },
-//         headerLeft: (
-//           <TouchableOpacity onPress={navigation.toggleDrawer}>
-//             <Icon name="md-menu"
-//               style={{ marginLeft: 10 }} size={30} color="#000" />
-//           </TouchableOpacity>
-//         ),
-//       })
-
   constructor(props) {
     super(props);
     this.state = {
@@ -140,7 +125,6 @@ import ExpandableItemComponent from '../../config/expendableList.js';
      const {Nor,PageNo} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-    console.log('bdb'+userid);
     this.props.dispatch({type:'User_CopyRight_Request',url:'/NewTMApi/CRDetail?UserId=7&PageNo=1&Nor=10&search=',token:token})
    };
 
@@ -173,42 +157,38 @@ updateLayout = (index) => {
         if (this.state.visible == true) {
             if (this.state.itemValue == item.Id) {
                 return (
-                   <View style={{ flexDirection: 'column',marginEnd:10, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'space-between' ,alignItems: 'flex-start' }}>
-
-                         <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 13, color: '#000',fontFamily: 'Poppins-Bold',width:'40%'  }}>Full Prop Name</Text>
-        <Text style={{ fontSize: 14, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.FullPropName}</Text>
+                   <View 
+                   style={styles.container}>
+         <View 
+         style={styles.main}>
+        <Text style={styles.full}>Full Prop Name</Text>
+        <Text style={styles.item1}>{item.FullPropName}</Text>
         </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%' }}>Dairy No</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Dairy_No}</Text>
+        <View style={styles.main}>
+        <Text style={styles.full}>Dairy No</Text>
+        <Text style={styles.item1}>{item.Dairy_No}</Text>
         </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>APPpro Office</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', marginLeft:10, fontFamily: 'Poppins',alignItems:'center',justifyContent:'center' }}>Delhi</Text>
+        <View style={styles.main}>
+        <Text style={styles.full}>APPpro Office</Text>
+        <Text style={styles.item1}>Delhi</Text>
         </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Journal No.</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10, alignItems:'center',justifyContent:'center' }}>1990-20</Text>
+        <View style={styles.main}>
+        <Text style={styles.full}>Journal No.</Text>
+        <Text style={styles.item1}>1990-20</Text>
         </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold', width:'40%' }}>Vaild Upto</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>17/11/2020</Text>
+        <View style={styles.main}>
+        <Text style={styles.full}>Vaild Upto</Text>
+        <Text style={styles.item1}>17/11/2020</Text>
         </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000', fontFamily: 'Poppins-Bold',width:'40%'  }}>Class</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779', fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>30</Text>
+        <View style={styles.main}>
+        <Text style={styles.full}>Class</Text>
+        <Text style={styles.item1}>30</Text>
         </View>
-                       
-                
-                    </View>
-
+         </View>
                 )
             } else {
 
             }
-        
-
         } else {
 
         }
@@ -220,13 +200,7 @@ updateLayout = (index) => {
     return (
         <View style={{flex:1}}>
          <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.container1}>
           <TouchableOpacity
             onPress={() => {
               this.props.navigation.toggleDrawer();
@@ -237,7 +211,7 @@ updateLayout = (index) => {
             />
           </TouchableOpacity>
 
-          <View style={{}}>
+          <View>
             <Text
               style={{
                 fontSize: 22,
@@ -247,19 +221,10 @@ updateLayout = (index) => {
             </Text>
           </View>
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.icon}>
             <Image
               source={require('../../assets/icons/bell_one.png')}
-              style={{
-                width: 22,
-                height: 22,
-                marginRight: 15,
-                justifyContent: 'center',
-              }}
+              style={styles.bell}
             />
             <View style={{alignItems: 'center'}}>
               <Image
@@ -270,87 +235,50 @@ updateLayout = (index) => {
           </View>
         </View>
         <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-             width:'100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
+          style={styles.main1}>
           <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              flexDirection: 'row',
-              height: 45,
-              width: '88%',
-              alignItems: 'center',
-              backgroundColor: '#fff',
-            }}>
+            style={styles.main2}>
             <View style={{}}>
               <Icon1 name="search" size={25} style={{marginLeft: 5}} />
             </View>
             <View
-              style={{
-                backgroundColor: 'transparent',
-                height: 42,
-                width: 305,
-                borderLeftWidth: 0.5,
-                marginLeft: 5,
-              }}>
+              style={styles.trans}>
               <TextInput
-                style={{
-                  backgroundColor: 'transparent',
-                  height: 42,
-                  width: '100%',
-                }}
+                style={styles.input}
                 placeholder={'Tm search ...'}
               />
             </View>
           </View>
 
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              width:'12%',
-              alignItems: 'center',
-            }}>
+            style={styles.filter}>
             <View style={{alignItems: 'center', marginLeft: 10}}>
               <Icon name="filter" size={35} />
             </View>
           </View>
         </View>
      <FlatList
-                    data={CopyRight}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item }) =>
-                     <View style={{ flex: 1 }}>
-                            <TouchableOpacity
-                                onPress={() => this.getVisible(item)}>
+         data={CopyRight}
+         keyExtractor={(item, index) => index.toString()}
+         renderItem={({ item }) =>
+      <View style={{ flex: 1 }}>
+      <TouchableOpacity
+      onPress={() => this.getVisible(item)}>
 
-                       <View style={{ flexDirection: 'column',marginEnd:10, elevation: 2, margin: 10,backgroundColor: '#FAFAFA', borderRadius: 8, padding:10, marginBottom: 4,justifyContent:'center' ,alignItems: 'flex-start' }}>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'flex-start'}}>
-                <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Title</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Title}</Text>             
+      <View style={styles.view}>
+        <View style={styles.view1}>
+        <Text style={styles.title}>Title</Text>
+        <Text style={styles.item}>{item.Title}</Text>             
         </View>
-        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between',marginTop:8}}>
-        <Text style={{ fontSize: 14, color: '#000',fontFamily: 'Poppins-Bold' ,width:'40%',alignItems:'center',justifyContent:'center'  }}>Work</Text>
-        <Text style={{ fontSize: 15, color: '#5A6779',fontFamily: 'Poppins', marginLeft:10,alignItems:'center',justifyContent:'center' }}>{item.Work}</Text>             
+        <View style={styles.second}>
+        <Text style={styles.work}>Work</Text>
+        <Text style={styles.item2}>{item.Work}</Text>             
         </View>
-       
         </View>
-</TouchableOpacity>
-
-                            {this.renderItemView(item)}
-
-                        </View>
-
-
-                    }
-                />
-               
+      </TouchableOpacity>
+           {this.renderItemView(item)}
+           </View>
+           }/>     
         </View>
     );
   }

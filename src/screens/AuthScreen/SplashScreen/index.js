@@ -1,15 +1,12 @@
-import React, {Component} from 'react';
-import {Image, View, Text, StyleSheet} from 'react-native';
+import React from 'react';
+import {Image, View} from 'react-native';
 import Statusbar from '../../../common/Statusbar';
 import styles from './style';
 import {connect} from 'react-redux';
-
-import connection from '../../../Redux/Constants';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../config/storage';
-import qs from 'qs';
-import Axios from 'axios';
 import {GoogleSignin, statusCodes} from 'react-native-google-signin';
+import Color from '../../../common/Colors';
 class SplashScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -35,7 +32,6 @@ class SplashScreen extends React.Component {
       usermail,
       password,
     });
-    console.log('kya hua ' + userid);
 
     if (isSignedIn == true || userid != null) {
       setTimeout(() => this.props.navigation.navigate('AppStack'), 1000);
@@ -50,8 +46,6 @@ class SplashScreen extends React.Component {
           console.log('user has not signed in yet : ', error.code);
         } else {
           console.log('some other error : ', error);
-
-          // some other error
         }
       }
     } else {
@@ -61,11 +55,6 @@ class SplashScreen extends React.Component {
 
   render() {
     return (
-      // <LinearGradient
-      //   colors={['#373b44', '#4286f4']}
-      //   style={styles.container}
-      //   start={{x: 0, y: 0}}
-      //   end={{x: 1, y: 1}}>
       <View>
         <View style={styles.imageContainer}>
           <Image
@@ -74,18 +63,15 @@ class SplashScreen extends React.Component {
             resizeMode={'stretch'}
           />
         </View>
-        <Statusbar />
+        <Statusbar backgroundColor={Color.white} barStyle="dark-content" />
       </View>
     );
   }
 }
 const mapStateToProps = state => {
-  console.log('Kapil jain' + JSON.stringify(state));
-  //console.log('Kapil jain'+JSON.stringify(Token))
   return {
     isFetching: state.isFetching,
     Token: state.Token,
   };
 };
-
 export default connect(mapStateToProps)(SplashScreen);

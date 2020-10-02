@@ -1,34 +1,64 @@
 import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
-       container:{
-           flex:1
-       },
-       back:{
-           width: '100%', 
-           height: '100%', 
-           flex: 1
-        },
-        dot:{
-            width: 10,
-            height: 10,
-            borderRadius: 5,
-            marginHorizontal: 0,
-            padding: 0,
-            margin: 0,
-            backgroundColor: 'rgba(128, 128, 128, 0.92)',
-          },
-        pagination:{
-            position: 'absolute',
-            bottom: 0,
-            padding: 0,
-            alignItems: 'center',
-            alignSelf: 'center',
-            justifyContent: 'center',
-            paddingVertical: 10,
-          },
-        image:{
-            borderRadius: 15, 
-            width: '97%', 
-            marginTop: 5
-        }
+    container:{
+        flex:1
+    },
+    header:{
+        alignItems:'center',
+        marginTop:20
+    },
+    get:{
+        fontWeight:'normal',
+        fontFamily:'Poppins',
+        fontSize:20
+    },
+    imageView:{
+        justifyContent:'center',
+        alignItems:'center',
+        marginTop:90
+    },
+    facebook:{
+        backgroundColor:'#f6f8f9',
+        borderRadius:20,
+        padding:10,
+        alignItems:'center',
+        flexDirection:'row',
+        justifyContent:'center'
+    },
+    image:{
+        width:10,
+        height:18,
+        marginRight:10
+    },
+    google:{
+        backgroundColor:'#f6f8f9',
+        borderRadius:20,
+        padding:10,
+        alignItems:'center',
+        marginTop:20,
+        flexDirection:'row',
+        justifyContent:'center'
+    },
+    email:{
+        backgroundColor:'#5f85e5',
+        borderRadius:20,
+        padding:10,
+        alignItems:'center',
+        marginTop:35
+    },
+    ext:{
+        flexDirection:'row',
+        justifyContent:'center',
+        marginTop:20
+    },
+    login:{
+        width:17,
+        height:18,
+        marginRight:10
+    },
+    touch:{
+        paddingHorizontal:80,
+        marginTop:40
+    }
+    
 })

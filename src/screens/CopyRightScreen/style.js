@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Color from '../../common/Colors';
 export default StyleSheet.create({
     view:{
         justifyContent:'center',
@@ -8,5 +9,232 @@ export default StyleSheet.create({
     button:{
         backgroundColor:'red',
         padding:20
-    }
+    },
+    view1:{
+        flexDirection: 'column',
+        marginBottom: 10,
+        backgroundColor: Color.white,
+        borderBottomLeftRadius: 8,
+        borderBottomRightRadius: 8,
+        marginHorizontal: 20,
+        paddingHorizontal: 15,
+        paddingRight: 10,
+        justifyContent: 'space-between',
+      },
+    loaderView:{
+        backgroundColor:Color.white,
+        padding: 12,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      },
+      arrowView:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+      },
+      arrow:{
+        width: 20, 
+        height: 15, 
+        marginEnd: 15
+    },
+    text:{
+        fontSize: 20,
+        textAlign: 'center',
+      },
+    bellView:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      bell:{
+        width: 18,
+        height: 18,
+        marginRight: 15,
+        justifyContent: 'center',
+      },
+      view2:{
+        backgroundColor: 'white',
+        padding: 12,
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      },
+      view3:{
+        borderWidth: 1,
+        borderRadius: 10,
+        flexDirection: 'row',
+        height: 45,
+        width: '88%',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+      },
+      inputView:{
+        backgroundColor: 'transparent',
+        height: 42,
+        width: 305,
+        borderLeftWidth: 0.5,
+        marginLeft: 5,
+      },
+      input:{
+        backgroundColor: 'transparent',
+        height: 42,
+        width: '100%',
+      },
+      filter:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: '12%',
+        alignItems: 'center',
+      },
+      main:{
+        marginTop: 15,
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: Color.white,
+        borderRadius: 10,
+        padding: 10,
+        justifyContent: 'space-between',
+        paddingVertical: 20,
+
+        marginHorizontal: 20,
+      },
+      title:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 5,
+      },
+      work:{
+        fontFamily: 'Poppins-Bold',
+        fontSize: 14,
+        marginLeft: 21,
+      },
+      workView:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 5,
+      },
+      item:{
+        fontFamily: 'Poppins',
+        fontSize: 14,
+        marginLeft: 20,
+      },
+      down:{
+          height: 25, 
+          width: 25, 
+          marginRight: 10
+        },
+      fullView:{
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 8,
+      },
+      full1:{
+        fontSize: 13,
+        color: Color.black,
+        fontFamily: 'Poppins-Bold',
+        width: '40%',
+      },
+      dairyView:{
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 8,
+      },
+      dairy1:{
+        fontSize: 14,
+        color: Color.black,
+        fontFamily: 'Poppins-Bold',
+        width: '40%',
+      },
+      dairy:{
+        fontSize: 15,
+        color: Color.twxt,
+        fontFamily: 'Poppins',
+        marginLeft: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      office:{
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 8,
+      },
+      office1:{
+        fontSize: 14,
+        color: Color.black,
+        fontFamily: 'Poppins-Bold',
+        width: '40%',
+      },
+      office2:{
+        fontSize: 15,
+        color:Color.twxt,
+        marginLeft: 10,
+        fontFamily: 'Poppins',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      journal:{
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 8,
+      },
+      journal1:{
+        fontSize: 14,
+        color: Color.black,
+        fontFamily: 'Poppins-Bold',
+        width: '40%',
+      },
+      journal2:{
+        fontSize: 15,
+        color: Color.twxt,
+        fontFamily: 'Poppins',
+        marginLeft: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      valid:{
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 8,
+      },
+      valid1:{
+        fontSize: 14,
+        color: Color.black,
+        fontFamily: 'Poppins-Bold',
+        width: '40%',
+      },
+      valid3:{
+        fontSize: 15,
+        color: Color.twxt,
+        fontFamily: 'Poppins',
+        marginLeft: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      class:{
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 8,
+      },
+      class:{
+        fontSize: 14,
+        color: Color.black,
+        fontFamily: 'Poppins-Bold',
+        width: '40%',
+      },
+      class2:{
+        fontSize: 15,
+        color: Color.twxt,
+        fontFamily: 'Poppins',
+        marginLeft: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }
 })
