@@ -5,7 +5,6 @@ import {
   ImageBackground,
   ScrollView,
   Image,
-  Picker,
   StatusBar,Alert
 } from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
@@ -14,10 +13,12 @@ import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../config/storage';
 import qs from 'qs';
 import Axios from 'axios';
-import RNPickerSelect  from 'react-native-picker-select';
 import Spinner from 'react-native-loading-spinner-overlay';
 import connection from '../../../Redux/Constants';
 import Toast from 'react-native-simple-toast';
+import Color from '../../../common/Colors';
+import { Picker } from '@react-native-community/picker';
+import { connect } from 'react-redux';
 
 class Registration extends React.Component {
   static navigationOptions = {
@@ -28,6 +29,7 @@ class Registration extends React.Component {
     super(props);
     this.toggleSwitch = this.toggleSwitch.bind(this);
     this.state = {
+      language: 'java',
       showPassword: true,
       token: '',
       UserId: '',
@@ -44,9 +46,15 @@ class Registration extends React.Component {
       Phone: '',
       CountryId: '',
       Company_Name: 'BRAND',
+      countryName:[],
+      selectedCountry:'',
+      stateName:[],
+      selectedState:'',
+      selectedValue:'java'
     };
 
     this.loaddata();
+    
   }
   loaddata = async () => {
     const UserId = this.props.navigation.getParam('UserId');
@@ -61,6 +69,7 @@ class Registration extends React.Component {
     console.log('userId' + Email);
     console.log('userId' + lastname);
     console.log('userId' + company);
+    
     this.setState({
       token: token,
       UserId: UserId,
@@ -69,7 +78,10 @@ class Registration extends React.Component {
       Email: Email,
       company: company,
     });
+    this.getCountry();
+    this.getState();
   };
+  
   toggleSwitch() {
     this.setState({showPassword: !this.state.showPassword});
   }
@@ -85,6 +97,7 @@ class Registration extends React.Component {
       ));
     }
   };
+ 
   doRegister = () => {
     // Alert.alert('API is missing')
     const {
@@ -132,20 +145,14 @@ class Registration extends React.Component {
         CountryId: 99,
         Company_Name: Company_Name,
       });
-      console.log('ppp' + data);
-      console.log('ppp' + token);
       const headers = {
         Authorization: 'bearer ' + token,
         // 'Accept': 'application/x-www-form-urlencoded',
         'Content-Type': 'application/x-www-form-urlencoded',
       };
-     // console.log('dkaskflaskfld'+connection.Signup)
       Axios.post(connection.Signup, data, {headers})
-    
         .then(p => {
-          console.log('rrrrrrrrrrr' + JSON.stringify(p));
           if (p.data.Status == true) {
-            console.log('rrrrrrrrrrr' + p.data.Status);
             Toast.show(p.data.message);
             setTimeout(() => this.props.navigation.navigate('Login'), 2000);
              AsyncStorage.setItem(storage.Token,p.data.data);
@@ -162,26 +169,54 @@ class Registration extends React.Component {
         .catch(Error);
       console.log('ddddddd' + Error);
     }
+    // this.props.dispatch({
+    //   type: 'User_Register_Success',
+    //   url:'NewTMApi/Register',
+    //   token: token,
+    //   data:data
+    // });
   };
+
   getCountry = () => {
     const {
-     name,
-     Id,
-     token
+      token,
+    } = this.state;
+      this.props.dispatch({
+        type: 'User_Country_Request',
+        url:'NewTMApi/CountryMst',
+        token: token,
+      });
+    }
+  //   getState = () => {
+  //     const {
+  //       token
+  //     } = this.state;
+  //     this.props.dispatch({
+  //       type: 'User_State_Request',
+  //       url:'NewTMApi/StateMst?CountryID=9',
+  //       token: token,
+  //     }); 
+  //  }
+  getState = () => {
+    const {
+      Id,
+      State,
+      token
     } = this.state;
       const headers = {
         Authorization: 'bearer ' + token,
         'Content-Type': 'application/x-www-form-urlencoded',
       };
-      Axios.get(connection.Country,{headers})
+      Axios.get(connection.State,{headers})
     
         .then(p => {
-          console.log('country data' + JSON.stringify(p));
+          console.log('State data' + JSON.stringify(p));
           if (p.data.Status == true) {
-            console.log('country status' + p.data.Status);
+            console.log('state status' + p.data.Status);
             Toast.show(p.data.message);
             this.setState({
               spinner: false,
+              stateName:p.data.data
             });
           } else {
             Toast.show(p.data.message);
@@ -194,56 +229,34 @@ class Registration extends React.Component {
       console.log('PPPPPP' + Error);
     }
   
-/////State
-    getState = () => {
-      const {
-        Id,
-        State,
-        token
-      } = this.state;
-        const headers = {
-          Authorization: 'bearer ' + token,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        };
-        Axios.get(connection.State,{headers})
-      
-          .then(p => {
-            console.log('State data' + JSON.stringify(p));
-            if (p.data.Status == true) {
-              console.log('state status' + p.data.Status);
-              Toast.show(p.data.message);
-              this.setState({
-                spinner: false,
-              });
-            } else {
-              Toast.show(p.data.message);
-              this.setState({
-                spinner: false,
-              });
-            }
-          })
-          .catch(Error);
-        console.log('PPPPPP' + Error);
-      }
-    
-  //
-  
+//
   render() {
+    
+    let myCountry = this.props.CountryName.map((myValue,myIndex)=>{
+      return(
+      <Picker.Item label={myValue.name} value={myIndex} key={myIndex}/>
+      )
+      });
+      let myState = this.state.stateName.map((myValue,myIndex)=>{
+        return(
+        <Picker.Item label={myValue.state} value={myIndex} key={myIndex}/>
+        )
+        });
+
     return (
-      <View style={{flex: 1, padding: 14, backgroundColor: '#fff'}}>
+      <View style={styles.view}>
         <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
           textStyle={styles.spinnerTextStyle}
         />
-
         <View>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('RegistrationOne')}>
             <Image
               source={require('../../../assets/icons/arrow.png')}
               resizeMode={'stretch'}
-              style={{width: 20, height: 15, color: 'grey'}}
+              style={styles.arrow}
             />
           </TouchableOpacity>
         </View>
@@ -258,42 +271,37 @@ class Registration extends React.Component {
               resizeMode={'stretch'}
             />
           </View>
-           
           <View>
-
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <View style={[styles.inputContainer1]}>
+              style={styles.countryView}>
+              <View style={styles.inputContainer1}>
                 <Text >Country</Text>
-              
-                <TextInput
-                  style={styles.input}
-                  editable={false}
-                  placeholder="Country"
-                  value={this.state.CountryId}
-                  onChangeText={CountryId => {
-                    this.setState({CountryId: 99});
-                  }}
-                />
-              
+               
+                <View style={styles.input}>
+                <Picker 
+                selectedCountry={this.state.selectedCountry} 
+                onValueChange={(value) =>this.setState({selectedCountry:value})}>
+                  
+            {myCountry}
+           </Picker>
+            </View>
+            
               </View>
+               
               <View style={[styles.inputContainer1]}>
                 <Text >State</Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder="state"
-                  value={this.state.state}
-                  onChangeText={state => {
-                    this.setState({state: state});
-                  }}
-                />
-      
-              
+                <View style={styles.input}>
+           <Picker 
+           selectedState={this.state.selectedState} 
+           onValueChange={(value)=>this.setState({selectedState:value})} >
+            {myState}
+           </Picker>
+            </View>
+            
               </View>
-              
             </View>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              style={styles.countryView}>
               <View style={styles.inputContainer1}>
                 <Text>City</Text>
                 <TextInput
@@ -331,7 +339,7 @@ class Registration extends React.Component {
               />
             </View>
             <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              style={styles.countryView}>
               <View style={styles.inputContainer1}>
                 <Text>Country Code</Text>
                 <TextInput
@@ -360,19 +368,22 @@ class Registration extends React.Component {
           </View>
 
           <TouchableOpacity style={styles.button} onPress={this.doRegister}>
-            <Text style={[{color: 'white'}, styles.font]}>Register</Text>
+            <Text style={[{color: Color.white}, styles.font]}>Register</Text>
           </TouchableOpacity>
         </ScrollView>
-        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+        <StatusBar backgroundColor={Color.white} barStyle="dark-content" />
       </View>
     );
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     isFetching: state.isFetching,
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.isFetching,
+    CountryName:state.CountryName,
+    // User:state.User
+    // stateName:state.stateName
+  };
+};
 
-export default Registration;
+export default connect(mapStateToProps)(Registration);

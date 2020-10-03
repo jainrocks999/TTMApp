@@ -5,18 +5,13 @@ import {
   ScrollView,
   Image,
   Picker,
-  StatusBar,
-  ImageBackground,
-  Alert,
+  StatusBar, ColorPropType
 } from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import styles from './style.js';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../../config/storage';
-import qs from 'qs';
-import Axios from 'axios';
 import Spinner from 'react-native-loading-spinner-overlay';
-import connection from '../../../Redux/Constants';
 import Toast from 'react-native-simple-toast';
 
 class Registration extends React.Component {
@@ -116,7 +111,7 @@ class Registration extends React.Component {
   };
   render() {
     return (
-      <View style={{flex: 1, padding: 14, backgroundColor: '#fff'}}>
+      <View style={styles.view}>
         <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
@@ -128,22 +123,25 @@ class Registration extends React.Component {
             <Image
               source={require('../../../assets/icons/arrow.png')}
               resizeMode={'stretch'}
-              style={{width: 20, height: 15, color: 'grey'}}
+              style={styles.arrow}
             />
           </TouchableOpacity>
         </View>
-        <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
-          <Text style={styles.register}>New User Registration</Text>
-          <Text style={styles.please}>Please fill the details to register</Text>
+        <ScrollView style={styles.scroll}>
+          <Text 
+          style={styles.register}>
+          New User Registration
+          </Text>
+          <Text 
+          style={styles.please}>
+          Please fill the details to register
+          </Text>
           <View style={styles.imageView}>
             <Image
               source={require('../../../assets/images/registration_one.png')}
               style={styles.image}
-              resizeMode={'stretch'}
-            />
+              resizeMode={'stretch'}/>
           </View>
-
-          {/* registration_one */}
           <View>
             <View style={styles.inputContainer}>
               <Text style={{marginBottom: 8}}>User Id</Text>
@@ -154,15 +152,11 @@ class Registration extends React.Component {
                 placeholderTextColor={'#B0B3B7'}
                 onChangeText={UserId => {
                   this.setState({UserId: UserId});
-                }}
-              />
+                }}/>
             </View>
 
             <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
+              style={styles.viewFirst}>
               <View style={styles.inputContainer1}>
                 <Text>First Name</Text>
                 <TextInput
@@ -187,11 +181,7 @@ class Registration extends React.Component {
               </View>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-               // marginVertical: 20,
-              }}>
+              style={styles.viewFirst}>
               <View style={styles.inputContainer1}>
                 <Text>Email</Text>
                 <TextInput
@@ -218,11 +208,7 @@ class Registration extends React.Component {
 
             <TouchableOpacity
               onPress={this.doRegister}
-              style={styles.button}
-              // onPress={() => {
-              //   this.props.navigation.navigate('RegistrationTwo');
-              // }}
-            >
+              style={styles.button}>
               <Text style={{color: 'white'}}>Next</Text>
             </TouchableOpacity>
           </View>
@@ -232,11 +218,4 @@ class Registration extends React.Component {
     );
   }
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     isFetching: state.isFetching,
-//   };
-// };
-
 export default Registration;

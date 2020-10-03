@@ -1,0 +1,138 @@
+import { StyleSheet } from 'react-native';
+import Color from '../../common/Colors';
+export default styles=StyleSheet.create({
+    main:{
+        backgroundColor: Color.white,
+        padding: 12,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      },
+      arrow:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+      },
+      image:{
+          width: 24, 
+          height: 15, 
+          marginEnd: 10
+        },
+      lost:{
+        fontSize: 22,
+        textAlign: 'center',
+        marginLeft: 10,
+      },
+      view:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      bell:{
+        width: 22,
+        height: 22,
+        marginRight: 15,
+        justifyContent: 'center',
+      },
+      search:{
+        backgroundColor: Color.white,
+        padding: 12,
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      },
+      search1:{
+        width: '88%',
+        borderWidth: 1,
+        borderRadius: 10,
+        flexDirection: 'row',
+        height: 45,
+        alignItems: 'center',
+        backgroundColor: Color.white,
+      },
+      inputView:{
+        backgroundColor: 'transparent',
+        height: 42,
+        width: '68%',
+        borderLeftWidth: 0.5,
+        marginLeft: 5,
+      },
+      input:{
+        backgroundColor: 'transparent',
+        height: 42,
+        width: '100%',
+      },
+      filter:{
+        width: '12%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      card:{
+        flexDirection: 'column',
+        marginEnd: 10,
+        margin: 10,
+        backgroundColor: Color.fa,
+        borderRadius: 8,
+        padding: 10,
+        marginBottom: 4,
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+      },
+      card1:{
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 20,
+      },
+      app:{
+        fontSize: 14,
+        color: Color.black,
+        fontFamily: 'Poppins-Bold',
+        width: '40%',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      no:{
+        fontSize: 15,
+        color: Color.twxt,
+        fontFamily: 'Poppins',
+        marginLeft: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      drop:{
+        flexDirection: 'column',
+        marginEnd: 10,
+        margin: 10,
+        backgroundColor: Color.fa,
+        borderRadius: 8,
+        padding: 10,
+        marginBottom: 4,
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+      },
+      same:{
+        flexDirection: 'row',
+        flex: 1,
+        justifyContent: 'space-between',
+        marginTop: 8,
+      },
+      same1:{
+        fontSize: 13,
+        color: Color.black,
+        fontFamily: 'Poppins-Bold',
+        width: '40%',
+      },
+      same2:{
+        fontSize: 14,
+        color:Color.twxt,
+        fontFamily: 'Poppins',
+        marginLeft: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '55%',
+                  
+      }
+})

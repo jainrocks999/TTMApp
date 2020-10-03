@@ -1,13 +1,12 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-
+import Color from '../../common/Colors';
 export default StyleSheet.create({
   tabImage: {
     height: 16,
     justifyContent: 'center',
     alignItems: 'center',
     width: 16,
-    //tintColor: 'white'
   },
   background: {
     flex: 1,
@@ -22,11 +21,11 @@ export default StyleSheet.create({
   },
   text: {
     fontSize: 15,
-    color: '#fff',
+    color: Color.white,
   },
   profileView: {
     borderWidth: 1,
-    borderColor: 'blue',
+    borderColor: Color.blue,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -36,7 +35,7 @@ export default StyleSheet.create({
     width: 55,
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: Color.white,
     flex: 1,
     marginTop: 60,
     marginHorizontal: 10,
@@ -48,19 +47,19 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: 0.5,
-    borderBottomColor: '#b6b6b8',
+    borderBottomColor: Color.bc,
     padding: 10,
     marginTop: 10,
   },
   myText: {
     textAlign: 'center',
     fontSize: 12,
-    color: 'black',
+    color: Color.black,
   },
   rs: {
     textAlign: 'center',
     fontSize: 12,
-    color: 'black',
+    color: Color.black,
   },
   view1: {
     flexDirection: 'row',
@@ -71,7 +70,7 @@ export default StyleSheet.create({
   },
   view2: {
     width: '25%',
-    backgroundColor: 'white',
+    backgroundColor: Color.white,
     borderRadius: 5,
   },
   touch: {
@@ -113,14 +112,14 @@ export default StyleSheet.create({
   },
   secondView: {
     width: '46%',
-    backgroundColor: '#fff',
+    backgroundColor: Color.white,
     borderRadius: 10,
     height: 150,
   },
   secondView1: {
     justifyContent: 'space-evenly',
     width: '33%',
-    backgroundColor: '#fff',
+    backgroundColor: Color.white,
     borderRadius: 10,
     height: 90,
   },
@@ -143,7 +142,7 @@ export default StyleSheet.create({
   },
   copyView: {
     width: '45%',
-    backgroundColor: 'white',
+    backgroundColor: Color.white,
     borderRadius: 10,
     height: 100,
   },
@@ -182,7 +181,7 @@ export default StyleSheet.create({
   },
   designView2: {
     width: '45%',
-    backgroundColor: 'white',
+    backgroundColor: Color.white,
     borderRadius: 10,
   },
   designView3: {
@@ -204,7 +203,7 @@ export default StyleSheet.create({
   },
   patentView1: {
     width: '45%',
-    backgroundColor: 'white',
+    backgroundColor:Color.white,
     borderRadius: 10,
   },
   patentTouch: {
@@ -240,7 +239,7 @@ export default StyleSheet.create({
   },
   calenderView2: {
     width: '45%',
-    backgroundColor: 'white',
+    backgroundColor: Color.white,
     borderRadius: 10,
   },
   calenderTouch: {
@@ -263,7 +262,7 @@ export default StyleSheet.create({
   plusIcon: {
     height: 25,
     width: 25,
-    tintColor: 'white',
+    tintColor: Color.white,
   },
   pView: {
     flexDirection: 'row',
@@ -275,7 +274,7 @@ export default StyleSheet.create({
   },
   pView1: {
     width: '45%',
-    backgroundColor: 'white',
+    backgroundColor: Color.white,
     borderRadius: 10,
   },
   pTouch: {
@@ -313,4 +312,148 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 10,
   },
-});
+  container:{
+    backgroundColor: Color.whiteGrey,
+     flex: 1
+    },
+    menu:{
+      backgroundColor: Color.white,
+      padding: 12,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    menu2:{
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    title:{
+      textAlignVertical: 'center',
+      marginLeft: 20,
+      fontSize: 22,
+      fontFamily: 'Poppins-Bold',
+    },
+    bell:{
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    bellIcon:{
+      width: 22,
+      height: 22,
+      marginRight: 15,
+      justifyContent: 'center',
+    },
+    scroll:{
+      paddingHorizontal: 10, 
+      flex: 1, 
+      marginTop: 15
+    },
+    tv:{
+      width: '100%',
+      height: 52,
+      backgroundColor: Color.bc1,
+      marginTop: 40,
+      padding: 8,
+      borderRadius: 10,
+    },
+    mainTitle:{
+      fontWeight: 'normal',
+      fontFamily: 'Poppins-SemiBold',
+      fontSize: 14,
+    },
+    count:{
+      color: Color.count,
+      fontFamily: 'Poppins',
+      fontSize: 12,
+    },
+    popup:{
+      flexDirection: 'row',
+      backgroundColor: 'white',
+      width: '100%',
+      borderLeftWidth: 1,
+      borderRightWidth: 1,
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
+    },
+    popup1:{
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '25%',
+      padding: 10,
+    },
+    textTitle:{
+      fontSize: 12, 
+      color: Color.grey, 
+      padding: 4,
+      textAlign:'center'
+    },
+    modal:{
+      width: '100%', 
+      borderRadius: 10, 
+      backgroundColor: Color.white
+    },
+    popupView:{
+      justifyContent: 'center',
+      marginTop: 4,
+      alignItems: 'center',
+    },
+    popupText:{
+      fontSize: 22,
+      fontWeight: 'bold',
+      fontFamily: 'Poppins-SemiBold',
+      color: Color.white,
+      alignItems: 'center',
+    },
+    bottom:{
+      flexDirection: 'row',
+      width: '99%',
+      marginTop: 24,
+      justifyContent: 'space-between',
+    },
+    imageContainer:{
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: 4,
+      borderRadius: 10,
+    },
+    text1:{
+      color: Color.black,
+      fontFamily: 'Poppins',
+      fontSize: 12,
+    },
+    text2:{
+      color: Color.black,
+      fontFamily: 'Poppins',
+      fontSize: 12,
+    },
+    row:{
+      flexDirection: 'row',
+      width: '99%',
+      justifyContent: 'space-between',
+    },
+    row1:{
+      flexDirection: 'row',
+      width: '99%',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    upcomming:{
+      flexDirection: 'row',
+      width: '99%',
+      marginTop: 12,
+      justifyContent: 'space-evenly',
+    },
+    status:{
+      flexDirection: 'row',
+      width: '99%',
+      marginTop: 10,
+      justifyContent: 'space-around',
+    },
+    statusView:{
+      justifyContent: 'flex-start',
+      width: '100%',
+      flexDirection: 'row',
+      justifyContent: 'center',
+    }
+  });

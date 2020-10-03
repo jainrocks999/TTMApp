@@ -1,6 +1,7 @@
 
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import Color from '../../../common/Colors';
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -32,8 +33,7 @@ export default styles = StyleSheet.create({
    // height: 40,
   },
   input: {
-    borderColor: '#A4A7AC',
-    // marginVertical: 10,
+    borderColor: Color.borderColor,
     width: '100%',
     height: 40,
     paddingLeft: 10,
@@ -60,12 +60,10 @@ export default styles = StyleSheet.create({
   },
 
   inputContainer1: {
-   // marginTop: 20,
     width: '48%',
-    //height: 40,
   },
   input2: {
-    borderColor: '#A4A7AC',
+    borderColor:Color.borderColor,
     borderWidth: 1,
     marginVertical: 8,
     paddingLeft: 10,
@@ -80,7 +78,7 @@ export default styles = StyleSheet.create({
   },
   font: {},
   button: {
-    backgroundColor: '#5F85E5',
+    backgroundColor: Color.blue,
     borderRadius: 5,
     padding: 10,
     alignItems: 'center',
@@ -100,6 +98,24 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
   },
   please: {
-    color: '#98999a',
+    color: Color.please,
   },
+  view:{
+    flex: 1, 
+    padding: 14,
+    backgroundColor: Color.white
+  },
+  arrow:{
+    width: 20, 
+    height: 15, 
+    color: Color.grey
+  },
+  scroll:{
+    flex: 1,
+    backgroundColor: Color.white
+  },
+  viewFirst:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  }
 });

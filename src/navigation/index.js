@@ -5,19 +5,16 @@ import {createDrawerNavigator} from 'react-navigation-drawer';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashboardScreen from '../screens/DashboardScreen';
-import FirstScreen from '../screens/first/index';
-import enterScreen from '../screens/enter/index';
-import rateScreen from '../screens/rate/index';
-import shareScreen from '../screens/share/index';
+
 import SplashPage from '../screens/AuthScreen/SplashScreen';
 import drawerPage from '../screens/drawer';
-import demo from '../screens/demo';
+ import demo from '../screens/demo';
 import RegistrationPageOne from '../screens/AuthScreen/RegisterScreenOne';
 import RegistrationPageTwo from '../screens/AuthScreen/RegisterScreenSecond';
 import LoginPage from '../screens/AuthScreen/LoginScreen';
 import CopyRightPage from '../screens/CopyRightScreen';
 import DesignPage from '../screens/DesignScreen';
-import TradeMark from '../screens/TradeMark';
+ import TradeMark from '../screens/TradeMark';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import MyTradeDetailPage from '../screens/MyTradeDetailsPage';
 import MyTradeDetailViewPage from '../screens/MyTradeDetailsViewPage';
@@ -326,7 +323,7 @@ const AppStack = createDrawerNavigator(
 const AuthStack = createSwitchNavigator(
   {
     AuthLoading: {screen: SplashPage},
-    Demo: demo,
+     Demo: demo,
     DashboardScreen: DashboardStack,
     //FirstPage: {screen: FirstScreen},
     Auth: AuthNavigator,

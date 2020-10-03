@@ -14,26 +14,10 @@ import {
   ImageBackground,
 } from 'react-native';
 import styles from './style';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {SliderBox} from 'react-native-image-slider-box';
-import Icon1 from 'react-native-vector-icons/Feather';
 import {connect} from 'react-redux';
 import storage from '../../config/storage';
 
 import AsyncStorage from '@react-native-community/async-storage';
-
-// let data = [
-//   {
-//     id: 1,
-//     title: 'Applications',
-//     number: 7,
-//   },
-//   {
-//     id: 2,
-//     title: 'Proprietors',
-//     number: 1,
-//   },
-// ];
 
 class StatusDetail extends Component {
   constructor(props) {
@@ -53,310 +37,118 @@ class StatusDetail extends Component {
       if (this.state.itemValue == item.id) {
         return (
           <View
-            style={{
-              marginTop: -10,
-              flex: 1,
-              flexDirection: 'column',
-              borderRadius: 8,
-              justifyContent: 'space-between',
-              paddingHorizontal: 20,
-              paddingVertical: 10,
-            }}>
+            style={styles.view}>
             <FlatList
               data={RegisteredDetails}
               keyExtractor={(item, index) => index.toString()}
               renderItem={({item}) => (
                 <View
-                  style={{
-                    paddingHorizontal: 10,
-                    flex: 1,
-
-                    backgroundColor: '#FFF',
-                  }}>
+                  style={styles.view1}>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 10,
-                    }}>
+                    style={styles.view2}>
                     <Text
-                      style={{
-                        fontSize: 13,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                      }}>
+                      style={styles.text}>
                       App no
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#82C2EC',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '55%',
-                      }}>
+                      style={styles.item}>
                       {item.App_No}
                     </Text>
                   </View>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 10,
-                    }}>
+                    style={styles.view2}>
                     <Text
-                      style={{
-                        fontSize: 13,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                      }}>
+                      style={styles.text}>
                       Status
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#82C2EC',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '55%',
-                      }}>
+                      style={styles.item}>
                       {item.App_Status}
                     </Text>
                   </View>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 10,
-                    }}>
+                    style={styles.view2}>
                     <Text
-                      style={{
-                        fontSize: 13,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                      }}>
+                      style={styles.text}>
                       Trademark
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#82C2EC',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '55%',
-                      }}>
+                      style={styles.item}>
                       {item.Trade_Mark}
                     </Text>
                   </View>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 10,
-                    }}>
+                    style={styles.view2}>
                     <Text
-                      style={{
-                        fontSize: 13,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                      }}>
+                      style={styles.text}>
                       Office
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#82C2EC',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '55%',
-                      }}>
+                      style={styles.item}>
                       {item.Appropriate_Office}
                     </Text>
                   </View>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 8,
-                    }}>
+                    style={styles.view2}>
                     <Text
-                      style={{
-                        fontSize: 13,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                      }}>
+                      style={styles.text}>
                       Prop Name
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#5A6779',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '55%',
-                      }}>
+                      style={styles.item}>
                       {item.PropName}
                     </Text>
                   </View>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 8,
-                    }}>
+                    style={styles.view2}>
                     <Text
-                      style={{
-                        fontSize: 13,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                      }}>
+                      style={styles.text}>
                       Prop Address
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#5A6779',
-                        marginLeft: 10,
-                        fontFamily: 'Poppins',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '55%',
-                        width: '55%',
-                      }}>
+                      style={styles.item}>
                       {item.Prop_Address}
                     </Text>
                   </View>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 8,
-                    }}>
+                    style={styles.view2}>
                     <Text
-                      style={{
-                        fontSize: 13,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                      }}>
+                      style={styles.text}>
                       Valid Upto
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#5A6779',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '55%',
-                      }}>
+                      style={styles.item}>
                       {item.Valid_upto}
                     </Text>
                   </View>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 8,
-                    }}>
+                    style={styles.view2}>
                     <Text
-                      style={{
-                        fontSize: 13,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                      }}>
+                      style={styles.text}>
                       Class
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#5A6779',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '55%',
-                      }}>
+                      style={styles.item}>
                       {item.Class_Class}
                     </Text>
                   </View>
                   <View
-                    style={{
-                      flexDirection: 'row',
-                      flex: 1,
-                      justifyContent: 'space-between',
-                      marginTop: 8,
-                    }}>
+                    style={styles.view2}>
                     <Text
-                      style={{
-                        fontSize: 13,
-                        color: '#000',
-                        fontFamily: 'Poppins-Bold',
-                        width: '40%',
-                      }}>
+                      style={styles.text}>
                       App Date
                     </Text>
                     <Text
-                      style={{
-                        fontSize: 14,
-                        color: '#5A6779',
-                        fontFamily: 'Poppins',
-                        marginLeft: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '55%',
-                      }}>
+                      style={styles.item}>
                       {item.App_Date_New}
                     </Text>
                   </View>
                   <View
-                    style={{
-                      flex: 1,
-                      width: '100%',
-                      justifyContent: 'flex-end',
-                      alignItems: 'flex-end',
-                    }}>
+                    style={styles.button}>
                     <TouchableOpacity
                       onPress={this.props.onclickview}
-                      style={{
-                        backgroundColor: '#5F85E5',
-                        borderRadius: 5,
-                        padding: 4,
-                        width: '30%',
-                        borderRadius: 10,
-
-                        right: 10,
-                        bottom: 10,
-                        alignItems: 'center',
-                        marginTop: 10,
-                      }}>
-                      <Text style={{color: 'white', fontSize: 14}}>
+                      style={styles.toucha}>
+                      <Text style={styles.more}>
                         View More
                       </Text>
                     </TouchableOpacity>
@@ -391,7 +183,6 @@ class StatusDetail extends Component {
 
   loaddata = async () => {
     const {Nor, PageNo} = this.state;
-   // const FirstName = this.props.navigation.getParam('FirstName');
     const  Applicaticount = this.props.navigation.getParam('Applicaticount');
     const ProprietorsCoun = this.props.navigation.getParam('ProprietorsCount');
     let userid = await AsyncStorage.getItem(storage.UserID);
@@ -425,54 +216,31 @@ this.setState({
     return (
       <View style={{flex: 1}}>
         <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.container}>
           <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-            }}>
+            style={styles.arrow}>
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.goBack(null);
               }}>
               <Image
                 source={require('../../assets/icons/arrow.png')}
-                style={{width: 24, height: 15, marginEnd: 10}}
+                style={styles.arrowp}
               />
             </TouchableOpacity>
 
             <View style={{}}>
               <Text
-                style={{
-                  fontSize: 22,
-                  textAlign: 'center',
-                  marginLeft: 10,
-                }}>
+                style={styles.status}>
                 Status
               </Text>
             </View>
           </View>
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.bellView}>
             <Image
               source={require('../../assets/icons/bell_one.png')}
-              style={{
-                width: 22,
-                height: 22,
-                marginRight: 15,
-                justifyContent: 'center',
-              }}
+              style={styles.bell}
             />
             <View style={{alignItems: 'center'}}>
               <Image
@@ -486,36 +254,20 @@ this.setState({
         <ScrollView style={{marginVertical: 20}}>
               <View style={{flex: 1}}>
                 <View
-                  style={{
-                    paddingHorizontal: 20,
-                    paddingVertical: 10,
-                    backgroundColor: '#fff',
-                    marginTop: 10,
-                  }}>
+                  style={styles.card}>
                   <TouchableOpacity
                     onPress={() =>
                       this.props.navigation.navigate('RegScreenDetails', {
                         btnValue: 'Applications',
                       })
                     }
-                    style={{
-                      paddingVertical: 5,
-                      marginLeft: 10,
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      width: '90%',
-                    }}>
-                      <View style={{flexDirection:'row',alignItems:'center'}}>
+                    style={styles.touch}>
+                      <View style={styles.touchView}>
                        <Image 
                          source={require('../../assets/icons/Applications.png')}
-                         style={{width:26,height:26,marginRight:10}}/>
+                         style={styles.png}/>
                     <Text
-                      style={{
-                        fontSize: 16,
-                        fontFamily: 'Poppins-SemiBold',
-                        marginTop: 6,
-                      }}>
+                      style={styles.title}>
                       Applications
                     </Text>
                     </View>
@@ -523,36 +275,20 @@ this.setState({
                   </TouchableOpacity>
                 </View>
                 <View
-                  style={{
-                    paddingHorizontal: 20,
-                    paddingVertical: 10,
-                    backgroundColor: '#fff',
-                    marginTop: 10,
-                  }}>
+                  style={styles.card}>
                   <TouchableOpacity
                     onPress={() =>
                       this.props.navigation.navigate('RegScreenDetails', {
                         btnValue: 'Proprietor',
                       })
                     }
-                    style={{
-                      paddingVertical: 5,
-                      marginLeft: 10,
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      width: '90%',
-                    }}>
+                    style={styles.touch}>
                       <View style={{flexDirection:'row',alignItems:'center'}}>
                          <Image 
                          source={require('../../assets/icons/Proprieter.png')}
-                         style={{width:26,height:26,marginRight:10}}/>
+                         style={styles.png}/>
                     <Text
-                      style={{
-                        fontSize: 16,
-                        fontFamily: 'Poppins-SemiBold',
-                        marginTop: 6,
-                      }}>
+                      style={styles.title}>
                       Proprietors
                     </Text>
                     </View>

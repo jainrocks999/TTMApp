@@ -8,6 +8,7 @@ import {createAppContainer} from 'react-navigation';
 import pickImages from '../../component/pickImage';
 import AsyncStorage from '@react-native-community/async-storage';
 import storage from '../../config/storage';
+import Color from '../../common/Colors';
 
 const ProfileScreen=(props)=>{
   const [pickImage,photoUri,photo]=pickImages()
@@ -54,7 +55,10 @@ const ProfileScreen=(props)=>{
           style={styles.view1}>
           <View
             style={styles.view2}>
-            {!photo?<Image source={require('../../assets/images/p1.jpg')} style={styles.image}/>:<Image
+            {!photo?
+            <Image 
+            source={require('../../assets/images/p1.jpg')} 
+            style={styles.image}/>:<Image
               style={styles.image}
               source={photo}
             />}
@@ -112,13 +116,13 @@ export default ProfileScreen;
 const RootNav = createAppContainer(TabNavigator);
 const styles=StyleSheet.create({
   main:{
-    backgroundColor: '#fff',
+    backgroundColor: Color.white,
     flex: 1,
     paddingLeft: 20,
     paddingRight: 10,
   },
   second:{
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Color.white,
     paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
@@ -127,7 +131,7 @@ const styles=StyleSheet.create({
     width: 24,
     height: 15,
     marginEnd: 10,
-    tintColor: 'black',
+    tintColor: Color.black,
   },
   pText:{
     fontSize: 22,
@@ -145,7 +149,7 @@ const styles=StyleSheet.create({
     marginTop: 30,
   },
   view2:{
-    backgroundColor: '#F2F1F5',
+    backgroundColor: Color.viewColor,
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
@@ -164,7 +168,7 @@ const styles=StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 100,
-    backgroundColor: '#FF8F6B',
+    backgroundColor: Color.camera,
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
@@ -173,7 +177,7 @@ const styles=StyleSheet.create({
   cameraImage:{
     height: 25,
     width: 25,
-    tintColor: '#fff',
+    tintColor: Color.white,
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',

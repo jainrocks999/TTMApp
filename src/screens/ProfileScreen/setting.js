@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react';
-import {View, Image, TouchableOpacity, Text,Switch,Button} from 'react-native';
+import {View, Image, TouchableOpacity, Text,Switch,Button,StyleSheet} from 'react-native';
 import { TextInput } from 'react-native-paper';
-import Modal from 'react-native-modal';
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import storage from '../../config/storage';
 import AsyncStorage from "@react-native-community/async-storage";
@@ -32,12 +31,7 @@ import AsyncStorage from "@react-native-community/async-storage";
     }, [])
     return (
       <View
-        style={{
-          backgroundColor: '#fff',
-          flex: 1,
-          paddingLeft: 20,
-          paddingRight: 10,
-        }}>
+        style={styles.container}>
           <Dialog
     visible={isVisible}
     onTouchOutside={() => {
@@ -57,19 +51,14 @@ import AsyncStorage from "@react-native-community/async-storage";
               marginTop: 10,
             }}>
             <Text style={{color: 'grey'}}>Name </Text>
-            <Text style={{marginBottom: 10, marginTop: 5}}>{name}</Text>
+            <Text style={styles.text}>{name}</Text>
             
           </View>
           <View
-            style={{
-              marginTop: 20,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
+            style={styles.enable}>
             <View>
               <Text style={{color: 'grey'}}>Phone </Text>
-              <Text style={{marginBottom: 10, marginTop: 5}}>{mobile}</Text>
+              <Text style={styles.text}>{mobile}</Text>
             </View>
             <TouchableOpacity onPress={() => {
                 setIsVisible({ visible: true });
@@ -79,39 +68,29 @@ import AsyncStorage from "@react-native-community/async-storage";
           </View>
          
           <View
-            style={{
-              marginTop: 20,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
+            style={styles.enable}>
             <View>
               <Text style={{color: 'grey'}}>Location </Text>
-              <Text style={{marginBottom: 10, marginTop: 5}}>
+              <Text style={styles.text}>
                {location}
               </Text>
             </View>
             <Text style={{color: '#FF8F6B'}}>Edit</Text>
           </View>
           <View
-            style={{
-              marginTop: 20,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
+            style={styles.enable}>
             <View>
               <Text style={{color: 'grey'}}>Recent Notifications</Text>
-              <Text style={{marginBottom: 10, marginTop: 5}}>
+              <Text style={styles.text}>
                Enabled
               </Text>
             </View>
             <Switch
-         trackColor={{ false: "grey", true: "#FF8F6B" }}
-        thumbColor={isEnabled ? "#FF8F6B" : "grey"}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
+              trackColor={{ false: "grey", true: "#FF8F6B" }}
+              thumbColor={isEnabled ? "#FF8F6B" : "grey"}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
       />
           </View>
         </View>
@@ -119,3 +98,21 @@ import AsyncStorage from "@react-native-community/async-storage";
     );
   }
 export default ProfileScreen;
+const styles=StyleSheet.create({
+      enable:{
+        marginTop: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      },
+      text:{
+        marginBottom: 10, 
+        marginTop: 5
+      },
+      container:{
+        backgroundColor: '#fff',
+        flex: 1,
+        paddingLeft: 20,
+        paddingRight: 10,
+      }
+})

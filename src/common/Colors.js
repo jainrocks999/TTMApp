@@ -1,4 +1,21 @@
 export default {
   main_button: ['#813594', '#423B80'],
   buttonColor: '#F2A65A',
+  white:'#fff',
+  black:'#000',
+  grey:'#001630',
+  blue:'#5F85E5',
+  green:'#6496CA',
+  whiteGrey:'#F6F8F9',
+  borderColor:'#A4A7AC',
+  please:'#98999a',
+  nextButton:'#343A40',
+  fa:'#FAFAFA',
+  twxt: '#5A6779',
+  bc:'#b6b6b8',
+  bc1:'#f8fbf5',
+  count:'#262626',
+  viewColor:'#F2F1F5',
+  camera:'#FF8F6B',
+  same:'#82C2EC'
 };

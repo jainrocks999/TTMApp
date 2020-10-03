@@ -22,6 +22,7 @@ import {connect} from 'react-redux';
 import storage from '../../config/storage';
 import Loader from '../../config/loader';
 import AsyncStorage from '@react-native-community/async-storage';
+import style from './style';
 
 class PatentScreen extends Component {
   constructor(props) {
@@ -38,190 +39,70 @@ class PatentScreen extends Component {
       if (this.state.itemValue == item.Rowno) {
         return (
           <View
-            style={{
-              marginTop: -10,
-              flex: 1,
-              width:'92%',
-              flexDirection: 'column',
-              marginHorizontal: 20,
-              backgroundColor: '#FFF',
-              borderRadius: 8,
-              justifyContent: 'space-between',
-              paddingHorizontal: 15,
-              paddingVertical: 10,
-            }}>
+            style={styles.first}>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.second}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.status}>
                 Status
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                }}>
+                style={styles.status1}>
                 {item.App_Status}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.second}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.status}>
                 Short Prop Name
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                }}>
+                style={styles.status1}>
                 {item.ShortPropName}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.second}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.status}>
                 Full Prop Name
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  marginLeft: 10,
-                  fontFamily: 'Poppins',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                  width: '55%',
-                }}>
+                style={styles.status1}>
                 {item.FullPropName}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.second}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.status}>
                 Full Trademark
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                }}>
+                style={styles.status1}>
                 {item.FullTrade_Mark}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.second}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.status}>
                 Row No.
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                }}>
+                style={styles.status1}>
                 {item.Rowno}
               </Text>
             </View>
             <View
-              style={{
-                flexDirection: 'row',
-                flex: 1,
-                justifyContent: 'space-between',
-                marginTop: 8,
-              }}>
+              style={styles.second}>
               <Text
-                style={{
-                  fontSize: 13,
-                  color: '#000',
-                  fontFamily: 'Poppins-Bold',
-                  width: '40%',
-                }}>
+                style={styles.status}>
                 Class
               </Text>
               <Text
-                style={{
-                  fontSize: 14,
-                  color: '#5A6779',
-                  fontFamily: 'Poppins',
-                  marginLeft: 10,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '55%',
-                }}>
+                style={styles.status1}>
                 {item.Class_Class}
               </Text>
             </View>
@@ -234,19 +115,9 @@ class PatentScreen extends Component {
               }}>
               <TouchableOpacity
                 onPress={this.props.onclickview}
-                style={{
-                  backgroundColor: '#5F85E5',
-                  borderRadius: 5,
-                  padding: 4,
-                  width: '30%',
-                  borderRadius: 10,
-
-                  right: 10,
-                  bottom: 10,
-                  alignItems: 'center',
-                  marginTop: 10,
-                }}>
-                  <TouchableOpacity onPress={()=>this.props.navigation.navigate('MyTradeDetailViewPage')}>
+                style={styles.touch}>
+                  <TouchableOpacity 
+                  onPress={()=>this.props.navigation.navigate('MyTradeDetailViewPage')}>
                 <Text style={{color: 'white', fontSize: 14}}>View More</Text>
                 </TouchableOpacity>
               </TouchableOpacity>
@@ -258,7 +129,6 @@ class PatentScreen extends Component {
   };
   getVisible(item) {
     if (this.state.visible == false) {
-      console.log('rohit12' + this.state.visible);
       this.setState({
         visible: true,
         itemValue: item.Rowno,
@@ -280,12 +150,9 @@ this.setState({
 })
 let search ='';
 this.loadsearch(search);
-    console.log('bdb' + userid);
-    
   };
 
   loadsearch(search){
-    console.log('jseajdjdhjhjhjhsjdsjds'+search)
     this.props.dispatch({
       type: 'User_Design_Details_Request',
       url: '/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search='+search,
@@ -310,54 +177,31 @@ this.loadsearch(search);
         <ScrollView>
           {isFetching ? <Loader /> : null}
         <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.main}>
           <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-            }}>
+            style={styles.arrowView}>
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.goBack(null);
               }}>
               <Image
                 source={require('../../assets/icons/arrow.png')}
-                style={{width: 24, height: 15, marginEnd: 10}}
+                style={styles.image}
               />
             </TouchableOpacity>
 
-            <View style={{}}>
+            <View>
               <Text
-                style={{
-                  fontSize: 22,
-                  textAlign: 'center',
-                  marginLeft: 10,
-                }}>
+                style={styles.patent}>
                 Patent
               </Text>
             </View>
           </View>
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.bellView}>
             <Image
               source={require('../../assets/icons/bell_one.png')}
-              style={{
-                width: 22,
-                height: 22,
-                marginRight: 15,
-                justifyContent: 'center',
-              }}
+              style={styles.bell}
             />
             <View style={{alignItems: 'center'}}>
               <Image
@@ -368,60 +212,26 @@ this.loadsearch(search);
           </View>
         </View>
         <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
+          style={styles.view}>
           <View
-            style={{
-              width: '88%',
-              borderWidth: 1,
-              borderRadius: 10,
-              flexDirection: 'row',
-              height: 45,
-              alignItems: 'center',
-              backgroundColor: '#fff',
-            }}>
-            <View style={{}}>
+            style={styles.view1}>
+            <View>
               <Icon1 name="search" size={25} style={{marginLeft: 5}} />
             </View>
             <View
-              style={{
-                backgroundColor: 'transparent',
-                height: 42,
-                width: '68%',
-                borderLeftWidth: 0.5,
-                marginLeft: 5,
-              }}>
+              style={styles.inputView}>
               <TextInput
                placeholder={'Tm search ...'}
-               //labelFontSize={14}
                value={this.state.Email}
-              style={{
-                  backgroundColor: 'transparent',
-                  height: 42,
-                  width: '100%',
-                }}
-               //keyboardType="email-address"
+              style={style.input}
                onChangeText={Email => {
                  this.loadsearch(Email)
-               }}
-                
+               }}  
               />
             </View>
           </View>
-
           <View
-            style={{
-              width: '12%',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.filterView}>
             <View style={{alignItems: 'center', marginLeft: 10}}>
               <Icon name="filter" size={35} />
             </View>
@@ -434,27 +244,10 @@ this.loadsearch(search);
             <View style={{flex: 1}}>
               <TouchableOpacity onPress={() => this.getVisible(item)}>
                 <View
-                  style={{
-                    marginTop: 15,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    backgroundColor: '#FFFFFF',
-                    borderRadius: 10,
-                    width:'92%',
-                    padding: 10,
-                    justifyContent: 'space-between',
-                    paddingVertical: 20,
-
-                    marginHorizontal: 20,
-                  }}>
+                  style={styles.visible}>
                   <View>
                     <View
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                      //  width:'90%',
-                        paddingHorizontal: 5,
-                      }}>
+                      style={styles.app}>
                       <Text
                         style={{
                           fontSize: 14,
@@ -463,21 +256,12 @@ this.loadsearch(search);
                         {'App No :'}
                       </Text>
                       <Text
-                        style={{
-                          fontFamily: 'Poppins-Bold',
-                          fontSize: 14,
-                          marginLeft: 20,
-                        }}>
+                        style={styles.text}>
                         {item.App_No}
                       </Text>
                     </View>
                     <View
-                      style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                       // width:'90%',
-                        paddingHorizontal: 5,
-                      }}>
+                      style={styles.trade}>
                       <Text
                         style={{
                         //  width:'29%',
@@ -487,19 +271,14 @@ this.loadsearch(search);
                         {'Trademark :'}
                       </Text>
                       <Text
-                        style={{
-                         width:'60%',
-                          fontFamily: 'Poppins',
-                          fontSize: 14,
-                          marginLeft: 10,
-                        }}>
+                        style={styles.item}>
                         {item.ShortTrade_Mark}
                       </Text>
                     </View>
                   </View>
                  
                   <Image
-                    style={{height: 25, width: 25, marginRight: 10}}
+                    style={styles.down}
                     source={require('../../assets/icons/arrow_down.png')}
                   />
                  
@@ -516,7 +295,6 @@ this.loadsearch(search);
   }
 }
 const mapStateToProps = state => {
-  console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
     DesignDetails: state.DesignDetails,

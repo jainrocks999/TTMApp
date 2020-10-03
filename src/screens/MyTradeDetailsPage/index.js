@@ -23,7 +23,6 @@ import {connect} from 'react-redux';
 class CopyRight extends Component {
   static navigationOptions = ({navigation}) => ({
     headerTitle: 'My Trade Details',
-    // drawerLabel: 'Details',
     headerTintColor: 'black',
     headerStyle: {
       backgroundColor: '#fff',
@@ -48,13 +47,7 @@ class CopyRight extends Component {
     return (
       <View style={{flex: 1}}>
         <View
-          style={{
-            backgroundColor: 'white',
-            padding: 12,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
+          style={styles.menu}>
           <TouchableOpacity
             onPress={() => {
               this.props.navigation.toggleDrawer();
@@ -67,27 +60,15 @@ class CopyRight extends Component {
 
           <View>
             <Text
-              style={{
-                fontSize: 22,
-                textAlign: 'center',
-              }}>
+              style={styles.my}>
               {'My Trade Details'}
             </Text>
           </View>
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.main}>
             <Image
               source={require('../../assets/icons/bell_one.png')}
-              style={{
-                width: 22,
-                height: 22,
-                marginRight: 15,
-                justifyContent: 'center',
-              }}
+              style={styles.image}
             />
             <View style={{alignItems: 'center'}}>
               <Image
@@ -98,53 +79,23 @@ class CopyRight extends Component {
           </View>
         </View>
         <View
-          style={{
-            width: '100%',
-            backgroundColor: 'white',
-            padding: 12,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
+          style={styles.first}>
           <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              flexDirection: 'row',
-              height: 45,
-              width: '88%',
-              alignItems: 'center',
-              backgroundColor: '#fff',
-            }}>
+            style={styles.icon}>
             <View style={{}}>
               <Icon1 name="search" size={25} style={{marginLeft: 5}} />
             </View>
             <View
-              style={{
-                backgroundColor: 'transparent',
-                height: 42,
-                width: 305,
-                borderLeftWidth: 0.5,
-                marginLeft: 5,
-              }}>
+              style={styles.view}>
               <TextInput
-                style={{
-                  backgroundColor: 'transparent',
-                  height: 42,
-                  width: '100%',
-                }}
+                style={styles.input}
                 placeholder={'Tm search ...'}
               />
             </View>
           </View>
 
           <View
-            style={{
-              width: '12%',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.filterView}>
             <View style={{alignItems: 'center', marginLeft: 10}}>
               <Icon name="filter" size={35} />
             </View>
@@ -156,255 +107,99 @@ class CopyRight extends Component {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <View
-              style={{
-                flexDirection: 'column',
-                marginEnd: 10,
-                elevation: 10,
-                margin: 10,
-                backgroundColor: '#FAFAFA',
-                borderRadius: 8,
-                padding: 10,
-                marginBottom: 4,
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-              }}>
+              style={styles.tmView}>
               <View
-                style={{
-                  flexDirection: 'column',
-                  marginBottom: 4,
-                  justifyContent: 'center',
-                }}>
+                style={styles.tm}>
                 <Text
-                  style={{
-                    fontSize: 16,
-                    color: '#000',
-                    fontFamily: 'Poppins-Bold',
-                    marginTop: 4,
-                  }}>
+                  style={styles.tText}>
                   T.M. No :996866222
                 </Text>
               </View>
               <View
-                style={{
-                  flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'space-between',
-                }}>
+                style={styles.view1}>
                 <Text
-                  style={{
-                    fontSize: 13,
-                    color: '#000',
-                    fontFamily: 'Poppins-Bold',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.trade}>
                   TradeMark :{' '}
                 </Text>
                 <Text
-                  style={{
-                    fontSize: 14,
-                    color: '#000',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.liy}>
                   Liyouess
                 </Text>
               </View>
               <View
-                style={{
-                  flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  marginTop: 20,
-                }}>
+                style={styles.status}>
                 <Text
-                  style={{
-                    fontSize: 14,
-                    color: '#000',
-                    fontFamily: 'Poppins-Bold',
-                    width: '40%',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.text}>
                   STATUS
                 </Text>
                 <Text
-                  style={{
-                    fontSize: 15,
-                    color: '#5A6779',
-                    fontFamily: 'Poppins',
-                    marginLeft: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.reg}>
                   Registered
                 </Text>
               </View>
               <View
-                style={{
-                  flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  marginTop: 8,
-                }}>
+                style={styles.same}>
                 <Text
-                  style={{
-                    fontSize: 14,
-                    color: '#000',
-                    fontFamily: 'Poppins-Bold',
-                    width: '40%',
-                  }}>
+                  style={styles.same1}>
                   APP.Date
                 </Text>
                 <Text
-                  style={{
-                    fontSize: 15,
-                    color: '#5A6779',
-                    fontFamily: 'Poppins',
-                    marginLeft: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.same2}>
                   14-02-2020
                 </Text>
               </View>
               <View
-                style={{
-                  flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  marginTop: 8,
-                }}>
+                style={styles.same}>
                 <Text
-                  style={{
-                    fontSize: 14,
-                    color: '#000',
-                    fontFamily: 'Poppins-Bold',
-                    width: '40%',
-                  }}>
+                  style={styles.same1}>
                   TM Type
                 </Text>
                 <Text
-                  style={{
-                    fontSize: 15,
-                    color: '#5A6779',
-                    fontFamily: 'Poppins',
-                    marginLeft: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.same2}>
                   Colone
                 </Text>
               </View>
               <View
-                style={{
-                  flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  marginTop: 8,
-                }}>
+                style={styles.same}>
                 <Text
-                  style={{
-                    fontSize: 14,
-                    color: '#000',
-                    fontFamily: 'Poppins-Bold',
-                    width: '40%',
-                  }}>
+                  style={styles.same1}>
                   APPpro Office
                 </Text>
                 <Text
-                  style={{
-                    fontSize: 15,
-                    color: '#5A6779',
-                    marginLeft: 10,
-                    fontFamily: 'Poppins',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.same2}>
                   Delhi
                 </Text>
               </View>
               <View
-                style={{
-                  flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  marginTop: 8,
-                }}>
+                style={styles.same}>
                 <Text
-                  style={{
-                    fontSize: 14,
-                    color: '#000',
-                    fontFamily: 'Poppins-Bold',
-                    width: '40%',
-                  }}>
+                  style={styles.same1}>
                   Journal No.
                 </Text>
                 <Text
-                  style={{
-                    fontSize: 15,
-                    color: '#5A6779',
-                    fontFamily: 'Poppins',
-                    marginLeft: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.same2}>
                   1990-20
                 </Text>
               </View>
               <View
-                style={{
-                  flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  marginTop: 8,
-                }}>
+                style={styles.same}>
                 <Text
-                  style={{
-                    fontSize: 14,
-                    color: '#000',
-                    fontFamily: 'Poppins-Bold',
-                    width: '40%',
-                  }}>
+                  style={styles.same1}>
                   Vaild Upto
                 </Text>
                 <Text
-                  style={{
-                    fontSize: 15,
-                    color: '#5A6779',
-                    fontFamily: 'Poppins',
-                    marginLeft: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.same2}>
                   17/11/2020
                 </Text>
               </View>
               <View
-                style={{
-                  flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'space-between',
-                  marginTop: 8,
-                }}>
+                style={styles.same}>
                 <Text
-                  style={{
-                    fontSize: 14,
-                    color: '#000',
-                    fontFamily: 'Poppins-Bold',
-                    width: '40%',
-                  }}>
+                  style={styles.same1}>
                   Class
                 </Text>
                 <Text
-                  style={{
-                    fontSize: 15,
-                    color: '#5A6779',
-                    fontFamily: 'Poppins',
-                    marginLeft: 10,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
+                  style={styles.same2}>
                   30
                 </Text>
               </View>
@@ -423,18 +218,3 @@ const mapStateToProps = state => {
   };
 };
 export default connect(mapStateToProps)(CopyRight);
-
-//  <ScrollView style={{ flex: 1}}>
-//         {this.state.listDataSource.map((item, key) => (
-//             <View style={{flex:1,padding:4}}>
-//               <ExpandableItemComponent
-//                 key={item.category_name}
-//                 onClickFunction={this.updateLayout.bind(this, key)}
-//                 item={item}
-//                 style={{fontsize:10,padding:10}}
-//                  onclickview={()=>this.props.navigation.navigate('MyTradeDetailViewStack')}
-//               >
-//               </ExpandableItemComponent>
-//           </View>
-//             ))}
-//             </ScrollView>
