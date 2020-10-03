@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   CheckBox,
 } from 'react-native';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Toast from 'react-native-simple-toast';
 import storage from '../../../config/storage';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -38,7 +38,7 @@ class Login extends React.Component {
     });
   };
   doLogin = () => {
-    const {Email, Password, token} = this.state;
+    const { Email, Password, token } = this.state;
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (Email == '') {
       Toast.show('Please enter valid e-mail address.');
@@ -58,15 +58,15 @@ class Login extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1, paddingRight: 10, paddingLeft: 10, marginTop: 4}}>
+      <View style={{ flex: 1, paddingRight: 10, paddingLeft: 10, marginTop: 4 }}>
         <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
-          textStyle={{color: Color.white}}
+          textStyle={{ color: Color.white }}
         />
         <View>
-          <TouchableOpacity 
-          onPress={() => this.props.navigation.goBack()}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.goBack()}>
             <Image
               source={require('../../../assets/icons/arrow.png')}
               resizeMode={'center'}
@@ -82,7 +82,7 @@ class Login extends React.Component {
           </Text>
         </View>
 
-        <ScrollView style={{flex: 1}}>
+        <ScrollView style={{ flex: 1 }}>
           <View style={styles.imageView}>
             <Image
               source={require('../../../assets/icons/group1.png')}
@@ -92,12 +92,12 @@ class Login extends React.Component {
           </View>
           <View
             style={styles.loginWithUser}>
-            <Text style={{color: Color.black}}>
+            <Text style={{ color: Color.black }}>
               Login with Username/Mobile Number
             </Text>
           </View>
           <View>
-            <Text style={{color: '#000'}}>Username</Text>
+            <Text style={{ color: '#000' }}>Username</Text>
             <View
               style={styles.inputView}>
               <TextInput
@@ -106,13 +106,13 @@ class Login extends React.Component {
                 style={styles.input}
                 keyboardType="email-address"
                 onChangeText={Email => {
-                  this.setState({Email});
+                  this.setState({ Email });
                 }}
               />
             </View>
           </View>
-          <View style={{marginTop: 4}}>
-            <Text style={{color: Color.black}}>Password</Text>
+          <View style={{ marginTop: 4 }}>
+            <Text style={{ color: Color.black }}>Password</Text>
             <View
               style={styles.passwordView}>
               <TextInput
@@ -121,35 +121,35 @@ class Login extends React.Component {
                 style={styles.passwordInput}
                 secureTextEntry={true}
                 onChangeText={Password => {
-                  this.setState({Password});
+                  this.setState({ Password });
                 }}
               />
-              <Image 
-              source={require('../../../assets/icons/eye.png')} />
+              <Image
+                source={require('../../../assets/icons/eye.png')} />
             </View>
           </View>
           <View
             style={styles.remember}>
-            <View style={{flexDirection: 'row'}}>
-              <Text style={{marginLeft: 2, marginTop: 4}}>Remember me ?</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={{ marginLeft: 2, marginTop: 4 }}>Remember me ?</Text>
               <CheckBox value={this.state.isSelected} style={styles.checkbox} />
             </View>
             <TouchableOpacity>
-              <Text style={{color: Color.blue}}>Forgot Password ?</Text>
+              <Text style={{ color: Color.blue }}>Forgot Password ?</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity
             onPress={this.doLogin}
             style={styles.button}>
-            <Text style={{color: Color.white}}>Login</Text>
+            <Text style={{ color: Color.white }}>Login</Text>
           </TouchableOpacity>
 
           <View
             style={styles.dont}>
-            <Text style={{color: Color.black}}>Don't have an account ?</Text>
+            <Text style={{ color: Color.black }}>Don't have an account ?</Text>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('RegistrationOne')}>
-              <Text style={{color: Color.green, marginLeft: 5}}>
+              <Text style={{ color: Color.green, marginLeft: 5 }}>
                 Register Now
               </Text>
             </TouchableOpacity>
