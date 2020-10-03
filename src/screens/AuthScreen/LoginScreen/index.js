@@ -62,11 +62,19 @@ class Login extends React.Component {
         <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
+<<<<<<< HEAD
           textStyle={{ color: Color.white }}
         />
         <View>
           <TouchableOpacity
             onPress={() => this.props.navigation.goBack()}>
+=======
+          textStyle={{color: Color.white}}
+        />
+        <View>
+          <TouchableOpacity 
+          onPress={() => this.props.navigation.goBack()}>
+>>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
             <Image
               source={require('../../../assets/icons/arrow.png')}
               resizeMode={'center'}
@@ -92,7 +100,11 @@ class Login extends React.Component {
           </View>
           <View
             style={styles.loginWithUser}>
+<<<<<<< HEAD
             <Text style={{ color: Color.black }}>
+=======
+            <Text style={{color: Color.black}}>
+>>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
               Login with Username/Mobile Number
             </Text>
           </View>
@@ -111,8 +123,13 @@ class Login extends React.Component {
               />
             </View>
           </View>
+<<<<<<< HEAD
           <View style={{ marginTop: 4 }}>
             <Text style={{ color: Color.black }}>Password</Text>
+=======
+          <View style={{marginTop: 4}}>
+            <Text style={{color: Color.black}}>Password</Text>
+>>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
             <View
               style={styles.passwordView}>
               <TextInput
@@ -124,32 +141,57 @@ class Login extends React.Component {
                   this.setState({ Password });
                 }}
               />
+<<<<<<< HEAD
               <Image
                 source={require('../../../assets/icons/eye.png')} />
+=======
+              <Image 
+              source={require('../../../assets/icons/eye.png')} />
+>>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
             </View>
           </View>
           <View
             style={styles.remember}>
+<<<<<<< HEAD
             <View style={{ flexDirection: 'row' }}>
               <Text style={{ marginLeft: 2, marginTop: 4 }}>Remember me ?</Text>
               <CheckBox value={this.state.isSelected} style={styles.checkbox} />
             </View>
             <TouchableOpacity>
               <Text style={{ color: Color.blue }}>Forgot Password ?</Text>
+=======
+            <View style={{flexDirection: 'row'}}>
+              <Text style={{marginLeft: 2, marginTop: 4}}>Remember me ?</Text>
+              <CheckBox value={this.state.isSelected} style={styles.checkbox} />
+            </View>
+            <TouchableOpacity>
+              <Text style={{color: Color.blue}}>Forgot Password ?</Text>
+>>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
             </TouchableOpacity>
           </View>
           <TouchableOpacity
             onPress={this.doLogin}
             style={styles.button}>
+<<<<<<< HEAD
             <Text style={{ color: Color.white }}>Login</Text>
+=======
+            <Text style={{color: Color.white}}>Login</Text>
+>>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
           </TouchableOpacity>
 
           <View
             style={styles.dont}>
+<<<<<<< HEAD
             <Text style={{ color: Color.black }}>Don't have an account ?</Text>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('RegistrationOne')}>
               <Text style={{ color: Color.green, marginLeft: 5 }}>
+=======
+            <Text style={{color: Color.black}}>Don't have an account ?</Text>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('RegistrationOne')}>
+              <Text style={{color: Color.green, marginLeft: 5}}>
+>>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
                 Register Now
               </Text>
             </TouchableOpacity>
