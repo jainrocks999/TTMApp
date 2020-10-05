@@ -34,7 +34,7 @@ class SplashScreen extends React.Component {
     });
 
     if (isSignedIn == true || userid != null) {
-      setTimeout(() => this.props.navigation.navigate('AppStack'), 1000);
+      setTimeout(() => this.props.navigation.navigate('AppStack'), 7000);
 
       try {
         const userInfo = await GoogleSignin.signInSilently();
@@ -49,7 +49,7 @@ class SplashScreen extends React.Component {
         }
       }
     } else {
-      setTimeout(() => this.props.navigation.navigate('Other'), 1000);
+      setTimeout(() => this.props.navigation.navigate('Other'), 7000);
     }
   };
 
@@ -59,7 +59,7 @@ class SplashScreen extends React.Component {
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={require('../../../assets/images/app_iocn.png')}
+            source={require('../../../assets/images/gifImage.gif')}
             resizeMode={'stretch'}
           />
         </View>

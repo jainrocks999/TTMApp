@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon1 from 'react-native-vector-icons/Feather';
 import storage from '../../config/storage';
-
+import {Calendar,} from 'react-native-calendars';
 import ExpandableItemComponent from '../../config/expendableList.js'; 
 import style from './style';
  const CONTENT = [
@@ -170,6 +170,9 @@ import style from './style';
             
   render() {
     const {CalendraDetails}=this.props
+        const vacation = {key:'vacation', color: 'red', selectedDotColor: 'blue'};
+        const massage = {key:'massage', color: 'blue', selectedDotColor: 'blue'};
+        const workout = {key:'workout', color: 'green'};
     return (
         <View style={{flex:1}}>
          <View
@@ -206,7 +209,7 @@ import style from './style';
             </View>
           </View>
         </View>
-        <View
+        {/* <View
           style={styles.view1}>
           <View
             style={styles.inputContainer}>
@@ -228,8 +231,8 @@ import style from './style';
               <Icon name="filter" size={35} />
             </View>
           </View>
-        </View>
-            <FlatList
+        </View> */}
+            {/* <FlatList
                     data={CalendraDetails}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) =>
@@ -255,7 +258,21 @@ import style from './style';
 
 
                     }
-                />
+                /> */}
+                <View>
+                <Calendar 
+              markedDates={{
+                '2017-10-25': {dots: [vacation, massage, workout], selected: true, selectedColor: 'red'},
+                '2017-10-26': {dots: [massage, workout], disabled: true},
+               }} 
+               onDayPress={(day) =>{ 
+                 console.log("Calender date ",moment(day.dateString).format("DD/MM/YYYY"))
+                 this.props.seduleGet(moment(day.dateString).format("DD/MM/YYYY"))}
+                }  
+
+               markingType={'multi-dot'}
+            />
+                </View>
                
         </View>
     );

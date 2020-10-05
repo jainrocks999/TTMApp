@@ -19,6 +19,7 @@
     "qs": "^6.9.4",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-calendars": "^1.403.0",
     "react-native-cardview": "^2.0.5",
     "react-native-checkbox": "^2.0.0",
     "react-native-fbsdk": "^2.0.0",

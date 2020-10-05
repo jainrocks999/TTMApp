@@ -1,8 +1,8 @@
 import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   image: {
-    height: 150,
-    width: 150,
+    height: '100%',
+    width: '100%',
     alignItems: 'center',
   },
   imageContainer: {
