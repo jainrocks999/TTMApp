@@ -291,9 +291,9 @@ class RegisteredDetails extends Component {
 
     return (
       <View style={{flex: 1}}>
-        <ScrollView>
+       
           {isFetching ? <Loader /> : null}
-
+          <ScrollView>
           <View
             style={styles.main}>
             <View

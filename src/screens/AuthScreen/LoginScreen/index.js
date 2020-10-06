@@ -6,13 +6,13 @@ import {
   Image,
   StatusBar,
   TextInput,
-  TouchableOpacity,
-  CheckBox,
+  TouchableOpacity
 } from 'react-native';
+import CheckBox from 'react-native-check-box'
 import { connect } from 'react-redux';
 import Toast from 'react-native-simple-toast';
 import storage from '../../../config/storage';
-import Spinner from 'react-native-loading-spinner-overlay';
+
 import AsyncStorage from '@react-native-community/async-storage';
 import Color from '../../../common/Colors';
 import styles from './style';
@@ -24,27 +24,44 @@ class Login extends React.Component {
       Email: '',
       Password: '',
       token: '',
-      spinner: false,
       isSelected: false,
+
     };
     this.loaddata();
   }
 
   loaddata = async () => {
     let token = await AsyncStorage.getItem(storage.Token);
-    console.log('token check login' + token);
+    let user = await AsyncStorage.getItem(storage.user);
+    let pass = await AsyncStorage.getItem(storage.Passwrod);
+    // let select = await AsyncStorage.getItem(storage.check)
+    // console.log('chekc sum'+select)
     this.setState({
+      Email: user,
+      Password: pass,
+      //isSelected:Boolean(select),
       token: token,
     });
   };
   doLogin = () => {
-    const { Email, Password, token } = this.state;
+    const { Email, Password, token, isSelected } = this.state;
+    if (isSelected == true) {
+      AsyncStorage.setItem(storage.user, Email);
+      AsyncStorage.setItem(storage.Passwrod, Password);
+      AsyncStorage.setItem(storage.check,"true");
+    }else{
+      AsyncStorage.setItem(storage.user, '');
+      AsyncStorage.setItem(storage.Passwrod, '');
+      AsyncStorage.setItem(storage.check,'');
+    }
+
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (Email == '') {
       Toast.show('Please enter valid e-mail address.');
     } else if (Password == '') {
       Toast.show('Please enter password.');
-    } else {
+    } else {     
+      console.log('rohit chck ' + isSelected)
       this.props.dispatch({
         type: 'User_Login_Request',
         url: 'NewTMApi/Login',
@@ -53,28 +70,17 @@ class Login extends React.Component {
         token: token,
       });
       this.props.navigation.navigate('AppStack');
+
     }
   };
 
   render() {
     return (
       <View style={{ flex: 1, paddingRight: 10, paddingLeft: 10, marginTop: 4 }}>
-        <Spinner
-          visible={this.state.spinner}
-          textContent={'Loading...'}
-<<<<<<< HEAD
-          textStyle={{ color: Color.white }}
-        />
+        
         <View>
           <TouchableOpacity
             onPress={() => this.props.navigation.goBack()}>
-=======
-          textStyle={{color: Color.white}}
-        />
-        <View>
-          <TouchableOpacity 
-          onPress={() => this.props.navigation.goBack()}>
->>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
             <Image
               source={require('../../../assets/icons/arrow.png')}
               resizeMode={'center'}
@@ -100,11 +106,7 @@ class Login extends React.Component {
           </View>
           <View
             style={styles.loginWithUser}>
-<<<<<<< HEAD
             <Text style={{ color: Color.black }}>
-=======
-            <Text style={{color: Color.black}}>
->>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
               Login with Username/Mobile Number
             </Text>
           </View>
@@ -123,13 +125,8 @@ class Login extends React.Component {
               />
             </View>
           </View>
-<<<<<<< HEAD
           <View style={{ marginTop: 4 }}>
             <Text style={{ color: Color.black }}>Password</Text>
-=======
-          <View style={{marginTop: 4}}>
-            <Text style={{color: Color.black}}>Password</Text>
->>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
             <View
               style={styles.passwordView}>
               <TextInput
@@ -141,57 +138,42 @@ class Login extends React.Component {
                   this.setState({ Password });
                 }}
               />
-<<<<<<< HEAD
               <Image
                 source={require('../../../assets/icons/eye.png')} />
-=======
-              <Image 
-              source={require('../../../assets/icons/eye.png')} />
->>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
             </View>
           </View>
           <View
             style={styles.remember}>
-<<<<<<< HEAD
-            <View style={{ flexDirection: 'row' }}>
-              <Text style={{ marginLeft: 2, marginTop: 4 }}>Remember me ?</Text>
-              <CheckBox value={this.state.isSelected} style={styles.checkbox} />
+            <View style={styles.checkbox}>
+              <CheckBox
+                style={{ padding: 4 }}
+                onClick={() => {
+                  this.setState({
+                    isSelected: !this.state.isSelected
+                  })
+                }}
+                isChecked={this.state.isSelected}
+              // rightText={"Remember me ?"}
+              />
+              <Text style={{ marginTop: 4, padding: 4 }}>Remember me ?</Text>
             </View>
+
             <TouchableOpacity>
               <Text style={{ color: Color.blue }}>Forgot Password ?</Text>
-=======
-            <View style={{flexDirection: 'row'}}>
-              <Text style={{marginLeft: 2, marginTop: 4}}>Remember me ?</Text>
-              <CheckBox value={this.state.isSelected} style={styles.checkbox} />
-            </View>
-            <TouchableOpacity>
-              <Text style={{color: Color.blue}}>Forgot Password ?</Text>
->>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
             </TouchableOpacity>
           </View>
           <TouchableOpacity
             onPress={this.doLogin}
             style={styles.button}>
-<<<<<<< HEAD
             <Text style={{ color: Color.white }}>Login</Text>
-=======
-            <Text style={{color: Color.white}}>Login</Text>
->>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
           </TouchableOpacity>
 
           <View
             style={styles.dont}>
-<<<<<<< HEAD
             <Text style={{ color: Color.black }}>Don't have an account ?</Text>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('RegistrationOne')}>
               <Text style={{ color: Color.green, marginLeft: 5 }}>
-=======
-            <Text style={{color: Color.black}}>Don't have an account ?</Text>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('RegistrationOne')}>
-              <Text style={{color: Color.green, marginLeft: 5}}>
->>>>>>> 3ecb5580ca9fc5ebf482c4a0749b359ef876dc66
                 Register Now
               </Text>
             </TouchableOpacity>

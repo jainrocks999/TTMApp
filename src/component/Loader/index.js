@@ -8,7 +8,7 @@ export default class Loader extends React.Component{
     render(){
         return(
             <View style={ styles.container }>
-              <Image source={loading} style={{width:120,height:80}}/>    
+              <Image source={loading} style={{width:60,height:60}}/>    
             </View>
         )
     }

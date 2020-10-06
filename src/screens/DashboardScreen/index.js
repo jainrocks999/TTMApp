@@ -13,7 +13,7 @@ import {connect} from 'react-redux';
 import storage from '../../config/storage';
 import AsyncStorage from '@react-native-community/async-storage';
 import Spinner from 'react-native-loading-spinner-overlay';
-
+import Loader from '../../config/loader';
 
 class DashBoardPage extends React.Component {
   constructor(props) {
@@ -43,7 +43,11 @@ class DashBoardPage extends React.Component {
     
   };
   tmdata = name => {
-   if (name == 'Application') {
+    if(name == 'MyTradeMark'){
+      this.setState({
+        isVisible: true,
+      });
+    }else if (name == 'Application') {
       this.setState({
         isVisibleApplication: true,
       });
@@ -58,14 +62,10 @@ class DashBoardPage extends React.Component {
     }
   };
   render() {
-    const {DashboardDetails}=this.props
+    const {DashboardDetails,isFetching}=this.props
     return (
       <View style={styles.container}>
-         <Spinner
-          visible={this.state.spinner}
-          textContent={'Loading...'}
-          textStyle={styles.spinnerTextStyle}
-        />
+        {isFetching ? <Loader /> : null}
         <View
           style={styles.menu}>
           <View
@@ -108,7 +108,7 @@ class DashBoardPage extends React.Component {
           <View style={styles.firstView}>
             <View style={styles.secondView}>
               <TouchableOpacity
-                onPress={() => this.tmdata()}
+                onPress={() => this.tmdata(DashboardDetails.MyTradeMarkName)}
                 style={styles.touchTm}>
                 <Image
                   style={styles.copyImage}
@@ -337,7 +337,7 @@ Proposed_RectificationCount:DashboardDetails.Proposed_RectificationCount,
           </View>
         </View>
         <Modal
-          isVisible={DashboardDetails.isVisible}
+          isVisible={this.state.isVisible}
           onSwipeComplete={() => this.setState({isVisible: false})}
           swipeDirection="right"
           onBackdropPress={() => this.setState({isVisible: false})}>

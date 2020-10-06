@@ -1,21 +1,21 @@
 import React from 'react';
-import {createSwitchNavigator, createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createDrawerNavigator} from 'react-navigation-drawer';
-import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashboardScreen from '../screens/DashboardScreen';
-
+import contactus from '../screens/Contact_usPage';
 import SplashPage from '../screens/AuthScreen/SplashScreen';
 import drawerPage from '../screens/drawer';
- import demo from '../screens/demo';
+import demo from '../screens/demo';
 import RegistrationPageOne from '../screens/AuthScreen/RegisterScreenOne';
 import RegistrationPageTwo from '../screens/AuthScreen/RegisterScreenSecond';
 import LoginPage from '../screens/AuthScreen/LoginScreen';
 import CopyRightPage from '../screens/CopyRightScreen';
 import DesignPage from '../screens/DesignScreen';
- import TradeMark from '../screens/TradeMark';
-import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
+import TradeMark from '../screens/TradeMark';
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import MyTradeDetailPage from '../screens/MyTradeDetailsPage';
 import MyTradeDetailViewPage from '../screens/MyTradeDetailsViewPage';
 import CalendarPage from '../screens/CalendarPage';
@@ -27,7 +27,7 @@ import LostScreenDetails from '../screens/LostScreen';
 import ProfilePage from '../screens/ProfileScreen';
 import StatusDetailScreen from '../screens/StatusDetailScreen/index';
 import ActionRequieredScreen from '../screens/ActionRequiredScreen/index';
-
+import about from '../screens/Aboutus';
 const PatentStack = createStackNavigator(
   {
     PatentPage: {
@@ -36,7 +36,7 @@ const PatentStack = createStackNavigator(
     // header:false
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -51,7 +51,7 @@ const TMSearchStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -77,7 +77,7 @@ const AuthNavigator = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -91,7 +91,7 @@ const CalendraPageStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -106,7 +106,7 @@ const ProfileStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -120,13 +120,41 @@ const DashboardStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
     },
   },
 );
+
+const contactusStack = createStackNavigator({
+  contactus: {
+    screen: contactus
+  },
+},
+  {
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        header: false,
+      };
+    },
+  },
+)
+const aboutstack = createStackNavigator({
+  about: {
+    screen: about
+  },
+},
+  {
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        header: false,
+      };
+    },
+  },
+)
+
 const RegDetailsStack = createStackNavigator(
   {
     RegScreenDetails: {
@@ -134,7 +162,7 @@ const RegDetailsStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -148,7 +176,7 @@ const LostDetailsStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -163,7 +191,7 @@ const DesignPageStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -178,7 +206,7 @@ const ActionRequieredStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -195,7 +223,7 @@ const HomeStackNavigator = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
         title: '',
@@ -205,7 +233,7 @@ const HomeStackNavigator = createStackNavigator(
         headerTintColor: 'black',
         headerLeft: () => (
           <Icon
-            style={{paddingLeft: 10, color: 'white'}}
+            style={{ paddingLeft: 10, color: 'white' }}
             onPress={() => navigation.toggleDrawer()}
             name="md-menu"
             size={30}
@@ -222,7 +250,7 @@ const DrawerStack = createStackNavigator(
     },
   },
   {
-    navigationOptions: ({navigation}) => ({
+    navigationOptions: ({ navigation }) => ({
       header: false,
       headerTitle: 'Dashboard',
       drawerLabel: 'Dashboard',
@@ -234,7 +262,7 @@ const DrawerStack = createStackNavigator(
         <TouchableOpacity onPress={navigation.toggleDrawer}>
           <Icon
             name="md-menu"
-            style={{marginLeft: 10}}
+            style={{ marginLeft: 10 }}
             size={30}
             color="#000"
           />
@@ -244,7 +272,7 @@ const DrawerStack = createStackNavigator(
         <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
           <Icon
             name="ios-notifications-outline"
-            style={{marginRight: 10}}
+            style={{ marginRight: 10 }}
             size={30}
             color="red"
           />
@@ -265,7 +293,7 @@ const TradedetailsStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -279,7 +307,7 @@ const MyTradeDetailViewStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -293,7 +321,7 @@ const CopyRightStack = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: ({navigation}) => {
+    defaultNavigationOptions: ({ navigation }) => {
       return {
         header: false,
       };
@@ -303,6 +331,8 @@ const CopyRightStack = createStackNavigator(
 const AppStack = createDrawerNavigator(
   {
     Dashboard: HomeStackNavigator,
+    Contact:contactusStack,
+    About:aboutstack,
     ActionRequiered: ActionRequieredStack,
     TradedetailsStack: TradedetailsStack,
     MyTradeDetailViewStack: MyTradeDetailViewStack,
@@ -322,8 +352,8 @@ const AppStack = createDrawerNavigator(
 );
 const AuthStack = createSwitchNavigator(
   {
-    AuthLoading: {screen: SplashPage},
-     Demo: demo,
+    AuthLoading: { screen: SplashPage },
+    Demo: demo,
     DashboardScreen: DashboardStack,
     //FirstPage: {screen: FirstScreen},
     Auth: AuthNavigator,

@@ -402,7 +402,7 @@ export default StyleSheet.create({
       fontSize: 22,
       fontWeight: 'bold',
       fontFamily: 'Poppins-SemiBold',
-      color: Color.white,
+      color: Color.black,
       alignItems: 'center',
     },
     bottom:{

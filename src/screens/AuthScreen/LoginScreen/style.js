@@ -13,6 +13,11 @@ export default styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
   },
+  checkbox:{
+    padding:4,
+    flexDirection:'row',
+    alignItems:'center'
+  },
   loginView: {
     justifyContent: 'center',
     alignItems: 'center',

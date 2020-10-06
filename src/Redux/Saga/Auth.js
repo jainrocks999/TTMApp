@@ -290,7 +290,8 @@ function* doLogin(action) {
     });
     console.log('dataaaa' + JSON.stringify(p.data));
     AsyncStorage.setItem(Constants.UserID, JSON.stringify(p.data.UserID));
-    AsyncStorage.setItem(Constants.UserName, p.data.UserName);
+    AsyncStorage.setItem(Constants.UserName, p.data.First_Name);
+    AsyncStorage.setItem(Constants.last, p.data.Last_Name);
   } else {
     Alert.alert(p.message);
     yield put({
