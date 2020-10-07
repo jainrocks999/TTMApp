@@ -1,8 +1,12 @@
-
-import React from 'react';
 import {StyleSheet} from 'react-native';
 import Color from '../../../common/Colors';
 export default styles = StyleSheet.create({
+  main:{ 
+  flex: 1, 
+  paddingRight: 10, 
+  paddingLeft: 10, 
+  marginTop: 4 
+   },
   container: {
   flex: 1, 
   padding: 20, 

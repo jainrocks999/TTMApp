@@ -86,7 +86,6 @@ class DesignDetails extends Component {
   };
   getVisible(item) {
     if (this.state.visible == false) {
-      console.log('rohit12' + this.state.visible);
       this.setState({
         visible: true,
         itemValue: item.Rowno,
@@ -234,7 +233,6 @@ this.loadsearch(search);
   }
 }
 const mapStateToProps = state => {
-  console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
     DesignDetails: state.DesignDetails,

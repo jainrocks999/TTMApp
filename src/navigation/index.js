@@ -8,7 +8,6 @@ import DashboardScreen from '../screens/DashboardScreen';
 import contactus from '../screens/Contact_usPage';
 import SplashPage from '../screens/AuthScreen/SplashScreen';
 import drawerPage from '../screens/drawer';
-import demo from '../screens/demo';
 import RegistrationPageOne from '../screens/AuthScreen/RegisterScreenOne';
 import RegistrationPageTwo from '../screens/AuthScreen/RegisterScreenSecond';
 import LoginPage from '../screens/AuthScreen/LoginScreen';
@@ -353,9 +352,7 @@ const AppStack = createDrawerNavigator(
 const AuthStack = createSwitchNavigator(
   {
     AuthLoading: { screen: SplashPage },
-    Demo: demo,
     DashboardScreen: DashboardStack,
-    //FirstPage: {screen: FirstScreen},
     Auth: AuthNavigator,
     AppStack: AppStack,
     apiScreen: apiNavigator,

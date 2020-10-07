@@ -8,11 +8,7 @@ import {
   ScrollView
 } from 'react-native';
 import styles from './style';
-import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
-import storage from '../../config/storage';
-import AsyncStorage from '@react-native-community/async-storage';
-import Spinner from 'react-native-loading-spinner-overlay';
 import Loader from '../../config/loader';
 
 class AboutPage extends React.Component {

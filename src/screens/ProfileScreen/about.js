@@ -49,7 +49,6 @@ export default class ProfileScreen extends React.Component {
     }     
    render() {
 
-    console.log(this.state.UserName)
     return (
       <View
         style={styles.container}>

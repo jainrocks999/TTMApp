@@ -141,7 +141,6 @@ updateLayout = (index) => {
   };
   getVisible(item) {
         if (this.state.visible == false) {
-            console.log('rohit12' + this.state.visible)
             this.setState({
                 visible: true,
                 itemValue: item.Id
@@ -285,7 +284,6 @@ updateLayout = (index) => {
 }
 
 const mapStateToProps = state => {
-  console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
     Hearing: state.Hearing,

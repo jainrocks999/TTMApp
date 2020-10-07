@@ -34,7 +34,6 @@ class DashBoardPage extends React.Component {
 
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-    console.log('lfkd;lfkdsklfjldskjfdlk\n\n\n\n\n\n'+token)
     this.props.dispatch({
       type: 'User_Dashboard_Request',
       url:'NewTMApi/Dashboard?UserId=122',

@@ -30,7 +30,6 @@ class TradeMark extends React.Component{
     }
 }
 const mapStateToProps=(state)=>{
-    console.log('TMApi data'+JSON.stringify(state.isFetching))
       return{
           isFetching:state.isFetching,
       }

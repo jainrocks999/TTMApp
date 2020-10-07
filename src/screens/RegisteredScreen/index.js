@@ -74,7 +74,6 @@ class RegisteredDetails extends Component {
         let Data = JSON.parse(res);
         let Apidata = Data.data;
 
-        console.log('Datatatat : ', Data);
         let sectionData = [];
 
         if (Data.data && Data.data.length > 0) {
@@ -162,7 +161,6 @@ class RegisteredDetails extends Component {
         }
       }
     }
-    console.log('sectionData... previous', sectionData);
     if (sectionData.length > 0) {
       this.setState({productData: sectionData.reverse()});
     }
@@ -457,7 +455,6 @@ class RegisteredDetails extends Component {
   }
 }
 const mapStateToProps = state => {
-  console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
     RegisteredDetails: state.RegisteredDetails,

@@ -25,8 +25,12 @@ class Login extends React.Component {
       Password: '',
       token: '',
       isSelected: false,
-
+     
     };
+    this.toggleSwitch = this.toggleSwitch.bind(this);
+    this.state = {
+      showPassword: true,
+    }
     this.loaddata();
   }
 
@@ -34,12 +38,9 @@ class Login extends React.Component {
     let token = await AsyncStorage.getItem(storage.Token);
     let user = await AsyncStorage.getItem(storage.user);
     let pass = await AsyncStorage.getItem(storage.Passwrod);
-    // let select = await AsyncStorage.getItem(storage.check)
-    // console.log('chekc sum'+select)
     this.setState({
       Email: user,
       Password: pass,
-      //isSelected:Boolean(select),
       token: token,
     });
   };
@@ -73,10 +74,12 @@ class Login extends React.Component {
 
     }
   };
-
+  toggleSwitch() {
+    this.setState({ showPassword: !this.state.showPassword });
+  }
   render() {
     return (
-      <View style={{ flex: 1, paddingRight: 10, paddingLeft: 10, marginTop: 4 }}>
+      <View style={styles.main}>
         
         <View>
           <TouchableOpacity
@@ -133,13 +136,15 @@ class Login extends React.Component {
                 placeholder="Enter Password"
                 value={this.state.Password}
                 style={styles.passwordInput}
-                secureTextEntry={true}
+                secureTextEntry={this.state.showPassword}
                 onChangeText={Password => {
                   this.setState({ Password });
                 }}
               />
+              <TouchableOpacity onPress={this.toggleSwitch}>
               <Image
                 source={require('../../../assets/icons/eye.png')} />
+                </TouchableOpacity>
             </View>
           </View>
           <View
@@ -153,7 +158,6 @@ class Login extends React.Component {
                   })
                 }}
                 isChecked={this.state.isSelected}
-              // rightText={"Remember me ?"}
               />
               <Text style={{ marginTop: 4, padding: 4 }}>Remember me ?</Text>
             </View>
@@ -186,7 +190,6 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
   };

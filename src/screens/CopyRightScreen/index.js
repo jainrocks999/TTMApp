@@ -43,7 +43,6 @@ class CopyRightPage extends Component {
     const {Nor, PageNo} = this.state;
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-    console.log('bdb' + userid);
     this.setState({
       Token:token,
       UserID:'',
@@ -57,7 +56,6 @@ this.loadsearch(search);
     });
   };
   loadsearch(search){
-    console.log('jseajdjdhjhjhjhsjdsjds'+search)
     this.props.dispatch({
       type: 'User_CopyRight_Request',
       url: '/NewTMApi/CRDetail?UserId=7&PageNo=1&Nor=10&search='+search,
@@ -66,7 +64,6 @@ this.loadsearch(search);
   }
   getVisible(item) {
     if (this.state.visible == false) {
-      console.log('rohit12' + this.state.visible);
       this.setState({
         visible: true,
         itemValue: item.Id,
@@ -284,7 +281,6 @@ this.loadsearch(search);
 }
 
 const mapStateToProps = state => {
-  console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
     CopyRight: state.CopyRight,

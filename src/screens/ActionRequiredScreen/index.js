@@ -42,7 +42,6 @@ class ActionRequieredScreen extends Component {
   
   getVisible(item) {
     if (this.state.visible == false) {
-      console.log('rohit12' + this.state.visible);
       this.setState({
         visible: true,
         itemValue: item.Rowno,
@@ -64,7 +63,6 @@ class ActionRequieredScreen extends Component {
     const PO= this.props.navigation.getParam('Proposed_OppositionCount');
     const Int= this.props.navigation.getParam('Intimation_Of_Notice_Of_PublicationCount');
     const PR= this.props.navigation.getParam('Proposed_RectificationCount');
-  console.log('fddbdbdnbndb'+RP)
   
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
@@ -76,7 +74,6 @@ class ActionRequieredScreen extends Component {
   Intimation_Of_Notice_Of_PublicationCount:Int,
   Proposed_RectificationCount:PR,
     })
-    console.log('bdb' + userid);
     this.props.dispatch({
       type: 'User_Design_Details_Request',
       url: '/NewTMApi/DDetail?UserId=7&PageNo=1&Nor=10&search=',
@@ -208,7 +205,6 @@ class ActionRequieredScreen extends Component {
   }
 }
 const mapStateToProps = state => {
-  console.log('Details' + JSON.stringify(state.isFetching));
   return {
     isFetching: state.isFetching,
     DesignDetails: state.DesignDetails,

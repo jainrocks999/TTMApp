@@ -1,103 +1,55 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
-import Constants from '../../config/constants';
-
+import Color from '../../common/Colors';
 export default class other extends React.Component {
   render() {
     return (
-      <View style={{flex: 1, padding: 10, backgroundColor: 'white'}}>
+      <View style={styles.container}>
         <View
-          style={{
-            alignItems: 'center',
-            marginTop: 20,
-          }}>
+          style={styles.first}>
           <Text
-            style={{
-              fontWeight: 'normal',
-              fontFamily: 'Poppins-SemiBold',
-              fontSize: 20,
-            }}>
+            style={styles.get}>
             Get Started Now
           </Text>
         </View>
         <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 75,
-          }}>
+          style={styles.imageView}>
           <Image
             source={require('../../assets/icons/group2.png')}
-            style={{width: 340, height: 250}}
+            style={styles.image}
             resizeMode={'center'}
           />
         </View>
         <View
-          style={{
-            paddingHorizontal: 80,
-            marginTop: 40,
-          }}>
+          style={styles.touchView}>
           <TouchableOpacity
-            style={{
-              backgroundColor: '#eef1f4',
-              borderRadius: 20,
-              padding: 10,
-              alignItems: 'center',
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }}>
+            style={styles.touch}>
             <Image
               source={require('../../assets/icons/facebook.png')}
-              style={{
-                width: 10,
-                height: 18,
-                marginRight: 10,
-              }}
+              style={styles.fb}
             />
             <Text>Login with Facebook</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={{
-              backgroundColor: '#eef1f4',
-              borderRadius: 20,
-              padding: 10,
-              alignItems: 'center',
-              marginTop: 10,
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }}>
+            style={styles.ggl}>
             <Image
               source={require('../../assets/icons/google.png')}
-              style={{
-                width: 17,
-                height: 18,
-                marginRight: 10,
-              }}
+              style={styles.gglImage}
             />
             <Text>Login with Google</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('RegistrationOne')}
-            style={{
-              backgroundColor: '#5f85e5',
-              borderRadius: 20,
-              padding: 10,
-              alignItems: 'center',
-              marginTop: 35,
-            }}>
-            <Text style={{color: 'white'}}>Signup with Email</Text>
+            style={styles.sign}>
+            <Text style={{color: Color.white}}>Signup with Email</Text>
           </TouchableOpacity>
           <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              marginTop: 10,
-            }}>
-            <Text style={{color: '#98999a'}}>Existing User?</Text>
+            style={styles.exist}>
+            <Text style={{color: Color.please}}>Existing User?</Text>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Login')}>
-              <Text style={{color: '#5f85e5'}}>Login Now</Text>
+              <Text style={{color: Color.blue}}>Login Now</Text>
             </TouchableOpacity>
           </View>
         </View>

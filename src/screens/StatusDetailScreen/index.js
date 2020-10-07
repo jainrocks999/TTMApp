@@ -168,7 +168,6 @@ class StatusDetail extends Component {
   };
   getVisible(item) {
     if (this.state.visible == false) {
-      console.log('rohit12' + this.state.visible);
       this.setState({
         visible: true,
         itemValue: item.id,
@@ -187,12 +186,10 @@ class StatusDetail extends Component {
     const ProprietorsCoun = this.props.navigation.getParam('ProprietorsCount');
     let userid = await AsyncStorage.getItem(storage.UserID);
     let token = await AsyncStorage.getItem(storage.Token);
-    console.log('hhhhhhhh'+Applicaticount)
 this.setState({
   Applicaticount:Applicaticount,
   ProprietorsCoun:ProprietorsCoun,
 })
-    console.log('bdb' + userid);
     // this.props.dispatch({
     //   type: 'User_ApplicationStatus_Details_Request',
     //   url:
@@ -303,8 +300,7 @@ this.setState({
   }
 }
 const mapStateToProps = state => {
-  console.log('Details' + JSON.stringify(state.isFetching));
-  return {
+    return {
     isFetching: state.isFetching,
     RegisteredDetails: state.RegisteredDetails,
   };
